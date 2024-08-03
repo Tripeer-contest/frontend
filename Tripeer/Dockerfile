@@ -26,7 +26,7 @@ WORKDIR /app
 RUN npm install -g serve
 
 # Copy the build output directory from the builder stage
-COPY --from=builder /app/.next .next
+COPY --from=builder /app/dist dist
 COPY --from=builder /app/public public
 COPY --from=builder /app/node_modules node_modules
 COPY --from=builder /app/package.json .
