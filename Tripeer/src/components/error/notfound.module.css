@@ -1,0 +1,80 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.imageBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://tripeer207.s3.ap-northeast-2.amazonaws.com/front/static/notFoundImg.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 500px;
+}
+
+.notfoundText {
+  background: url('../public/notFound/notFoundText.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40%;
+  height: 60px;
+  margin-bottom: 60px;
+  animation: textTitleAnimation 1s ease-in-out;
+}
+
+.notfoundSubText {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  animation: textSubAnimation 1s ease-in-out;
+}
+
+.homeBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  border: 3px solid #fff;
+  color: #fff;
+  margin-top: 30px;
+  text-decoration: none;
+  animation: textTitleAnimation 1s ease-in-out;
+  cursor: pointer;
+}
+
+.homeBtn:hover {
+  transform: scale(1.02);
+}
+
+@keyframes textSubAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes textTitleAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
