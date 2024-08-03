@@ -1,10 +1,23 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from './layout/RootLayout';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <p>메인 페이지 컴포넌트</p> },
+      { path: '/plan', element: <p>일정 계획 페이지 컴포넌트</p> },
+      { path: '/diary', element: <p>지난 여행 페이지 컴포넌트</p> },
+      { path: '/place', element: <p>여행지 페이지 컴포넌트</p> },
+    ],
+  },
+]);
+
 function App() {
-  console.log(import.meta.env.VITE_API_URL);
   return (
     <>
-      <div style={{ fontWeight: 'bold', fontSize: '50px' }}>
-        함께 여행을, 함께 계획하다.
-      </div>
+      <RouterProvider router={router}></RouterProvider>
     </>
   );
 }
