@@ -22,7 +22,6 @@
 }
 
 .notfoundText {
-  background: url('../public/notFound/notFoundText.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -34,6 +33,8 @@
 
 .notfoundSubText {
   color: #fff;
+  text-align: center;
+  line-height: 150%;
   font-size: 1.5rem;
   margin-bottom: 20px;
   animation: textSubAnimation 1s ease-in-out;
@@ -51,6 +52,7 @@
   text-decoration: none;
   animation: textTitleAnimation 1s ease-in-out;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 
 .homeBtn:hover {

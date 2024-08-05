@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
+import NotFound from './components/error/NotFound';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <NotFound />,
     children: [
       { index: true, element: <p>메인 페이지 컴포넌트</p> },
       { path: '/plan', element: <p>일정 계획 페이지 컴포넌트</p> },
