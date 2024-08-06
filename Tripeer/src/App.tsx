@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import NotFound from './components/error/NotFound';
+import LandingPage from './features/landing/LandingPage';
 
 const router = createBrowserRouter([
   {
@@ -8,7 +9,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <p>메인 페이지 컴포넌트</p> },
+      { index: true, element: <LandingPage/> },
       { path: '/plan', element: <p>일정 계획 페이지 컴포넌트</p> },
       { path: '/diary', element: <p>지난 여행 페이지 컴포넌트</p> },
       { path: '/place', element: <p>여행지 페이지 컴포넌트</p> },
