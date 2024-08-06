@@ -1,127 +1,230 @@
-.container {
-  width: 100vw;
-  height: 84.8px;
-  display: flex;
-  padding: 15px;
-  padding-left: 30px;
-  border-bottom: 1px solid #e3e3e3;
-  justify-content: space-between;
-  align-items: center;
+input[type='checkbox'] {
+  display: none;
 }
 
-.linkBox {
-  display: flex;
-  align-items: center;
+@media screen and (min-width: 860px) {
+  .container {
+    width: 100vw;
+    height: 84.8px;
+    display: flex;
+    padding: 15px;
+    padding-left: 30px;
+    border-bottom: 1px solid #e3e3e3;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .AuthLine {
+    display: none;
+  }
+  .logoImg {
+    width: 130px;
+    height: 50px;
+  }
+  .hamburger {
+    display: none;
+  }
+
+  .linkBox {
+    display: flex;
+    align-items: center;
+  }
+
+  .activeBtn {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px;
+    color: #04acb5;
+  }
+
+  .unactiveBtn {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px;
+  }
+
+  .loginBox {
+    margin-left: 50px;
+    width: 200px;
+    height: 50px;
+    background-color: #04acb5;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .profileBox {
+    width: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px #4fbdb7 solid;
+    border-radius: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 30px;
+    margin-right: 20px;
+  }
+
+  .userImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .userName {
+    margin-left: 12px;
+    color: #262626;
+    font-weight: 550;
+  }
+
+  .toggleIcon {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+
+  .onToggle {
+    transition: 1s ease;
+    transform: rotate(180deg);
+    cursor: pointer;
+  }
+
+  .offToggle {
+    transition: 1s ease;
+    transform: rotate(0deg);
+    cursor: pointer;
+  }
+
+  .options {
+    position: absolute;
+    top: 55px;
+    left: -5px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+  }
+
+  .option {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px;
+    width: 150px;
+    height: 50px;
+  }
+
+  .optionIcon {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    margin-right: 10px;
+  }
+
+  .background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
 }
 
-.activeBtn {
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 15px;
-  color: #04acb5;
-}
+@media screen and (max-width: 860px) {
+  .container {
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    padding: 15px;
+    padding-left: 30px;
+    border-bottom: 1px solid #e3e3e3;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logoImg {
+    width: 100px;
+    height: 40px;
+  }
+  .hamburger {
+    width: 20px;
+    height: 20px;
+    background-image: url(../../assets/hamburger.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  .linkBox {
+    display: none;
+  }
 
-.unactiveBtn {
-  text-decoration: none;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 15px;
-}
+  input:checked ~ .linkBox {
+    display: flex;
+    padding: 30px 0px 30px 30px;
+    position: fixed;
+    top: 60px;
+    width: 300px;
+    height: calc(100vh - 50px);
+    box-shadow: 0px 0px 30px 0px #30364d17;
+    background-color: #fff;
+    right: 0;
+    flex-direction: column;
+    gap: 20px;
+    animation: showList 0.3s ease-in-out;
+  }
 
-.loginBox {
-  margin-left: 50px;
-  width: 200px;
-  height: 50px;
-  background-color: #04acb5;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  cursor: pointer;
-  text-decoration: none;
-}
+  @keyframes showList {
+    0% {
+      width: 0px;
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    99% {
+      width: 290px;
+      opacity: 0.9;
+    }
+    100% {
+      width: 300px;
+      opacity: 1;
+    }
+  }
 
-.profileBox {
-  width: auto;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border: 1px #4fbdb7 solid;
-  border-radius: 50px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-left: 30px;
-  margin-right: 20px;
-}
+  .loginBox {
+    display: none;
+  }
 
-.userImg {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
+  .activeBtn {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px;
+    color: #04acb5;
+  }
 
-.userName {
-  margin-left: 12px;
-  color: #262626;
-  font-weight: 550;
-}
-
-.toggleIcon {
-  margin-left: 8px;
-  cursor: pointer;
-}
-
-.onToggle {
-  transition: 1s ease;
-  transform: rotate(180deg);
-  cursor: pointer;
-}
-
-.offToggle {
-  transition: 1s ease;
-  transform: rotate(0deg);
-  cursor: pointer;
-}
-
-.options {
-  position: absolute;
-  top: 55px;
-  left: -5px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  z-index: 2;
-}
-
-.option {
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 10px;
-  width: 150px;
-  height: 50px;
-}
-
-.optionIcon {
-  width: 20px;
-  height: 20px;
-  background-size: cover;
-  margin-right: 10px;
-}
-
-.background {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
+  .unactiveBtn {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px;
+  }
+  .AuthLine {
+    margin-top: 0px;
+    width: 100%;
+    border: 0.1px solid #e3e3e3;
+  }
 }
