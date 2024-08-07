@@ -7,7 +7,7 @@ const trimUrlNumber = (url: UrlStringType) => {
 };
 
 const checkIsNav = (param: UrlStringType) => {
-  const NOT_SHOW_NAV_URL: UrlStringType[] = []; // nav 안보여주고 싶은 URL들 추가
+  const NOT_SHOW_NAV_URL: UrlStringType[] = ['/login']; // nav 안보여주고 싶은 URL들 추가
   const trimNumberUrl = trimUrlNumber(param);
   for (const URL of NOT_SHOW_NAV_URL) {
     if (URL.endsWith(trimNumberUrl)) return false;
