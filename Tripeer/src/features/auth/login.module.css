@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.socialBtn:hover {
+  transform: scale(1.02);
+  transition: 0.5s ease-in-out;
+}
+
+@media screen and (min-width: 360px) {
+  .Logo {
+    width: 238px;
+    height: 62px;
+  }
+  .borderBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaaaaa;
+    gap: 10px;
+    margin: 50px 0px 30px 0px;
+  }
+  .line {
+    width: 100px;
+    height: 0.1px;
+    background-color: #aaaaaa;
+  }
+
+  .socialBtn {
+    width: 350px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    text-decoration: none;
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+
+  .socialImg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .Logo {
+    width: 200px;
+    height: 50px;
+  }
+  .borderBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaaaaa;
+    gap: 10px;
+    font-size: 0.9rem;
+    margin: 50px 0px 30px 0px;
+  }
+  .line {
+    width: 80px;
+    height: 0.1px;
+    background-color: #aaaaaa;
+  }
+  .socialBtn {
+    width: 300px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    text-decoration: none;
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+
+  .socialImg {
+    width: 15px;
+    height: 15px;
+  }
+}
