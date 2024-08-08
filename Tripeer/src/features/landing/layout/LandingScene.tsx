@@ -1,10 +1,14 @@
 import { ReactNode } from "react";
 import styles from "../landing.module.css"
 
-export default function LandingScene({children}: {children: ReactNode}){
+interface LandingSceneProps {
+    children: ReactNode;
+}
+
+export default function LandingScene({children}: LandingSceneProps): JSX.Element {
     return(
-        <div className={styles.scene}>
-            {children}
+        <div className={styles.outer}>
+                {children}
         </div>
     )
 }

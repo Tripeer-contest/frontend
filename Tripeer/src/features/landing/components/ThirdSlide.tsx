@@ -1,6 +1,6 @@
 import styles from "./thirdSlide.module.css"
 
-export default function ThirdSlide(){
+export default function ThirdSlide(): JSX.Element{
 
     return(
         <main className={styles.container}>

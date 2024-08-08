@@ -1,6 +1,6 @@
 import styles from "./diarySlide.module.css"
 
-export default function DiarySlide(){
+export default function DiarySlide(): JSX.Element{
 
     return(
         <main className={styles.container}>

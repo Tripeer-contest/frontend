@@ -93,6 +93,8 @@
         display: flex;
         flex-direction: row;
         height: 100vh;
+        padding-top: 50px;
+
     }
     .box1{
         width: 55%;

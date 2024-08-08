@@ -1,6 +1,6 @@
 import styles from "./secondSlide.module.css"
 
-export default function SecondSlide(){
+export default function SecondSlide(): JSX.Element{
 
     return(
         <main className={styles.container}>
