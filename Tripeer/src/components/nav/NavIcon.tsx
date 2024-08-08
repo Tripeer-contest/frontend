@@ -10,7 +10,6 @@ export default function NavIcon({
 }) {
   const handleNavLink = ({ isActive }: { isActive: boolean }) => {
     let resultClass = `${styles.navIcon} `;
-    console.log('active' + classRoute);
     resultClass += isActive
       ? styles['active' + classRoute]
       : styles['unactive' + classRoute];
