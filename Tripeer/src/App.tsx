@@ -23,8 +23,18 @@ const router = createBrowserRouter([
         loader: protectRouter(zustandStore),
       },
       {
-        path: '/place',
+        path: '/home',
         element: <p>여행지 페이지 컴포넌트</p>,
+        loader: protectRouter(zustandStore),
+      },
+      {
+        path: '/cart',
+        element: <p>찜 목록 페이지</p>,
+        loader: protectRouter(zustandStore),
+      },
+      {
+        path: '/mypage',
+        element: <p>마이페이지</p>,
         loader: protectRouter(zustandStore),
       },
       {
