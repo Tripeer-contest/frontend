@@ -1,7 +1,3 @@
-input[type='checkbox'] {
-  display: none;
-}
-
 @media screen and (min-width: 860px) {
   .container {
     width: 100vw;
@@ -9,6 +5,7 @@ input[type='checkbox'] {
     display: flex;
     padding: 15px;
     padding-left: 30px;
+    padding-right: 30px;
     border-bottom: 1px solid #e3e3e3;
     justify-content: space-between;
     align-items: center;
@@ -26,6 +23,7 @@ input[type='checkbox'] {
 
   .linkBox {
     display: flex;
+    gap: 20px;
     align-items: center;
   }
 
@@ -85,6 +83,9 @@ input[type='checkbox'] {
     color: #262626;
     font-weight: 550;
   }
+  .navIcon {
+    display: none;
+  }
 
   .toggleIcon {
     margin-left: 8px;
@@ -140,6 +141,9 @@ input[type='checkbox'] {
     left: 0;
     z-index: 1;
   }
+  .homeBtn {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 860px) {
@@ -157,74 +161,176 @@ input[type='checkbox'] {
     width: 100px;
     height: 40px;
   }
-  .hamburger {
-    width: 20px;
-    height: 20px;
-    background-image: url(../../assets/hamburger.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
-    margin-right: 20px;
-  }
+
   .linkBox {
-    display: none;
-  }
-
-  input:checked ~ .linkBox {
-    display: flex;
-    padding: 30px 0px 30px 30px;
     position: fixed;
-    top: 60px;
-    width: 300px;
-    height: calc(100vh - 50px);
-    box-shadow: 0px 0px 30px 0px #30364d17;
-    background-color: #fff;
+    width: 100vw;
+    height: 90px;
+    padding-bottom: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+    align-items: center;
+    justify-content: center;
     right: 0;
+    bottom: 0;
+    box-shadow: 0px -2px 10px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .bottomNavIcon {
+    height: 100%;
+    display: flex;
     flex-direction: column;
-    gap: 20px;
-    animation: showList 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
   }
-
-  @keyframes showList {
-    0% {
-      width: 0px;
-      opacity: 0;
-    }
-    50% {
-      opacity: 0;
-    }
-    99% {
-      width: 290px;
-      opacity: 0.9;
-    }
-    100% {
-      width: 300px;
-      opacity: 1;
-    }
-  }
-
-  .loginBox {
+  .homeText {
     display: none;
+  }
+
+  .homeBtn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -25%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #4fbdb7;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .homeImg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .navIcon {
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .activeBtn {
     text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 15px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin: 6px;
     color: #04acb5;
   }
 
   .unactiveBtn {
     text-decoration: none;
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 15px;
+    font-size: 0.7rem;
+    color: #c4c4c4;
+    font-weight: 600;
+    margin: 6px;
   }
-  .AuthLine {
-    margin-top: 0px;
-    width: 100%;
-    border: 0.1px solid #e3e3e3;
+  .activehome {
+    background-image: url(../../assets/nav/tripeer.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .unactivehome {
+    background-image: url(../../assets/nav/tripeer.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .activeplan {
+    background-image: url(../../assets/nav/activeBtn/plan.svg);
+  }
+
+  .unactiveplan {
+    background-image: url(../../assets/nav/plan.svg);
+  }
+
+  .activediary {
+    background-image: url(../../assets//nav/activeBtn/diary.svg);
+  }
+
+  .unactivediary {
+    background-image: url(../../assets/nav/diary.svg);
+  }
+
+  .activecart {
+    background-image: url(../../assets/nav/activeBtn/cart.svg);
+  }
+
+  .unactivecart {
+    background-image: url(../../assets/nav/cart.svg);
+  }
+
+  .activemypage {
+    background-image: url(../../assets/nav/activeBtn/mypage.svg);
+  }
+
+  .unactivemypage {
+    background-image: url(../../assets/nav/mypage.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .planOrder {
+    order: 1;
+  }
+  .diaryOrder {
+    order: 2;
+  }
+  .homeOrder {
+    order: 3;
+  }
+  .cartOrder {
+    order: 4;
+  }
+  .mypageOrder {
+    order: 5;
+  }
+}
+
+@media screen and (max-width: 355px) {
+  .linkBox {
+    height: 60px;
+    padding-bottom: 0px;
+  }
+  .homeBtn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -30%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4fbdb7;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .homeImg {
+    width: 40px;
+    height: 40px;
+  }
+  .activeBtn {
+    text-decoration: none;
+    font-size: 0.6rem;
+    font-weight: 600;
+    margin: 5px;
+    color: #04acb5;
+  }
+
+  .unactiveBtn {
+    text-decoration: none;
+    font-size: 0.6rem;
+    color: #c4c4c4;
+    font-weight: 600;
+    margin: 5px;
   }
 }
