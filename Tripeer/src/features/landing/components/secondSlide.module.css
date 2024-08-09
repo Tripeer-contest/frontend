@@ -1,0 +1,188 @@
+
+
+@media screen and (max-width: 860px){
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100vw;
+        height: 100vh;
+    }
+    .box2{
+        display: none;
+        width: 100%;
+        height: 300px;
+    }
+    .box1{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-top: 60px;
+        padding-left: 20px;
+        padding-bottom: 80px;
+        background-image: url("../../../assets/pictures/tourist.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    .box1::before{
+        content: "";
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #000000;
+    }
+    .box1 .titleBox{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: end;
+        height: 100%;
+        margin-bottom: 30px;
+    }
+    .title{
+        width: 100%;
+        padding-right: 20px;
+        font-size: 1.5em;
+        font-weight: bold;
+        line-height: 210%;
+        text-align: right;
+        color: #ffffff;
+    }
+    .subTitle{
+        width: 100%;
+        padding-right: 20px;
+        color: #bcbcbc;
+        line-height: 160%;
+        text-align: right;
+    }
+} 
+
+ @media screen and (min-width: 861px){
+    .container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        padding-top: 50px;
+    }
+    .box1{
+        width: 55%;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+
+    }
+    .box2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        height: 500px;
+    }
+    .banner{
+        position: relative;
+        width: 400px;
+        height: 300px;
+        background-image: url("../../../assets/pictures/tourist.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    .bannerBackLeft{
+        width: 400px;
+        height: 300px;
+        position: absolute;
+        background-color: #AAE9E6;
+        top: 10px;
+        left: -10px;
+        z-index: -5;
+    }
+    .bannerBackRight{
+        width: 400px;
+        height: 300px;
+        position: absolute;
+        background-color: #59A4A0;
+        top: -10px;
+        left: 10px;
+        z-index: -10;
+    }
+
+
+    .title{
+        font-size: 1.8em;
+        font-weight: bold;
+       line-height: 210%;
+    }
+
+    .title br{
+        display: none;
+    }
+
+    .subTitle{
+        color: #606060;
+        line-height: 210%;
+    }
+}
+
+@media screen and (min-width: 1250px){
+    .container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    .box1{
+        width: 55%;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        padding-left: 50px;
+    }
+    .box2{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 45%;
+        height: 500px;
+    }
+    .banner{
+        position: relative;
+        width: 500px;
+        height: 400px;
+        background-image: url("../../../assets/pictures/tourist.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    .bannerBackLeft{
+        width: 500px;
+        height: 400px;
+        position: absolute;
+        background-color: #AAE9E6;
+        top: 10px;
+        left: -10px;
+        z-index: -5;
+    }
+    .bannerBackRight{
+        width: 500px;
+        height: 400px;
+        position: absolute;
+        background-color: #59A4A0;
+        top: -10px;
+        left: 10px;
+        z-index: -10;
+    }
+    .title{
+        font-size: 2em;
+        font-weight: bold;
+        line-height: 210%;
+    }
+    .subTitle{
+        color: #606060;
+        font-size: 1.2rem;
+        line-height: 210%;
+    }
+}
+

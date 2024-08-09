@@ -4,6 +4,7 @@ import NotFound from './components/error/NotFound';
 import LoginPage from './features/auth/LoginPage';
 import zustandStore from './store/store';
 import protectRouter from './utils/protectRouter';
+import LandingPage from './features/landing/LandingPage';
 
 const router = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <p>메인 페이지 컴포넌트</p> },
+      { index: true, element: <LandingPage/> },
       {
         path: '/plan',
         element: <p>일정 계획 페이지 컴포넌트</p>,
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: '/home',
         element: <p>여행지 페이지 컴포넌트</p>,
-        loader: protectRouter(zustandStore),
+        // loader: protectRouter(zustandStore),
       },
       {
         path: '/cart',

@@ -1,0 +1,48 @@
+@media screen and (max-width: 860px){
+    .container {
+        width: 100vw;
+        height: 100%;
+    }
+    .outer {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+    
+    .landingSlide {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        scroll-snap-align: start;
+        transition: opacity 1s ease-in-out;
+        opacity: 1;
+    }
+    
+}
+@media screen and (min-width: 861px){
+    .container {
+        width: 100vw;
+        height: 100%;
+    }
+    .outer {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+    
+    .landingSlide {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        scroll-snap-align: start;
+        transition: opacity 1s ease-in-out;
+        opacity: 1;
+    }
+    
+}

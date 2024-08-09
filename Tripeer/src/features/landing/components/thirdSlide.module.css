@@ -1,0 +1,251 @@
+
+
+@media screen and (max-width: 860px){
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+    .box1{
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 20px;
+        margin-top: 50px;
+    }
+    .box2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 400px;
+    }
+    .banner{
+        position: relative;
+        width: 300px;
+        height: 400px;
+        background-image: url("../../../assets/pictures/sample.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .titleContent{
+        width: 320px;
+    }
+
+    .titleBox{
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: start;
+        padding-left: 10px;
+        margin-bottom: 20px;
+        width: auto;
+    }
+    .titles{
+        padding-left: 20px;
+    }
+    .title{
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-top: 3px;
+    }
+
+    .subTitle{
+        font-size: 0.8em;
+        color: #606060;
+        line-height: 180%;
+    }
+    .titleImg1{
+        background: url("../../../assets/pictures/titleIcon1.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 60px;
+        height: 60px;
+    }
+    .titleImg2{
+        background: url("../../../assets/pictures/titleIcon2.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 60px;
+        height: 60px;
+    }
+    .titleImg3{
+        background: url("../../../assets/pictures/titleIcon3.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 60px;
+        height: 60px;
+    }
+} 
+
+ @media screen and (min-width: 861px){
+    .container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        padding-top: 50px;
+
+    }
+    .box1{
+        width: 55%;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+
+    }
+    .box2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        height: 500px;
+    }
+    .banner{
+        position: relative;
+        width: 400px;
+        height: 500px;
+        background-image: url("../../../assets/pictures/sample.png");
+        background-position: center;
+        background-size: contain;
+    }
+
+    .titleBox{
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        width: 100%;
+        padding-left: 150px;
+        margin-bottom: 50px;
+    }
+    .titles{
+        padding-left: 50px;
+    }
+    .title{
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .subTitle{
+        color: #606060;
+        line-height: 180%;
+    }
+    .titleImg1{
+        background: url("../../../assets/pictures/titleIcon1.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 80px;
+        height: 80px;
+    }
+    .titleImg2{
+        background: url("../../../assets/pictures/titleIcon2.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 80px;
+        height: 80px;
+    }
+    .titleImg3{
+        background: url("../../../assets/pictures/titleIcon3.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media screen and (min-width: 1250px){
+    .container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+    }
+    .box1{
+        width: 55%;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+
+    }
+    .box2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        height: 500px;
+    }
+    .banner{
+        position: relative;
+        width: 500px;
+        height: 600px;
+        background-image: url("../../../assets/pictures/sample.png");
+        background-position: center;
+        background-size: contain;
+    }
+
+    .titleBox{
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        width: 100%;
+        padding-left: 150px;
+        margin-bottom: 50px;
+    }
+    .titles{
+        padding-left: 70px;
+    }
+    .title{
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .subTitle{
+        color: #606060;
+        line-height: 200%;
+    }
+    .titleImg1{
+        background: url("../../../assets/pictures/titleIcon1.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 100px;
+        height: 100px;
+    }
+    .titleImg2{
+        background: url("../../../assets/pictures/titleIcon2.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 100px;
+        height: 100px;
+    }
+    .titleImg3{
+        background: url("../../../assets/pictures/titleIcon3.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 100px;
+        height: 100px;
+    }
+}
+
