@@ -1,14 +1,24 @@
+.title{
+    transition:0.8s ease-out;
+      opacity: 0;
+      transform: translateY(50px);
+}
+.banner{
+    transition:1s ease-out;
+      opacity: 0;
+      transform: translateY(50px);
+}
+
 @media screen and (max-width: 860px){
     .container {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
         height: 100vh;
         
     }
     .box1{
         width: 100%;
-        padding-top: 60px;
         padding-left: 20px;
         padding-bottom: 10px;
     }
@@ -44,13 +54,11 @@
     .container {
         display: flex;
         flex-direction: column;
-        margin-top: 50px;
+        justify-content: center;
         height: 100vh;
     }
     .box1{
         width: 100%;
-        padding-top: 60px;
-        padding-left: 20px;
         padding-bottom: 10px;
     }
     .box2{
@@ -88,13 +96,10 @@
     .container {
         display: flex;
         flex-direction: column;
-        margin-top: 50px;
         height: 100vh;
     }
     .box1{
         width: 100%;
-        padding-top: 60px;
-        padding-left: 20px;
         padding-bottom: 10px;
     }
     .box2{

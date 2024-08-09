@@ -1,3 +1,15 @@
+.title{
+    transition:0.7s ease-out;
+      opacity: 0;
+      transform: translateY(50px);
+}
+
+.startBtn{
+    transition:1.2s ease-out;
+      opacity: 0;
+      transform: translateY(50px);
+}
+
 @media screen and (max-width: 860px){
     .container {
         display: flex;
@@ -9,9 +21,7 @@
     }
     .box1{
         width: 100%;
-        padding-top: 60px;
         padding-left: 20px;
-        padding-bottom: 10px;
     }
     .titleBox{
         display: flex;
@@ -38,6 +48,7 @@
         transition: all 0.4s;
         overflow: hidden;
         cursor: pointer;
+        text-decoration: none;
     }
     .startBtn:focus{
         outline: none;
@@ -67,12 +78,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 50px;
         height: 100vh;
     }
     .box1{
         width: 100%;
-        padding-top: 60px;
         padding-left: 20px;
         padding-bottom: 10px;
     }
@@ -106,6 +115,7 @@
         transition: all 0.4s;
         overflow: hidden;
         cursor: pointer;
+        text-decoration: none;
     }
     .startBtn:focus{
         outline: none;

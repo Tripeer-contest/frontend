@@ -20,7 +20,7 @@
     .banner{
         height: 100%;
         width: 100%;
-        background-image: url("../../../assets/pictures/beach.png");
+        background-image: url("../../../assets/pictures/beach.webp");
         background-position: center;
         background-repeat: no-repeat;
     }
@@ -43,6 +43,9 @@
         overflow: hidden;
         cursor: pointer;
         margin-top: 30px;
+        display: inline-block;
+        text-decoration: none;
+
     }
     .startBtn:hover{
         transform: scale(1.01);
@@ -53,9 +56,8 @@
     .container {
         display: flex;
         flex-direction: row;
-        margin-top: 100px;
+        align-items: center;
         height: 100vh;
-        padding-top: 50px;
     }
     .box1{
         width: 50%;
@@ -69,7 +71,12 @@
     .box2{
         width: 50%;
         height: 500px;
-        background-image: url("../../../assets/pictures/beach.png");
+
+    }
+    .banner{
+        width: 100%;
+        height: 100%;
+        background-image: url("../../../assets/pictures/beach.webp");
         background-position: center;
         background-repeat: no-repeat;
     }
@@ -94,6 +101,9 @@
         overflow: hidden;
         cursor: pointer;
         margin-top: 30px;
+        display: inline-block;
+        text-decoration: none;
+
     }
     .startBtn:hover{
         transform: scale(1.05);
@@ -103,10 +113,9 @@
 @media screen and (min-width: 1250px){
     .container {
         display: flex;
+        align-items: center;
         flex-direction: row;
-        margin-top: 100px;
         height: 100vh;
-        padding-top: 70px;
     }
     .box1{
         width: 50%;
@@ -119,8 +128,14 @@
     .box2{
         width: 50%;
         height: 500px;
+  }
+
+    .banner{
+        width: 100%;
+        height: 100%;
+        background-image: url("../../../assets/pictures/beach.webp");
+        background-position: center;
         background-repeat: no-repeat;
-        background-image: url("../../../assets/pictures/beach.png");
     }
 
     .title{
@@ -132,4 +147,37 @@
         color: #606060;
         font-size: 1.5rem;
     }
+    
 }
+
+.title {
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+  
+  .subTitle {
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out;
+  }
+  
+  .startBtn {
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+      opacity 1.5s ease-out,
+      transform 1.5s ease-out;
+  }
+  
+  .banner{
+    opacity: 0;
+    transform: translateY(100px);
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out;
+  }

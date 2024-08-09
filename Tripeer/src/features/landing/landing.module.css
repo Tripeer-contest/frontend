@@ -7,6 +7,7 @@
         position: relative;
         width: 100%;
         height: 100vh;
+        overflow-x: hidden;
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
@@ -20,17 +21,23 @@
         transition: opacity 1s ease-in-out;
         opacity: 1;
     }
+    .visible{
+        opacity: 1;
+        transform: translateX(0);
+        transform: translateY(0);
+    }
     
 }
 @media screen and (min-width: 861px){
     .container {
-        width: 100vw;
+        width: 100%;
         height: 100%;
     }
     .outer {
         position: relative;
         width: 100%;
         height: 100vh;
+        overflow-x: hidden;
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
@@ -44,5 +51,5 @@
         transition: opacity 1s ease-in-out;
         opacity: 1;
     }
-    
+
 }
