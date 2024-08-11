@@ -1,0 +1,175 @@
+.box {
+  width: 100%;
+  height: calc(100% - 250px);
+}
+
+.swiper {
+  height: 100%;
+  display: flex;
+}
+
+.container {
+  width: 100%;
+}
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.subtitle {
+  font-weight: 500;
+  color: #858585;
+}
+
+@media screen and (min-width: 1300px) {
+  .container {
+    height: calc(100vh - 84.8px);
+  }
+
+  .scene {
+    padding: 0px 100px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    margin: 1.8rem 0;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1300px) and (max-aspect-ratio: 1/1) {
+  .container {
+    height: calc(100vh - 60px);
+  }
+
+  .scene {
+    gap: 80px;
+    padding: 90px 50px;
+    height: calc(100% - 65px);
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1.8rem 0;
+  }
+}
+
+@media screen and (max-width: 1300px) and (min-aspect-ratio: 1/1) {
+  .container {
+    height: calc(100vh - 60px);
+  }
+
+  .scene {
+    padding: 20px 110px;
+    height: calc(100% - 65px);
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .box {
+    height: calc(100% - 150px);
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .container {
+    height: calc(100vh - 60px);
+  }
+
+  .scene {
+    padding: 20px 150px;
+    height: calc(100% - 65px);
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .subtitle {
+    margin: 1.5rem 0 0 0;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .scene {
+    gap: 20px;
+    padding: 20px 80px;
+    height: calc(100% - 65px);
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    margin: 1rem 0 0;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    height: calc(100vh - 60px);
+  }
+
+  .scene {
+    padding: 20px 40px;
+    height: calc(100% - 65px);
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    margin: 1rem 0 0;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .box {
+    height: calc(100% - 50px);
+  }
+
+  .container {
+    height: calc(100vh - 60px);
+  }
+
+  .scene {
+    padding: 30px 40px 10px;
+    height: calc(100% - 65px);
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    margin: 1rem 0 0;
+    font-size: 0.9rem;
+  }
+}
