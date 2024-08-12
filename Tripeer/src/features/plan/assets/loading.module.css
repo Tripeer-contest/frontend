@@ -1,0 +1,185 @@
+.card {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  animation: blink 1s ease-in-out infinite;
+}
+
+.cardImg {
+  border-radius: 10px 10px 0px 0px;
+  width: 100%;
+  background-color: #d9d9d9;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.layoutInfo,
+.detailInfo {
+  display: flex;
+}
+
+.layoutInfo {
+  justify-content: space-between;
+}
+
+.detailInfo {
+  gap: 6px;
+}
+
+.cardTitle,
+.loacition,
+.schedule,
+.member {
+  background-color: #d9d9d9;
+  height: 1rem;
+  border-radius: 5px;
+}
+
+.cardTitle {
+  width: 100px;
+}
+
+.loacition {
+  width: 150px;
+}
+
+.schedule {
+  width: 130px;
+}
+
+.member {
+  width: 2rem;
+}
+
+@media screen and (min-width: 1300px) {
+  .card {
+    height: calc(100% - 20px);
+  }
+
+  .cardImg {
+    height: calc(100% - 110px);
+  }
+
+  .cardInfo {
+    gap: 15px;
+    height: 110px;
+    padding: 0px 15px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .detailInfo {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 1300px) and (max-aspect-ratio: 1/1) {
+  .card {
+    height: calc(100% - 100px);
+  }
+
+  .cardImg {
+    height: calc(100% - 120px);
+  }
+
+  .cardInfo {
+    gap: 15px;
+    height: 120px;
+    padding: 0px 15px;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .detailInfo {
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 1300px) and (min-aspect-ratio: 1/1) {
+  .card {
+    height: calc(100% - 10px);
+  }
+
+  .cardImg {
+    height: calc(100% - 90px);
+  }
+
+  .cardInfo {
+    gap: 12px;
+    height: 90px;
+    padding: 0px 15px;
+  }
+
+  .cardTitle {
+    font-size: 0.8rem;
+  }
+
+  .detailInfo {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .card {
+    height: calc(100% - 10px);
+  }
+
+  .cardImg {
+    height: calc(100% - 90px);
+  }
+
+  .cardInfo {
+    gap: 12px;
+    height: 90px;
+    padding: 0px 15px;
+    color: #545454;
+  }
+
+  .cardTitle,
+  .loacition,
+  .schedule,
+  .member {
+    height: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card {
+    height: calc(100% - 10px);
+  }
+
+  .cardImg {
+    height: calc(100% - 90px);
+  }
+
+  .cardInfo {
+    height: 90px;
+    padding: 0px 15px;
+    color: #545454;
+  }
+
+  .cardTitle,
+  .loacition,
+  .schedule,
+  .member {
+    height: 0.8rem;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 70%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

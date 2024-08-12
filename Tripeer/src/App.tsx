@@ -5,6 +5,8 @@ import LoginPage from './features/auth/LoginPage';
 import zustandStore from './store/store';
 import protectRouter from './utils/protectRouter';
 import LandingPage from './features/landing/LandingPage';
+import PlanPage from './features/plan/PlanPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createBrowserRouter([
   {
@@ -12,11 +14,11 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <LandingPage/> },
+      { index: true, element: <LandingPage /> },
       {
         path: '/plan',
-        element: <p>일정 계획 페이지 컴포넌트</p>,
-        loader: protectRouter(zustandStore),
+        element: <PlanPage />,
+        // loader: protectRouter(zustandStore),
       },
       {
         path: '/diary',
@@ -46,10 +48,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
     <>
-      <RouterProvider router={router}></RouterProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}></RouterProvider>
+      </QueryClientProvider>
     </>
   );
 }
