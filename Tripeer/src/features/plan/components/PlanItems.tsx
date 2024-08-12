@@ -1,24 +1,11 @@
-import { SwiperSlide } from 'swiper/react';
-
+// 내부 모듈
 import PlanCard from './PlanCard';
 import PlanCreate from './PlanCreate';
 import usePlan from '../hooks/usePlan';
 import CardsLayout from '../layout/CardsLayout';
 
-const breakpoints = {
-  320: {
-    slidesPerView: 1,
-    spaceBetween: 10,
-  },
-  730: {
-    slidesPerView: 2,
-    spaceBetween: 30,
-  },
-  1300: {
-    slidesPerView: 3,
-    spaceBetween: 100,
-  },
-};
+// 외부 모듈
+import { SwiperSlide } from 'swiper/react';
 
 export default function PlanItems() {
   const data = usePlan();
