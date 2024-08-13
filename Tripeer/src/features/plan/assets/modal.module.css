@@ -1,0 +1,154 @@
+@media screen and (min-width: 1250px) {
+  .container {
+    width: 60%;
+    height: 70%;
+    border: transparent;
+    padding: 0;
+  }
+  .createPlanContainer {
+    width: 100%;
+    height: 100%;
+  }
+  .desktopHeader {
+    width: 100%;
+    padding: 50px;
+    padding-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .nextText {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #4fbdb7;
+    cursor: pointer;
+  }
+  .notAllowText {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #858585;
+    cursor: not-allowed;
+  }
+  .nextBtn {
+    display: none;
+  }
+
+  .mobileHeader {
+    display: none;
+  }
+  .headerIcon {
+    display: none;
+  }
+  .sliderContainer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+  }
+
+  .slider {
+    position: relative;
+    width: 450px;
+    height: 320px;
+    overflow: hidden;
+  }
+
+  .slider::before,
+  .slider::after {
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 100px;
+    z-index: 2;
+  }
+  .slideTrack {
+    animation: scroll 20s linear infinite;
+    display: flex;
+    width: calc(180px * 12);
+  }
+
+  .slide {
+    margin-left: 30px;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-230px * 6));
+    }
+  }
+}
+@media screen and (max-width: 1250px) {
+  .container {
+    padding: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    border: transparent;
+  }
+  .createPlanContainer {
+    width: 100%;
+    height: 100%;
+  }
+  .desktopHeader {
+    display: none;
+  }
+
+  .mobileHeader {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    color: #262626;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e3e3e3;
+    font-size: 1.3rem;
+  }
+  .headerIcon {
+    cursor: pointer;
+    position: absolute;
+    left: 30px;
+    width: 28px;
+    height: 28px;
+  }
+  .nextBtn {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 550px;
+    height: 45px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border: transparent;
+    background-color: #04acb5;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  .nextBtn:disabled {
+    background-color: #f7f7f7;
+    color: #606060;
+    font-size: 0.8rem;
+    cursor: not-allowed;
+  }
+  .sliderContainer {
+    display: none;
+  }
+}

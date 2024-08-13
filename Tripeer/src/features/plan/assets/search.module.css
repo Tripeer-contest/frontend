@@ -1,0 +1,132 @@
+@media screen and (min-width: 1250px) {
+  .searchContainer {
+    padding: 30px;
+  }
+  .result {
+    padding: 16px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 40px;
+  }
+  .result {
+    padding: 16px;
+    margin-top: 50px;
+  }
+}
+
+.searchBar {
+  max-width: 500px;
+  width: 90%;
+  height: 40px;
+  font-size: 1rem;
+  color: #262626;
+}
+
+.searchBar::placeholder {
+  font-size: 1rem;
+}
+
+.result {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 500px;
+  max-width: 490px;
+  max-height: 250px;
+  overflow-y: scroll;
+  width: 87%;
+  height: auto;
+  border: 1px solid #858585;
+  border-radius: 8px;
+  background-color: #fff;
+  z-index: 2;
+}
+.result::-webkit-scrollbar {
+  width: 2.5px; /* 스크롤바의 너비 */
+}
+
+.result::-webkit-scrollbar-thumb {
+  height: 5%; /* 스크롤바의 길이 */
+  background: #989595; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+.result::-webkit-scrollbar-track {
+  background: transparent; /*스크롤바 뒷 배경 색상*/
+}
+
+.saveSpot {
+  width: 85%;
+  max-width: 480px;
+  margin-top: 20px;
+  color: #858585;
+}
+
+.saveTitle {
+  color: #262626;
+  margin-bottom: 12px;
+}
+
+.spotBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.spotBox::-webkit-scrollbar {
+  width: 2.5px; /* 스크롤바의 너비 */
+}
+
+.spotBox::-webkit-scrollbar-thumb {
+  height: 5%; /* 스크롤바의 길이 */
+  background: #989595; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+.spotBox::-webkit-scrollbar-track {
+  background: transparent; /*스크롤바 뒷 배경 색상*/
+}
+
+.saveList {
+  display: inline-flex;
+  align-self: flex-start;
+  width: auto;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid #989595;
+  font-size: 1rem;
+  padding: 4px 10px 4px 12px;
+  border-radius: 30px;
+}
+
+.cancelIcon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.emptySpot {
+  padding-top: 8px;
+}
+
+.searchText {
+  width: 100%;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1250px) {
+  .searchContainer {
+    padding-left: 50px;
+  }
+}

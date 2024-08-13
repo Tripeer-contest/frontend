@@ -1,0 +1,11 @@
+.searchInput {
+  border-radius: 50px;
+  border: 1px solid #989595;
+  background-image: url(../../assets/button/search.svg);
+  background-repeat: no-repeat;
+  background-size: 5%;
+  background-position: 15px 50%;
+  padding-left: 50px;
+  padding-right: 15px;
+  outline: none;
+}
