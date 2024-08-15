@@ -1,27 +1,15 @@
 import styles from '../../assets/search.module.css';
-import TownData from '../../../../data/cityTown.json';
 import zustandStore from '../../../../store/store';
 import { TownInterface } from '../../../../types/PlanTypes';
+import { findSearchTown } from '../../../../utils/findTown';
 
-const highlightText = (text: string, search: string) => {
-  const words = text.split(new RegExp(`(${search})`, 'gi'));
-  return words.map((word, idx) =>
-    word === search ? (
-      <span key={idx} style={{ color: '#04ACB5' }}>
-        {word}
-      </span>
-    ) : (
-      <span key={idx}>{word}</span>
-    ),
-  );
-};
-
-const findSearchTown = (search: string) => {
-  return TownData.filter((town) => town.name.includes(search));
-};
+import { useShallow } from 'zustand/react/shallow';
+import HighlightText from '../../hooks/useHighlight';
 
 export default function SearchResult({ searchText }: { searchText: string }) {
-  const { addSpot, spots } = zustandStore();
+  const [addSpot, spots] = zustandStore(
+    useShallow((state) => [state.addSpot, state.spots]),
+  );
   const resultTowns = findSearchTown(searchText);
 
   const clickHandler = (town: TownInterface) => {
@@ -29,6 +17,7 @@ export default function SearchResult({ searchText }: { searchText: string }) {
     if (existSpot.length > 0) return;
     addSpot(town);
   };
+
   return (
     <>
       {resultTowns.length > 0 ? (
@@ -39,7 +28,7 @@ export default function SearchResult({ searchText }: { searchText: string }) {
               key={town.name}
               onClick={() => clickHandler(town)}
             >
-              {highlightText(town.name, searchText)}
+              {<HighlightText text={town.name} search={searchText} />}
             </p>
           ))}
         </div>

@@ -2,10 +2,13 @@ import styles from '../assets/modal.module.css';
 import backIcon from '../../../assets/button/back.svg';
 import { ModalProps } from '../../../types/PlanTypes';
 import zustandStore from '../../../store/store';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function CreatePlanLayout({ pageInfo, children }: ModalProps) {
   const { title, mobileTitle, backHandler, canNext } = pageInfo;
-  const { planToNext, planPage, planToPrev } = zustandStore();
+  const [planToNext, planPage, planToPrev] = zustandStore(
+    useShallow((state) => [state.planToNext, state.planPage, state.planToPrev]),
+  );
 
   const nextHandler = () => {
     if (canNext) planToNext();

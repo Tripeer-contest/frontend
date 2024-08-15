@@ -48,12 +48,13 @@
     bottom: 0;
     right: 0;
     pointer-events: none;
+    z-index: 1;
   }
 
   .slider {
     position: relative;
     width: 450px;
-    height: 320px;
+    height: 280px;
     overflow: hidden;
   }
 
@@ -68,7 +69,7 @@
     height: 100%;
     position: absolute;
     width: 100px;
-    z-index: 2;
+    z-index: 1;
   }
   .slideTrack {
     animation: scroll 20s linear infinite;

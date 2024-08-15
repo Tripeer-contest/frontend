@@ -1,9 +1,9 @@
 import { redirect } from 'react-router-dom';
 import zustandStore from '../store/store';
 
-const protectRouter = (store: typeof zustandStore) => {
+const protectRouter = () => {
   return () => {
-    const token = store.getState().token;
+    const token = zustandStore.getState().token;
     if (!token) {
       return redirect('/login');
     }

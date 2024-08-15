@@ -1,5 +1,5 @@
 import styles from '../assets/create.module.css';
-import plusIcon from '../assets/plus_icon.svg';
+import plusIcon from '../assets/img/plus_icon.svg';
 
 export default function PlanCreateCard({ open }: { open: () => void }) {
   return (

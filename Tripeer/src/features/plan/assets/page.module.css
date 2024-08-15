@@ -1,6 +1,16 @@
 .box {
   width: 100%;
   height: calc(100% - 250px);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .swiper {

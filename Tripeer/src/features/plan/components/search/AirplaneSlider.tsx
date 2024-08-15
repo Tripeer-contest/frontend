@@ -31,7 +31,7 @@ export default function AirplaneSlider() {
                 <img
                   src={img}
                   alt="airplane-icon"
-                  style={{ width: '200px', height: '300px' }}
+                  style={{ width: '150px', height: '250px' }}
                 />
               </div>
             );

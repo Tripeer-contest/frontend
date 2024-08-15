@@ -82,6 +82,7 @@
   gap: 8px;
   max-height: 200px;
   overflow-y: scroll;
+  background-color: #fff;
 }
 
 .spotBox::-webkit-scrollbar {
