@@ -7,6 +7,8 @@ import PlanPage from './features/plan/PlanPage';
 import DiaryPage from './features/diary/DiaryPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import AdminLoginPage from './features/admin/AdminLoginPage.tsx';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
         path: '/login',
         element: <LoginPage />,
       },
+      {
+        path: '/admin',
+        element: <AdminLoginPage />,
+      },
     ],
   },
 ]);
@@ -55,6 +61,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router}></RouterProvider>
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </>
   );
