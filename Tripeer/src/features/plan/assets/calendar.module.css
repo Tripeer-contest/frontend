@@ -1,0 +1,204 @@
+@media screen and (min-width: 1250px) {
+  .container {
+    position: relative;
+    height: calc(100% - 100px);
+    overflow-y: hidden;
+    display: flex;
+    gap: 250px;
+    padding-left: 50px;
+    padding-top: 80px;
+  }
+
+  .datePart {
+    display: none;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  .dateSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .dateTitle {
+    font-weight: bold;
+    color: #858585;
+  }
+  .calendarBox {
+    display: flex;
+    gap: 60px;
+    flex-direction: column;
+    padding: 20px 20px 0px 20px;
+    height: calc(100% - 80px);
+    overflow-y: scroll;
+  }
+  .calendarBox::-webkit-scrollbar {
+    width: 2.5px; /* 스크롤바의 너비 */
+  }
+
+  .calendarBox::-webkit-scrollbar-thumb {
+    height: 5%; /* 스크롤바의 길이 */
+    background: #989595; /* 스크롤바의 색상 */
+    border-radius: 10px;
+  }
+
+  .calendarBox::-webkit-scrollbar-track {
+    background: transparent; /*스크롤바 뒷 배경 색상*/
+  }
+  .calendar {
+    padding-top: 24px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .calendarInfo {
+    font-weight: bold;
+    color: #202020;
+    font-size: 1.1rem;
+  }
+  .week {
+    padding: 6px;
+    color: #4fbdb7;
+    font-weight: 500;
+    cursor: not-allowed;
+    text-align: center;
+    pointer-events: none;
+    border: 1px solid transparent;
+  }
+  .prev {
+    padding: 6px;
+    color: #bababa;
+    font-weight: 500;
+    cursor: not-allowed;
+    text-align: center;
+    pointer-events: none;
+    border: 1px solid transparent;
+  }
+
+  .current {
+    padding: 6px;
+    color: #202020;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid transparent;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .container {
+    position: relative;
+    height: calc(100% - 60px);
+    padding-top: 90px;
+  }
+
+  .header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #e3e3e3;
+  }
+
+  .dateTitle {
+    font-weight: 400;
+    color: #858585;
+  }
+
+  .dateSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .datePart {
+    margin-top: 12px;
+  }
+
+  .calendarBox {
+    display: flex;
+    gap: 60px;
+    flex-direction: column;
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+    padding: 20px 150px 20px 150px;
+  }
+
+  .calendarBox::-webkit-scrollbar {
+    width: 2.5px; /* 스크롤바의 너비 */
+  }
+
+  .calendarBox::-webkit-scrollbar-thumb {
+    height: 5%; /* 스크롤바의 길이 */
+    background: #989595; /* 스크롤바의 색상 */
+    border-radius: 10px;
+  }
+
+  .calendarBox::-webkit-scrollbar-track {
+    background: transparent; /*스크롤바 뒷 배경 색상*/
+  }
+
+  .calendarInfo {
+    font-weight: bold;
+    color: #202020;
+    font-size: 1.1rem;
+  }
+
+  .calendar {
+    padding-top: 24px;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .week {
+    padding: 6px;
+    color: #4fbdb7;
+    font-weight: 500;
+    cursor: not-allowed;
+    text-align: center;
+    pointer-events: none;
+    border: 1px solid transparent;
+  }
+
+  .prev {
+    padding: 6px;
+    color: #bababa;
+    font-weight: 500;
+    cursor: not-allowed;
+    text-align: center;
+    pointer-events: none;
+    border: 1px solid transparent;
+  }
+
+  .current {
+    padding: 6px;
+    color: #202020;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid transparent;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .calendarBox {
+    display: flex;
+    gap: 60px;
+    flex-direction: column;
+    padding: 20px 20px 0px 20px;
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+  }
+}

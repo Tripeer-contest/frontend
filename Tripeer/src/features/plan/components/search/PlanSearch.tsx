@@ -16,7 +16,10 @@ export default function PlanSearch({ close }: { close: () => void }) {
   const pageInfo = {
     title: '여행지를 선택해주세요.',
     mobileTitle: '지역 검색',
-    backHandler: close,
+    backHandler: () => {
+      close();
+      setSearchText('');
+    },
     canNext: spots.length > 0,
   };
 

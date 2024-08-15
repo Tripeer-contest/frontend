@@ -16,3 +16,10 @@ export interface TownInterface {
   townId: number;
   name: string;
 }
+
+export interface DateInfo {
+  id: string;
+  day: number;
+  date: number;
+  style: string;
+}
