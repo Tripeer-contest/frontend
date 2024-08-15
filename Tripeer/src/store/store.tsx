@@ -3,12 +3,15 @@ import { authSlice } from './auth/AuthStore';
 import { AuthState } from './auth/AuthType';
 import { createPlanSlice } from './createPlan/CreatePlanStore';
 import { PlanState } from './createPlan/CreatePlan';
+import { devtools } from 'zustand/middleware';
 
-type StoreState = AuthState & PlanState;
+export type StoreState = AuthState & PlanState;
 
-const zustandStore = create<StoreState>()((...rest) => ({
-  ...authSlice(...rest),
-  ...createPlanSlice(...rest),
-}));
+const zustandStore = create<StoreState>()(
+  devtools((...rest) => ({
+    ...authSlice(...rest),
+    ...createPlanSlice(...rest),
+  })),
+);
 
 export default zustandStore;

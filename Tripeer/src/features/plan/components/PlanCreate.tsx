@@ -6,10 +6,13 @@ import zustandStore from '../../../store/store';
 
 import { useEffect } from 'react';
 import PlanCalendar from './calendar/PlanCalendar';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function PlanCreate() {
   const { open, ModalLayout, close } = useModal();
-  const { initCreatePlan, planPage } = zustandStore();
+  const [initCreatePlan, planPage] = zustandStore(
+    useShallow((state) => [state.initCreatePlan, state.planPage]),
+  );
 
   const ModalPages = [
     <PlanSearch close={close} key="plan-search" />,

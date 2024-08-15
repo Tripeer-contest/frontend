@@ -1,6 +1,6 @@
 import styles from '../../assets/search.module.css';
 import SearchBar from '../../../../components/search/SearchBar';
-import CreatePlanLayout from '../CreatePlanLayout';
+import CreatePlanLayout from '../../layout/CreatePlanLayout';
 import SearchResult from './SearchResult';
 import SaveSpot from './SaveSpot';
 import zustandStore from '../../../../store/store';
@@ -9,7 +9,7 @@ import AirplaneSlider from './AirplaneSlider';
 import { ChangeEvent, useState } from 'react';
 
 export default function PlanSearch({ close }: { close: () => void }) {
-  const { spots } = zustandStore();
+  const spots = zustandStore((state) => state.spots);
   const [searchText, setSearchText] = useState('');
   const [showResultUI, setShowResultUI] = useState(false);
 

@@ -1,7 +1,8 @@
 import { Swiper } from 'swiper/react';
-import styles from '../assets/page.module.css';
 import { ReactNode } from 'react';
 import 'swiper/css';
+
+import styles from '../assets/page.module.css';
 
 const breakpoints = {
   320: {

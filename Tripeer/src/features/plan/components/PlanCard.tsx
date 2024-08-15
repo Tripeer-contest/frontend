@@ -1,7 +1,7 @@
 import styles from '../assets/card.module.css';
-import scheduleIcon from '../assets/schedule_icon.svg';
-import navIcon from '../assets/nav_icon.svg';
-import personIcon from '../assets/person_icon.svg';
+import scheduleIcon from '../assets/img/schedule_icon.svg';
+import navIcon from '../assets/img/nav_icon.svg';
+import personIcon from '../assets/img/person_icon.svg';
 
 export default function PlanCard() {
   return (

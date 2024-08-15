@@ -1,9 +1,12 @@
 import styles from '../../assets/search.module.css';
 import cancelIcon from '../../../../assets/button/cancel.svg';
 import zustandStore from '../../../../store/store';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function SaveSpot() {
-  const { spots, removeSpot } = zustandStore();
+  const [spots, removeSpot] = zustandStore(
+    useShallow((state) => [state.spots, state.removeSpot]),
+  );
   return (
     <div className={styles.saveSpot}>
       <h5 className={styles.saveTitle}>추가된 여행지</h5>
