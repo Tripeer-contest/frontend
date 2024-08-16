@@ -11,4 +11,7 @@ export interface PlanState {
   removeSpot: (payload: TownInterface) => void;
   planToNext: () => void;
   planToPrev: () => void;
+  setStartDay: (payload: string) => void;
+  setEndDay: (payload: string) => void;
+  setTitle: (payload: string) => void;
 }
