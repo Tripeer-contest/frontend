@@ -15,7 +15,7 @@ const RegisterBirthday: React.FC<Props> = ({ nickname }) => {
       <div className={styles.body}>
         <section className={styles.box}>
           <p className={styles.body_p}>{nickname}님</p>
-          <p className={styles.body_p}>생년월일을 알려주세요</p>
+          <p className={styles.body_p}>생년월일을 알려주세요.</p>
         </section>
       </div>
     </main>
