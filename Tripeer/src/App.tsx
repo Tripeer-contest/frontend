@@ -9,6 +9,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AdminLoginPage from './features/admin/AdminLoginPage.tsx';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import RegisterPage from './features/register/RegisterPage.tsx';
+import RedirectPage from './features/redirect/RedirectPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -46,11 +48,21 @@ const router = createBrowserRouter([
         path: '/login',
         element: <LoginPage />,
       },
-      {
-        path: '/admin',
-        element: <AdminLoginPage />,
-      },
     ],
+  },
+  {
+    path: 'redirect',
+    element: <RedirectPage />,
+  },
+  {
+    path: '/admin',
+    element: <AdminLoginPage />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+    errorElement: <NotFound />,
   },
 ]);
 
