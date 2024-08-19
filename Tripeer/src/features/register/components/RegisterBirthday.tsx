@@ -1,12 +1,20 @@
 import styles from './registerBirthday.module.css';
 import img from '../assets/birthday.png';
-import React from 'react';
+import CancelRegister from './CancelRegister.tsx';
+import NextRegister from './NextRegister.tsx';
+import zustandStore from '../../../store/store.tsx';
+import useRegisterBirthday from '../hooks/useRegisterBirthday.tsx';
 
-interface Props {
-  nickname: string;
-}
+const RegisterBirthday = () => {
+  const { r_nickname, r_year, r_month, r_day } = zustandStore();
+  const {
+    inputYearHandler,
+    inputMonthHandler,
+    inputDayHandler,
+    cancelHandler,
+    nextHandler,
+  } = useRegisterBirthday();
 
-const RegisterBirthday: React.FC<Props> = ({ nickname }) => {
   return (
     <main className={styles.container}>
       <div className={styles.imgBox}>
@@ -14,8 +22,36 @@ const RegisterBirthday: React.FC<Props> = ({ nickname }) => {
       </div>
       <div className={styles.body}>
         <section className={styles.box}>
-          <p className={styles.body_p}>{nickname}님</p>
-          <p className={styles.body_p}>생년월일을 알려주세요.</p>
+          <p className={styles.body_p}>{r_nickname} 님의</p>
+          <p className={styles.body_p}>생년월일을 알려주세요</p>
+          <div className={styles.inputBox}>
+            <input
+              className={styles.input}
+              placeholder={'연도'}
+              maxLength={4}
+              onChange={inputYearHandler}
+              value={r_year}
+            />
+            <input
+              className={styles.input}
+              placeholder={'월'}
+              maxLength={2}
+              onChange={inputMonthHandler}
+              value={r_month}
+            />
+            <input
+              className={styles.input}
+              placeholder={'일'}
+              maxLength={2}
+              onChange={inputDayHandler}
+              value={r_day}
+            />
+          </div>
+          <p className={styles.example}>ex) 2000년 1월 1일</p>
+          <section className={styles.btnBox}>
+            <CancelRegister cancelHandler={cancelHandler} />
+            <NextRegister nextHandler={nextHandler} text={'다음'} />
+          </section>
         </section>
       </div>
     </main>

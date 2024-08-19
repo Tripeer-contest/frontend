@@ -19,7 +19,10 @@ const useAdminLogin = () => {
 
   const loginPost = async () => {
     try {
-      return await axios.post('/login', { id: '', pw: '' });
+      return await axios.post('/api/admin/login', {
+        id: id,
+        pw: pw,
+      });
     } catch (e) {
       console.log('POST ERROR : admin login failed');
     }
@@ -40,6 +43,7 @@ const useAdminLogin = () => {
 
   const onClick = () => {
     mutation.mutate();
+    console.log(mutation.data);
   };
 
   return {

@@ -1,5 +1,5 @@
 import styles from './adminLogin.module.css';
-import logo from '../../assets/nav/tripeer.svg';
+import logo from '../../assets/tripeer_icon.webp';
 import useAdminLogin from '../../hooks/useAdminLogin.tsx';
 import InputBox from '../../components/admin/InputBox.tsx';
 

@@ -29,13 +29,47 @@
     font-size: 30px;
     font-weight: bold;
     color: #212529;
+    margin-bottom: 30px;
 }
 
 .box{
     width: 320px;
-    height: 220px;
+    height: 420px;
     display: flex;
     flex-direction: column;
+}
+
+.inputBox{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input{
+    width: 100px;
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #858687;
+    justify-items: left;
+    border: 0;
+    outline: none;
+    margin-top: 20px;
+}
+
+.example {
+    margin: 20px 0 0 5px;
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: #858687;
+}
+
+.btnBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
 
 @keyframes fadein {
