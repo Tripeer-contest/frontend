@@ -41,10 +41,6 @@
   .navIcon {
     display: none;
   }
-
-  .homeBtn {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 1300px) {
@@ -85,29 +81,6 @@
     align-items: center;
     cursor: pointer;
   }
-  .homeText {
-    display: none;
-  }
-
-  .homeBtn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -25%;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background-color: #4fbdb7;
-    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .homeImg {
-    width: 48px;
-    height: 48px;
-  }
 
   .navIcon {
     width: 25px;
@@ -132,13 +105,13 @@
     margin: 6px;
   }
   .activehome {
-    background-image: url(../../assets/nav/tripeer.svg);
+    background-image: url(../../assets/nav/activeBtn/home.svg);
     background-size: contain;
     background-repeat: no-repeat;
   }
 
   .unactivehome {
-    background-image: url(../../assets/nav/tripeer.svg);
+    background-image: url(../../assets/nav/home.svg);
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -199,25 +172,7 @@
     height: 60px;
     padding-bottom: 0px;
   }
-  .homeBtn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -30%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #4fbdb7;
-    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
-  .homeImg {
-    width: 40px;
-    height: 40px;
-  }
   .activeBtn {
     text-decoration: none;
     font-size: 0.6rem;

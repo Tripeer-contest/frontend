@@ -1,0 +1,126 @@
+@media screen and (min-width: 1250px) {
+  .createPlanContainer {
+    width: 100%;
+    height: 100%;
+  }
+  .desktopHeader {
+    width: 100%;
+    padding: 50px;
+    padding-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .nextText {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #4fbdb7;
+    cursor: pointer;
+  }
+
+  .nextBtn {
+    display: none;
+  }
+
+  .mobileHeader {
+    display: none;
+  }
+  .headerIcon {
+    display: none;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 50px 50px 50px;
+    gap: 50px;
+  }
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 500px;
+  }
+  .quest {
+    color: #04acb5;
+    font-weight: bold;
+  }
+  .overFlowText {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width: 1250px) {
+  .createPlanContainer {
+    width: 100%;
+    height: 100%;
+  }
+  .desktopHeader {
+    display: none;
+  }
+
+  .mobileHeader {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    color: #262626;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e3e3e3;
+    font-size: 1.3rem;
+  }
+  .headerIcon {
+    cursor: pointer;
+    position: absolute;
+    left: 30px;
+    width: 28px;
+    height: 28px;
+  }
+  .nextBtn {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 550px;
+    height: 45px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border: transparent;
+    background-color: #04acb5;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 150px 50px 50px 50px;
+    align-items: center;
+    gap: 50px;
+  }
+  .section {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.3rem;
+  }
+  .quest {
+    color: #04acb5;
+    font-weight: bold;
+  }
+  .overFlowText {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
