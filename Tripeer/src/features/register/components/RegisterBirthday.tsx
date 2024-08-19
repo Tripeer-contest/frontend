@@ -13,6 +13,7 @@ const RegisterBirthday = () => {
     inputDayHandler,
     cancelHandler,
     nextHandler,
+    errMsg,
   } = useRegisterBirthday();
 
   return (
@@ -48,6 +49,9 @@ const RegisterBirthday = () => {
             />
           </div>
           <p className={styles.example}>ex) 2000년 1월 1일</p>
+          <div className={styles.errBox}>
+            <p className={styles.err}>{errMsg}</p>
+          </div>
           <section className={styles.btnBox}>
             <CancelRegister cancelHandler={cancelHandler} />
             <NextRegister nextHandler={nextHandler} text={'다음'} />

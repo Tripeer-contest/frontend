@@ -72,6 +72,15 @@
     margin-top: 50px;
 }
 
+.errBox{
+    height: 50px;
+}
+
+.err {
+    color: red;
+    margin-top: 10px;
+}
+
 @keyframes fadein {
     to{
         opacity: 1;
