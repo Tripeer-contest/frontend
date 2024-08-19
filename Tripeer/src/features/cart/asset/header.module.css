@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    padding: 0px 30px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .title {
+    font-size: 1.3rem;
+  }
+}

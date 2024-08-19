@@ -7,6 +7,7 @@ import PlanPage from './features/plan/PlanPage';
 import DiaryPage from './features/diary/DiaryPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import CartPage from './features/cart/CartPage';
 
 const router = createBrowserRouter([
   {
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/cart',
-        element: <p>찜 목록 페이지</p>,
-        loader: protectRouter(),
+        element: <CartPage />,
+        // loader: protectRouter(),
       },
       {
         path: '/mypage',
