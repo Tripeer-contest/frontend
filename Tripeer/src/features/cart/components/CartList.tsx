@@ -5,6 +5,7 @@ import EmptyCart from './EmptyCart';
 import { Fragment } from 'react/jsx-runtime';
 
 export default function CartList({ category }: { category: string }) {
+  console.log(category);
   const itemInfo: ItemInfo = {
     itemName: '밀락 더 마켓',
     categoryName: '맛집',
