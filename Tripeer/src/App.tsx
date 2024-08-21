@@ -45,11 +45,11 @@ const router = createBrowserRouter([
         element: <p>마이페이지</p>,
         loader: protectRouter(),
       },
-      {
-        path: '/login',
-        element: <LoginPage />,
-      },
     ],
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
   },
   {
     path: 'redirect',

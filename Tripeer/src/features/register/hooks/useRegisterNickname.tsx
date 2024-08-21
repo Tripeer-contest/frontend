@@ -44,6 +44,7 @@ const useRegisterNickname = () => {
       .get(`/user/name/duplicatecheck/${value}`)
       .then((response) => {
         const check = response.data.data;
+        console.log(response.data);
 
         if (!check) {
           r_setNickname(value);

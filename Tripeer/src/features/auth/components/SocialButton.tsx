@@ -8,7 +8,11 @@ export default function SocialButton({
 }) {
   const socialservice = SocialPlatform[social];
   return (
-    <a href="" style={socialservice.style} className={styles.socialBtn}>
+    <a
+      href={socialservice.href}
+      style={socialservice.style}
+      className={styles.socialBtn}
+    >
       <img
         src={socialservice.img}
         alt="social-service"

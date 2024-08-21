@@ -2,9 +2,13 @@ import styles from './registerStyle.module.css';
 import img from '../assets/style.png';
 import zustandStore from '../../../store/store.tsx';
 import StyleChip from './StyleChip.tsx';
+import CancelRegister from './CancelRegister.tsx';
+import NextRegister from './NextRegister.tsx';
+import useRegisterStyle from '../hooks/useRegisterStyle.tsx';
 
 const RegisterStyle = () => {
   const { r_nickname } = zustandStore();
+  const { cancelHandler, nextHandler, errMsg } = useRegisterStyle();
 
   const styleList = [
     '관광지',
@@ -32,6 +36,13 @@ const RegisterStyle = () => {
               );
             })}
           </div>
+          <div className={styles.errBox}>
+            <p className={styles.err}>{errMsg}</p>
+          </div>
+          <section className={styles.btnBox}>
+            <CancelRegister cancelHandler={cancelHandler} />
+            <NextRegister nextHandler={nextHandler} text={'확인'} />
+          </section>
         </section>
       </div>
     </main>

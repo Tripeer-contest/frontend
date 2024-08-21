@@ -46,6 +46,24 @@
     flex-wrap: wrap;
 }
 
+.btnBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.errBox{
+    height: 50px;
+    margin-left: 10px;
+}
+
+.err {
+    color: red;
+    margin-top: 10px;
+}
+
 @keyframes fadein {
     to{
         opacity: 1;

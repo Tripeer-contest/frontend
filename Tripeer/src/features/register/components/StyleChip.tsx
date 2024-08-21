@@ -13,9 +13,9 @@ const StyleChip: React.FC<Props> = ({ idx, title }) => {
   const { r_style } = zustandStore();
 
   return (
-    <body
+    <main
       className={`${styles.body} ${r_style.includes(idx + 1) ? styles.check : ''}`}
-      onClick={onClickHandler}
+      onClick={() => onClickHandler(idx)}
     >
       <img
         src={`/styleChip/style${idx + 1}.png`}
@@ -23,7 +23,7 @@ const StyleChip: React.FC<Props> = ({ idx, title }) => {
         className={styles.image}
       />
       <p className={styles.p}>{title}</p>
-    </body>
+    </main>
   );
 };
 

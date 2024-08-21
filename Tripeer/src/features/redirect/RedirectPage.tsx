@@ -15,6 +15,10 @@ export default function RedirectPage() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      // 들어갈것
+      // 1. 소셜 로그인을 하면 쿠키에서 액세스와 리프레시를 가져와서 리액트쿼리로 저장한다
+      // 2. 로컬에 만료일을 저장한다
+      // 3. 쿠키는 삭제한다
       navigate('/home');
     }, 1000);
 

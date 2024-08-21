@@ -25,19 +25,21 @@ const useAdminLogin = () => {
 
     const authorization = response.headers.authorization;
     const refresh = response.headers.refresh;
+    const endTime = response.headers.endTime;
 
-    return { authorization, refresh };
+    return { authorization, refresh, endTime };
   };
 
   const mutation = useMutation({
     mutationFn: loginPost,
-    onSuccess: ({ authorization, refresh }) => {
+    onSuccess: ({ authorization, refresh, endTime }) => {
       queryClient.invalidateQueries({ queryKey: ['admin'] }).then();
       queryClient.setQueryData(['authorization'], authorization);
       queryClient.setQueryData(['refresh'], refresh);
+      localStorage.setItem('endTime', endTime);
     },
     onError: (error) => {
-      console.log('Admin Login Failed', error);
+      console.log('Admin Login Failed : ', error);
     },
   });
 
