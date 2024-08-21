@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const useAdminLogin = () => {
   const [id, setId] = useState<string>('');
   const [pw, setPw] = useState<string>('');
 
-  const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const onChangeHandler =
     (setState: React.Dispatch<React.SetStateAction<string>>) =>
@@ -18,26 +19,18 @@ const useAdminLogin = () => {
     };
 
   const loginPost = async () => {
-    const response = await axios.post('/api/admin/login', {
+    return await axios.post('/api/admin/login', {
       id: id,
       password: pw,
     });
-
-    const authorization = response.headers.authorization;
-    const refresh = response.headers.refresh;
-    const endTime = response.headers.endTime;
-
-    return { authorization, refresh, endTime };
   };
 
   const mutation = useMutation({
     mutationFn: loginPost,
-    onSuccess: ({ authorization, refresh, endTime }) => {
-      queryClient.invalidateQueries({ queryKey: ['admin'] }).then();
-      queryClient.setQueryData(['authorization'], authorization);
-      queryClient.setQueryData(['refresh'], refresh);
-      localStorage.setItem('endTime', endTime);
+    onSuccess: () => {
+      navigate('/home');
     },
+
     onError: (error) => {
       console.log('Admin Login Failed : ', error);
     },

@@ -1,3 +1,4 @@
+
 .body {
     display: flex;
     justify-content: center;
@@ -8,12 +9,7 @@
     width: fit-content;
     cursor: pointer;
     margin: 5px;
-}
-
-.check {
-    background-color: #4FBDB7;
-    border-color: #4FBDB7;
-    color: white;
+    font-size: 0.8rem;
 }
 
 .image {
@@ -21,6 +17,12 @@
     margin-right: 5px;
     width: 20px;
     height: 20px;
+}
+
+.check {
+    background-color: #4FBDB7;
+    border-color: #4FBDB7;
+    color: white;
 }
 
 .p{

@@ -9,13 +9,7 @@ import zustandStore from '../../store/store.tsx';
 
 export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  // const [pageNumber, setPageNumber] = useState<number>(0);
-  // const [nickname, setNickname] = useState<string>('');
-  // const [year, setYear] = useState<string>('');
-  // const [month, setMonth] = useState<string>('');
-  // const [day, setDay] = useState<string>('');
   const navigate = useNavigate();
-
   const { r_pageNumber } = zustandStore();
 
   useEffect(() => {

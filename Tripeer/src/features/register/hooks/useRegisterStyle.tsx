@@ -1,14 +1,15 @@
 import zustandStore from '../../../store/store.tsx';
-import { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 const useRegisterStyle = () => {
   const { r_backPage, r_nickname, r_year, r_month, r_day, r_style } =
     zustandStore();
   const [errMsg, setErrMsg] = useState<string>('');
 
-  const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const cancelHandler = () => {
     r_backPage();
@@ -23,7 +24,7 @@ const useRegisterStyle = () => {
   };
 
   const loginPost = async () => {
-    const response = await axios.post(
+    return await axios.post(
       '/api/user/signup',
       {
         nickname: r_nickname,
@@ -36,21 +37,12 @@ const useRegisterStyle = () => {
       },
       { withCredentials: true },
     );
-
-    const authorization = response.headers.authorization;
-    const refresh = response.headers.refresh;
-    const endTime = response.headers.endTime;
-
-    return { authorization, refresh, endTime };
   };
 
   const mutation = useMutation({
     mutationFn: loginPost,
-    onSuccess: ({ authorization, refresh, endTime }) => {
-      queryClient.invalidateQueries({ queryKey: ['admin'] }).then();
-      queryClient.setQueryData(['authorization'], authorization);
-      queryClient.setQueryData(['refresh'], refresh);
-      localStorage.setItem('endTime', endTime);
+    onSuccess: () => {
+      navigate('/redirect');
     },
     onError: (error) => {
       console.log('Register Login Failed : ', error);

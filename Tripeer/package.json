@@ -13,10 +13,12 @@
   "dependencies": {
     "@tanstack/react-query": "^5.51.23",
     "@tanstack/react-query-devtools": "^5.51.23",
-    "axios": "^1.7.4",
     "@types/uuid": "^10.0.0",
+    "axios": "^1.7.4",
     "dialog-polyfill": "^0.5.6",
     "framer-motion": "^11.3.28",
+    "js-cookie": "^3.0.5",
+    "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.0",
@@ -25,6 +27,7 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
