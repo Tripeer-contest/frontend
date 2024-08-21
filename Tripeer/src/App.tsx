@@ -8,6 +8,7 @@ import DiaryPage from './features/diary/DiaryPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import CartPage from './features/cart/CartPage';
+import PlanDetail from './features/planDetail/PlanDetail';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         path: '/plan',
         element: <PlanPage />,
         // loader: protectRouter(),
+      },
+      {
+        path: '/plan/detail/:id',
+        element: <PlanDetail />,
       },
       {
         path: '/diary',

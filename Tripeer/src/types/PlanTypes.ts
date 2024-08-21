@@ -23,3 +23,8 @@ export interface DateInfo {
   date: number;
   style: string;
 }
+
+export interface PlanNavInterface {
+  page: 0 | 1 | 2;
+  setPage: (page: number) => void;
+}
