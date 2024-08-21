@@ -11,6 +11,7 @@ import AdminLoginPage from './features/admin/AdminLoginPage.tsx';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import RegisterPage from './features/register/RegisterPage.tsx';
 import RedirectPage from './features/redirect/RedirectPage.tsx';
+import CartPage from './features/cart/CartPage';
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/cart',
-        element: <p>찜 목록 페이지</p>,
-        loader: protectRouter(),
+        element: <CartPage />,
+        // loader: protectRouter(),
       },
       {
         path: '/mypage',
