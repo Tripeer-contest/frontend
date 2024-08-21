@@ -18,20 +18,26 @@ const useAdminLogin = () => {
     };
 
   const loginPost = async () => {
-    try {
-      return await axios.post('/api/admin/login', {
-        id: id,
-        pw: pw,
-      });
-    } catch (e) {
-      console.log('POST ERROR : admin login failed');
-    }
+    const response = await axios.post('/api/admin/login', {
+      id: id,
+      password: pw,
+    });
+
+    const authorization = response.headers.authorization;
+    const refresh = response.headers.refresh;
+
+    return { authorization, refresh };
   };
 
   const mutation = useMutation({
     mutationFn: loginPost,
-    onSuccess: () => {
+    onSuccess: ({ authorization, refresh }) => {
       queryClient.invalidateQueries({ queryKey: ['admin'] }).then();
+      queryClient.setQueryData(['authorization'], authorization);
+      queryClient.setQueryData(['refresh'], refresh);
+    },
+    onError: (error) => {
+      console.log('Admin Login Failed', error);
     },
   });
 
@@ -43,7 +49,6 @@ const useAdminLogin = () => {
 
   const onClick = () => {
     mutation.mutate();
-    console.log(mutation.data);
   };
 
   return {

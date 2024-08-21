@@ -27,7 +27,9 @@ const RegisterStyle = () => {
           <p className={styles.body_p}>여행스타일을 골라주세요</p>
           <div className={styles.chipBox}>
             {styleList.map((item, i) => {
-              return <StyleChip key={`${item}-${i}`} idx={i} />;
+              return (
+                <StyleChip key={`${item}-${i}`} idx={i} title={styleList[i]} />
+              );
             })}
           </div>
         </section>

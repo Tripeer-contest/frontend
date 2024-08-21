@@ -18,12 +18,14 @@ export default function AdminLoginPage() {
           value={id}
           onChange={onChangeIdHandler}
           onKeyDown={onKetDown}
+          type={'input'}
         />
         <InputBox
           placeholder="비밀번호"
           value={pw}
           onChange={onChangePwHandler}
           onKeyDown={onKetDown}
+          type={'password'}
         />
         <div className={styles.loginBtn} onClick={onClick}>
           로그인

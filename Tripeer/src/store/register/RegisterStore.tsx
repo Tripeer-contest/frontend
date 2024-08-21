@@ -8,6 +8,7 @@ export const createRegisterSlice: StateCreator<RegisterSlice> = (set) => ({
   r_year: '',
   r_month: '',
   r_day: '',
+  r_style: [],
 
   r_nextPage: () => set((state) => ({ r_pageNumber: state.r_pageNumber + 1 })),
   r_backPage: () => set((state) => ({ r_pageNumber: state.r_pageNumber - 1 })),
@@ -15,4 +16,5 @@ export const createRegisterSlice: StateCreator<RegisterSlice> = (set) => ({
   r_setYear: (value) => set(() => ({ r_year: value })),
   r_setMonth: (value) => set(() => ({ r_month: value })),
   r_setDay: (value) => set(() => ({ r_day: value })),
+  r_setStyle: (arr: number[]) => set(() => ({ r_style: arr })),
 });

@@ -9,3 +9,27 @@
     cursor: pointer;
     margin: 5px;
 }
+
+.check {
+    background-color: #4FBDB7;
+    border-color: #4FBDB7;
+    color: white;
+}
+
+.image {
+    display: inline;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.p{
+    display: inline;
+    white-space: nowrap;
+}
+
+.body:hover {
+    background-color: #4FBDB7;
+    border-color: #4FBDB7;
+    color: white;
+}

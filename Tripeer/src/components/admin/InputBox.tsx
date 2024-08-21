@@ -6,6 +6,7 @@ interface InputBoxProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  type: string;
 }
 
 const InputBox = ({
@@ -13,6 +14,7 @@ const InputBox = ({
   value,
   onChange,
   onKeyDown,
+  type,
 }: InputBoxProps) => {
   return (
     <input
@@ -21,6 +23,7 @@ const InputBox = ({
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
+      type={type}
     />
   );
 };
