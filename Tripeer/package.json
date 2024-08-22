@@ -17,7 +17,6 @@
     "axios": "^1.7.4",
     "browser-image-compression": "^2.0.2",
     "dialog-polyfill": "^0.5.6",
-    "framer-motion": "^11.3.28",
     "js-cookie": "^3.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
