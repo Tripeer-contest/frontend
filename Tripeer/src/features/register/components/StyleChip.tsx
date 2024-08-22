@@ -10,7 +10,7 @@ interface Props {
 
 const StyleChip: React.FC<Props> = ({ idx, title }) => {
   const { onClickHandler } = useStyleChip();
-  const { r_style } = zustandStore();
+  const r_style = zustandStore((state) => state.r_style);
 
   return (
     <main

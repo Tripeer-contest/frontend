@@ -1,9 +1,10 @@
 import zustandStore from '../../../store/store.tsx';
 import React, { useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 
 const useRegisterBirthday = () => {
   const [errMsg, setErrMsg] = useState<string>('');
-  const {
+  const [
     r_year,
     r_month,
     r_day,
@@ -12,16 +13,18 @@ const useRegisterBirthday = () => {
     r_setDay,
     r_backPage,
     r_nextPage,
-  } = zustandStore((state) => ({
-    r_year: state.r_year,
-    r_month: state.r_month,
-    r_day: state.r_day,
-    r_setYear: state.r_setYear,
-    r_setMonth: state.r_setMonth,
-    r_setDay: state.r_setDay,
-    r_backPage: state.r_backPage,
-    r_nextPage: state.r_nextPage,
-  }));
+  ] = zustandStore(
+    useShallow((state) => [
+      state.r_year,
+      state.r_month,
+      state.r_day,
+      state.r_setYear,
+      state.r_setMonth,
+      state.r_setDay,
+      state.r_backPage,
+      state.r_nextPage,
+    ]),
+  );
 
   const inputHandler =
     (setState: (value: string) => void) =>

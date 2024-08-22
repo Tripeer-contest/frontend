@@ -3,16 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { getNicknameCheck } from '../api/getNicknameCheck.ts';
 import zustandStore from '../../../store/store.tsx';
+import { useShallow } from 'zustand/react/shallow';
 
 const useRegisterNickname = () => {
   const [value, setValue] = useState<string>('');
   const [errMsg, setErrMsg] = useState<string>('');
   const navigate = useNavigate();
 
-  const { r_nextPage, r_setNickname } = zustandStore((state) => ({
-    r_nextPage: state.r_nextPage,
-    r_setNickname: state.r_setNickname,
-  }));
+  const [r_nextPage, r_setNickname] = zustandStore(
+    useShallow((state) => [state.r_nextPage, state.r_setNickname]),
+  );
 
   const validate = (value: string) => value.length <= 10;
 

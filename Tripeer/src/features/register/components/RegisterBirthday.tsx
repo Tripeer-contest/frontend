@@ -3,15 +3,18 @@ import img from '../assets/birthday.png';
 import CancelRegister from './CancelRegister.tsx';
 import NextRegister from './NextRegister.tsx';
 import useRegisterBirthday from '../hooks/useRegisterBirthday.tsx';
+import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../store/store.tsx';
 
 const RegisterBirthday = () => {
-  const { r_nickname, r_year, r_month, r_day } = zustandStore((state) => ({
-    r_nickname: state.r_nickname,
-    r_year: state.r_year,
-    r_month: state.r_month,
-    r_day: state.r_day,
-  }));
+  const [r_nickname, r_year, r_month, r_day] = zustandStore(
+    useShallow((state) => [
+      state.r_nickname,
+      state.r_year,
+      state.r_month,
+      state.r_day,
+    ]),
+  );
 
   const {
     inputYearHandler,

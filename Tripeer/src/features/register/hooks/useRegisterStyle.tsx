@@ -3,17 +3,20 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { postRegister } from '../api/postRegister.ts';
+import { useShallow } from 'zustand/react/shallow';
 
 const useRegisterStyle = () => {
-  const { r_backPage, r_nickname, r_year, r_month, r_day, r_style } =
-    zustandStore((state) => ({
-      r_backPage: state.r_backPage,
-      r_nickname: state.r_nickname,
-      r_year: state.r_year,
-      r_month: state.r_month,
-      r_day: state.r_day,
-      r_style: state.r_style,
-    }));
+  const [r_backPage, r_nickname, r_year, r_month, r_day, r_style] =
+    zustandStore(
+      useShallow((state) => [
+        state.r_backPage,
+        state.r_nickname,
+        state.r_year,
+        state.r_month,
+        state.r_day,
+        state.r_style,
+      ]),
+    );
 
   const [errMsg, setErrMsg] = useState<string>('');
   const navigate = useNavigate();
