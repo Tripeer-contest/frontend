@@ -1,0 +1,96 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    animation: fadein 1s ease-in forwards;
+    opacity: 0;
+}
+
+.center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.err {
+    color: red;
+    margin-top: 10px;
+}
+
+@media screen and (min-width: 860px) {
+    .imgBox{
+        width: 50vw;
+        height: 100vh;
+    }
+
+    .img{
+        width: 100%;
+        height: 100%
+    }
+
+    .body{
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .body_p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #212529;
+    }
+
+    .box{
+        width: 320px;
+        height: 220px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .errBox{
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .imgBox, .img{
+        display: none;
+    }
+
+    .body{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .body_p {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #212529;
+    }
+
+    .box{
+        width: 300px;
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .errBox{
+        height: 40px;
+        font-size: 0.8rem;
+    }
+}
+
+@keyframes fadein {
+    to{
+        opacity: 1;
+    }
+}
