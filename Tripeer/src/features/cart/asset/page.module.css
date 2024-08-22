@@ -1,5 +1,6 @@
 .container {
   scrollbar-width: none;
+  animation: fade-in 0.5s ease-in-out;
 }
 
 @media screen and (min-width: 1300px) {
@@ -15,5 +16,14 @@
   .container {
     height: calc(100vh - 125px);
     overflow-y: scroll;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

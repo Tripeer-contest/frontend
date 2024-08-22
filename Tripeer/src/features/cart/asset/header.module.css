@@ -5,6 +5,24 @@
   margin-top: 20px;
 }
 
+.slider {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.inactiveSlider {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1200px) {
   .header {
     padding: 0px 30px;
@@ -20,6 +38,10 @@
 @media screen and (max-width: 600px) {
   .title {
     font-size: 1.5rem;
+  }
+  .slider {
+    width: 140px;
+    height: 140px;
   }
 }
 
