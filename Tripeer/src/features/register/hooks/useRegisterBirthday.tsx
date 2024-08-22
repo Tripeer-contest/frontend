@@ -12,7 +12,16 @@ const useRegisterBirthday = () => {
     r_setDay,
     r_backPage,
     r_nextPage,
-  } = zustandStore();
+  } = zustandStore((state) => ({
+    r_year: state.r_year,
+    r_month: state.r_month,
+    r_day: state.r_day,
+    r_setYear: state.r_setYear,
+    r_setMonth: state.r_setMonth,
+    r_setDay: state.r_setDay,
+    r_backPage: state.r_backPage,
+    r_nextPage: state.r_nextPage,
+  }));
 
   const inputHandler =
     (setState: (value: string) => void) =>
@@ -66,12 +75,19 @@ const useRegisterBirthday = () => {
       : setErrMsg('생년월일을 정확하게 입력해주세요');
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      nextHandler();
+    }
+  };
+
   return {
     inputYearHandler: inputHandler(r_setYear),
     inputMonthHandler: inputHandler(r_setMonth),
     inputDayHandler: inputHandler(r_setDay),
     cancelHandler,
     nextHandler,
+    onKeyDown,
     errMsg,
   };
 };

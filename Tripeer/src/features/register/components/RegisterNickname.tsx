@@ -6,7 +6,7 @@ import InputNickname from './InputNickname.tsx';
 import useRegisterNickname from '../hooks/useRegisterNickname.tsx';
 
 const RegisterNickname = () => {
-  const { value, errMsg, inputHandler, nextHandler, cancelHandler } =
+  const { value, errMsg, inputHandler, nextHandler, cancelHandler, onKeyDown } =
     useRegisterNickname();
 
   return (
@@ -21,6 +21,7 @@ const RegisterNickname = () => {
             placeholder={'10글자 내로 입력하세요'}
             value={value}
             inputHandler={inputHandler}
+            onKeyDown={onKeyDown}
           />
           <div className={styles.errBox}>
             <p className={styles.err}>{errMsg}</p>

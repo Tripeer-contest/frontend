@@ -1,14 +1,21 @@
 import zustandStore from '../../../store/store.tsx';
-import axios from 'axios';
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import { postRegister } from '../api/postRegister.ts';
 
 const useRegisterStyle = () => {
   const { r_backPage, r_nickname, r_year, r_month, r_day, r_style } =
-    zustandStore();
-  const [errMsg, setErrMsg] = useState<string>('');
+    zustandStore((state) => ({
+      r_backPage: state.r_backPage,
+      r_nickname: state.r_nickname,
+      r_year: state.r_year,
+      r_month: state.r_month,
+      r_day: state.r_day,
+      r_style: state.r_style,
+    }));
 
+  const [errMsg, setErrMsg] = useState<string>('');
   const navigate = useNavigate();
 
   const cancelHandler = () => {
@@ -23,29 +30,15 @@ const useRegisterStyle = () => {
     }
   };
 
-  const loginPost = async () => {
-    return await axios.post(
-      '/api/user/signup',
-      {
-        nickname: r_nickname,
-        year: r_year,
-        month: r_month,
-        day: r_day,
-        style1: r_style[0],
-        style2: r_style[1] ? r_style[1] : null,
-        style3: r_style[2] ? r_style[2] : null,
-      },
-      { withCredentials: true },
-    );
-  };
-
   const mutation = useMutation({
-    mutationFn: loginPost,
+    mutationFn: () =>
+      postRegister({ r_nickname, r_year, r_month, r_day, r_style }),
     onSuccess: () => {
       navigate('/redirect');
     },
     onError: (error) => {
       console.log('Register Login Failed : ', error);
+      setErrMsg('다시 시도해주세요');
     },
   });
 

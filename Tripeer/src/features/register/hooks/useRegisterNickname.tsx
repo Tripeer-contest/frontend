@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { getNicknameCheck } from '../api/getNicknameCheck.ts';
 import zustandStore from '../../../store/store.tsx';
 
 const useRegisterNickname = () => {
   const [value, setValue] = useState<string>('');
   const [errMsg, setErrMsg] = useState<string>('');
+  const navigate = useNavigate();
 
-  const { r_backPage, r_nextPage, r_setNickname } = zustandStore();
+  const { r_nextPage, r_setNickname } = zustandStore((state) => ({
+    r_nextPage: state.r_nextPage,
+    r_setNickname: state.r_setNickname,
+  }));
 
   const validate = (value: string) => value.length <= 10;
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-
     const isValid = validate(value);
 
     if (isValid) {
@@ -28,37 +33,39 @@ const useRegisterNickname = () => {
     } else if (value.length > 10) {
       setErrMsg('10글자 내로 입력하세요');
     } else if (regExp.test(value)) {
-      setErrMsg('특수문자는 사용할 수 없습니다');
+      setErrMsg('사용할 수 없는 형식입니다');
     } else {
       setErrMsg('');
-      nicknameCheck();
+      mutation.mutate();
     }
   };
 
   const cancelHandler = () => {
-    r_backPage();
+    navigate('/');
   };
 
-  const nicknameCheck = () => {
-    axios
-      .get(`/user/name/duplicatecheck/${value}`)
-      .then((response) => {
-        const check = response.data.data;
-        console.log(response.data);
+  const mutation = useMutation({
+    mutationFn: () => getNicknameCheck(value),
+    onSuccess: ({ check }) => {
+      if (!check) {
+        r_setNickname(value);
+        r_nextPage();
+      } else {
+        setErrMsg('중복된 닉네임입니다');
+      }
+    },
+    onError: () => {
+      setErrMsg('다시 시도해주세요');
+    },
+  });
 
-        if (!check) {
-          r_setNickname(value);
-          r_nextPage();
-        } else {
-          setErrMsg('중복된 닉네임입니다');
-        }
-      })
-      .catch((error) => {
-        console.log('Nickname Check Error : ', error);
-      });
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      nextHandler();
+    }
   };
 
-  return { value, errMsg, inputHandler, nextHandler, cancelHandler };
+  return { value, errMsg, inputHandler, nextHandler, cancelHandler, onKeyDown };
 };
 
 export default useRegisterNickname;

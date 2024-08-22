@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { postAdmin } from '../api/postAdmin.ts';
 
 const useAdminLogin = () => {
   const [id, setId] = useState<string>('');
@@ -18,15 +18,8 @@ const useAdminLogin = () => {
       if (isOk) setState(value);
     };
 
-  const loginPost = async () => {
-    return await axios.post('/api/admin/login', {
-      id: id,
-      password: pw,
-    });
-  };
-
   const mutation = useMutation({
-    mutationFn: loginPost,
+    mutationFn: () => postAdmin({ id, pw }),
     onSuccess: () => {
       navigate('/home');
     },
@@ -36,7 +29,7 @@ const useAdminLogin = () => {
     },
   });
 
-  const onKetDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       onClick();
     }
@@ -51,7 +44,7 @@ const useAdminLogin = () => {
     pw,
     onChangeIdHandler: onChangeHandler(setId),
     onChangePwHandler: onChangeHandler(setPw),
-    onKetDown,
+    onKeyDown,
     onClick,
   };
 };

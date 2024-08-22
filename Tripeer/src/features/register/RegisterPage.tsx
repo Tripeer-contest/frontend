@@ -1,16 +1,14 @@
+import styles from './registerPage.module.css';
 import { useEffect, useState } from 'react';
 import RegisterLoading from './components/RegisterLoading.tsx';
 import RegisterNickname from './components/RegisterNickname.tsx';
 import RegisterBirthday from './components/RegisterBirthday.tsx';
 import RegisterStyle from './components/RegisterStyle.tsx';
-import { useNavigate } from 'react-router-dom';
-import styles from './registerPage.module.css';
 import zustandStore from '../../store/store.tsx';
 
 export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const navigate = useNavigate();
-  const { r_pageNumber } = zustandStore();
+  const r_pageNumber = zustandStore((state) => state.r_pageNumber);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,27 +20,15 @@ export default function RegisterPage() {
     };
   }, []);
 
-  useEffect(() => {
-    if (r_pageNumber > 2) {
-      navigate('/redirect');
-    } else if (r_pageNumber < 0) {
-      navigate('/');
-    }
-  }, [r_pageNumber, navigate]);
+  const pageList = [
+    <RegisterNickname key={'nickname'} />,
+    <RegisterBirthday key={'birthday'} />,
+    <RegisterStyle key={'style'} />,
+  ];
 
   return (
     <div className={styles.container}>
-      {isLoading ? (
-        <RegisterLoading />
-      ) : r_pageNumber === 0 ? (
-        <RegisterNickname />
-      ) : r_pageNumber === 1 ? (
-        <RegisterBirthday />
-      ) : r_pageNumber === 2 ? (
-        <RegisterStyle />
-      ) : (
-        ''
-      )}
+      {isLoading ? <RegisterLoading /> : pageList[r_pageNumber]}
     </div>
   );
 }

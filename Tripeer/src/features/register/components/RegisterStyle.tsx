@@ -1,24 +1,15 @@
 import styles from './registerStyle.module.css';
 import img from '../assets/style.png';
-import zustandStore from '../../../store/store.tsx';
+import styleList from '../../../data/styleData.json';
 import StyleChip from './StyleChip.tsx';
 import CancelRegister from './CancelRegister.tsx';
 import NextRegister from './NextRegister.tsx';
 import useRegisterStyle from '../hooks/useRegisterStyle.tsx';
+import zustandStore from '../../../store/store.tsx';
 
 const RegisterStyle = () => {
-  const { r_nickname } = zustandStore();
+  const r_nickname = zustandStore((state) => state.r_nickname);
   const { cancelHandler, nextHandler, errMsg } = useRegisterStyle();
-
-  const styleList = [
-    '관광지',
-    '문화시설',
-    '축제',
-    '패키지',
-    '레포츠',
-    '쇼핑',
-    '음식점',
-  ];
 
   return (
     <main className={styles.container}>

@@ -2,17 +2,24 @@ import styles from './registerBirthday.module.css';
 import img from '../assets/birthday.png';
 import CancelRegister from './CancelRegister.tsx';
 import NextRegister from './NextRegister.tsx';
-import zustandStore from '../../../store/store.tsx';
 import useRegisterBirthday from '../hooks/useRegisterBirthday.tsx';
+import zustandStore from '../../../store/store.tsx';
 
 const RegisterBirthday = () => {
-  const { r_nickname, r_year, r_month, r_day } = zustandStore();
+  const { r_nickname, r_year, r_month, r_day } = zustandStore((state) => ({
+    r_nickname: state.r_nickname,
+    r_year: state.r_year,
+    r_month: state.r_month,
+    r_day: state.r_day,
+  }));
+
   const {
     inputYearHandler,
     inputMonthHandler,
     inputDayHandler,
     cancelHandler,
     nextHandler,
+    onKeyDown,
     errMsg,
   } = useRegisterBirthday();
 
@@ -32,6 +39,7 @@ const RegisterBirthday = () => {
               maxLength={4}
               onChange={inputYearHandler}
               value={r_year}
+              onKeyDown={onKeyDown}
             />
             <input
               className={styles.input}
@@ -39,6 +47,7 @@ const RegisterBirthday = () => {
               maxLength={2}
               onChange={inputMonthHandler}
               value={r_month}
+              onKeyDown={onKeyDown}
             />
             <input
               className={styles.input}
@@ -46,6 +55,7 @@ const RegisterBirthday = () => {
               maxLength={2}
               onChange={inputDayHandler}
               value={r_day}
+              onKeyDown={onKeyDown}
             />
           </div>
           <p className={styles.example}>ex) 2000년 1월 1일</p>
