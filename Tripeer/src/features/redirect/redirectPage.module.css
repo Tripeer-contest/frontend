@@ -1,0 +1,22 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInOut 1s ease-in-out infinite;
+}
+
+.image{
+    width: auto;
+    height: 50px;
+}
+
+@keyframes fadeInOut {
+    0%, 100%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+}
