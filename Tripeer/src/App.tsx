@@ -12,6 +12,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import RegisterPage from './features/register/RegisterPage.tsx';
 import RedirectPage from './features/redirect/RedirectPage.tsx';
 import CartPage from './features/cart/CartPage';
+import PlanDetail from './features/planDetail/PlanDetail';
+// import ImgPage from './features/img/ImgPage';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,10 @@ const router = createBrowserRouter([
         path: '/plan',
         element: <PlanPage />,
         // loader: protectRouter(),
+      },
+      {
+        path: '/plan/detail/:id',
+        element: <PlanDetail />,
       },
       {
         path: '/diary',
@@ -54,6 +60,15 @@ const router = createBrowserRouter([
   {
     path: 'redirect',
     element: <RedirectPage />,
+      {
+        path: '/login',
+        element: <LoginPage />,
+      },
+      // {
+      //   path: '/img/compress',
+      //   element: <ImgPage />,
+      // },
+    ],
   },
   {
     path: '/admin',
