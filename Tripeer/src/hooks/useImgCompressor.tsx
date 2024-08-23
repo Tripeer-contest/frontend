@@ -9,7 +9,7 @@ export default function useImgCompressor(options?: {
 
   const ImgInput = useCallback(() => {
     const compressorOption = {
-      maxSizeMB: 1, // 허용하는 최대 사이즈 지정
+      maxSizeMB: 2, // 허용하는 최대 사이즈 지정
       maxWidthOrHeight: 1920, // 허용하는 최대 width, height 값 지정
       ...options,
     };

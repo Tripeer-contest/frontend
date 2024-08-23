@@ -1,4 +1,119 @@
 .container{
+    display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
+}
+
+@media screen and (max-width: 860px){
+    .bannerBox{
+        position: relative;
+        height: auto;
+    }
+    .bannerImg{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100vw;
+    }
+    .bannerTitleBox{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 5%;
+    }
+
+    .bannerTitleBox h1{
+        color: white;
+        margin-bottom: 5px;
+        font-size: 1em;
+        text-shadow: 0 0 5px rgb(0, 0, 0,0.5);
+    }
+
+    .bannerTitleBox p{
+        color: white;
+        margin-top: 8px;
+        font-size: 0.4em;
+        text-shadow: 0 0 5px rgb(0, 0, 0,0.5);
+    }
+}
+
+@media screen and (min-width: 761px){
+    .bannerBox{
+        position: relative;
+        height: auto;
+    }
+
+    .bannerImg{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100vw;
+    }
+    .bannerTitleBox{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 5%;
+    }
+
+    .bannerTitleBox h1{
+        color: white;
+        margin-bottom: 10px;
+        font-size: 1.5em;
+        text-shadow: 0 0 5px rgb(0, 0, 0,0.5);
+    }
+
+    .bannerTitleBox p{
+        color: white;
+        font-size: 1em;
+        margin-top: 20px;
+        text-shadow: 0 0 5px rgb(0, 0, 0,0.5);
+    }
+}
+
+@media screen and (min-width: 1061px){
+    .bannerBox{
+        position: relative;
+        height: auto;
+    }
+
+    .bannerImg{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100vw;
+    }
+    .bannerTitleBox{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 5%;
+    }
+
+    .bannerTitleBox h1{
+        color: white;
+        margin-bottom: 20px;
+        font-size: 2.5em;
+        text-shadow: 0 0 5px rgb(0, 0, 0,0.5);
+    }
+
+    .bannerTitleBox p{
+        color: white;
+        font-size: 1.2em;
+        margin-top: 5px;
+        text-shadow: 0 0 5px rgb(0, 0, 0,0.5);
+    }
 }
