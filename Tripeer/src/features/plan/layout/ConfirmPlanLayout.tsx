@@ -1,19 +1,48 @@
 import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../store/store';
+import { ReactNode, useEffect } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+
+import useCreatePlan from '../hooks/useCreatePlan';
+import { PlanCardType } from '../types/PlanTypes';
 import styles from '../assets/confirm.module.css';
 import backIcon from '../../../assets/button/back.svg';
-import { ReactNode } from 'react';
+import MutationLoading from '../../../components/loading/MutationLoading';
 
 export default function ConfirmPlanLayout({
+  close,
   children,
 }: {
+  close: () => void;
   children: ReactNode;
 }) {
-  const [planToPrev] = zustandStore(useShallow((state) => [state.planToPrev]));
-
+  const [planToPrev, title, townList, startDay, endDay] = zustandStore(
+    useShallow((state) => [
+      state.planToPrev,
+      state.planTitle,
+      state.spots,
+      state.startDay,
+      state.endDay,
+    ]),
+  );
+  const queryClient = useQueryClient();
+  const mutation = useCreatePlan({ title, townList, startDay, endDay });
   const nextHandler = () => {
-    alert('추후 업데이트 예정.');
+    const existPlan = queryClient.getQueryData<{ data: PlanCardType[] }>([
+      'plan',
+    ]);
+    if (existPlan && existPlan.data.length < 6) {
+      mutation.mutate();
+    } else {
+      close();
+    }
   };
+
+  useEffect(() => {
+    if (mutation.isSuccess) {
+      close();
+    }
+  }, [mutation.isSuccess, close]);
 
   const prevHandler = () => {
     planToPrev();
@@ -39,6 +68,7 @@ export default function ConfirmPlanLayout({
       <button className={styles.nextBtn} onClick={nextHandler}>
         생성
       </button>
+      <MutationLoading isShow={mutation.isPending} />
     </div>
   );
 }

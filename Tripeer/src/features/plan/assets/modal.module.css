@@ -21,11 +21,23 @@
     font-size: 2rem;
     font-weight: bold;
   }
+  .textBox {
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    gap: 40px;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  .prevText {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #4fbdb7;
+  }
   .nextText {
     font-weight: bold;
     font-size: 1rem;
     color: #4fbdb7;
-    cursor: pointer;
   }
   .notAllowText {
     font-weight: bold;

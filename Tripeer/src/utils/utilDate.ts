@@ -90,3 +90,14 @@ export const createMonthDayList = (year: number, month: number) => {
   ];
   return monthDayList;
 };
+
+const week = ['일', '월', '화', '수', '목', '금', '토'];
+
+export const makeDayToFullString = (day: string) => {
+  const dayInfo = day.split('-');
+  let result = '';
+  result += dayInfo[1].replace(/^0+/, '') + '월 ';
+  result += dayInfo[2].replace(/^0+/, '') + '일';
+  result += `(${week[new Date(day).getDay()]})`;
+  return result;
+};

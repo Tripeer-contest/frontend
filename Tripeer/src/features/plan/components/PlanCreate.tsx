@@ -19,7 +19,7 @@ export default function PlanCreate() {
     <PlanSearch close={close} key="plan-search" />,
     <PlanCalendar key="plan-calendar" />,
     <PlanTitle key="plan-title" />,
-    <PlanConfirm key="plan-confirm" />,
+    <PlanConfirm close={close} key="plan-confirm" />,
   ];
 
   return (
