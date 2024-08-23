@@ -37,3 +37,13 @@ export const Region = [
   { name: '전라남도', cityId: 38, townId: -1, img: 전남 },
   { name: '제주도', cityId: 39, townId: -1, img: 제주 },
 ];
+
+export function RegionFilter(items: { cityId: number }[] | undefined) {
+  if (!items) return [];
+  const filteredRegion = Region.filter((region) =>
+    items.find((item) => item.cityId === region.cityId),
+  );
+  return filteredRegion.length > 0
+    ? [{ name: '전체', cityId: 0, townId: -1, img: 전체 }, ...filteredRegion]
+    : filteredRegion;
+}
