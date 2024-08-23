@@ -4,7 +4,7 @@ const protectRouter = () => {
   return () => {
     const token = cookie.get('Authorization');
     if (!token) {
-      return redirect('/login');
+      return redirect('/');
     }
     return null;
   };
