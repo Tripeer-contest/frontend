@@ -3,7 +3,11 @@ import styles from './firstSlide.module.css';
 import useAnimation from '../hook/useAnimation';
 import { useRef } from 'react';
 
-export default function FirstSlide(): JSX.Element {
+interface Props {
+  scrollTop: () => void;
+}
+
+export default function FirstSlide({ scrollTop }: Props): JSX.Element {
   const titleRef1 = useRef<null | HTMLHeadingElement>(null);
   const titleRef2 = useRef<null | HTMLHeadingElement>(null);
   const subRef = useRef<null | HTMLParagraphElement>(null);
@@ -25,7 +29,12 @@ export default function FirstSlide(): JSX.Element {
           <p className={styles.subTitle} ref={subRef}>
             여행 계획의 모든 것, 한곳에서 같이 계획하세요.
           </p>
-          <Link to="/login" className={styles.startBtn} ref={linkRef}>
+          <Link
+            to=""
+            className={styles.startBtn}
+            ref={linkRef}
+            onClick={scrollTop}
+          >
             시작하기
           </Link>
         </article>
