@@ -1,16 +1,14 @@
-import CommonLoading from '../../components/loading/CommonLoading';
+import BoxLayout from '../../layout/BoxLayout';
 import CartBody from './components/CartBody';
 import CartHeader from './components/CartHeader';
-import CartLayout from './layout/CartLayout';
+import useWishItem from './hooks/useWishItem';
 
 export default function CartPage() {
+  useWishItem();
   return (
-    <>
-      <CommonLoading />
-      <CartLayout>
-        <CartHeader />
-        <CartBody />
-      </CartLayout>
-    </>
+    <BoxLayout>
+      <CartHeader />
+      <CartBody />
+    </BoxLayout>
   );
 }
