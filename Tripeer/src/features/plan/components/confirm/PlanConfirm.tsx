@@ -2,7 +2,7 @@ import ConfirmPlanLayout from '../../layout/ConfirmPlanLayout';
 import styles from '../../assets/confirm.module.css';
 import zustandStore from '../../../../store/store';
 import { useShallow } from 'zustand/react/shallow';
-export default function PlanConfirm() {
+export default function PlanConfirm({ close }: { close: () => void }) {
   const [title, spots, startDay, endDay] = zustandStore(
     useShallow((state) => [
       state.planTitle,
@@ -16,7 +16,7 @@ export default function PlanConfirm() {
     return spots.length - 1 === len ? '' : ', ';
   };
   return (
-    <ConfirmPlanLayout>
+    <ConfirmPlanLayout close={close}>
       <div className={styles.container}>
         <div className={styles.section}>
           <p className={styles.quest}>여행 계획 이름</p>

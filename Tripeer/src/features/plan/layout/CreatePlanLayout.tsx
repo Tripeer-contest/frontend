@@ -22,12 +22,17 @@ export default function CreatePlanLayout({ pageInfo, children }: ModalProps) {
     <div className={styles.createPlanContainer}>
       <header className={styles.desktopHeader}>
         <p className={styles.title}>{title}</p>
-        <p
-          className={canNext ? styles.nextText : styles.notAllowText}
-          onClick={nextHandler}
-        >
-          다음
-        </p>
+        <div className={styles.textBox}>
+          <p className={styles.prevText} onClick={prevHandler}>
+            이전
+          </p>
+          <p
+            className={canNext ? styles.nextText : styles.notAllowText}
+            onClick={nextHandler}
+          >
+            다음
+          </p>
+        </div>
       </header>
       <header className={styles.mobileHeader}>
         <img

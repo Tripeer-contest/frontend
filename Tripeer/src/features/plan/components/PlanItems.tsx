@@ -6,20 +6,23 @@ import CardsLayout from '../layout/CardsLayout';
 
 // 외부 모듈
 import { SwiperSlide } from 'swiper/react';
+import { PlanCardType } from '../types/PlanTypes';
 
 export default function PlanItems() {
   const data = usePlan();
-  console.log(data);
+  const cards: PlanCardType[] = data.data;
   return (
     <CardsLayout>
-      {[1, 2, 3, 4, 5].map((item) => (
-        <SwiperSlide key={item}>
-          <PlanCard />
+      {cards.map((item, idx) => (
+        <SwiperSlide key={idx}>
+          <PlanCard data={item} />
         </SwiperSlide>
       ))}
-      <SwiperSlide>
-        <PlanCreate />
-      </SwiperSlide>
+      {cards.length < 6 ? (
+        <SwiperSlide>
+          <PlanCreate />
+        </SwiperSlide>
+      ) : undefined}
     </CardsLayout>
   );
 }

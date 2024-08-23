@@ -42,24 +42,13 @@ const useModal = () => {
       onClose,
       ...rest
     }: ModalProps & HTMLAttributes<HTMLDialogElement>) => {
-      const clickHandler = (e: React.MouseEvent<HTMLDialogElement>) => {
-        if (e.target === e.currentTarget) {
-          close();
-        }
-      };
-
       const closeHandler = (e: React.MouseEvent<HTMLDialogElement>) => {
         if (e.target !== e.currentTarget) return;
         if (onClose) onClose();
       };
 
       return createPortal(
-        <dialog
-          ref={dialogRef}
-          onClick={clickHandler}
-          onClose={closeHandler}
-          {...rest}
-        >
+        <dialog ref={dialogRef} onClose={closeHandler} {...rest}>
           <div id="modal-container" style={{ width: '100%', height: '100%' }}>
             {children}
           </div>
@@ -67,7 +56,7 @@ const useModal = () => {
         document.getElementById('modal-root') as Element,
       );
     },
-    [close],
+    [],
   );
 
   useEffect(() => {

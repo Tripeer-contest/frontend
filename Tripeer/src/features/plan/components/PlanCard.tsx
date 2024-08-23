@@ -2,36 +2,85 @@ import styles from '../assets/card.module.css';
 import scheduleIcon from '../assets/img/schedule_icon.svg';
 import navIcon from '../assets/img/nav_icon.svg';
 import personIcon from '../assets/img/person_icon.svg';
+import deleteBtn from '../../../assets/button/delete.svg';
+import { PlanCardType } from '../types/PlanTypes';
+import { makeDayToFullString } from '../../../utils/utilDate';
+import useModal from '../../../hooks/useModal';
+import useDeletePlan from '../hooks/useDeletePlan';
+import { useEffect } from 'react';
+import MutationLoading from '../../../components/loading/MutationLoading';
 
-export default function PlanCard() {
+export default function PlanCard({ data }: { data: PlanCardType }) {
+  const startDay = makeDayToFullString(data.startDay);
+  const endDay = makeDayToFullString(data.endDay);
+  const Modal = useModal();
+  const mutation = useDeletePlan();
+
+  const deletePlan = (idx: number) => {
+    mutation.mutate(idx);
+  };
+
+  useEffect(() => {
+    if (mutation.isSuccess) {
+      Modal.close();
+    }
+  }, [mutation.isSuccess, Modal]);
+
   return (
-    <div className={styles.card}>
-      <img
-        src="https://images.unsplash.com/photo-1722925541914-ae7cf154d606?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt=""
-        className={styles.cardImg}
-      />
-      <div className={styles.cardInfo}>
-        <p className={styles.cardTitle}>싸피 탐험대</p>
-        <div className={styles.detailInfo}>
-          <img src={navIcon} alt="nav-icon" className={styles.icon} />
-          <p>대구 광역시</p>
-        </div>
-        <div className={styles.layoutInfo}>
+    <>
+      <div className={styles.card}>
+        <img src={data.img} alt="location-img" className={styles.cardImg} />
+        <div className={styles.cardInfo}>
+          <p className={styles.cardTitle}>{data.title}</p>
           <div className={styles.detailInfo}>
-            <img
-              src={scheduleIcon}
-              alt="schedule-icon"
-              className={styles.icon}
-            />
-            <p>4월 18일(목) ~ 4월 21일(일)</p>
+            <img src={navIcon} alt="nav-icon" className={styles.icon} />
+            {data.townList.map((town, idx) => (
+              <span key={idx}>{town}</span>
+            ))}
           </div>
-          <div className={styles.detailInfo}>
-            <img src={personIcon} alt="person-icon" className={styles.icon} />
-            <p>5명</p>
+          <div className={styles.layoutInfo}>
+            <div className={styles.detailInfo}>
+              <img
+                src={scheduleIcon}
+                alt="schedule-icon"
+                className={styles.icon}
+              />
+              <p>{`${startDay} ~ ${endDay}`}</p>
+            </div>
+            <div className={styles.detailInfo}>
+              <img src={personIcon} alt="person-icon" className={styles.icon} />
+              <p>{data.member.length}명</p>
+            </div>
           </div>
         </div>
+        <img
+          src={deleteBtn}
+          alt="delete-btn"
+          className={styles.deleteBtn}
+          onClick={Modal.open}
+        />
+        <Modal.ModalLayout className={styles.modalContainer}>
+          <div className={styles.modalBox}>
+            <h3 className={styles.modalContent}>
+              해당 플랜을 삭제하시겠습니까
+            </h3>
+            <div className={styles.btnBox}>
+              <button
+                className={styles.btn}
+                onClick={() => {
+                  deletePlan(data.planId);
+                }}
+              >
+                예
+              </button>
+              <button className={styles.btn} onClick={Modal.close}>
+                아니요
+              </button>
+            </div>
+          </div>
+        </Modal.ModalLayout>
+        <MutationLoading isShow={mutation.isPending} />
       </div>
-    </div>
+    </>
   );
 }
