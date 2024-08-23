@@ -18,10 +18,10 @@ export const postRegister = async ({
   return await axios.post(
     '/api/user/signup',
     {
-      r_nickname,
-      r_year,
-      r_month,
-      r_day,
+      nickname: r_nickname,
+      year: r_year,
+      month: r_month,
+      day: r_day,
       style1: r_style[0],
       style2: r_style[1] ? r_style[1] : null,
       style3: r_style[2] ? r_style[2] : null,
