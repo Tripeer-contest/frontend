@@ -1,10 +1,16 @@
 import DiaryLayout from "./layout/DiaryLayout";
+import DiaryBanner from "./components/DiaryBanner"
+import ContentLayout from "../../layout/ContentLayout";
+import DiaryContent from "./components/DiaryContent";
 
 
 export default function DiaryPage(){
     return(
         <DiaryLayout>
-            <div>다이어리</div>
+            <DiaryBanner/>
+            <ContentLayout>
+                <DiaryContent/>
+            </ContentLayout>
         </DiaryLayout>
     )
 
