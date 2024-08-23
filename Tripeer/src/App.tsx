@@ -1,6 +1,5 @@
 import RootLayout from './layout/RootLayout';
 import NotFound from './components/error/NotFound';
-import LoginPage from './features/auth/LoginPage';
 import protectRouter from './utils/protectRouter';
 import LandingPage from './features/landing/LandingPage';
 import PlanPage from './features/plan/PlanPage';
@@ -52,10 +51,6 @@ const router = createBrowserRouter([
         loader: protectRouter(),
       },
     ],
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
   },
   {
     path: 'redirect',
