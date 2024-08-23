@@ -13,6 +13,18 @@
   transition: 0.5s ease-in-out;
 }
 
+@keyframes move {
+  0%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-10px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+
 @media screen and (min-width: 360px) {
   .Logo {
     width: 238px;
@@ -58,6 +70,26 @@
     width: 15px;
     height: 15px;
   }
+
+  .center{
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 250px;
+  }
+
+  .center p{
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .center img{
+    height: 60px;
+    animation: move 2s infinite;
+  }
 }
 
 @media screen and (max-width: 360px) {
@@ -94,5 +126,23 @@
   .socialImg {
     width: 15px;
     height: 15px;
+  }
+
+  .center{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 250px;
+  }
+
+  .center p{
+    font-size: 0.9em;
+  }
+
+  .center img{
+    height: 50px;
   }
 }

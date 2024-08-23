@@ -39,7 +39,7 @@ api.interceptors.response.use(
         }
       } catch (reissueError) {
         console.log('Reissue Failed : ', reissueError);
-        window.location.href = '/login';
+        window.location.href = '/';
       }
     }
 

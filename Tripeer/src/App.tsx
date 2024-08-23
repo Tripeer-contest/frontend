@@ -1,6 +1,5 @@
 import RootLayout from './layout/RootLayout';
 import NotFound from './components/error/NotFound';
-import LoginPage from './features/auth/LoginPage';
 import protectRouter from './utils/protectRouter';
 import LandingPage from './features/landing/LandingPage';
 import PlanPage from './features/plan/PlanPage';
@@ -15,7 +14,7 @@ import CartPage from './features/cart/CartPage';
 import PlanDetail from './features/planDetail/PlanDetail';
 import { Suspense } from 'react';
 import CommonLoading from './components/loading/CommonLoading.tsx';
-// import ImgPage from './features/img/ImgPage';
+import ImgPage from './features/img/ImgPage';
 
 const router = createBrowserRouter([
   {
@@ -60,17 +59,13 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
     path: 'redirect',
     element: <RedirectPage />,
   },
-  // {
-  //   path: '/img/compress',
-  //   element: <ImgPage />,
-  // },
+  {
+    path: '/img/compress',
+    element: <ImgPage />,
+  },
   {
     path: '/admin',
     element: <AdminLoginPage />,
