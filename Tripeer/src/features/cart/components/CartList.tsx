@@ -3,9 +3,10 @@ import styles from '../asset/list.module.css';
 import { ItemInfo, UserInfo } from '../../../types/ItemTypes';
 import EmptyCart from './EmptyCart';
 import { Fragment } from 'react/jsx-runtime';
+import { wishItem } from '../types/wishListItem';
 
-export default function CartList({ category }: { category: string }) {
-  console.log(category);
+export default function CartList({ items }: { items: wishItem[] }) {
+  console.log(items);
   const itemInfo: ItemInfo = {
     itemName: '밀락 더 마켓',
     categoryName: '맛집',
@@ -18,7 +19,6 @@ export default function CartList({ category }: { category: string }) {
     isLike: false,
   };
 
-  // 카테고리 props로 api get, 카드 UI 표시
   return (
     <>
       <EmptyCart />

@@ -13,6 +13,8 @@ import RegisterPage from './features/register/RegisterPage.tsx';
 import RedirectPage from './features/redirect/RedirectPage.tsx';
 import CartPage from './features/cart/CartPage';
 import PlanDetail from './features/planDetail/PlanDetail';
+import { Suspense } from 'react';
+import CommonLoading from './components/loading/CommonLoading.tsx';
 // import ImgPage from './features/img/ImgPage';
 
 const router = createBrowserRouter([
@@ -43,7 +45,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/cart',
-        element: <CartPage />,
+        element: (
+          <Suspense fallback={<CommonLoading />}>
+            <CartPage />
+          </Suspense>
+        ),
         // loader: protectRouter(),
       },
       {

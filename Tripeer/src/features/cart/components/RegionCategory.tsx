@@ -1,13 +1,17 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import { Region } from '../../../data/RegionCategory';
 import styles from '../asset/header.module.css';
 import zustandStore from '../../../store/store';
 import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow';
+import { RegionType } from '../../../types/ItemTypes';
 
-export default function RegionCategory() {
+export default function RegionCategory({
+  category,
+}: {
+  category: RegionType[];
+}) {
   const [cart_selectCategory, cart_init, cart_setCategory] = zustandStore(
     useShallow((state) => [
       state.cart_selectCategory,
@@ -30,7 +34,7 @@ export default function RegionCategory() {
 
   return (
     <Swiper slidesPerView={'auto'} spaceBetween={15} style={{ width: '100%' }}>
-      {Region.map((region) => (
+      {category.map((region) => (
         <SwiperSlide
           key={region.cityId}
           className={styles.slider}
