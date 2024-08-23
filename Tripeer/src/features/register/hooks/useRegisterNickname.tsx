@@ -47,6 +47,7 @@ const useRegisterNickname = () => {
   const mutation = useMutation({
     mutationFn: () => getNicknameCheck(value),
     onSuccess: ({ check }) => {
+      console.log(check);
       if (!check) {
         r_setNickname(value);
         r_nextPage();

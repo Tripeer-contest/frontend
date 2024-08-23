@@ -1,0 +1,14 @@
+.container{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #aaaaaa;
+    margin: 70px 0;
+}
+
+.title{
+    font-size: 1.4rem;
+    color: #262626;
+    font-weight: bold;
+}
