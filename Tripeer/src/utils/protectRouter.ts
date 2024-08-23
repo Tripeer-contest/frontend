@@ -1,9 +1,8 @@
 import { redirect } from 'react-router-dom';
-import zustandStore from '../store/store';
-
+import cookie from 'js-cookie';
 const protectRouter = () => {
   return () => {
-    const token = zustandStore.getState().token;
+    const token = cookie.get('Authorization');
     if (!token) {
       return redirect('/login');
     }
