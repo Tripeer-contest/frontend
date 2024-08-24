@@ -14,6 +14,7 @@ import CartPage from './features/cart/CartPage';
 import PlanDetail from './features/planDetail/PlanDetail';
 import { Suspense } from 'react';
 import CommonLoading from './components/loading/CommonLoading.tsx';
+import HomePage from './features/home/HomePage.tsx';
 import ImgPage from './features/img/ImgPage';
 
 const router = createBrowserRouter([
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/home',
-        element: <p>여행지 페이지 컴포넌트</p>,
+        element: <HomePage />,
         // loader: protectRouter(),
       },
       {
