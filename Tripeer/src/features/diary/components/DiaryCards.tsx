@@ -1,7 +1,6 @@
 import styles from './diaryCards.module.css';
 import data from '../data/dummyData';
 import moreBtn from '../../../assets/button/more.svg';
-import userIcon from '../../../assets/button/user.svg';
 
 export default function DiaryCards() {
   const diaryData = data;
