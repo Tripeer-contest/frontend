@@ -44,6 +44,7 @@ export default function CartBody() {
         onSwiper={setSwiper}
         slidesPerView={1}
         onSlideChange={handleSlide}
+        autoHeight={true}
       >
         {Category.map((category) => (
           <SwiperSlide key={category}>

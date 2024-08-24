@@ -1,0 +1,12 @@
+.container {
+  width: 90%;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.imgSlide {
+  width: 200px;
+  cursor: pointer;
+}
