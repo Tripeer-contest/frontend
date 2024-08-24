@@ -13,7 +13,11 @@ const HomeCategoryChips = ({ title, arr }: Props) => {
     <div className={styles.container}>
       <p className={styles.title}>{title}</p>
       <div className={styles.line} />
-      <Swiper slidesPerView={'auto'} grabCursor={true}>
+      <Swiper
+        slidesPerView={'auto'}
+        grabCursor={true}
+        className={styles.swiper}
+      >
         {arr.map((item, idx) => (
           <SwiperSlide key={`${item}-${idx}`} className={styles.chipBox}>
             <TownChip
