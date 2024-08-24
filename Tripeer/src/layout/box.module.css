@@ -6,7 +6,6 @@
 @media screen and (min-width: 1300px) {
   .container {
     height: calc(100vh - 85px);
-    max-width: 70%;
     margin: 0 auto 0 auto;
     overflow-y: scroll;
   }

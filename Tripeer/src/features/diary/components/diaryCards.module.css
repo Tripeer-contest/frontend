@@ -1,58 +1,192 @@
-@media screen and (max-width: 600px){
-    .cardsBox{
-        display: flex;
-        flex-direction: column;
-        padding: 5px;
-    }
-    
-    .diaryCard{
-        width: 100%;
-        height: 180px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
-        padding: 20px 15px;
-        border: 1px red solid;
-        margin-bottom: 20px;
-    }
+@media screen and (max-width: 750px) {
+  .cardsBox {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
 
+  .diaryCard {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 120px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
+    margin-bottom: 10px;
+  }
+  .topMoreBtn {
+    display: none;
+  }
+  .cardImg {
+    width: 120px;
+    height: 120px;
+    background-color: gray;
+    border-radius: 5px 0 0 5px;
+  }
+  .cardTextBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 15px;
+    width: calc(100% - 120px);
+    height: 100%;
+  }
+  .topBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #545454;
+  }
+  .moreBtn {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+  }
+  .topSubtitle {
+    font-size: 1em;
+  }
+  .bottomSubtitle {
+    display: none;
+  }
+  .bottomBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .bottomBox p {
+    color: #999999;
+    font-size: 0.8em;
+  }
+  .detailBtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .detailText {
+    display: none;
+  }
 }
-@media screen and (min-width: 600px){
-    .cardsBox{
-        display: grid;
-        width: 100%;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    
-    .diaryCard{
-        width: 100%;
-        height: 350px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
-        padding: 20px 15px;
-    }
+@media screen and (min-width: 750px) {
+  .cardsBox {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
+  .diaryCard {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 15%);
+  }
+  .topMoreBtn {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    height: 20px;
+    width: 20px;
+  }
+  .cardImg {
+    width: 100%;
+    height: 60%;
+    background-color: gray;
+    border-radius: 5px 5px 0 0;
+  }
+  .cardTextBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 40%;
+    padding: 20px 10px;
+  }
+  .topBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #545454;
+  }
+  .moreBtn {
+    display: none;
+  }
+  .topSubtitle {
+    display: none;
+  }
+  .centerBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .bottomSubtitle {
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+  .bottomBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .bottomBox p {
+    color: #999999;
+    font-size: 0.8em;
+  }
+  .detailBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #04acb5;
+    border-radius: 5px;
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .detailBtn:hover {
+    transform: scale(0.98);
+  }
+  .detailText {
+    color: white;
+    font-size: 0.8em;
+  }
 }
-@media screen and (min-width: 1000px){
-    .cardsBox{
-        display: grid;
-        width: 100%;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 10px;
-    }
-    
-    .diaryCard{
-        width: 100%;
-        height: 450px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
-        padding: 20px 15px;
-    }
+@media screen and (min-width: 1000px) {
+  .cardsBox {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
 
+  .title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #545454;
+  }
 }
