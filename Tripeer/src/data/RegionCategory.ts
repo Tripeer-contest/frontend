@@ -19,7 +19,7 @@ import 충북 from '../assets/region/충북.png';
 
 export const Region = [
   { name: '전체', cityId: 0, townId: -1, img: 전체 },
-  { name: '서울', cityId: 1, townId: -1, img: 서울 },
+  { name: '서울특별시', cityId: 1, townId: -1, img: 서울 },
   { name: '인천', cityId: 2, townId: -1, img: 인천 },
   { name: '대전', cityId: 3, townId: -1, img: 대전 },
   { name: '대구', cityId: 4, townId: -1, img: 대구 },

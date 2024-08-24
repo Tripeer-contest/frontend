@@ -3,12 +3,12 @@
     height: 500px;
     display: flex;
     flex-direction: column;
-    background-color: #aaaaaa;
     margin: 70px 0;
 }
 
 .title{
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: #262626;
     font-weight: bold;
+    margin-bottom: 20px;
 }

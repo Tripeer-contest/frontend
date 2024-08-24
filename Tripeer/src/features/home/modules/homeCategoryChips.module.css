@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    margin-top: 10px;
+    height: 70px;
+    align-items: center;
+}
+
+.title{
+    color: #979797;
+    font-size: 1.2rem;
+    width: 350px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.line{
+    border: #ccc 1px solid;
+    height: 45px;
+    margin-right: 20px;
+}
+
+.chipBox{
+    width: fit-content;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}

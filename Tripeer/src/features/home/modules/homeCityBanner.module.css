@@ -1,5 +1,21 @@
 .container{
     width: 100%;
-    height: 100px;
-    background-color: red;
+    height: 150px;
+    display: flex;
+    overflow : hidden;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.imgBox{
+    width: 170px;
+    height: 150px;
+    padding-right: 20px;
+}
+
+.imgBox img{
+    height: 100%;
+    width: auto;
+    border-radius: 5px;
 }
