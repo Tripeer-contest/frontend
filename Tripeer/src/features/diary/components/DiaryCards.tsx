@@ -3,13 +3,23 @@ import deleteBtn from '../../../assets/button/cancel_gray.svg';
 import deleteWhiteBtn from '../../../assets/button/cancel_white.svg';
 import useDeleteModal from '../hook/useDeleteModal';
 import { DiaryItem } from '../../../types/DiaryTypes';
+import useDeleteDiary from '../hook/useDeleteDiary';
+import { useState } from 'react';
+import MutationLoading from '../../../components/loading/MutationLoading';
 
 export default function DiaryCards({
   diaryListData,
 }: {
   diaryListData: DiaryItem[];
 }) {
+  const [planId, setPlanId] = useState(0);
   const { open, DeleteModal } = useDeleteModal();
+  const { mutate, isPending } = useDeleteDiary();
+
+  const openHandler = (id: number) => {
+    setPlanId(id);
+    open();
+  };
 
   return (
     <main className={styles.cardsBox}>
@@ -20,7 +30,7 @@ export default function DiaryCards({
               className={styles.topDeleteBtn}
               src={deleteWhiteBtn}
               alt="deleteBtn"
-              onClick={open}
+              onClick={() => openHandler(item.planId)}
             />
             <img className={styles.cardImg} src={item.img} alt="diary-image" />
             <div className={styles.cardTextBox}>
@@ -30,7 +40,7 @@ export default function DiaryCards({
                   className={styles.deleteBtn}
                   src={deleteBtn}
                   alt="deleteBtn"
-                  onClick={open}
+                  onClick={() => openHandler(item.planId)}
                 />
               </div>
               <div className={styles.centerBox}>
@@ -50,7 +60,12 @@ export default function DiaryCards({
           </div>
         );
       })}
-      <DeleteModal />
+      <DeleteModal
+        confirm={() => {
+          mutate(planId);
+        }}
+      />
+      <MutationLoading isShow={isPending} />
     </main>
   );
 }

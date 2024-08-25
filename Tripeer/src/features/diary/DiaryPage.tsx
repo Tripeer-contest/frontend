@@ -6,8 +6,7 @@ import BoxLayout from '../../layout/BoxLayout';
 import useGetDiaryQuery from './hook/useGetDiaryList';
 
 export default function DiaryPage() {
-  const data = useGetDiaryQuery();
-  console.log(data);
+  useGetDiaryQuery();
   return (
     <BoxLayout>
       <DiaryLayout>
