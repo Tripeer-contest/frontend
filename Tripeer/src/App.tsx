@@ -36,7 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/diary',
-        element: <DiaryPage />,
+        element: (
+          <Suspense fallback={<CommonLoading />}>
+            <DiaryPage />
+          </Suspense>
+        ),
         // loader: protectRouter(),
       },
       {

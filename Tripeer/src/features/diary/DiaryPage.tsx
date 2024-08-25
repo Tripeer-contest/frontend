@@ -1,27 +1,21 @@
-import { Suspense } from 'react';
-import DiaryLayout from "./layout/DiaryLayout";
-import DiaryHeader from "./components/DiaryBanner"
-import ContentLayout from "../../layout/ContentLayout";
+import DiaryLayout from './layout/DiaryLayout';
+import DiaryHeader from './components/DiaryBanner';
+import ContentLayout from '../../layout/ContentLayout';
 import DiaryItem from './components/DiaryItem';
-import ErrorBoundary from '../../components/error/ErrorBoundary';
-import CommonLoading from '../../components/loading/CommonLoading';
 import BoxLayout from '../../layout/BoxLayout';
+import useGetDiaryQuery from './hook/useGetDiaryList';
 
-
-export default function DiaryPage(){
-    return(
-        <ErrorBoundary fallback={<p>에러발생</p>}>
-            <Suspense fallback={<CommonLoading/>}>
-                <BoxLayout>
-                    <DiaryLayout>
-                        <DiaryHeader/>
-                        <ContentLayout>
-                            <DiaryItem/>
-                        </ContentLayout>
-                    </DiaryLayout>
-                </BoxLayout>
-            </Suspense>
-        </ErrorBoundary>
-    )
-
+export default function DiaryPage() {
+  const data = useGetDiaryQuery();
+  console.log(data);
+  return (
+    <BoxLayout>
+      <DiaryLayout>
+        <DiaryHeader />
+        <ContentLayout>
+          <DiaryItem />
+        </ContentLayout>
+      </DiaryLayout>
+    </BoxLayout>
+  );
 }
