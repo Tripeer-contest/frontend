@@ -14,12 +14,12 @@ export default function PlanItems() {
   return (
     <CardsLayout>
       {cards.map((item, idx) => (
-        <SwiperSlide key={idx}>
+        <SwiperSlide key={idx} style={{ width: '300px', height: '310px' }}>
           <PlanCard data={item} />
         </SwiperSlide>
       ))}
       {cards.length < 6 ? (
-        <SwiperSlide>
+        <SwiperSlide style={{ width: '300px', height: '310px' }}>
           <PlanCreate />
         </SwiperSlide>
       ) : undefined}
