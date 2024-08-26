@@ -14,13 +14,13 @@
 }
 
 @keyframes move {
-  0%{
+  0% {
     transform: translateY(0);
   }
-  50%{
+  50% {
     transform: translateY(-10px);
   }
-  100%{
+  100% {
     transform: translateY(0);
   }
 }
@@ -28,20 +28,20 @@
 @media screen and (min-width: 360px) {
   .Logo {
     width: 238px;
-    height: 62px;
+    height: 75px;
   }
   .borderBox {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #aaaaaa;
+    color: #87bfbc;
     gap: 10px;
     margin: 50px 0 30px 0;
   }
   .line {
     width: 100px;
     height: 0.1px;
-    background-color: #aaaaaa;
+    background-color: #87bfbc;
   }
 
   .socialBtn {
@@ -71,7 +71,7 @@
     height: 15px;
   }
 
-  .center{
+  .center {
     position: absolute;
     bottom: 10px;
     display: flex;
@@ -79,29 +79,32 @@
     align-items: center;
     flex-direction: column;
     margin-top: 250px;
+    margin-bottom: 20px;
   }
 
-  .center p{
+  .center p {
     font-size: 1.2rem;
     font-weight: 400;
+    color: #c0d7d7;
+    margin-top: 10px;
   }
 
-  .center img{
-    height: 60px;
+  .center img {
+    height: 13px;
     animation: move 2s infinite;
   }
 }
 
 @media screen and (max-width: 360px) {
   .Logo {
-    width: 200px;
-    height: 50px;
+    width: 195px;
+    height: 62px;
   }
   .borderBox {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #aaaaaa;
+    color: #87bfbc;
     gap: 10px;
     font-size: 0.9rem;
     margin: 50px 0 30px 0;
@@ -109,7 +112,7 @@
   .line {
     width: 80px;
     height: 0.1px;
-    background-color: #aaaaaa;
+    background-color: #87bfbc;
   }
   .socialBtn {
     width: 300px;
@@ -128,21 +131,24 @@
     height: 15px;
   }
 
-  .center{
+  .center {
     position: absolute;
     bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 250px;
+    margin-top: 200px;
+    margin-bottom: 30px;
   }
 
-  .center p{
+  .center p {
     font-size: 0.9em;
+    color: #c0d7d7;
+    margin-top: 10px;
   }
 
-  .center img{
-    height: 50px;
+  .center img {
+    height: 10px;
   }
 }
