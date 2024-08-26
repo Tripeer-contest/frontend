@@ -10,7 +10,6 @@ const HomeBanner = () => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.title}>취향에 맞는 여행지를 찾아보세요</p>
       <HomeCityBanner />
       <HomeCategoryChips title={'지역별'} arr={h_townList} />
       <HomeCategoryChips title={'카테고리별'} arr={categoryList} />

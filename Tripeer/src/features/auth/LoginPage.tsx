@@ -1,5 +1,5 @@
 import LoginLayout from './layout/LoginLayout';
-import Logo from '../../assets/full_logo.webp';
+import Logo from '../../../public/logo/logo_4.png';
 import styles from './login.module.css';
 import { Link } from 'react-router-dom';
 import SocialButton from './components/SocialButton';

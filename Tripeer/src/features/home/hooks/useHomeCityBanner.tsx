@@ -19,6 +19,16 @@ const useHomeCityBanner = () => {
     useShallow((state) => [state.h_setTownList, state.h_setNowCityId]),
   );
 
+  const changeIdx = (idx: number) => {
+    if (idx === 0) {
+      return -1;
+    } else if (idx > 8) {
+      return idx + 22;
+    } else {
+      return idx;
+    }
+  };
+
   const cityClickHandler = (city: RegionType) => {
     const cityId = city.cityId === 0 ? -1 : city.cityId;
 
@@ -41,7 +51,7 @@ const useHomeCityBanner = () => {
     },
   });
 
-  return { cityClickHandler };
+  return { cityClickHandler, changeIdx };
 };
 
 export default useHomeCityBanner;
