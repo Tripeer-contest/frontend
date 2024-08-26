@@ -1,16 +1,22 @@
-import { MainItem } from '../../types/ItemTypes';
+import { ItemInfo, MainItem } from '../../types/ItemTypes';
 import { getRateImg } from '../../utils/rating';
 import fullHeart from '../../assets/button/full_heart.svg';
 import heart from '../../assets/button/heart.svg';
 import styles from './assets/maincard.module.css';
+import { wishItem } from '../../features/cart/types/wishListItem';
 
 export default function MainCard({
-  userInfo,
   itemInfo,
   itemClickHandler,
   heartClickHandler,
 }: MainItem) {
-  const heartSrc = userInfo.isLike ? fullHeart : heart;
+  const heartSrc = itemInfo.isLike ? fullHeart : heart;
+
+  const likeChange = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+    heartClickHandler && heartClickHandler();
+  };
+
   return (
     <div onClick={itemClickHandler} className={styles.container}>
       <div className={styles.imgBox}>
@@ -19,7 +25,7 @@ export default function MainCard({
           src={heartSrc}
           alt="heart"
           className={styles.heart}
-          onClick={heartClickHandler}
+          onClick={likeChange}
         />
       </div>
       <div className={styles.itemInfo}>
@@ -39,4 +45,15 @@ export default function MainCard({
       </div>
     </div>
   );
+}
+
+export function wishItemToItemInfo(item: wishItem): ItemInfo {
+  return {
+    itemName: item.title,
+    categoryName: item.contentType,
+    location: item.addr,
+    img: item.img,
+    rating: item.starPointAvg,
+    isLike: item.like,
+  };
 }

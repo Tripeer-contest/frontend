@@ -16,6 +16,7 @@ import { Suspense } from 'react';
 import CommonLoading from './components/loading/CommonLoading.tsx';
 import HomePage from './features/home/HomePage.tsx';
 import ImgPage from './features/img/ImgPage';
+import useViewport from './hooks/useViewport.tsx';
 
 const router = createBrowserRouter([
   {
@@ -35,8 +36,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/diary',
-        element: <DiaryPage />,
-        loader: protectRouter(),
+        element: (
+          <Suspense fallback={<CommonLoading />}>
+            <DiaryPage />
+          </Suspense>
+        ),
+        // loader: protectRouter(),
       },
       {
         path: '/home',
@@ -82,6 +87,7 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient();
 
 function App() {
+  useViewport();
   return (
     <>
       <QueryClientProvider client={queryClient}>

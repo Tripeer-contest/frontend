@@ -5,7 +5,8 @@
 
 @media screen and (min-width: 1300px) {
   .container {
-    height: calc(100vh - 85px);
+    height: calc(100% - 85px);
+    height: calc(var(--vh, 1vh) * 100 - 85px);
     margin: 0 auto 0 auto;
     overflow-y: scroll;
   }
@@ -13,8 +14,10 @@
 
 @media screen and (max-width: 1300px) {
   .container {
-    height: calc(100vh - 125px);
+    height: calc(100% - 125px);
+    height: calc(var(--vh, 1vh) * 100 - 125px);
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 

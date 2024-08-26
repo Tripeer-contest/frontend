@@ -13,13 +13,15 @@ export default function CartHeader() {
   ]);
   const regions = RegionFilter(wishListApi?.data);
   return (
-    <header className={styles.header}>
+    <>
       {regions.length > 0 ? (
-        <>
-          <h1 className={styles.title}>{'"잊지 말고 다시 확인해보세요"'}</h1>
-          <RegionCategory category={regions} />
-        </>
+        <header className={styles.header}>
+          <>
+            <h1 className={styles.title}>{'"잊지 말고 다시 확인해보세요"'}</h1>
+            <RegionCategory category={regions} />
+          </>
+        </header>
       ) : undefined}
-    </header>
+    </>
   );
 }

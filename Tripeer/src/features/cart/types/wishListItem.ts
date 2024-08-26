@@ -9,6 +9,8 @@ export interface wishItem {
   latitude: number;
   longitude: number;
   img: string;
+  like: boolean;
+  starPointAvg: number;
 }
 
 export interface wishListAPI {
