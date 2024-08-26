@@ -1,7 +1,7 @@
 import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../store/store.tsx';
 
-const useCategoryChip = () => {
+const useTownChip = () => {
   const [h_nowTownId, h_setNowTownId] = zustandStore(
     useShallow((state) => [state.h_nowTownId, state.h_setNowTownId]),
   );
@@ -15,4 +15,4 @@ const useCategoryChip = () => {
   return { chipClickHandler };
 };
 
-export default useCategoryChip;
+export default useTownChip;

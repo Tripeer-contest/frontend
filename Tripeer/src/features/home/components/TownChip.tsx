@@ -1,5 +1,5 @@
 import styles from '../modules/townChip.module.css';
-import useCategoryChip from '../hooks/useCategoryChip.tsx';
+import useTownChip from '../hooks/useTownChip.tsx';
 import zustandStore from '../../../store/store.tsx';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 const TownChip = ({ title, id }: Props) => {
   const h_nowTownId = zustandStore((state) => state.h_nowTownId);
-  const { chipClickHandler } = useCategoryChip();
+  const { chipClickHandler } = useTownChip();
 
   return (
     <div
