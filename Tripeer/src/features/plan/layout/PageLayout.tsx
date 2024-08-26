@@ -5,9 +5,5 @@ import styles from '../assets/page.module.css';
 import { ReactNode } from 'react';
 
 export default function PageLayout({ children }: { children: ReactNode }) {
-  return (
-    <div className={styles.container}>
-      <div className={styles.scene}>{children}</div>
-    </div>
-  );
+  return <div className={styles.container}>{children}</div>;
 }

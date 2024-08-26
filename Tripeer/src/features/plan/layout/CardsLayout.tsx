@@ -21,10 +21,8 @@ const breakpoints = {
 
 export default function CardsLayout({ children }: { children: ReactNode }) {
   return (
-    <main className={styles.box}>
-      <Swiper breakpoints={breakpoints} className={styles.swiper}>
-        {children}
-      </Swiper>
-    </main>
+    <Swiper slidesPerView={'auto'} style={{ margin: 0 }} spaceBetween={20}>
+      {children}
+    </Swiper>
   );
 }

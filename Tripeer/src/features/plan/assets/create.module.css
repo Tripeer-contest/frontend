@@ -5,7 +5,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 300px;
+  height: 300px;
   border-radius: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -26,7 +27,7 @@
   font-size: 1.3rem;
 }
 
-@media screen and (min-width: 1300px),
+/* @media screen and (min-width: 1300px),
   screen and (max-width: 1300px) and (max-aspect-ratio: 1/1),
   screen and (max-width: 1300px) and (min-aspect-ratio: 1/1),
   screen and (max-width: 730px) {
@@ -46,4 +47,4 @@
   .card {
     height: calc(100% - 10px);
   }
-}
+} */
