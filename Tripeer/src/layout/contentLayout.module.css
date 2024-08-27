@@ -20,7 +20,6 @@
         height: 100vh;
         display: grid;
         grid-template-columns: auto 1000px auto;
-
     }
 
     .ContentLayout aside{

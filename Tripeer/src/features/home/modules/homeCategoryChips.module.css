@@ -1,31 +1,67 @@
-.container{
-    display: flex;
-    height: 40px;
-    align-items: center;
-    margin-top: 10px;
+@media screen and (min-width: 600px) {
+    .container{
+        display: flex;
+        height: 40px;
+        width: 100%;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .title{
+        color: #979797;
+        font-size: 0.9rem;
+        width: 110px;
+        font-weight: 600;
+    }
+
+    .line{
+        border: #ccc 1px solid;
+        height: 30px;
+        margin-right: 20px;
+    }
+
+    .chipBox{
+        width: fit-content;
+        height: 40px;
+        display: flex;
+        align-items: center;
+    }
+
+    .swiper{
+        width: 1000px;
+    }
 }
 
-.title{
-    color: #979797;
-    font-size: 0.9rem;
-    width: 110px;
-    font-weight: 600;
-    margin-left: 10px;
-}
+@media screen and (max-width: 600px) {
+    .container{
+        display: flex;
+        height: 30px;
+        width: 100%;
+        align-items: center;
+        margin-top: 10px;
+    }
 
-.line{
-    border: #ccc 1px solid;
-    height: 30px;
-    margin-right: 20px;
-}
+    .title{
+        color: #979797;
+        font-size: 0.7rem;
+        width: 250px;
+        font-weight: 600;
+    }
 
-.chipBox{
-    width: fit-content;
-    height: 40px;
-    display: flex;
-    align-items: center;
-}
+    .line{
+        border: #ccc 1px solid;
+        height: 25px;
+        margin-right: 10px;
+    }
 
-.swiper{
-    width: 1000px;
+    .chipBox{
+        width: fit-content;
+        height: 40px;
+        display: flex;
+        align-items: center;
+    }
+
+    .swiper{
+        width: 1000px;
+    }
 }

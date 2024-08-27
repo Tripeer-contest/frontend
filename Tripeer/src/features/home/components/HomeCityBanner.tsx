@@ -4,11 +4,14 @@ import useHomeCityBanner from '../hooks/useHomeCityBanner.tsx';
 import { Region as cityList } from '../../../data/RegionCategory.ts';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import zustandStore from '../../../store/store.tsx';
+import useSticky from '../hooks/useSticky.tsx';
 
 const HomeCityBanner = () => {
   const { cityClickHandler, changeIdx } = useHomeCityBanner();
 
   const h_nowCityId = zustandStore((state) => state.h_nowCityId);
+
+  useSticky();
 
   return (
     <div className={styles.container}>
@@ -25,7 +28,7 @@ const HomeCityBanner = () => {
               <img
                 src={city.img}
                 alt={city.name}
-                className={id === h_nowCityId ? styles.check : ''}
+                className={id !== h_nowCityId ? styles.check : ''}
               />
             </SwiperSlide>
           );
