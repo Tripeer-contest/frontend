@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
 import styles from './firstSlide.module.css';
 import useAnimation from '../hook/useAnimation';
-import { useRef } from 'react';
+import firstImg from '../assets/firstSlideImg.png';
 
 interface Props {
   scrollTop: () => void;
@@ -39,8 +40,9 @@ export default function FirstSlide({ scrollTop }: Props): JSX.Element {
           </Link>
         </article>
       </section>
-      <figure className={styles.box2}>
-        <div className={styles.banner} ref={bannerRef}></div>
+      <figure className={styles.box2} ref={bannerRef}>
+        <img className={styles.banner} src={firstImg} alt="landing-img" />
+        <div></div>
       </figure>
     </main>
   );

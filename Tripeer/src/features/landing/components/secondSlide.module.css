@@ -1,229 +1,228 @@
-
-.title{
-    transition:1s ease-out;
-    opacity: 0;
-    transform: translateY(30px);
+.title {
+  transition: 1s ease-out;
+  opacity: 0;
+  transform: translateY(30px);
 }
 .subTitle {
-transition:1.2s ease-out;
+  transition: 1.2s ease-out;
   opacity: 0;
   transform: translateY(50px);
 }
-.banner{
-    opacity: 0;
-    transform: translateX(50px);
-    transition:
-      opacity 0.8s ease-out,
-      transform 0.8s ease-out;
+.banner {
+  opacity: 0;
+  transform: translateX(50px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
-.bannerBackLeft{
-    opacity: 0;
-    transform: translateX(50px);
-    transition:
-      opacity 0.4s ease-out,
-      transform 0.4s ease-out;
-      z-index: 1;
+.bannerBackLeft {
+  opacity: 0;
+  transform: translateX(50px);
+  transition:
+    opacity 0.4s ease-out,
+    transform 0.4s ease-out;
+  z-index: 1;
 }
-.bannerBackRight{
-    opacity: 0;
-    transform: translateX(50px);
-    transition:
-      opacity 1.2s ease-out,
-      transform 1.2s ease-out;
-    z-index: 2;
+.bannerBackRight {
+  opacity: 0;
+  transform: translateX(50px);
+  transition:
+    opacity 1.2s ease-out,
+    transform 1.2s ease-out;
+  z-index: 2;
 }
-@media screen and (max-width: 860px){
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 100vw;
-        height: 100vh;
-    }
-    .box2{
-        display: none;
-        width: 100%;
-        height: 300px;
-    }
-    .box1{
-        position: relative;
-        width: 100%;
-        height: 100%;
-        padding-top: 60px;
-        padding-left: 20px;
-        padding-bottom: 100px;
-        background-image: url("../../../assets/pictures/tourist.webp");
-        background-position: center;
-        background-size: cover;
-    }
-    .box1::before{
-        content: "";
-        opacity: 0.5;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #000000;
-    }
-    .box1 .titleBox{
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        justify-content: end;
-        height: 100%;
-        margin-bottom: 30px;
-        padding-right: 20px;
-    }
-    .title{
-        width: 100%;
-        font-size: 1.5em;
-        font-weight: bold;
-        line-height: 210%;
-        text-align: right;
-        color: #ffffff;
-    }
-    .subTitle{
-        width: 100%;
-        color: #bcbcbc;
-        line-height: 160%;
-        text-align: right;
-    }
-} 
-
- @media screen and (min-width: 861px){
-    .container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        height: 100vh;
-    }
-    .box1{
-        width: 55%;
-        height: 500px;
-        display: flex;
-        align-items: center;
-        padding-left: 20px;
-
-    }
-    .box2{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 45%;
-        height: 500px;
-    }
-    .bannerBack{
-        position: relative;
-        width: 400px;
-        height: 300px;
-    }
-    .banner{
-        position: absolute;
-        width: 400px;
-        height: 300px;
-        background-image: url("../../../assets/pictures/tourist.webp");
-        background-position: center;
-        background-size: cover;
-    }
-    .bannerBackLeft{
-        width: 400px;
-        height: 300px;
-        position: absolute;
-        background-color: #AAE9E6;
-        top: 10px;
-        left: -10px;
-        z-index: -5;
-    }
-    .bannerBackRight{
-        width: 400px;
-        height: 300px;
-        position: absolute;
-        background-color: #59A4A0;
-        top: -10px;
-        left: 10px;
-        z-index: -10;
-    }
-
-
-    .title{
-        font-size: 1.8em;
-        font-weight: bold;
-       line-height: 210%;
-    }
-
-    .title br{
-        display: none;
-    }
-
-    .subTitle{
-        color: #606060;
-        line-height: 210%;
-    }
+@media screen and (max-width: 860px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100vw;
+    height: 100vh;
+  }
+  .box2 {
+    display: none;
+    width: 100%;
+    height: 300px;
+  }
+  .box1 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-bottom: 100px;
+    background-image: url('../assets/tourist.webp');
+    background-position: center;
+    background-size: cover;
+  }
+  .box1::before {
+    content: '';
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+  }
+  .box1 .titleBox {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: end;
+    height: 100%;
+    margin-bottom: 30px;
+    padding-right: 20px;
+  }
+  .title {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 210%;
+    text-align: right;
+    color: #ffffff;
+  }
+  .subTitle {
+    width: 100%;
+    color: #bcbcbc;
+    line-height: 160%;
+    text-align: right;
+  }
 }
 
-@media screen and (min-width: 1250px){
-    .container {
-        display: flex;
-        flex-direction: row;
-        height: 100vh;
-        width: 100vw;
-        overflow-x: hidden;
-    }
-    .box1{
-        width: 55%;
-        height: 500px;
-        display: flex;
-        align-items: center;
-        padding-left: 50px;
-    }
-    .box2{
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        width: 45%;
-        height: 500px;
-    }
-    .bannerBack{
-        position: relative;
-        width: 500px;
-        height: 400px;
-    }
-    .banner{
-        position: absolute;
-        width: 500px;
-        height: 400px;
-        background-image: url("../../../assets/pictures/tourist.webp");
-        background-position: center;
-        background-size: cover;
-    }
-    .bannerBackLeft{
-        width: 500px;
-        height: 400px;
-        position: absolute;
-        background-color: #AAE9E6;
-        top: 10px;
-        left: -10px;
-        z-index: -5;
-    }
-    .bannerBackRight{
-        width: 500px;
-        height: 400px;
-        position: absolute;
-        background-color: #59A4A0;
-        top: -10px;
-        left: 10px;
-        z-index: -10;
-    }
-    .title{
-        font-size: 2em;
-        font-weight: bold;
-        line-height: 210%;
-    }
-    .subTitle{
-        color: #606060;
-        font-size: 1.2rem;
-        line-height: 210%;
-    }
+@media screen and (min-width: 861px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+  }
+  .box1 {
+    width: 55%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+  .box2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 500px;
+  }
+  .bannerBack {
+    position: relative;
+    width: 400px;
+    height: 300px;
+  }
+  .banner {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+  }
+
+  .bannerImg {
+    width: 100%;
+    height: 100%;
+  }
+  .bannerBackLeft {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    background-color: #aae9e6;
+    top: 10px;
+    left: -10px;
+    z-index: -5;
+  }
+  .bannerBackRight {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    background-color: #59a4a0;
+    top: -10px;
+    left: 10px;
+    z-index: -10;
+  }
+
+  .title {
+    font-size: 1.8em;
+    font-weight: bold;
+    line-height: 210%;
+  }
+
+  .title br {
+    display: none;
+  }
+
+  .subTitle {
+    color: #606060;
+    line-height: 210%;
+  }
 }
 
+@media screen and (min-width: 1250px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  .box1 {
+    width: 55%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+  }
+  .box2 {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 45%;
+    height: 500px;
+  }
+  .bannerBack {
+    position: relative;
+    width: 500px;
+    height: 400px;
+  }
+  .banner {
+    position: absolute;
+    width: 500px;
+    height: 400px;
+  }
+  .bannerImg {
+    width: 100%;
+    height: 100%;
+  }
+  .bannerBackLeft {
+    width: 500px;
+    height: 400px;
+    position: absolute;
+    background-color: #aae9e6;
+    top: 10px;
+    left: -10px;
+    z-index: -5;
+  }
+  .bannerBackRight {
+    width: 500px;
+    height: 400px;
+    position: absolute;
+    background-color: #59a4a0;
+    top: -10px;
+    left: 10px;
+    z-index: -10;
+  }
+  .title {
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 210%;
+  }
+  .subTitle {
+    color: #606060;
+    font-size: 1.2rem;
+    line-height: 210%;
+  }
+}
