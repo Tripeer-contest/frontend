@@ -9,8 +9,10 @@ import useModal from '../../../hooks/useModal';
 import useDeletePlan from '../hooks/useDeletePlan';
 import { useEffect } from 'react';
 import MutationLoading from '../../../components/loading/MutationLoading';
+import { useNavigate } from 'react-router-dom';
 
 export default function PlanCard({ data }: { data: PlanCardType }) {
+  const navigate = useNavigate();
   const startDay = makeDayToFullString(data.startDay);
   const endDay = makeDayToFullString(data.endDay);
   const Modal = useModal();
@@ -18,6 +20,15 @@ export default function PlanCard({ data }: { data: PlanCardType }) {
 
   const deletePlan = (idx: number) => {
     mutation.mutate(idx);
+  };
+
+  const deleteClickHandler = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    Modal.open();
+  };
+
+  const cardClickHandler = () => {
+    navigate(`/plan/detail/${data.planId}`);
   };
 
   useEffect(() => {
@@ -28,7 +39,7 @@ export default function PlanCard({ data }: { data: PlanCardType }) {
 
   return (
     <>
-      <div className={styles.card}>
+      <div className={styles.card} onClick={cardClickHandler}>
         <img src={data.img} alt="location-img" className={styles.cardImg} />
         <div className={styles.cardInfo}>
           <p className={styles.cardTitle}>{data.title}</p>
@@ -57,30 +68,28 @@ export default function PlanCard({ data }: { data: PlanCardType }) {
           src={deleteBtn}
           alt="delete-btn"
           className={styles.deleteBtn}
-          onClick={Modal.open}
+          onClick={deleteClickHandler}
         />
-        <Modal.ModalLayout className={styles.modalContainer}>
-          <div className={styles.modalBox}>
-            <h3 className={styles.modalContent}>
-              해당 플랜을 삭제하시겠습니까
-            </h3>
-            <div className={styles.btnBox}>
-              <button
-                className={styles.btn}
-                onClick={() => {
-                  deletePlan(data.planId);
-                }}
-              >
-                예
-              </button>
-              <button className={styles.btn} onClick={Modal.close}>
-                아니요
-              </button>
-            </div>
-          </div>
-        </Modal.ModalLayout>
-        <MutationLoading isShow={mutation.isPending} />
       </div>
+      <Modal.ModalLayout className={styles.modalContainer}>
+        <div className={styles.modalBox}>
+          <h3 className={styles.modalContent}>해당 플랜을 삭제하시겠습니까</h3>
+          <div className={styles.btnBox}>
+            <button
+              className={styles.btn}
+              onClick={() => {
+                deletePlan(data.planId);
+              }}
+            >
+              예
+            </button>
+            <button className={styles.btn} onClick={Modal.close}>
+              아니요
+            </button>
+          </div>
+        </div>
+      </Modal.ModalLayout>
+      <MutationLoading isShow={mutation.isPending} />
     </>
   );
 }
