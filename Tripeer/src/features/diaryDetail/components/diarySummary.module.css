@@ -1,0 +1,78 @@
+.imgSection {
+  width: 100%;
+}
+.diaryImg {
+  width: 100%;
+  border-radius: 5px;
+}
+.textSection {
+  padding-left: 20px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.title {
+  font-size: 1.8rem;
+}
+.icon {
+  height: 20px;
+  width: 20px;
+}
+.subTitle {
+  font-weight: bold;
+  color: #4fbdb7;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.textBox {
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+.contentText {
+  margin-left: 10px;
+}
+.memberBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+.memberImg {
+  height: 40px;
+  width: 40px;
+  border: 1px solid #4fbdb7;
+  border-radius: 50px;
+}
+
+.memberNick {
+  margin-left: 5px;
+}
+@media screen and (max-width: 1000px) {
+  .mainBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .diaryImg {
+    width: 90%;
+    height: 320px;
+    border-radius: 10px;
+    margin: 5%;
+    object-fit: cover;
+  }
+  .textSection {
+    padding-left: 25px;
+    padding-right: 25px;
+    display: grid;
+    grid-template-rows: 50px 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1001px) {
+  .mainBox {
+    display: grid;
+    grid-template-columns: 500px auto;
+    width: 100%;
+  }
+}

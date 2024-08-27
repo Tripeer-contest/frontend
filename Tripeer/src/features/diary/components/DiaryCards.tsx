@@ -6,6 +6,7 @@ import { DiaryItem } from '../../../types/DiaryTypes';
 import useDeleteDiary from '../hook/useDeleteDiary';
 import { useState } from 'react';
 import MutationLoading from '../../../components/loading/MutationLoading';
+import { useNavigate } from 'react-router-dom';
 
 export default function DiaryCards({
   diaryListData,
@@ -15,17 +16,28 @@ export default function DiaryCards({
   const [planId, setPlanId] = useState(0);
   const { open, DeleteModal } = useDeleteModal();
   const { mutate, isPending } = useDeleteDiary();
+  const navigate = useNavigate();
 
   const openHandler = (id: number) => {
     setPlanId(id);
     open();
   };
 
+  const goDiaryDetail = (planId: number) => {
+    navigate(`/diary/detail/${planId}`);
+  };
+
   return (
     <main className={styles.cardsBox}>
       {diaryListData.map((item, idx) => {
         return (
-          <div className={styles.diaryCard} key={idx}>
+          <div
+            className={styles.diaryCard}
+            key={idx}
+            onClick={() => {
+              goDiaryDetail(item.planId);
+            }}
+          >
             <img
               className={styles.topDeleteBtn}
               src={deleteWhiteBtn}
