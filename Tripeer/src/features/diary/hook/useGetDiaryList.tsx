@@ -1,8 +1,9 @@
 import { useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
-import getDiaryList from '../api/getDiary';
+import getDiaryList from '../api/getDiaryList';
+
 import { DiaryListAPI } from '../../../types/DiaryTypes';
 
-export default function useGetDiaryQuery() {
+export default function useGetDiaryListQuery() {
   const { data } = useSuspenseQuery({
     queryKey: ['diaryList'],
     queryFn: getDiaryList,
