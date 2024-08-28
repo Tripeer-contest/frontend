@@ -6,6 +6,8 @@ import { DiaryItem } from '../../../types/DiaryTypes';
 import useDeleteDiary from '../hook/useDeleteDiary';
 import { useState } from 'react';
 import MutationLoading from '../../../components/loading/MutationLoading';
+import { useNavigate } from 'react-router-dom';
+import { makeDayToFullYearString } from '../../../utils/utilDate';
 
 export default function DiaryCards({
   diaryListData,
@@ -15,17 +17,28 @@ export default function DiaryCards({
   const [planId, setPlanId] = useState(0);
   const { open, DeleteModal } = useDeleteModal();
   const { mutate, isPending } = useDeleteDiary();
+  const navigate = useNavigate();
 
   const openHandler = (id: number) => {
     setPlanId(id);
     open();
   };
 
+  const goDiaryDetail = (planId: number) => {
+    navigate(`/diary/detail/${planId}`);
+  };
+
   return (
     <main className={styles.cardsBox}>
       {diaryListData.map((item, idx) => {
         return (
-          <div className={styles.diaryCard} key={idx}>
+          <div
+            className={styles.diaryCard}
+            key={idx}
+            onClick={() => {
+              goDiaryDetail(item.planId);
+            }}
+          >
             <img
               className={styles.topDeleteBtn}
               src={deleteWhiteBtn}
@@ -44,14 +57,37 @@ export default function DiaryCards({
                 />
               </div>
               <div className={styles.centerBox}>
-                <p className={styles.topSubtitle}>{item.townList}</p>
+                {item.townList.map((town, idx) => {
+                  return (
+                    <p key={idx} className={styles.topSubtitle}>
+                      {idx === item.townList.length - 1 ? (
+                        <span>{town}</span>
+                      ) : (
+                        <span>{town},</span>
+                      )}
+                    </p>
+                  );
+                })}
                 <div className={styles.bottomBox}>
                   <p>
-                    {item.startDay} ~ {item.endDay}
+                    {makeDayToFullYearString(item.startDay)} ~{' '}
+                    {makeDayToFullYearString(item.endDay)}
                     <span>, {item.member.length}명</span>
                   </p>
                 </div>
-                <p className={styles.bottomSubtitle}>{item.townList}</p>
+                <p className={styles.bottomSubtitle}>
+                  {item.townList.map((town, idx) => {
+                    return (
+                      <p key={idx}>
+                        {idx === item.townList.length - 1 ? (
+                          <span>{town}</span>
+                        ) : (
+                          <span>{town},</span>
+                        )}
+                      </p>
+                    );
+                  })}
+                </p>
                 <div className={styles.detailBtn}>
                   <p className={styles.detailText}>상세보기</p>
                 </div>

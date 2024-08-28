@@ -101,3 +101,13 @@ export const makeDayToFullString = (day: string) => {
   result += `(${week[new Date(day).getDay()]})`;
   return result;
 };
+
+export const makeDayToFullYearString = (day: string) => {
+  const dayInfo = day.split('-');
+  let result = '';
+  result += dayInfo[0].replace(/^0+/, '').substring(2) + '년 ';
+  result += dayInfo[1].replace(/^0+/, '') + '월 ';
+  result += dayInfo[2].replace(/^0+/, '') + '일';
+  result += `(${week[new Date(day).getDay()]})`;
+  return result;
+};

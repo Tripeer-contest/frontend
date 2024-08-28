@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-size: 18px;
+  color: #262626;
+}
+
+.cardPosting {
+  width: 300px;
+  height: 140px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  display: flex;
+  gap: 8px;
+}
+
+.img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.contentInfo {
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infoTitle {
+  color: #545454;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.infoContent {
+  font-size: 14px;
+  color: #6d6d6d;
+}
+
+.dayInfo {
+  font-weight: 500;
+  font-size: 12px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  color: #6d6d6d;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    padding-left: 20px;
+  }
+}

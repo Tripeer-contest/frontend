@@ -5,9 +5,13 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 
-export default function TripeerRecommends() {
+export default function TripeerRecommends({
+  className,
+}: {
+  className?: string;
+}) {
   return (
-    <figure className={styles.container}>
+    <figure className={`${styles.container} ${className}`}>
       <h3>트리피어가 추천하는 여행지 둘러보기</h3>
       <Swiper
         slidesPerView={'auto'}

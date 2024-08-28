@@ -1,183 +1,165 @@
-@media screen and (max-width: 860px){
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 100vh;
-        
-    }
-    .box1{
-        width: 100%;
-        padding-top: 60px;
-        padding-left: 20px;
-        padding-bottom: 80px;
-    }
-    .box2{
-        width: 100%;
-        height: 300px;
-
-    }
-    .banner{
-        height: 100%;
-        width: 100%;
-        background-image: url("../../../assets/pictures/beach.webp");
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    .title{
-        font-size: 1.7em;
-        font-weight: bold;
-        margin-bottom: 30px;
-    }
-    .subTitle{
-        color: #606060;
-    }
-    .startBtn{
-        font-size: 1rem;
-        padding: 12px 40px;
-        border: none;
-        border-radius: 5px;
-        background-color:#04acb5;
-        color: white;
-        transition: all 0.4s;
-        overflow: hidden;
-        cursor: pointer;
-        margin-top: 30px;
-        display: inline-block;
-        text-decoration: none;
-
-    }
-    .startBtn:hover{
-        transform: scale(1.01);
-    }
+@media screen and (max-width: 860px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+  }
+  .box1 {
+    width: 100%;
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-bottom: 80px;
+  }
+  .box2 {
+    width: 100%;
+    height: 300px;
+  }
+  .banner {
+    height: 100%;
+    width: 100%;
+  }
+  .title {
+    font-size: 1.7em;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .subTitle {
+    color: #606060;
+  }
+  .startBtn {
+    font-size: 1rem;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #04acb5;
+    color: white;
+    transition: all 0.4s;
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: 30px;
+    display: inline-block;
+    text-decoration: none;
+  }
+  .startBtn:hover {
+    transform: scale(1.01);
+  }
 }
 
-@media screen and (min-width: 861px){
-    .container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        height: 100vh;
-    }
-    .box1{
-        width: 50%;
-        height: 500px;
-        display: flex;
-        align-items: center;
-        padding-left: 30px;
-
-        
-    }
-    .box2{
-        width: 50%;
-        height: 500px;
-
-    }
-    .banner{
-        width: 100%;
-        height: 100%;
-        background-image: url("../../../assets/pictures/beach.webp");
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    .title{
-        font-size: 2em;
-        font-weight: bold;
-        margin-bottom: 30px;
-    }
-    .subTitle{
-        color: #606060;
-    }
-    .startBtn{
-        font-size: 1.3rem;
-        padding: 12px 40px;
-        border: none;
-        border-radius: 5px;
-        background-color:#04acb5;
-        color: white;
-        font-weight: 500;
-        transition: all 0.4s;
-        overflow: hidden;
-        cursor: pointer;
-        margin-top: 30px;
-        display: inline-block;
-        text-decoration: none;
-
-    }
-    .startBtn:hover{
-        transform: scale(1.05);
-    }
-}
-
-@media screen and (min-width: 1250px){
-    .container {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        height: 100vh;
-    }
-    .box1{
-        width: 50%;
-        height: 500px;
-        display: flex;
-        align-items: center;
-        padding-left: 70px;
-        
-    }
-    .box2{
-        width: 50%;
-        height: 500px;
+@media screen and (min-width: 861px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+  }
+  .box1 {
+    width: 50%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  .box2 {
+    width: 50%;
+    height: 500px;
+  }
+  .banner {
+    width: 100%;
+    height: 100%;
   }
 
-    .banner{
-        width: 100%;
-        height: 100%;
-        background-image: url("../../../assets/pictures/beach.webp");
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+  .title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .subTitle {
+    color: #606060;
+  }
+  .startBtn {
+    font-size: 1.3rem;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #04acb5;
+    color: white;
+    font-weight: 500;
+    transition: all 0.4s;
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: 30px;
+    display: inline-block;
+    text-decoration: none;
+  }
+  .startBtn:hover {
+    transform: scale(1.05);
+  }
+}
 
-    .title{
-        font-size: 3em;
-        font-weight: bold;
-        margin-bottom: 30px;
-    }
-    .subTitle{
-        color: #606060;
-        font-size: 1.5rem;
-    }
-    
+@media screen and (min-width: 1250px) {
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 100vh;
+  }
+  .box1 {
+    width: 50%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    padding-left: 70px;
+  }
+  .box2 {
+    width: 50%;
+    height: 500px;
+  }
+
+  .banner {
+    width: 100%;
+    height: 100%;
+  }
+
+  .title {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .subTitle {
+    color: #606060;
+    font-size: 1.5rem;
+  }
 }
 
 .title {
-    opacity: 0;
-    transform: translateY(50px);
-    transition:
-      opacity 0.8s ease-out,
-      transform 0.8s ease-out;
-  }
-  
-  .subTitle {
-    opacity: 0;
-    transform: translateY(50px);
-    transition:
-      opacity 1s ease-out,
-      transform 1s ease-out;
-  }
-  
-  .startBtn {
-    opacity: 0;
-    transform: translateY(50px);
-    transition:
-      opacity 1.5s ease-out,
-      transform 1.5s ease-out;
-  }
-  
-  .banner{
-    opacity: 0;
-    transform: translateY(100px);
-    transition:
-      opacity 1s ease-out,
-      transform 1s ease-out;
-  }
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+.subTitle {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
+}
+
+.startBtn {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 1.5s ease-out,
+    transform 1.5s ease-out;
+}
+
+.box2 {
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
+}

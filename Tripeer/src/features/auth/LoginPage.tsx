@@ -1,10 +1,10 @@
 import LoginLayout from './layout/LoginLayout';
-import Logo from '../../../public/logo/logo_4.png';
+import Logo from '../../assets/logo.webp';
 import styles from './login.module.css';
 import { Link } from 'react-router-dom';
 import SocialButton from './components/SocialButton';
 import React from 'react';
-import src from './assets/bottom.png';
+import src from './assets/bottom.svg';
 
 interface Props {
   loginRef: React.RefObject<HTMLDivElement>;
@@ -14,7 +14,7 @@ export default function LoginPage({ loginRef }: Props) {
   return (
     <LoginLayout>
       <Link to="/">
-        <img src={Logo} alt="tripeer-logo-full" className={styles.Logo} />
+        <img src={Logo} alt="tripeer-logo" className={styles.Logo} />
       </Link>
       <div className={styles.borderBox} ref={loginRef}>
         <div className={styles.line} />
@@ -25,8 +25,8 @@ export default function LoginPage({ loginRef }: Props) {
       <SocialButton social="kakao" />
       <SocialButton social="naver" />
       <div className={styles.center}>
-        <p>Tripeer 더 알아보기</p>
         <img src={src} alt={'bottom'} />
+        <p>About Tripeer</p>
       </div>
     </LoginLayout>
   );

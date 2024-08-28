@@ -1,0 +1,59 @@
+.header {
+  position: relative;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  display: flex;
+}
+
+.heart {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+}
+
+.page {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 34px;
+  height: 24px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.27);
+  z-index: 1;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 1000px) {
+  .header {
+    margin-top: 50px;
+  }
+  .container {
+    border-radius: 5px;
+  }
+  .img {
+    border-radius: 5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    height: 300px;
+  }
+}
