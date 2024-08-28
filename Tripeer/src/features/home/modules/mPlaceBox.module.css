@@ -11,13 +11,31 @@
         align-items: center;
         width: 250px;
         height: 100px;
-        border: black 1px solid;
+    }
+
+    .imageBox{
+        width: 100px;
+        height: 100px;
+        position: relative;
     }
 
     .image{
         width: 100px;
         height: 100px;
         border-radius: 5px
+    }
+
+    .like{
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    .like:hover{
+        transform: scale(1.1);
     }
 
     .description{
@@ -27,7 +45,7 @@
         flex-direction: column;
         align-items: start;
         justify-content: center;
-        background-color: red;
+        padding: 0 0 0 10px;
     }
 
     .description p {
@@ -42,8 +60,26 @@
     }
 
     .title{
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: bold;
         color: #545454;
+        width: 130px;
+        margin-bottom: 8px;
+    }
+
+    .ratingImg{
+        height: 10px;
+    }
+
+    .ratingP{
+        font-size: 0.6rem;
+        color: #BABABA;
+    }
+
+    .desP{
+        font-size: 0.7rem;
+        color: #BABABA;
+        width: 130px;
+        margin-top: 5px;
     }
 }
