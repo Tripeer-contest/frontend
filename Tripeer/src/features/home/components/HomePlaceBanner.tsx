@@ -3,6 +3,7 @@ import { useGetPlaceList } from '../hooks/useGetPlaceList.tsx';
 import { PlaceType } from '../../../types/PlaceType.ts';
 
 const HomePlaceBanner = () => {
+  // 임시
   // const { data, isLoading, fetchNextPage, hasNextPage } = useGetPlaceList();
   const { data, isLoading, hasNextPage } = useGetPlaceList();
 
