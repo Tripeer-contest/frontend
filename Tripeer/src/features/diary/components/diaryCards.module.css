@@ -49,6 +49,7 @@
   }
   .topSubtitle {
     font-size: 1em;
+    display: inline;
   }
   .bottomSubtitle {
     display: none;
@@ -194,6 +195,8 @@
   .bottomSubtitle {
     font-size: 0.9em;
     margin-top: 10px;
+    display: flex;
+    flex-direction: row;
   }
   .bottomBox {
     display: flex;
