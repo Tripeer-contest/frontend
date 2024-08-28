@@ -10,8 +10,9 @@ export default function TripeerRecommends({
 }: {
   className?: string;
 }) {
+  const container = className ? className : styles.container;
   return (
-    <figure className={`${styles.container} ${className}`}>
+    <figure className={container}>
       <h3>트리피어가 추천하는 여행지 둘러보기</h3>
       <Swiper
         slidesPerView={'auto'}

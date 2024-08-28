@@ -4,7 +4,6 @@ import { EmptyInterface } from '../../../types/EmptyTypes';
 import { useGetDiaryList } from '../hook/useGetDiaryList';
 import DiaryCards from './DiaryCards';
 import TripeerRecommends from '../../../components/empty/TripeerRecommends';
-import mapIcon from '../assets/mapIcon.svg';
 import styles from './diaryCards.module.css';
 
 export default function DiaryItem() {
@@ -23,8 +22,7 @@ export default function DiaryItem() {
       {data.length > 0 ? (
         <>
           <div className={styles.titleBox}>
-            <img className={styles.titleIcon} src={mapIcon} alt="map-icon" />
-            <h1 className={styles.titleText}>나의 지나온 여행</h1>
+            <h1 className={styles.titleText}>&quot;나의 지나온 여행&quot;</h1>
           </div>
           <DiaryCards diaryListData={data} />
         </>
@@ -33,7 +31,7 @@ export default function DiaryItem() {
           <EmptyBox {...emptyBoxProps} />
         </>
       )}
-      <TripeerRecommends />
+      <TripeerRecommends className={styles.recommendBox} />
     </>
   );
 }
