@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from './assets/logo.png';
+import logo from '../../../public/logo/logo_4.png';
 import styles from './redirectPage.module.css';
 
 export default function RedirectPage() {
