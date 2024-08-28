@@ -21,7 +21,6 @@ export default function DiarySummary() {
     { nickname: '초코초코비', profileImage: user3 },
     { nickname: '부수환', profileImage: user1 },
   ];
-  console.log(data);
   return (
     <main className={styles.mainBox}>
       <div className={styles.imgSection}>
