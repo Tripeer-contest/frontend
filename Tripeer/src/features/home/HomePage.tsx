@@ -4,6 +4,7 @@ import ContentLayout from '../../layout/ContentLayout.tsx';
 import HomeBanner from './components/HomeBanner.tsx';
 import BoxLayout from '../../layout/BoxLayout.tsx';
 import HomeRecommendationBanner from './components/HomeRecommendationBanner.tsx';
+import HomePlaceBanner from './components/HomePlaceBanner.tsx';
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
           <HomeBanner />
           <HomeRecommendationBanner title={'호텔을'} />
           <HomeRecommendationBanner title={'호텔을'} />
+          <HomePlaceBanner />
         </ContentLayout>
       </div>
     </BoxLayout>

@@ -10,6 +10,7 @@ const useTownChip = () => {
     if (id !== h_nowTownId) {
       h_setNowTownId(id);
     }
+    // mutation.mutate();
   };
 
   return { chipClickHandler };
