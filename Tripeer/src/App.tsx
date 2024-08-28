@@ -17,6 +17,7 @@ import CommonLoading from './components/loading/CommonLoading.tsx';
 import HomePage from './features/home/HomePage.tsx';
 import ImgPage from './features/img/ImgPage';
 import useViewport from './hooks/useViewport.tsx';
+import SpotPage from './features/spot/SpotPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
       {
         path: '/home',
         element: <HomePage />,
+        // loader: protectRouter(),
+      },
+      {
+        path: '/home/spot/:id',
+        element: <SpotPage />,
         // loader: protectRouter(),
       },
       {

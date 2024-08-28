@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.category {
+  font-size: 16px;
+  color: #999999;
+  font-weight: bold;
+}
+
+.spotTitle {
+  font-size: 23px;
+  color: #262626;
+  font-weight: bold;
+}
+
+.layoutBox {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.rateBox {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.star {
+  height: 14px;
+}
+
+.point {
+  font-weight: bold;
+}
+
+.scrollBtn {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.ratingBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  margin: 0;
+}
+
+.nameBox {
+  display: flex;
+  justify-content: space-between;
+  color: #6d6d6d;
+  font-weight: bold;
+  align-items: flex-end;
+}
+
+.date {
+  font-size: 12px;
+}
+
+.starPer {
+  align-self: self-start;
+  height: 14px;
+}
+
+.reviewArea {
+  width: 100%;
+  height: 70px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    padding-left: 20px;
+  }
+  .scrollBtn {
+    padding-right: 20px;
+  }
+}
