@@ -10,7 +10,6 @@ export default function useSelectDayModal() {
   const { open, close, ModalLayout } = useModal();
   const params = useParams();
   const data = useGetDayListQuery(params.id);
-  console.log('히얼:', data);
 
   const SelectDayModal = useCallback(() => {
     return (
