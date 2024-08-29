@@ -5,8 +5,17 @@ import HomeBanner from './components/HomeBanner.tsx';
 import BoxLayout from '../../layout/BoxLayout.tsx';
 import HomeRecommendationBanner from './components/HomeRecommendationBanner.tsx';
 import HomePlaceBanner from './components/HomePlaceBanner.tsx';
+import { useEffect } from 'react';
 
 export default function HomePage() {
+  useEffect(() => {
+    const scroll = () => {
+      console.log('Page scrolled');
+    };
+    window.addEventListener('scroll', scroll);
+    return () => window.removeEventListener('scroll', scroll);
+  }, []);
+
   return (
     <BoxLayout>
       <div className={styles.container}>

@@ -1,6 +1,6 @@
 import styles from './registerLoading.module.css';
 import registerLoading from '../assets/registerLoading.png';
-import logo from '../../../../public/logo/logo_4.png';
+import logo from '../../../assets/logo/logo_4.png';
 
 const RegisterLoading = () => {
   return (

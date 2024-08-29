@@ -14,7 +14,7 @@ export default function SpotSimular() {
           spaceBetween={25}
         >
           {items.map((item) => (
-            <SwiperSlide key={item} style={{ width: 'auto', height: '350px' }}>
+            <SwiperSlide key={item} className={styles.itemBox}>
               <PlaceBox />
             </SwiperSlide>
           ))}
@@ -28,7 +28,7 @@ export default function SpotSimular() {
           spaceBetween={25}
         >
           {items.map((item) => (
-            <SwiperSlide key={item} style={{ width: 'auto', height: '350px' }}>
+            <SwiperSlide key={item} className={styles.itemBox}>
               <PlaceBox />
             </SwiperSlide>
           ))}
