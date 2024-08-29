@@ -8,7 +8,23 @@ const HomePlaceBanner = () => {
   const { data, isLoading, fetchNextPage, hasNextPage } = useGetPlaceList();
   const loadingRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const currentRef = loadingRef.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        console.log('ok', entries);
+      },
+      { root: null, rootMargin: '0px', threshold: 0.5 },
+    );
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
 
   return (
     <div className={styles.container}>
