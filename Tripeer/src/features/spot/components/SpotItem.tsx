@@ -7,6 +7,7 @@ import SpotShortInfo from './SpotShortInfo';
 import { SpotReview } from './SpotReview';
 import zustandStore from '../../../store/store';
 import SpotSimular from './SpotSimular';
+import SpotMeta from './SpotMeta';
 
 export default function SpotItem() {
   const scrollTo = zustandStore((state) => state.scrollTo);
@@ -16,16 +17,23 @@ export default function SpotItem() {
   };
 
   return (
-    <main style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+    <main
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '40px',
+      }}
+    >
       <SpotHeader />
       <SpotShortInfo scrollToReview={scrollToReview} />
       <SpotLine />
       <SpotMap />
       <SpotLine />
-      <SpotPosting />
-      <SpotLine />
       <SpotReview ref={reviewRef} scrollToReview={scrollToReview} />
+      <SpotMeta />
+      <SpotPosting />
       <SpotSimular />
+      <br />
     </main>
   );
 }
