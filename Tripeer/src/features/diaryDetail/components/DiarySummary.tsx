@@ -5,21 +5,29 @@ import styles from './diarySummary.module.css';
 import mapIcon from '../assets/mapIcon.svg';
 import dateIcon from '../assets/dateIcon.svg';
 import userIcon from '../assets/userIcon.svg';
-import user1 from '../assets/sampleUserImg1.png';
-import user2 from '../assets/sampleUserImg2.png';
-import user3 from '../assets/sampleUserImg3.png';
 
 export default function DiarySummary() {
   const params = useParams();
   const data = useGetSummaryQuery(params.id);
   const tempMem = [
-    { nickname: '부수환', profileImage: user1 },
-    { nickname: '이해건', profileImage: user2 },
-    { nickname: '초코초코비', profileImage: user3 },
-    { nickname: '부수환', profileImage: user1 },
-    { nickname: '이해건', profileImage: user2 },
-    { nickname: '초코초코비', profileImage: user3 },
-    { nickname: '부수환', profileImage: user1 },
+    {
+      userId: 4,
+      nickname: '짱구',
+      profileImage:
+        'https://tripeer207.s3.ap-northeast-2.amazonaws.com/ProfileImage/4/2336488e-6f29-40a7-b292-c93a722e074e.png',
+    },
+    {
+      userId: 12,
+      nickname: '훈이',
+      profileImage:
+        'https://tripeer207.s3.ap-northeast-2.amazonaws.com/ProfileImage/12/b3dcecd7-712d-4080-9633-b25a62b4e6e5.png',
+    },
+    {
+      userId: 7,
+      nickname: '유리',
+      profileImage:
+        'https://tripeer207.s3.ap-northeast-2.amazonaws.com/ProfileImage/7/86b29e50-8ba9-4a6b-b52a-47b8b2658b15.png',
+    },
   ];
   return (
     <main className={styles.mainBox}>

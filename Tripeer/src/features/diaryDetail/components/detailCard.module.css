@@ -1,13 +1,23 @@
 @media screen and (max-width: 1000px) {
   .container {
     border: 1px red solid;
-    margin: 25px;
+  }
+  .diaryMainBox {
+    display: flex;
+    flex-direction: column;
+  }
+  .dayListContainer {
+    border: 1px green solid;
   }
 }
 @media screen and (min-width: 1000px) {
   .container {
     border: 1px red solid;
     margin-top: 20px;
+  }
+  .diaryMainBox {
+    display: flex;
+    flex-direction: row;
   }
 }
 .dateBox {
@@ -17,4 +27,20 @@
 }
 .dateBox p {
   font-weight: bold;
+}
+.orderBox {
+  display: flex;
+  flex-direction: column;
+}
+.orderCircle {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+.orderLine {
+  background-color: #aba6a6;
+  width: 4px;
 }

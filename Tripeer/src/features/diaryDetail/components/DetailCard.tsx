@@ -1,5 +1,6 @@
 import { makeDayToDotFullString } from '../../../utils/utilDate';
 import { DayListCard } from '../../diary/types/DiaryTypes';
+import DayListContent from './DayListContent';
 import DiaryMap from './DiaryMap';
 import styles from './detailCard.module.css';
 
@@ -19,8 +20,10 @@ export default function DetailCard({
         <p></p>
         <p>{makeDayToDotFullString(card.date)}</p>
       </header>
-
-      <DiaryMap></DiaryMap>
+      <div className={styles.diaryMainBox}>
+        <DiaryMap></DiaryMap>
+        <DayListContent></DayListContent>
+      </div>
     </div>
   );
 }

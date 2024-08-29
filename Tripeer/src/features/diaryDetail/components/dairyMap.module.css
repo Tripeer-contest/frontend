@@ -1,0 +1,16 @@
+@media screen and (max-width: 1000px) {
+  .mapContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px blue solid;
+  }
+
+  .mapBox {
+    background: gray;
+    width: 90%;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
