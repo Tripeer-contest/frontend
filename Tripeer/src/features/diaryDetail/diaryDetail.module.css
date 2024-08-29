@@ -26,13 +26,78 @@
 .container::-webkit-scrollbar {
   display: none;
 }
+.selectBtn {
+  cursor: pointer;
+}
+.modalContainer {
+  outline: none;
+  border: none;
+}
+
+.selectScrollBox {
+  height: 100px;
+  overflow-y: scroll;
+}
+.selectScrollBox::-webkit-scrollbar {
+  display: none;
+}
+
+.titleText {
+  color: #837d7d;
+  font-size: 0.8rem;
+}
+.selectText {
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.selectText span {
+  font-size: 0.8rem;
+  color: #837d7d;
+}
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.closeIcon {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
 @media screen and (max-width: 1000px) {
   .headerSection {
     border-bottom: 1px solid #e3e3e3;
+    background-color: white;
+  }
+  .modalContainer {
+    margin-bottom: 0px;
+    outline: none;
+    border: none;
+    border-radius: 15px 15px 0 0;
+    height: 150px;
+    width: 100%;
+    max-width: 100vw;
+    animation: slideUp 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  .selectBox {
+    width: 100%;
   }
 }
 @media screen and (min-width: 1001px) {
   .headerSection {
     width: 1000px;
+    background-color: white;
+  }
+  .modalContainer {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 150px;
+    width: 300px;
+    overflow: hidden;
   }
 }

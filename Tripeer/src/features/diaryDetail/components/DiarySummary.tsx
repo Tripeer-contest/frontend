@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import useGetSummaryQuery from '../hooks/useGetDiary';
-import { makeDayToFullYearString } from '../../../utils/utilDate';
+import { makeDayToDotFullString } from '../../../utils/utilDate';
 import styles from './diarySummary.module.css';
 import mapIcon from '../assets/mapIcon.svg';
 import dateIcon from '../assets/dateIcon.svg';
@@ -58,8 +58,8 @@ export default function DiarySummary() {
           <div>
             <p className={styles.subTitle}>여행 날짜</p>
             <p className={styles.contentText}>
-              {makeDayToFullYearString(data.startDay)} ~{' '}
-              {makeDayToFullYearString(data.endDay)}
+              {makeDayToDotFullString(data.startDay)} ~{' '}
+              {makeDayToDotFullString(data.endDay)}
             </p>
           </div>
         </div>

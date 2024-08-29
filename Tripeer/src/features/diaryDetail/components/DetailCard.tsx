@@ -11,8 +11,6 @@ export default function DetailCard({
   card: DayListCard;
   idx: number;
 }) {
-  console.log(card, idx);
-
   return (
     <div className={styles.container}>
       <div className={styles.line} />
