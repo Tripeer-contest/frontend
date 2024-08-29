@@ -1,9 +1,10 @@
+import { CATEGORY_STYLE } from '../../../data/categoryStyle';
 import styles from './detailCard.module.css';
 
 interface PlanDetail {
   planDetailId: number;
   title: string;
-  contentType: string;
+  contentType: '맛집' | '숙박' | '명소';
   image: string;
   address: string;
   latitude: number;
@@ -39,7 +40,7 @@ export default function DayListContent() {
       {
         planDetailId: 1923,
         title: '광안리해수욕장',
-        contentType: '관광지',
+        contentType: '명소',
         image:
           'https://tripeer207.s3.ap-northeast-2.amazonaws.com/spot/126078.png',
         address: '부산광역시 수영구 광안해변로 219',
@@ -94,13 +95,39 @@ export default function DayListContent() {
     <div className={styles.dayListContainer}>
       {dummy.planDetailList.map((item: PlanDetail, idx: number) => {
         return (
-          <div key={idx}>
-            <div className={styles.orderBox}>
-              <div className={styles.orderCircle}>{idx + 1}</div>
-              <div className={styles.orderLine}></div>
-            </div>
-            <div></div>
-          </div>
+          <main key={idx} className={styles.dayListBox}>
+            <section className={styles.leftSection}>
+              <div className={styles.orderBox}>
+                <div className={styles.orderCircle}>{idx + 1}</div>
+                <div className={styles.orderLine}></div>
+                {idx === dummy.planDetailList.length - 1 ? (
+                  <div className={styles.closeCircle}></div>
+                ) : (
+                  <></>
+                )}
+              </div>
+              <div className={styles.textContent}>
+                <p className={styles.title}>{item.title}</p>
+                <p className={styles.address}>{item.address}</p>
+                <div className={styles.contentTypeBox}>
+                  <img
+                    src={CATEGORY_STYLE[item.contentType].icon}
+                    alt="category-icon"
+                    className={styles.contentIcon}
+                  />
+                  <p
+                    className={styles.content}
+                    style={{ color: CATEGORY_STYLE[item.contentType].color }}
+                  >
+                    {item.contentType}
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section className={styles.imgBox}>
+              <img src={item.image} className={styles.img} alt="spot-image" />
+            </section>
+          </main>
         );
       })}
     </div>

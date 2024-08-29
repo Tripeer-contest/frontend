@@ -20,6 +20,7 @@
   border: solid blue solid 1px;
   width: 100%;
   height: calc(100vh - 50px);
+  height: calc(var(--vh, 1vh) * 100 - 50px);
   overflow-y: scroll;
 }
 .container::-webkit-scrollbar {

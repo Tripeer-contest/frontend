@@ -15,6 +15,7 @@ export default function DetailCard({
 
   return (
     <div className={styles.container}>
+      <div className={styles.line} />
       <header className={styles.dateBox}>
         <p>{idx + 1}일차,</p>
         <p></p>
