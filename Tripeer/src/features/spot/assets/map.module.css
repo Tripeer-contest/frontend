@@ -10,7 +10,7 @@
 }
 
 .title {
-  font-size: 18px;
+  font-size: 20px;
   color: #262626;
 }
 
@@ -20,6 +20,7 @@
   text-underline-offset: 4px;
   cursor: pointer;
   font-size: 13px;
+  display: none;
 }
 
 .mapBox {
@@ -57,6 +58,36 @@
 .func {
   color: #1273e4;
   cursor: pointer;
+}
+
+.clipConfirm {
+  display: flex;
+  z-index: 2;
+  justify-content: center;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100px;
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  animation: fade 2.5s ease-in-out forwards;
+}
+
+.disappear {
+  display: none;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @media screen and (max-width: 1000px) {

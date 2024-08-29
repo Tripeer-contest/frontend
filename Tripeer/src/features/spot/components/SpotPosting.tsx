@@ -36,8 +36,6 @@ export default function SpotPosting() {
           );
         })}
       </Swiper>
-      <div></div>
-      <div></div>
     </section>
   );
 }

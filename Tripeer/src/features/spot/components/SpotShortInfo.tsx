@@ -5,7 +5,11 @@ import styles from '../assets/shortInfo.module.css';
 import 'swiper/css';
 import { truncateText } from '../../../utils/utilString';
 
-export default function SpotShortInfo() {
+export default function SpotShortInfo({
+  scrollToReview,
+}: {
+  scrollToReview: () => void;
+}) {
   return (
     <section className={styles.container}>
       <p className={styles.category}>카테고리 - 숙박</p>
@@ -20,7 +24,9 @@ export default function SpotShortInfo() {
           <span className={styles.point}>4.5</span>
           <span> - 1200명 평가</span>
         </div>
-        <a className={styles.scrollBtn}>전체보기</a>
+        <a className={styles.scrollBtn} onClick={scrollToReview}>
+          전체보기
+        </a>
       </div>
       <Swiper
         slidesPerView={'auto'}
