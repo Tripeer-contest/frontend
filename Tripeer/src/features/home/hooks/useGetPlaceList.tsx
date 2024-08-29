@@ -16,8 +16,8 @@ export const useGetPlaceList = () => {
     queryKey: ['getPlaceList'],
     queryFn: ({ pageParam = 0 }) =>
       getPlace(h_nowCityId, h_nowTownId, h_nowPlaceId, pageParam),
-    getNextPageParam: (lastPage) => {
-      return lastPage.last === false ? lastPage.page + 1 : undefined;
+    getNextPageParam: (lastPage, page) => {
+      return lastPage.last === false ? page.length : undefined;
     },
     initialPageParam: 0,
   });

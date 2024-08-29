@@ -3,28 +3,45 @@ import { useGetPlaceList } from '../hooks/useGetPlaceList.tsx';
 import { PlaceType } from '../../../types/PlaceType.ts';
 import HomeLoading from './HomeLoading.tsx';
 import { useEffect, useRef } from 'react';
+import zustandStore from '../../../store/store.tsx';
+import ToTop from './ToTop.tsx';
 
 const HomePlaceBanner = () => {
   const { data, isLoading, fetchNextPage, hasNextPage } = useGetPlaceList();
   const loadingRef = useRef<HTMLDivElement | null>(null);
+  const ioRef = useRef<IntersectionObserver | null>();
+
+  const scrollTo = zustandStore((state) => state.scrollTo);
+
+  const scrollHandler = () => {
+    scrollTo && scrollTo(0);
+  };
 
   useEffect(() => {
-    const currentRef = loadingRef.current;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        console.log('ok', entries);
-      },
-      { root: null, rootMargin: '0px', threshold: 0.5 },
-    );
-    if (currentRef) {
-      observer.observe(currentRef);
+    const current = loadingRef.current;
+
+    if (current) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.isIntersecting &&
+              fetchNextPage().then(() => console.log('ok'));
+          });
+        },
+        {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.5,
+        },
+      );
+      ioRef.current = observer;
+      observer.observe(current);
     }
+
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      if (current && ioRef.current) ioRef.current.unobserve(current);
     };
-  }, []);
+  }, [fetchNextPage, hasNextPage]);
 
   return (
     <div className={styles.container}>
@@ -36,6 +53,7 @@ const HomePlaceBanner = () => {
         </div>
       ))}
       {!isLoading && hasNextPage && <HomeLoading ref={loadingRef} />}
+      <ToTop scrollHandler={scrollHandler} />
     </div>
   );
 };
