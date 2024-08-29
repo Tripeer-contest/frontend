@@ -1,6 +1,12 @@
 .title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
+}
+
+.headerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .container {
@@ -38,11 +44,86 @@
 
 .reviewBox {
   display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.userBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #6d6d6d;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.userName {
+  color: #6d6d6d;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.rateUserBox {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.rateUser {
+  font-size: 14px;
+  font-weight: bold;
+}
+.reviewDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: calc(100% - 190px);
+}
+
+.reviewImg {
+  width: 130px;
+  height: 130px;
+  border-radius: 10px;
+}
+
+.reviewText {
+  color: #6d6d6d;
+  font-size: 14px;
+}
+
+.reviewDate {
+  color: #6d6d6d;
+  font-size: 12px;
+  font-weight: bold;
+  align-self: flex-end;
+}
+.jump {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 @media screen and (max-width: 1000px) {
   .container {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .reviewBox {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .reviewDetail {
+    width: 100%;
   }
 }
