@@ -20,9 +20,9 @@ const useHomePlaceBanner = () => {
 
   const getCityTownName = () => {
     let townId = h_nowTownId;
-    let townName;
+    let townName = '';
     let cityName = '';
-    let categoryName;
+    let categoryName = '';
 
     h_nowPlaceId === -1
       ? (categoryName = '모든 카테고리')
@@ -33,7 +33,12 @@ const useHomePlaceBanner = () => {
           : (categoryName = '명소');
 
     if (h_nowCityId !== -1) {
-      cityName = Region[h_nowCityId].name;
+      console.log(h_nowCityId);
+      Region.forEach((item) => {
+        if (item.cityId === h_nowCityId) {
+          cityName = item.name;
+        }
+      });
     }
 
     if (h_nowTownId === -1) {
@@ -70,6 +75,8 @@ const useHomePlaceBanner = () => {
 
     townName = h_townList[townId].townName;
     if (townName === '전체') townName = '';
+
+    if (cityName === townName) cityName = '';
 
     return [cityName, townName, categoryName];
   };
