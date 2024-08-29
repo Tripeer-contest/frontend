@@ -20,9 +20,9 @@ const useHomePlaceBanner = () => {
 
   const getCityTownName = () => {
     let townId = h_nowTownId;
-    let townName = '';
+    let townName;
     let cityName = '';
-    let categoryName = '';
+    let categoryName;
 
     h_nowPlaceId === -1
       ? (categoryName = '모든 카테고리')
