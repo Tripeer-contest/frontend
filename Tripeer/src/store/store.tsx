@@ -12,6 +12,8 @@ import { YSliceInterface } from './yobject/YObjecttype.ts';
 import { YObjectSlice } from './yobject/yStore.tsx';
 import { RoomSliceState } from './room/RoomSliceState.ts';
 import { RoomSlice } from './room/RoomSlice.tsx';
+import { CommonSliceState } from './common/CommonSliceState.ts';
+import { CommonSlice } from './common/CommonSlice.tsx';
 import { createHomeSlice } from './home/HomeStore.tsx';
 import { HomeSlice } from './home/HomeType.ts';
 
@@ -19,8 +21,10 @@ export type StoreState = AuthState &
   PlanState &
   RegisterSlice &
   CartState &
-  YSliceInterface & HomeSlice &
-  RoomSliceState;
+  YSliceInterface &
+  RoomSliceState &
+  CommonSliceState &
+  HomeSlice;
 
 const zustandStore = create<StoreState>()(
   devtools((...rest) => ({
@@ -30,6 +34,7 @@ const zustandStore = create<StoreState>()(
     ...createRegisterSlice(...rest),
     ...YObjectSlice(...rest),
     ...RoomSlice(...rest),
+    ...CommonSlice(...rest),
     ...createHomeSlice(...rest),
   })),
 );

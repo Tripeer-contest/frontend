@@ -15,7 +15,13 @@ const HomeCityBanner = () => {
 
   return (
     <div className={styles.container}>
-      <Swiper slidesPerView={'auto'} grabCursor={true}>
+      <Swiper
+        slidesPerView={'auto'}
+        spaceBetween={1}
+        breakpoints={{ 600: { spaceBetween: 10 } }}
+        grabCursor={true}
+        className={styles.swiper}
+      >
         {cityList.map((city, idx) => {
           const id = changeIdx(idx);
 
@@ -28,7 +34,7 @@ const HomeCityBanner = () => {
               <img
                 src={city.img}
                 alt={city.name}
-                className={id !== h_nowCityId ? styles.check : ''}
+                className={`${id !== h_nowCityId ? styles.check : ''} ${styles.img}`}
               />
             </SwiperSlide>
           );

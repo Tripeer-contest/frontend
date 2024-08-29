@@ -1,28 +1,18 @@
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1000px) {
+  .ContentLayout {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto 1000px auto;
+  }
 
-    .ContentLayout{
-        width: 100vw;
-        height: 100vh;
-        display: grid;
-        grid-template-columns: auto 1000px auto;
-    
-    }
-    
-    .ContentLayout aside{
-        background-color: burlywood;
-    }
+  .ContentLayout aside {
+    background-color: burlywood;
+  }
 }
 
-@media screen and (max-width: 1000px){
-
-    .ContentLayout{
-        width: 100vw;
-        height: 100vh;
-        display: grid;
-        grid-template-columns: auto 1000px auto;
-    }
-
-    .ContentLayout aside{
-        background-color: burlywood;
-    }
+@media screen and (max-width: 1000px) {
+  .ContentLayout {
+    width: 100vw;
+  }
 }
