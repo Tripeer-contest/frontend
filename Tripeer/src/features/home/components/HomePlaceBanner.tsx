@@ -1,10 +1,14 @@
 import styles from '../modules/homePlaceBanner.module.css';
 import { useGetPlaceList } from '../hooks/useGetPlaceList.tsx';
 import { PlaceType } from '../../../types/PlaceType.ts';
+import HomeLoading from './HomeLoading.tsx';
+import { useEffect, useRef } from 'react';
 
 const HomePlaceBanner = () => {
-  // const { data, isLoading, fetchNextPage, hasNextPage } = useGetPlaceList();
-  const { data, isLoading, hasNextPage } = useGetPlaceList();
+  const { data, isLoading, fetchNextPage, hasNextPage } = useGetPlaceList();
+  const loadingRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {}, []);
 
   return (
     <div className={styles.container}>
@@ -15,7 +19,7 @@ const HomePlaceBanner = () => {
           ))}
         </div>
       ))}
-      {!isLoading && hasNextPage && <div>loading...</div>}
+      {!isLoading && hasNextPage && <HomeLoading ref={loadingRef} />}
     </div>
   );
 };
