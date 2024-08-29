@@ -1,6 +1,6 @@
 import styles from './styleChip.module.css';
-import useStyleChip from '../hooks/useStyleChip.tsx';
 import React from 'react';
+import useStyleChip from '../hooks/useStyleChip.tsx';
 import zustandStore from '../../../store/store.tsx';
 
 interface Props {

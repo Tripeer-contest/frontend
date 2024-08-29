@@ -1,0 +1,39 @@
+@media screen and (min-width: 1000px) {
+    .container{
+        width: 100%;
+        height: 220px;
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 0;
+        background-color: #FFFFFF;
+        z-index: 1000;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .container{
+        width: 100vw;
+        height: 220px;
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 0;
+        background-color: #FFFFFF;
+        z-index: 1000;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        width: calc(100vw - 30px);
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 0;
+        background-color: #FFFFFF;
+        z-index: 1000;
+        margin: 0 15px;
+    }
+}

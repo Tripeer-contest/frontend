@@ -9,7 +9,7 @@
 
 .image{
     width: auto;
-    height: 50px;
+    height: 100px;
 }
 
 @keyframes fadeInOut {

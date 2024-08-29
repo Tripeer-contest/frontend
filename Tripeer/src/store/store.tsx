@@ -12,12 +12,14 @@ import { YSliceInterface } from './yobject/YObjecttype.ts';
 import { YObjectSlice } from './yobject/yStore.tsx';
 import { RoomSliceState } from './room/RoomSliceState.ts';
 import { RoomSlice } from './room/RoomSlice.tsx';
+import { createHomeSlice } from './home/HomeStore.tsx';
+import { HomeSlice } from './home/HomeType.ts';
 
 export type StoreState = AuthState &
   PlanState &
   RegisterSlice &
   CartState &
-  YSliceInterface &
+  YSliceInterface & HomeSlice &
   RoomSliceState;
 
 const zustandStore = create<StoreState>()(
@@ -28,6 +30,7 @@ const zustandStore = create<StoreState>()(
     ...createRegisterSlice(...rest),
     ...YObjectSlice(...rest),
     ...RoomSlice(...rest),
+    ...createHomeSlice(...rest),
   })),
 );
 
