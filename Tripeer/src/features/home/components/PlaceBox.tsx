@@ -1,18 +1,23 @@
 import styles from '../modules/placeBox.module.css';
-import testImg from '../assets/testImg.png';
 import like from '../assets/like.png';
 import unLike from '../assets/unLike.png';
 import usePlaceBox from '../hooks/usePlaceBox.tsx';
 import { getRateImg } from '../../../utils/rating.ts';
 
-const PlaceBox = () => {
+interface Props {
+  name: string;
+  address: string;
+  img: string;
+}
+
+const PlaceBox = ({ name, address, img }: Props) => {
   const { likeClickHandler, isLike, rating } = usePlaceBox();
   const star = getRateImg(rating);
 
   return (
     <div className={styles.container}>
       <div className={styles.imgBox}>
-        <img src={testImg} alt={'testImg'} className={styles.img} />
+        <img src={img} alt={'testImg'} className={styles.img} />
         <img
           src={isLike ? like : unLike}
           alt={'likeImg'}
@@ -21,13 +26,13 @@ const PlaceBox = () => {
         />
       </div>
       <section className={styles.description}>
-        <p className={styles.title}>신라스테이 해운대</p>
+        <p className={styles.title}>{name}</p>
         <div className={styles.ratingBox}>
           <img src={star} alt={'ratingImg'} className={styles.rating} />
           <p className={styles.ratingScore}>({rating})</p>
         </div>
         <p className={styles.desP}>카테고리-숙박</p>
-        <p className={styles.desP}>부산 해운대구 해운대로 507번길 46</p>
+        <p className={styles.desP}>{address}</p>
       </section>
     </div>
   );

@@ -4,5 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    font-size: 1.3rem;
+    color: #4FBDB7;
 }

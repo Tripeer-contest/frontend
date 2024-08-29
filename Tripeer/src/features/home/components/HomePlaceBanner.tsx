@@ -1,54 +1,38 @@
 import styles from '../modules/homePlaceBanner.module.css';
-import { useGetPlaceList } from '../hooks/useGetPlaceList.tsx';
 import { PlaceType } from '../../../types/PlaceType.ts';
 import HomeLoading from './HomeLoading.tsx';
-import { useEffect, useRef } from 'react';
-import zustandStore from '../../../store/store.tsx';
 import ToTop from './ToTop.tsx';
+import useHomePlaceBanner from '../hooks/useHomePlaceBanner.tsx';
+import PlaceBox from './PlaceBox.tsx';
 
 const HomePlaceBanner = () => {
-  const { data, isLoading, fetchNextPage, hasNextPage } = useGetPlaceList();
-  const loadingRef = useRef<HTMLDivElement | null>(null);
-  const ioRef = useRef<IntersectionObserver | null>();
+  const {
+    data,
+    isLoading,
+    hasNextPage,
+    loadingRef,
+    scrollHandler,
+    getCityTownName,
+  } = useHomePlaceBanner();
 
-  const scrollTo = zustandStore((state) => state.scrollTo);
-
-  const scrollHandler = () => {
-    scrollTo && scrollTo(0);
-  };
-
-  useEffect(() => {
-    const current = loadingRef.current;
-
-    if (current) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            entry.isIntersecting &&
-              fetchNextPage().then(() => console.log('ok'));
-          });
-        },
-        {
-          root: null,
-          rootMargin: '0px',
-          threshold: 0.5,
-        },
-      );
-      ioRef.current = observer;
-      observer.observe(current);
-    }
-
-    return () => {
-      if (current && ioRef.current) ioRef.current.unobserve(current);
-    };
-  }, [fetchNextPage, hasNextPage]);
+  const cityTownName = getCityTownName();
 
   return (
     <div className={styles.container}>
+      <div className={styles.titleBox}>
+        <p
+          className={styles.title}
+        >{`${cityTownName[0]} ${cityTownName[1]} ${cityTownName[2]}`}</p>
+      </div>
       {data?.pages.map((page, idx) => (
-        <div key={idx}>
+        <div key={idx} className={styles.gridBox}>
           {page.spotInfoDtos.map((place: PlaceType) => (
-            <div key={place.spotId}>{place.spotName}</div>
+            <PlaceBox
+              key={place.spotId}
+              name={place.spotName}
+              address={place.address}
+              img={place.spotImg}
+            />
           ))}
         </div>
       ))}

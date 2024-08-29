@@ -1,8 +1,27 @@
+.titleBox{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
 @media screen and (min-width: 930px){
     .container{
         width: 100%;
-        border: 1px black solid;
-        margin-top: 80px;
+        margin-top: 100px;
+        display: grid;
+        justify-items: center;
+    }
+    .gridBox{
+        margin-top: 35px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 48px;
+    }
+
+    .title{
+        font-size: 1.3rem;
+        color: #262626;
+        font-weight: 600;
     }
 }
 
@@ -13,6 +32,12 @@
         border: 1px black solid;
         margin-top: 80px;
     }
+
+    .title{
+        font-size: 1.3rem;
+        color: #262626;
+        font-weight: 600;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -21,5 +46,11 @@
         height: 500px;
         border: 1px black solid;
         margin: 80px 15px 5px 15px;
+    }
+
+    .title{
+        font-size: 1rem;
+        color: #262626;
+        font-weight: 600;
     }
 }

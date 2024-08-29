@@ -22,7 +22,5 @@ export const useGetPlaceList = () => {
     initialPageParam: 0,
   });
 
-  console.log(data);
-
   return { data, isLoading, ...rest };
 };

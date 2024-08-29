@@ -1,6 +1,6 @@
 import { RegionType } from '../../../types/ItemTypes';
 import { useMutation } from '@tanstack/react-query';
-import { getTownName } from '../api/getTownName.ts';
+import { getTownList } from '../api/getTownList.ts';
 import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../store/store.tsx';
 
@@ -15,8 +15,12 @@ const useHomeCityBanner = () => {
     },
   ];
 
-  const [h_setTownList, h_setNowCityId] = zustandStore(
-    useShallow((state) => [state.h_setTownList, state.h_setNowCityId]),
+  const [h_setTownList, h_setNowCityId, h_setTownId] = zustandStore(
+    useShallow((state) => [
+      state.h_setTownList,
+      state.h_setNowCityId,
+      state.h_setNowTownId,
+    ]),
   );
 
   const changeIdx = (idx: number) => {
@@ -36,13 +40,14 @@ const useHomeCityBanner = () => {
       h_setNowCityId(-1);
       h_setTownList(data);
     } else {
+      h_setTownId(-1);
       h_setNowCityId(city.cityId);
       mutation.mutate(city);
     }
   };
 
   const mutation = useMutation({
-    mutationFn: getTownName,
+    mutationFn: getTownList,
     onSuccess: ({ townList }) => {
       h_setTownList(townList);
     },

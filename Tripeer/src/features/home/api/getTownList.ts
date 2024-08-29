@@ -1,7 +1,7 @@
 import { RegionType } from '../../../types/ItemTypes.ts';
 import api from '../../../utils/api.ts';
 
-export const getTownName = async (city: RegionType) => {
+export const getTownList = async (city: RegionType) => {
   const response = await api.get('/place/town', {
     params: { cityId: city.cityId, townName: -1 },
   });
