@@ -111,3 +111,13 @@ export const makeDayToFullYearString = (day: string) => {
   result += `(${week[new Date(day).getDay()]})`;
   return result;
 };
+
+export const makeDayToDotFullString = (day: string) => {
+  const dayInfo = day.split('-');
+  let result = '';
+  result += dayInfo[0].slice(2) + '.';
+  result += dayInfo[1] + '.';
+  result += dayInfo[2];
+  result += `(${week[new Date(day).getDay()]})`;
+  return result;
+};

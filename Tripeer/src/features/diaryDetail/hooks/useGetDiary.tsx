@@ -1,6 +1,6 @@
 import { useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import getDiary from '../api/getDiary';
-import { DiaryAPI } from '../../diary/types/DiaryTypes';
+import { DiaryAPI, DiaryTypes } from '../../diary/types/DiaryTypes';
 
 export default function useGetSummaryQuery(planId: string | undefined) {
   const { data } = useSuspenseQuery({
@@ -14,7 +14,11 @@ export default function useGetSummaryQuery(planId: string | undefined) {
 }
 
 export function useGetDayListQuery(planId: string | undefined) {
-  const { data } = useSuspenseQuery({
+  const { data } = useSuspenseQuery<
+    DiaryTypes,
+    Error,
+    DiaryTypes['diaryDayList']
+  >({
     queryKey: ['diary', planId],
     queryFn: () => getDiary(planId),
     select: (data) => {
