@@ -1,20 +1,13 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode } from 'react';
 
 import styles from './box.module.css';
-import zustandStore from '../store/store';
+import useScroll from '../hooks/useScroll';
 
 export default function BoxLayout({ children }: { children: ReactNode }) {
-  const setScrollFn = zustandStore((state) => state.setScrollFn);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  setScrollFn((offset: number) => {
-    if (containerRef.current)
-      containerRef.current.scrollTo({
-        top: offset,
-        behavior: 'smooth',
-      });
-  });
+  const { setScrollRef } = useScroll();
+
   return (
-    <div className={styles.container} ref={containerRef}>
+    <div className={styles.container} ref={setScrollRef}>
       {children}
     </div>
   );

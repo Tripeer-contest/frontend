@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import Map from '../../../components/map/Map';
+import useMap from '../../../hooks/useMap';
 import styles from '../assets/map.module.css';
 
 export default function SpotMap() {
   const [isClip, setIsClip] = useState(false);
   const timerId = useRef<number | undefined>();
+  const { setMapRef } = useMap();
 
   const saveClipBoard = () => {
     navigator.clipboard.writeText('주소').then(() => {
@@ -39,9 +40,7 @@ export default function SpotMap() {
           <p className={styles.updateBtn}>정보 업데이트</p>
         </div>
         <div className={styles.mapBox}>
-          <div className={styles.map}>
-            <Map setMap={() => {}} />
-          </div>
+          <div className={styles.map} ref={setMapRef}></div>
           <div className={styles.mapInfo}>
             <p className={styles.info}>부산 해운대구 해운대로 570번길 </p>
             <p className={styles.func} onClick={saveClipBoard}>
