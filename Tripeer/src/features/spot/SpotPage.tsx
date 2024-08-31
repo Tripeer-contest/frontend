@@ -5,11 +5,11 @@ import SpotItem from './components/SpotItem';
 export default function SpotPage() {
   return (
     <>
-      <ContentLayout>
-        <BoxLayout>
+      <BoxLayout>
+        <ContentLayout>
           <SpotItem />
-        </BoxLayout>
-      </ContentLayout>
+        </ContentLayout>
+      </BoxLayout>
     </>
   );
 }

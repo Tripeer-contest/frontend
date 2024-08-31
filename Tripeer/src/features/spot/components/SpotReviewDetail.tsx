@@ -1,10 +1,11 @@
-import styles from '../assets/review.module.css';
-import { getRateImg } from '../../../utils/rating';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { useState } from 'react';
+
 import SpotLine from './SpotLine';
 import useModal from '../../../hooks/useModal';
-import { useState } from 'react';
+import styles from '../assets/review.module.css';
+import { getRateImg } from '../../../utils/rating';
 
 const revieImg = [
   'https://t1.daumcdn.net/cfile/tistory/9906804C5FB7337315',
