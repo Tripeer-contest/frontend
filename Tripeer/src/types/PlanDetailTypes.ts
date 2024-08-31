@@ -20,3 +20,13 @@ export interface TownRoomInterface {
   title: string;
   townId: number;
 }
+
+export interface ChatInterface {
+  userId: number;
+  message: string;
+  year: string;
+  month: string;
+  day: string;
+  hours: string;
+  minutes: string;
+}

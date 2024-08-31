@@ -1,7 +1,7 @@
 import { PlanNavInterface } from '../../../types/PlanTypes';
 import useNavBtn from '../hooks/useNavBtn';
 import exit from '../assets/exit.svg';
-import styles from '../assets/shortNav.module.css';
+import styles from '../assets/nav/shortNav.module.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function PlanShortNav({ page, setPage }: PlanNavInterface) {

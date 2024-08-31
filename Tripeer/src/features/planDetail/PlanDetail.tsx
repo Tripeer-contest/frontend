@@ -1,21 +1,32 @@
 import { useParams } from 'react-router-dom';
 import useConnect from './hooks/useConnect';
 import CommonLoading from '../../components/loading/CommonLoading';
-import useOnline from './hooks/useOnline';
-import useRoomInfo from './hooks/useRoomInfo';
+import useDocInfo from './hooks/useDocInfo';
+import useAccess from './hooks/useAccess';
+import PlanChat from './components/chat/PlanChat';
+import { useEffect } from 'react';
+import zustandStore from '../../store/store';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function PlanDetail() {
+  const [init] = zustandStore(useShallow((state) => [state.y_init]));
   const params = useParams();
-  const RoomInfo = useRoomInfo(params.id);
+  const Access = useAccess(params.id);
   const Connect = useConnect(params.id);
-  const Online = useOnline();
+  const Online = useDocInfo();
+
+  useEffect(() => {
+    return () => {
+      init();
+    };
+  }, [init]);
   return (
     <>
-      {Connect.isLoading && RoomInfo.isLoading && Online.isLoading ? (
+      {Connect.isLoading && Access.isLoading && Online.isLoading ? (
         <CommonLoading />
       ) : (
         <>
-          <div>연결됨</div>
+          <PlanChat />
         </>
       )}
     </>
