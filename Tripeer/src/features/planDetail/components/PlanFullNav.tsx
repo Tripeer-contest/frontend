@@ -4,6 +4,7 @@ import exit from '../assets/icon/exit.svg';
 import { useNavigate } from 'react-router-dom';
 import zustandStore from '../../../store/store';
 import { useShallow } from 'zustand/react/shallow';
+import Tripeer_Logo from '../../../assets/full_logo.webp';
 
 export default function PlanFullNav() {
   const [page, setPage] = zustandStore(
@@ -15,7 +16,7 @@ export default function PlanFullNav() {
   return (
     <aside className={styles.container}>
       <header className={styles.bannerBox}>
-        <h1 className={styles.banner}>Tripeer</h1>
+        <img src={Tripeer_Logo} alt="Tripeer-logo" className={styles.banner} />
       </header>
       <div className={styles.controller}>
         <div className={styles.pageInfo}>

@@ -16,6 +16,7 @@ export default function ChatPreview() {
 
   const clickHandler = () => {
     scrollToBottom && scrollToBottom();
+    setLastMessage('');
   };
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function ChatPreview() {
 
   return (
     <>
-      {lastMessage.length > 0 ? (
+      {lastMessage.length > 0 && !isBottom ? (
         <aside className={styles.container} onClick={clickHandler}>
           <p>새로운 메시지 : {lastMessage}</p>
         </aside>

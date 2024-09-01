@@ -1,24 +1,19 @@
-import { Fragment, useEffect, useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 
 import useGetUserById from '../../hooks/useGetUserById';
 import getTokenInfo from '../../../../utils/jwtDecode';
 import MyChat from './MyChat';
 import OtherChat from './OtherChat';
 import useChatInfo from '../../hooks/useChatInfo';
-import zustandStore from '../../../../store/store';
+import useSetChatScroll from '../../hooks/useSetChatScroll';
 
 export default function ChatContent() {
-  const scrollToBottom = zustandStore((state) => state.room_chatScrollToBottom);
   const getUser = useGetUserById();
   const { chatInfo, renderCnt } = useChatInfo();
-
+  useSetChatScroll(renderCnt);
   const myData = useMemo(() => {
     return getTokenInfo();
   }, []);
-
-  useEffect(() => {
-    if (scrollToBottom && renderCnt === 1) scrollToBottom();
-  }, [scrollToBottom, renderCnt, chatInfo]);
 
   return (
     <>

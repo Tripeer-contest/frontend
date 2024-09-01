@@ -1,6 +1,12 @@
 import { Fragment } from 'react/jsx-runtime';
 import { UserType } from '../../../../types/UserTypes';
 import styles from '../../assets/chat/invite.module.css';
+import useInviteQuery from '../../hooks/useInviteQuery';
+import MutationLoading from '../../../../components/loading/MutationLoading';
+import errorIcon from '../../../../assets/error/warn.svg';
+import Notify from '../notify/Notify';
+import TripeerIcon from '../../../../assets/tripeer_icon.webp';
+import { useParams } from 'react-router-dom';
 
 export default function MemberSearchResult({
   isLoading,
@@ -11,6 +17,13 @@ export default function MemberSearchResult({
   isError: boolean;
   data: { data: UserType[] } | undefined;
 }) {
+  const params = useParams();
+  const mutation = useInviteQuery();
+  const sendInvite = (userId: number) => {
+    if (params.id) {
+      mutation.mutate({ planId: +params.id, userId: userId });
+    }
+  };
   return (
     <>
       {isLoading ? (
@@ -37,7 +50,12 @@ export default function MemberSearchResult({
                         />
                       </div>
                       <p>{user.nickname}</p>
-                      <button className={styles.invite}>초대</button>
+                      <button
+                        className={styles.invite}
+                        onClick={() => sendInvite(user.userId)}
+                      >
+                        초대
+                      </button>
                     </div>
                     <div className={styles.line} />
                   </>
@@ -47,6 +65,19 @@ export default function MemberSearchResult({
           )}
         </>
       )}
+      <MutationLoading isShow={mutation.isPending} />
+      <Notify
+        img={errorIcon}
+        title="에러 메세지"
+        message={mutation.error ? mutation.error.message : ''}
+        isActive={mutation.isError}
+      />
+      <Notify
+        img={TripeerIcon}
+        title="초대 성공"
+        message="초대 메시지를 발송을 성공했어요!"
+        isActive={mutation.isSuccess}
+      />
     </>
   );
 }

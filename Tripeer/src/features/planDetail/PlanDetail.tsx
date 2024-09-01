@@ -4,16 +4,28 @@ import CommonLoading from '../../components/loading/CommonLoading';
 import useDocInfo from './hooks/useDocInfo';
 import useAccess from './hooks/useAccess';
 import PlanChat from './components/chat/PlanChat';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import zustandStore from '../../store/store';
 import { useShallow } from 'zustand/react/shallow';
+import PlanMap from './components/map/PlanMap';
+import PlanCalendar from './components/calendar/PlanCalendar';
 
 export default function PlanDetail() {
-  const [init] = zustandStore(useShallow((state) => [state.y_init]));
+  const [init, page] = zustandStore(
+    useShallow((state) => [state.y_init, state.room_page]),
+  );
   const params = useParams();
   const Access = useAccess(params.id);
   const Connect = useConnect(params.id);
   const Online = useDocInfo();
+
+  const MAIN_PAGE = useMemo(() => {
+    return [
+      <PlanChat key={'plan-chat'} />,
+      <PlanMap key={'plan-map'} />,
+      <PlanCalendar key={'plan-calendar'} />,
+    ][page];
+  }, [page]);
 
   useEffect(() => {
     return () => {
@@ -25,9 +37,7 @@ export default function PlanDetail() {
       {Connect.isLoading && Access.isLoading && Online.isLoading ? (
         <CommonLoading />
       ) : (
-        <>
-          <PlanChat />
-        </>
+        <>{MAIN_PAGE}</>
       )}
     </>
   );
