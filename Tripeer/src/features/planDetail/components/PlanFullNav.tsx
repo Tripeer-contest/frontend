@@ -1,10 +1,14 @@
-import { PlanNavInterface } from '../../../types/PlanTypes';
 import useNavBtn from '../hooks/useNavBtn';
-import styles from '../assets/fullNav.module.css';
-import exit from '../assets/exit.svg';
+import styles from '../assets/nav/fullNav.module.css';
+import exit from '../assets/icon/exit.svg';
 import { useNavigate } from 'react-router-dom';
+import zustandStore from '../../../store/store';
+import { useShallow } from 'zustand/react/shallow';
 
-export default function PlanFullNav({ page, setPage }: PlanNavInterface) {
+export default function PlanFullNav() {
+  const [page, setPage] = zustandStore(
+    useShallow((state) => [state.room_page, state.room_setPage]),
+  );
   const { calendarBtn, mapBtn, chatBtn } = useNavBtn(page);
   const navigate = useNavigate();
 

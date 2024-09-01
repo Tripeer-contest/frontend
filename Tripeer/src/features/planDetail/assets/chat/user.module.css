@@ -1,0 +1,41 @@
+.userBox {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-left: 10px;
+  color: #000e08;
+}
+.profileBox {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+.profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.green {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #40b681;
+}
+
+.gray {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #797c7b;
+}
+
+.line {
+  width: 100%;
+  border: 1px solid #f3f3f3;
+}

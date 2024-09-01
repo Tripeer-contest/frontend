@@ -83,17 +83,31 @@ export default function SpotReviewDetail() {
         onClick={closeHandler}
         style={{
           outline: 'none',
-          border: '0px',
           backgroundColor: 'transparent',
-          maxWidth: 'calc(100vw - 50px)',
+          width: '100vw',
+          height: '100vh',
+          maxWidth: '100vw',
+          maxHeight: '100vh',
         }}
       >
-        <img
-          src={img}
-          alt="fullsize-img"
-          style={{ maxWidth: 'calc(100vw - 50px)' }}
-          onClick={closeHandler}
-        />
+        <div
+          style={{
+            display: 'flex',
+            width: '90vw',
+            height: '90vh',
+            maxWidth: '90vw',
+            maxHeight: '90vh',
+            justifyContent: 'center',
+            alignContent: 'center',
+          }}
+        >
+          <img
+            src={img}
+            alt="fullsize-img"
+            style={{ width: '90%', height: 'auto', objectFit: 'contain' }}
+            onClick={closeHandler}
+          />
+        </div>
       </ModalLayout>
     </>
   );

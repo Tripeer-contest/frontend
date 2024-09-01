@@ -1,0 +1,25 @@
+.container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  max-width: 80%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+}
+
+.container > p {
+  margin: 0px 10px 0px 10px;
+  font-size: 14px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
