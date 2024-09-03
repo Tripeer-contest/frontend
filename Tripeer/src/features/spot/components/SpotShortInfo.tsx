@@ -5,8 +5,9 @@ import styles from '../assets/shortInfo.module.css';
 import 'swiper/css';
 import { truncateText } from '../../../utils/utilString';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
-import { useParams } from 'react-router-dom';
 import { ReviewInterface } from '../../../types/PlaceType';
+import useParamsId from '../hooks/useParamsId';
+import { daysAgo } from '../../../utils/utilDate';
 
 interface ShortQueryType {
   title: string;
@@ -21,8 +22,7 @@ export default function SpotShortInfo({
 }: {
   scrollToReview: () => void;
 }) {
-  const params = useParams();
-  const id = params.id ? +params.id : NaN;
+  const id = useParamsId();
   const { data } = useSpotDetailQuery<ShortQueryType>(id, (data) => ({
     title: data.data.title,
     contentType: data.data.contentType,
@@ -68,7 +68,7 @@ export default function SpotShortInfo({
               <SwiperSlide className={styles.ratingBox} key={data.spotReviewId}>
                 <div className={styles.nameBox}>
                   <p>{data.nickname}</p>
-                  <p className={styles.date}>1일전</p>
+                  <p className={styles.date}>{daysAgo(data.createTime)}</p>
                 </div>
                 <img
                   src={getRateImg(data.starPoint)}

@@ -4,17 +4,16 @@ import { Swiper as SwiperInterface } from 'swiper/types';
 import { useState } from 'react';
 
 import 'swiper/css';
-import { useParams } from 'react-router-dom';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 import SpotHeart from './SpotHeart';
+import useParamsId from '../hooks/useParamsId';
 
 type HeaderType = string[];
 
 export default function SpotHeader() {
   const [swiper, setSwiper] = useState<SwiperInterface | undefined>(undefined);
   const [currentPage, setCurrentPage] = useState(1);
-  const params = useParams();
-  const id = params.id ? +params.id : NaN;
+  const id = useParamsId();
   const { data } = useSpotDetailQuery<HeaderType>(
     id,
     (data) => data.data.imageList,

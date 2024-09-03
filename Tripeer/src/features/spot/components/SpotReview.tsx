@@ -7,7 +7,8 @@ import ReviewPage from './ReviewPage';
 import useSpotDetailQuery, {
   useReviewDetailQuery,
 } from '../hooks/useSpotDetailQuery';
-import { useParams } from 'react-router-dom';
+import useParamsId from '../hooks/useParamsId';
+import SmallLoading from '../../../components/loading/SmallLoading';
 
 interface ReviewInterface {
   starPointAvg: number;
@@ -20,8 +21,7 @@ export const SpotReview = forwardRef<
   { scrollToReview: (() => void) | null }
 >(function SpotReview({ scrollToReview }, ref) {
   const [page, setPage] = useState(0);
-  const params = useParams();
-  const id = params.id ? +params.id : NaN;
+  const id = useParamsId();
   const { data } = useSpotDetailQuery<ReviewInterface>(id, (data) => ({
     reviewPageCount: data.data.reviewPageCount,
     reviewTotalCount: data.data.reviewTotalCount,
@@ -53,10 +53,20 @@ export const SpotReview = forwardRef<
         </aside>
         <SpotLine />
       </div>
-      {review.data &&
-        review.data.data.map((review, idx) => (
-          <SpotReviewDetail key={idx} review={review} />
-        ))}
+      {review.data && (
+        <>
+          {review.data.data.map((review, idx) => (
+            <SpotReviewDetail key={idx} review={review} />
+          ))}
+        </>
+      )}
+      {!review.isLoading && review.data?.data.length === 0 && (
+        <>
+          <p className={styles.noreview}>아직 작성된 리뷰가 없습니다.</p>
+          <SpotLine />
+        </>
+      )}
+      {review.isLoading && <SmallLoading />}
       <ReviewPage
         scrollTop={scrollToReview}
         setPage={setPage}

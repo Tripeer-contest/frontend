@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import useMap from '../../../hooks/useMap';
 import styles from '../assets/map.module.css';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
-import { useParams } from 'react-router-dom';
 import useClipBoard from '../../../hooks/useClipBoard';
+import useParamsId from '../hooks/useParamsId';
 
 interface SpotMapInterface {
   latitude: number;
@@ -19,8 +19,7 @@ const queryCallback = (data: any) => ({
 
 export default function SpotMap() {
   const { setMapRef, map } = useMap();
-  const params = useParams();
-  const id = params.id ? +params.id : NaN;
+  const id = useParamsId();
   const { data } = useSpotDetailQuery<SpotMapInterface>(id, queryCallback);
   const { isClip, saveClipBoard } = useClipBoard(data.addr1);
 

@@ -7,6 +7,7 @@ import useModal from '../../../hooks/useModal';
 import styles from '../assets/review.module.css';
 import { getRateImg } from '../../../utils/rating';
 import { ReviewInterface } from '../../../types/PlaceType';
+import { daysAgo } from '../../../utils/utilDate';
 
 export default function SpotReviewDetail({
   review,
@@ -66,7 +67,7 @@ export default function SpotReviewDetail({
                 })}
               </Swiper>
               <p className={styles.reviewText}>{review.message}</p>
-              <p className={styles.reviewDate}>{review.createTime}</p>
+              <p className={styles.reviewDate}>{daysAgo(review.createTime)}</p>
             </div>
           </div>
         </section>
