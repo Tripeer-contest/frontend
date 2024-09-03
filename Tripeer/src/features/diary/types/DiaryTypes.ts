@@ -1,15 +1,6 @@
 export interface DiaryTypes {
   planId: number;
-  diaryDetail: {
-    planId: number;
-    title: string;
-    img: string;
-    townList: string[];
-    startDay: string;
-    endDay: string;
-    member: { userId: number; nickname: string; profileImage: string }[];
-    newPlan: boolean;
-  };
+  diaryDetail: DiaryDetailInterface;
   diaryDayList: {
     planDayId: number;
     date: string;
@@ -35,6 +26,17 @@ export interface DiaryTypes {
 
 export interface DiaryAPI {
   data: DiaryTypes;
+}
+
+export interface DiaryDetailInterface {
+  planId: number;
+  title: string;
+  img: string;
+  townList: string[];
+  startDay: string;
+  endDay: string;
+  member: { userId: number; nickname: string; profileImage: string }[];
+  newPlan: boolean;
 }
 
 export interface DayListCard {

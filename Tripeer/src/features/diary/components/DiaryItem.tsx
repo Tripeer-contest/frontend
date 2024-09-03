@@ -21,9 +21,6 @@ export default function DiaryItem() {
     <>
       {data.length > 0 ? (
         <>
-          <div className={styles.titleBox}>
-            <h1 className={styles.titleText}>&quot;나의 지나온 여행&quot;</h1>
-          </div>
           <DiaryCards diaryListData={data} />
         </>
       ) : (
