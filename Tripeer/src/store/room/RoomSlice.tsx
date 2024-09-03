@@ -1,13 +1,22 @@
 import { StateCreator } from 'zustand';
 import { StoreState } from '../store';
-import { OnlineInfo, RoomSliceState } from './RoomSliceState';
-import { TownRoomInterface } from '../../types/PlanDetailTypes';
+import {
+  NavNumber,
+  OnlineInfo,
+  RoomSliceState,
+  RoomTownInfo,
+} from './RoomSliceState';
 
 const initState = {
-  room_coworkerList: [],
-  room_id: -1,
-  room_title: '',
+  room_userInfo: [],
+  room_page: 0 as NavNumber,
   room_townList: [],
+  room_title: '',
+  room_startDay: '',
+  room_endDay: '',
+  room_chatScrollIsBottom: true,
+  room_chatScrollTo: null,
+  room_chatScrollToBottom: null,
 };
 
 export const RoomSlice: StateCreator<
@@ -18,10 +27,18 @@ export const RoomSlice: StateCreator<
 > = (set) => ({
   ...initState,
   room_init: () => set(() => ({ ...initState })),
-  room_setId: (payload: number) => set(() => ({ room_id: payload })),
-  room_setTitle: (payload: string) => set(() => ({ room_title: payload })),
-  room_setTownList: (payload: TownRoomInterface[]) =>
-    set(() => ({ room_townList: [...payload] })),
-  room_setCoworkerList: (payload: OnlineInfo[]) =>
-    set(() => ({ room_coworkerList: [...payload] })),
+  room_setUserInfo: (payload: OnlineInfo[]) =>
+    set(() => ({ room_userInfo: [...payload] })),
+  room_setPage: (page: NavNumber) => set(() => ({ room_page: page })),
+  room_setTownList: (towns: RoomTownInfo[]) =>
+    set(() => ({ room_townList: [...towns] })),
+  room_setTitle: (title: string) => set(() => ({ room_title: title })),
+  room_setEndDay: (day: string) => set(() => ({ room_endDay: day })),
+  room_setStartDay: (day: string) => set(() => ({ room_startDay: day })),
+  room_chatSetScrollFn: (payload) =>
+    set(() => ({ room_chatScrollTo: payload })),
+  room_setChatScrollIsBottom: (isTrue: boolean) =>
+    set(() => ({ room_chatScrollIsBottom: isTrue })),
+  room_chatSetScrollToBottom: (payload) =>
+    set(() => ({ room_chatScrollToBottom: payload })),
 });

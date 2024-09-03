@@ -1,22 +1,43 @@
 import { useParams } from 'react-router-dom';
 import useConnect from './hooks/useConnect';
 import CommonLoading from '../../components/loading/CommonLoading';
-import useOnline from './hooks/useOnline';
-import useRoomInfo from './hooks/useRoomInfo';
+import useDocInfo from './hooks/useDocInfo';
+import useAccess from './hooks/useAccess';
+import PlanChat from './components/chat/PlanChat';
+import { useEffect, useMemo } from 'react';
+import zustandStore from '../../store/store';
+import { useShallow } from 'zustand/react/shallow';
+import PlanMap from './components/map/PlanMap';
+import PlanCalendar from './components/calendar/PlanCalendar';
 
 export default function PlanDetail() {
+  const [init, page] = zustandStore(
+    useShallow((state) => [state.y_init, state.room_page]),
+  );
   const params = useParams();
-  const RoomInfo = useRoomInfo(params.id);
+  const Access = useAccess(params.id);
   const Connect = useConnect(params.id);
-  const Online = useOnline();
+  const Online = useDocInfo();
+
+  const MAIN_PAGE = useMemo(() => {
+    return [
+      <PlanChat key={'plan-chat'} />,
+      <PlanMap key={'plan-map'} />,
+      <PlanCalendar key={'plan-calendar'} />,
+    ][page];
+  }, [page]);
+
+  useEffect(() => {
+    return () => {
+      init();
+    };
+  }, [init]);
   return (
     <>
-      {Connect.isLoading && RoomInfo.isLoading && Online.isLoading ? (
+      {Connect.isLoading && Access.isLoading && Online.isLoading ? (
         <CommonLoading />
       ) : (
-        <>
-          <div>연결됨</div>
-        </>
+        <>{MAIN_PAGE}</>
       )}
     </>
   );

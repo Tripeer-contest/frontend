@@ -4,36 +4,61 @@ import { useEffect } from 'react';
 import { WebsocketProvider } from 'y-websocket';
 import zustandStore from '../../../store/store';
 import { useShallow } from 'zustand/react/shallow';
-import useRoomInfo from './useRoomInfo';
-import { useParams } from 'react-router-dom';
+import useRoomInfo from './useAccess';
+import getTokenInfo from '../../../utils/jwtDecode';
+import { OnlineInfo } from '../../../store/room/RoomSliceState';
 
 export default function useConnect(id: string | undefined) {
-  const params = useParams();
-  const { data } = useRoomInfo(params.id);
-  const [setYDoc, setYWs, init, yws, connected, isConnected] = zustandStore(
-    useShallow((state) => [
-      state.setYDoc,
-      state.setYWs,
-      state.y_init,
-      state.y_ws,
-      state.setYConnect,
-      state.y_connected,
-    ]),
-  );
+  const { isSuccess } = useRoomInfo(id);
+  const [setYDoc, setYWs, init, yws, connected, isConnected, setUserInfo] =
+    zustandStore(
+      useShallow((state) => [
+        state.setYDoc,
+        state.setYWs,
+        state.y_init,
+        state.y_ws,
+        state.setYConnect,
+        state.y_connected,
+        state.room_setUserInfo,
+      ]),
+    );
 
   useEffect(() => {
     let doc: Y.Doc;
     let ws: WebsocketProvider;
-    if (id && data) {
+    if (id && isSuccess) {
       doc = new Y.Doc();
       ws = new WebsocketProvider('wss://tripeer.co.kr/node', `room-${id}`, doc);
       setYDoc(doc);
       setYWs(ws);
-      ws.on('status', (e: { status: string }) => {
-        if (e.status === 'connected') connected();
+      ws.on('sync', (isSynced: boolean) => {
+        if (isSynced) {
+          ws.awareness.on('change', () => {
+            const states = ws.awareness.getStates().values();
+            const YUserInfo = ws.doc.getArray('userInfo').toJSON();
+            const newUserInfo: OnlineInfo[] = [];
+            if (YUserInfo.length > 0) {
+              YUserInfo.forEach((user) => {
+                newUserInfo.push({ ...user, isOnline: false });
+              });
+            }
+            for (const state of states) {
+              if (state && state.online) {
+                const idx = newUserInfo.findIndex(
+                  (user) => user.userId === state.online,
+                );
+                if (idx !== -1) newUserInfo[idx].isOnline = true;
+                setUserInfo(newUserInfo);
+              }
+            }
+          });
+          const tokenInfo = getTokenInfo();
+          ws.awareness.setLocalStateField('online', tokenInfo.userId);
+          connected();
+        }
       });
     }
-  }, [id, setYDoc, setYWs, connected, data]);
+  }, [id, setYDoc, setYWs, connected, setUserInfo, isSuccess]);
 
   useEffect(() => {
     return () => {

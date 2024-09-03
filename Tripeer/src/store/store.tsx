@@ -16,6 +16,7 @@ import { CommonSliceState } from './common/CommonSliceState.ts';
 import { CommonSlice } from './common/CommonSlice.tsx';
 import { createHomeSlice } from './home/HomeStore.tsx';
 import { HomeSlice } from './home/HomeType.ts';
+import { DiarySlice, diarySliceState } from './diary/DiarySlice.tsx';
 
 export type StoreState = AuthState &
   PlanState &
@@ -24,6 +25,7 @@ export type StoreState = AuthState &
   YSliceInterface &
   RoomSliceState &
   CommonSliceState &
+  diarySliceState &
   HomeSlice;
 
 const zustandStore = create<StoreState>()(
@@ -36,6 +38,7 @@ const zustandStore = create<StoreState>()(
     ...RoomSlice(...rest),
     ...CommonSlice(...rest),
     ...createHomeSlice(...rest),
+    ...DiarySlice(...rest),
   })),
 );
 

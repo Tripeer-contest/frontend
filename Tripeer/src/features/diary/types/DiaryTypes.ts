@@ -36,3 +36,20 @@ export interface DiaryTypes {
 export interface DiaryAPI {
   data: DiaryTypes;
 }
+
+export interface DayListCard {
+  planDayId: number;
+  date: string;
+  planDetailList: {
+    planDetailId: number;
+    title: string;
+    contentType: string;
+    image: string;
+    address: string;
+    latitude: number;
+    longitude: number;
+    day: number;
+    step: number;
+    cost: number;
+  }[];
+}

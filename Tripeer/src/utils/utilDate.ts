@@ -9,7 +9,15 @@ export const getCurrentDate = () => {
   const currentYear = koreaTime.getFullYear();
   const currentMonth = koreaTime.getMonth(); // 월은 0부터 시작하므로 UI에 나타날때는 +1 필요
   const currentDay = koreaTime.getDate();
-  return { currentYear, currentMonth, currentDay };
+  const currentHours = koreaTime.getHours();
+  const currentMinutes = koreaTime.getMinutes();
+  return {
+    currentYear,
+    currentMonth,
+    currentDay,
+    currentHours,
+    currentMinutes,
+  };
 };
 
 const compareWithToday = (date: Date) => {
@@ -110,4 +118,40 @@ export const makeDayToFullYearString = (day: string) => {
   result += dayInfo[2].replace(/^0+/, '') + '일';
   result += `(${week[new Date(day).getDay()]})`;
   return result;
+};
+
+export const makeDayToDotFullString = (day: string) => {
+  const dayInfo = day.split('-');
+  let result = '';
+  result += dayInfo[0].slice(2) + '.';
+  result += dayInfo[1] + '.';
+  result += dayInfo[2];
+  result += `(${week[new Date(day).getDay()]})`;
+  return result;
+};
+
+export const getCorrectlyNow = () => {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+  });
+
+  const parts = formatter.formatToParts(new Date());
+  const currentYear = parts.find((part) => part.type === 'year')?.value;
+  const currentMonth = parts.find((part) => part.type === 'month')?.value;
+  const currentDay = parts.find((part) => part.type === 'day')?.value;
+  const currentHours = parts.find((part) => part.type === 'hour')?.value;
+  const currentMinutes = parts.find((part) => part.type === 'minute')?.value;
+  return {
+    currentYear,
+    currentMonth,
+    currentDay,
+    currentHours,
+    currentMinutes,
+  };
 };

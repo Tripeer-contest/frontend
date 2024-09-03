@@ -1,0 +1,90 @@
+.bar {
+  height: 30px;
+  padding-left: 40px;
+  width: 100%;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.cancel {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.searchResult {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 280px;
+  width: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.noResult {
+  height: 300px;
+  width: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c4c4c4;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #04acb5;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.userBox {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-left: 10px;
+  color: #000e08;
+  font-size: 14px;
+}
+.profileBox {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.profile {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.line {
+  width: 100%;
+  border: 1px solid #f3f3f3;
+}
+
+.invite {
+  margin-left: auto;
+  border: none;
+  background-color: #04acb5;
+  color: #fff;
+  width: 50px;
+  border-radius: 5px;
+  height: 100%;
+  font-size: 12px;
+  cursor: pointer;
+}

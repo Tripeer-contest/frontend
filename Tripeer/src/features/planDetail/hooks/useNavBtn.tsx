@@ -1,9 +1,9 @@
-import inactiveChat from '../assets/chat.svg';
-import inactiveMap from '../assets/map.svg';
-import inactiveCalendar from '../assets/calendar.svg';
-import activeChat from '../assets/active/chat.svg';
-import activeMap from '../assets/active/map.svg';
-import activeCalendar from '../assets/active/calendar.svg';
+import inactiveChat from '../assets/icon/chat.svg';
+import inactiveMap from '../assets/icon/map.svg';
+import inactiveCalendar from '../assets/icon/calendar.svg';
+import activeChat from '../assets/icon/active/chat.svg';
+import activeMap from '../assets/icon/active/map.svg';
+import activeCalendar from '../assets/icon/active/calendar.svg';
 import { useMemo } from 'react';
 
 export default function useNavBtn(page: 0 | 1 | 2) {
