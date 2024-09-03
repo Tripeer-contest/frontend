@@ -8,7 +8,7 @@ declare global {
 }
 
 export default function useMap(mapOptions?: KakaoMapOptions) {
-  const [map, setMap] = useState();
+  const [map, setMap] = useState<any>();
   const setMapRef = useCallback(
     (container: HTMLDivElement | null) => {
       if (container) {

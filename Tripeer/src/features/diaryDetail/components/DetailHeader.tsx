@@ -5,6 +5,7 @@ import useSelectDayModal from '../hooks/useSelectDayModal';
 import zustandStore from '../../../store/store';
 import { useShallow } from 'zustand/react/shallow';
 import { useEffect, useState } from 'react';
+import dateIcon from '../assets/dateIcon.svg';
 
 export default function DetailHeader() {
   const [day, setDay] = useState(0);
@@ -48,7 +49,8 @@ export default function DetailHeader() {
           open();
         }}
       >
-        {day === 0 ? '전체 일정' : `${day}일차`}
+        <img src={dateIcon} alt="" />
+        <p>{day === 0 ? '전체 일정' : `${day}일차`}</p>
       </div>
       <SelectDayModal></SelectDayModal>
     </header>

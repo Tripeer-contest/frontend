@@ -1,7 +1,9 @@
 import styles from './detailCard.module.css';
 import { DayListCard } from '../../diary/types/DiaryTypes';
+import { getCategoryStyle } from '../../../data/categoryStyle';
 
 export default function DayListContent({ card }: { card: DayListCard }) {
+  getCategoryStyle;
   return (
     <div className={styles.dayListContainer}>
       {card.planDetailList.map((item, idx: number) => {
@@ -10,11 +12,9 @@ export default function DayListContent({ card }: { card: DayListCard }) {
             <div className={styles.orderBox}>
               <div
                 className={styles.orderCircle}
-                style={
-                  {
-                    // backgroundColor: CATEGORY_STYLE[item.contentType].color,
-                  }
-                }
+                style={{
+                  backgroundColor: getCategoryStyle(item.contentType).color,
+                }}
               >
                 {idx + 1}
               </div>
@@ -30,13 +30,13 @@ export default function DayListContent({ card }: { card: DayListCard }) {
               <p className={styles.address}>{item.address}</p>
               <div className={styles.contentTypeBox}>
                 <img
-                  // src={CATEGORY_STYLE[item.contentType].icon}
+                  src={getCategoryStyle(item.contentType).icon}
                   alt="category-icon"
                   className={styles.contentIcon}
                 />
                 <p
                   className={styles.content}
-                  // style={{ color: CATEGORY_STYLE[item.contentType].color }}
+                  style={{ color: getCategoryStyle(item.contentType).color }}
                 >
                   {item.contentType}
                 </p>

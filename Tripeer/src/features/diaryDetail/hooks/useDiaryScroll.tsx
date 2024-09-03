@@ -3,11 +3,12 @@ import zustandStore from '../../../store/store';
 import { useShallow } from 'zustand/react/shallow';
 
 export default function useDiaryScroll(dayLength: number) {
-  const [setScrollFn, setDiaryScroll, setDayScroll] = zustandStore(
+  const [setScrollFn, setDiaryScroll, setDayScroll, setInit] = zustandStore(
     useShallow((state) => [
       state.setDiaryScrollFn,
       state.setDiaryContainerScroll,
       state.setDiaryDayScroll,
+      state.setDiaryDayInit,
     ]),
   );
   const setScrollRef = useCallback(
@@ -36,6 +37,12 @@ export default function useDiaryScroll(dayLength: number) {
       setDayScroll(initDayScroll);
     }
   }, [dayLength, setDayScroll]);
+
+  useEffect(() => {
+    return () => {
+      setInit();
+    };
+  }, [setInit]);
 
   return { setScrollRef, onScroll };
 }

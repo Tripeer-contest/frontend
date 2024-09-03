@@ -14,6 +14,7 @@ export interface diarySliceState {
   diaryDayScroll: null | number[];
   setDiaryContainerScroll: (offset: number) => void;
   setDiaryDayScroll: (dayOffset: number[]) => void;
+  setDiaryDayInit: () => void;
 }
 
 export const DiarySlice: StateCreator<
@@ -27,4 +28,5 @@ export const DiarySlice: StateCreator<
   setDiaryContainerScroll: (offset) =>
     set(() => ({ diaryContainerScroll: offset })),
   setDiaryDayScroll: (dayOffset) => set(() => ({ diaryDayScroll: dayOffset })),
+  setDiaryDayInit: () => set(() => ({ ...initState })),
 });

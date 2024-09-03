@@ -26,20 +26,24 @@
 .container::-webkit-scrollbar {
   display: none;
 }
-.selectBtn {
-  cursor: pointer;
-}
+
 .modalContainer {
   outline: none;
   border: none;
 }
 
 .selectScrollBox {
-  height: 100px;
+  height: 120px;
   overflow-y: scroll;
 }
 .selectScrollBox::-webkit-scrollbar {
-  display: none;
+  width: 5px;
+}
+.selectScrollBox::-webkit-scrollbar-track {
+  background-color: #e3e3e3;
+}
+.selectScrollBox::-webkit-scrollbar-thumb {
+  background-color: #04acb5;
 }
 
 .titleText {
@@ -100,11 +104,25 @@
     animation: slideUp 0.3s ease-in-out;
     overflow: hidden;
   }
-  .selectBox {
-    width: 100%;
+  .selectBtn {
+    cursor: pointer;
+    border: 1px #04acb5 solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .selectBtn img {
+    height: 22px;
+    width: 22px;
+  }
+  .selectBtn p {
+    margin-left: 5px;
   }
 }
-@media screen and (min-width: 1001px) {
+@media screen and (min-width: 1000px) {
   .headerSection {
     width: 1000px;
     background-color: white;
@@ -116,5 +134,22 @@
     height: 200px;
     width: 300px;
     overflow: hidden;
+  }
+  .selectBtn {
+    cursor: pointer;
+    border: 1px #04acb5 solid;
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .selectBtn img {
+    height: 22px;
+    width: 22px;
+  }
+  .selectBtn p {
+    margin-left: 5px;
   }
 }

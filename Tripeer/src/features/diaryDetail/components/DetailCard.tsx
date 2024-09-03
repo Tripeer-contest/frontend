@@ -6,6 +6,7 @@ import DayListContent from './DayListContent';
 import DiaryMap from './DiaryMap';
 import styles from './detailCard.module.css';
 import { useCallback } from 'react';
+import unUseMapImg from '../assets/unUseMap.svg';
 
 export default function DetailCard({
   card,
@@ -42,8 +43,27 @@ export default function DetailCard({
         <p>{makeDayToDotFullString(card.date)}</p>
       </header>
       <div className={styles.diaryMainBox}>
-        <DiaryMap></DiaryMap>
-        <DayListContent card={card}></DayListContent>
+        {card.planDetailList.length ? (
+          <>
+            <DiaryMap card={card}></DiaryMap>
+            <DayListContent card={card}></DayListContent>
+          </>
+        ) : (
+          <>
+            <div className={styles.unUseMapImgBox}>
+              <img
+                src={unUseMapImg}
+                className={styles.unUseMapImg}
+                alt="no-map-img"
+              />
+            </div>
+            <div className={styles.unUseMapTextBox}>
+              <p className={styles.unUseMapText}>
+                해당 일자에 일정이 비었습니다.
+              </p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
