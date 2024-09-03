@@ -19,6 +19,8 @@ import ImgPage from './features/img/ImgPage';
 import useViewport from './hooks/useViewport.tsx';
 import SpotPage from './features/spot/SpotPage.tsx';
 import DiaryDetailPage from './features/diaryDetail/DiaryDetailPage.tsx';
+import ErrorPage from './components/error/ErrorPage.tsx';
+import ErrorBoundary from './components/error/ErrorBoundary.tsx';
 
 const router = createBrowserRouter([
   {
@@ -39,9 +41,11 @@ const router = createBrowserRouter([
       {
         path: '/diary',
         element: (
-          <Suspense fallback={<CommonLoading />}>
-            <DiaryPage />
-          </Suspense>
+          <ErrorBoundary fallback={<ErrorPage />}>
+            <Suspense fallback={<CommonLoading />}>
+              <DiaryPage />
+            </Suspense>
+          </ErrorBoundary>
         ),
         // loader: protectRouter(),
       },
@@ -76,6 +80,10 @@ const router = createBrowserRouter([
         path: '/mypage',
         element: <p>마이페이지</p>,
         loader: protectRouter(),
+      },
+      {
+        path: '/error',
+        element: <ErrorPage />,
       },
     ],
   },

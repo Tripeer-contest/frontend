@@ -1,0 +1,44 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.errorImg {
+  height: 300px;
+  width: 400px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+.contentBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contentBox p {
+  margin-bottom: 5px;
+}
+.backBtn {
+  cursor: pointer;
+  background-color: #04acb5;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 50px;
+  border-radius: 5px;
+  margin-top: 40px;
+}
+
+.backBtn:hover {
+  border: #04acb5 2px solid;
+  background-color: white;
+  color: #04acb5;
+  font-weight: bold;
+}
