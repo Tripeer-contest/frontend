@@ -27,12 +27,7 @@ const HomePlaceBanner = () => {
       {data?.pages.map((page, idx) => (
         <div key={idx} className={styles.gridBox}>
           {page.spotInfoDtos.map((place: PlaceType) => (
-            <PlaceBox
-              key={place.spotId}
-              name={place.spotName}
-              address={place.address}
-              img={place.spotImg}
-            />
+            <PlaceBox place={place} key={place.spotId} />
           ))}
         </div>
       ))}

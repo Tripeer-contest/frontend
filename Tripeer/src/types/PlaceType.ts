@@ -3,5 +3,5 @@ export interface PlaceType {
   spotName: string;
   spotImg: string;
   address: string;
-  wishList: boolean;
+  wishlist: boolean;
 }

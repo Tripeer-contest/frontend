@@ -33,7 +33,6 @@ const useHomePlaceBanner = () => {
           : (categoryName = '명소');
 
     if (h_nowCityId !== -1) {
-      console.log(h_nowCityId);
       Region.forEach((item) => {
         if (item.cityId === h_nowCityId) {
           cityName = item.name;
@@ -92,8 +91,7 @@ const useHomePlaceBanner = () => {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            entry.isIntersecting &&
-              fetchNextPage().then(() => console.log('ok'));
+            entry.isIntersecting && fetchNextPage().then();
           });
         },
         {
