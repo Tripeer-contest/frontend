@@ -1,0 +1,41 @@
+.notifyContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.notifyBox {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  gap: 14px;
+}
+
+.img {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+}
+
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.infoBox > h3 {
+  color: #222222;
+}
+
+.infoBox > p {
+  color: #3f3f3f;
+}
+
+.now {
+  font-size: 12px;
+  width: 30px;
+  height: 50px;
+  color: #3f3f3f;
+}

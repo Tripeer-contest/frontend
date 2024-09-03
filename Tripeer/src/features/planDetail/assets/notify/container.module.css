@@ -1,0 +1,28 @@
+.container {
+  width: 90%;
+  max-width: 1000px;
+  z-index: 9;
+  position: fixed;
+  top: -500px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  padding: 0 30px 0 30px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.active {
+  animation: showUi 0.5s ease-in-out forwards;
+}
+
+@keyframes showUi {
+  0% {
+    top: -500px;
+  }
+  100% {
+    top: 10px;
+  }
+}

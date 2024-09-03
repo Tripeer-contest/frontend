@@ -4,6 +4,7 @@ import SearchBar from '../../../../components/search/SearchBar';
 import styles from '../../assets/chat/invite.module.css';
 import { useGetSlowUserQuery } from '../../hooks/useGetUserQuery';
 import MemberSearchResult from './MemberSearchResult';
+
 export default function MemberInvite({ close }: { close: () => void }) {
   const [keyword, setKeyword] = useState('');
   const { data, isError, isLoading } = useGetSlowUserQuery(keyword);
@@ -12,6 +13,7 @@ export default function MemberInvite({ close }: { close: () => void }) {
     close();
     setKeyword('');
   };
+
   const textHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.currentTarget.value);
   };
