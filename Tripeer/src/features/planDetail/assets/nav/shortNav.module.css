@@ -25,9 +25,9 @@
 }
 
 .banner {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #4fbdb7;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
 }
 
 .controller {
