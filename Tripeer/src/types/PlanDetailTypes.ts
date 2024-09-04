@@ -29,4 +29,5 @@ export interface ChatInterface {
   day: string;
   hours: string;
   minutes: string;
+  amOrPm: string;
 }

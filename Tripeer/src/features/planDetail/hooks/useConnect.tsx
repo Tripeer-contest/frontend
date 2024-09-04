@@ -31,30 +31,33 @@ export default function useConnect(id: string | undefined) {
       ws = new WebsocketProvider('wss://tripeer.co.kr/node', `room-${id}`, doc);
       setYDoc(doc);
       setYWs(ws);
+
       ws.on('sync', (isSynced: boolean) => {
         if (isSynced) {
           ws.awareness.on('change', () => {
-            const states = ws.awareness.getStates().values();
-            const YUserInfo = ws.doc.getArray('userInfo').toJSON();
-            const newUserInfo: OnlineInfo[] = [];
-            if (YUserInfo.length > 0) {
-              YUserInfo.forEach((user) => {
-                newUserInfo.push({ ...user, isOnline: false });
-              });
-            }
-            for (const state of states) {
-              if (state && state.online) {
-                const idx = newUserInfo.findIndex(
-                  (user) => user.userId === state.online,
-                );
-                if (idx !== -1) newUserInfo[idx].isOnline = true;
-                setUserInfo(newUserInfo);
+            setTimeout(() => {
+              const states = ws.awareness.getStates().values();
+              const YUserInfo = ws.doc.getArray('userInfo').toJSON();
+              const newUserInfo: OnlineInfo[] = [];
+              if (YUserInfo.length > 0) {
+                YUserInfo.forEach((user) => {
+                  newUserInfo.push({ ...user, isOnline: false });
+                });
               }
-            }
+              for (const state of states) {
+                if (state && state.online) {
+                  const idx = newUserInfo.findIndex(
+                    (user) => user.userId === state.online,
+                  );
+                  if (idx !== -1) newUserInfo[idx].isOnline = true;
+                  setUserInfo(newUserInfo);
+                }
+              }
+              connected();
+            }, 500);
           });
           const tokenInfo = getTokenInfo();
           ws.awareness.setLocalStateField('online', tokenInfo.userId);
-          connected();
         }
       });
     }

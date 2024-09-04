@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import zustandStore from '../../../store/store';
 import { useShallow } from 'zustand/react/shallow';
 import Tripeer_Logo from '../../../assets/full_logo.webp';
+import useUnreadChat from '../hooks/useUnreadChat';
 
 export default function PlanFullNav() {
   const [page, setPage] = zustandStore(
@@ -12,7 +13,7 @@ export default function PlanFullNav() {
   );
   const { calendarBtn, mapBtn, chatBtn } = useNavBtn(page);
   const navigate = useNavigate();
-
+  const haveNewChat = useUnreadChat();
   return (
     <aside className={styles.container}>
       <header className={styles.bannerBox}>
@@ -23,6 +24,7 @@ export default function PlanFullNav() {
           <button onClick={() => setPage(0)}>
             <img src={chatBtn.img} alt="chat-icon" />
             <span style={chatBtn.style}>채팅</span>
+            {haveNewChat && <div className={styles.unread} />}
           </button>
           <button onClick={() => setPage(1)}>
             <img src={mapBtn.img} alt="map-icon" />
