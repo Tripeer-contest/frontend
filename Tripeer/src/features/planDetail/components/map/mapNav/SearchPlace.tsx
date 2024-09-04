@@ -1,25 +1,25 @@
 import styles from '../../../assets/map/mapNav/searchPlace.module.css';
 import PlaceList from './PlaceList';
+import btnImg from '../../../assets/map/mapNav/assets/openListBtn.svg';
+import SearchHeader from './SearchHeader';
 
 export default function SearchPlace({
   isVisible,
   openPlaceList,
 }: {
-  isVisible: any;
-  openPlaceList: any;
+  isVisible: boolean;
+  openPlaceList: () => void;
 }) {
   return (
     <>
       <div className={styles.container}>
+        <SearchHeader />
         여행지 검색
-        <button
-          className={styles.openBtn}
-          onClick={() => {
-            openPlaceList();
-          }}
-        >
-          클릭
-        </button>
+        <img
+          src={btnImg}
+          className={isVisible ? styles.closeBtn : styles.openBtn}
+          onClick={openPlaceList}
+        ></img>
       </div>
       {isVisible && <PlaceList />}
     </>
