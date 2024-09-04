@@ -1,5 +1,6 @@
 import styles from '../../../assets/map/mapNav/searchPlace.module.css';
 import PlaceList from './PlaceList';
+import btnImg from '../../../assets/map/mapNav/assets/openListBtn.svg';
 
 export default function SearchPlace({
   isVisible,
@@ -12,14 +13,13 @@ export default function SearchPlace({
     <>
       <div className={styles.container}>
         여행지 검색
-        <button
-          className={styles.openBtn}
+        <img
+          src={btnImg}
+          className={isVisible ? styles.closeBtn : styles.openBtn}
           onClick={() => {
             openPlaceList();
           }}
-        >
-          클릭
-        </button>
+        ></img>
       </div>
       {isVisible && <PlaceList />}
     </>

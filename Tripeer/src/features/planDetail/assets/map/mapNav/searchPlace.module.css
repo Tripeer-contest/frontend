@@ -16,4 +16,23 @@
     height: 100vh;
     width: 500px;
   }
+  .openBtn {
+    position: absolute;
+    z-index: 5;
+    right: -17px;
+    background-color: white;
+    padding: 5px;
+    border: #c4c4c4 1px solid;
+    border-radius: 5px;
+    transform: rotate(180deg);
+  }
+  .closeBtn {
+    position: absolute;
+    z-index: 5;
+    right: -17px;
+    background-color: white;
+    padding: 5px;
+    border: #c4c4c4 1px solid;
+    border-radius: 5px;
+  }
 }
