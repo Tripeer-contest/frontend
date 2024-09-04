@@ -19,6 +19,70 @@
   .dayListContainer {
     width: 100%;
   }
+  .dayListBox {
+    display: grid;
+    grid-template-columns: 30px auto 70px;
+  }
+  .orderBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30px;
+  }
+  .imgBox {
+    height: 70px;
+    width: 70px;
+  }
+  .leftSection {
+    width: 100%;
+  }
+  .dateBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .orderCircle {
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+    font-size: 0.9rem;
+  }
+  .title {
+    color: #262626;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  .textContent {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 0.9rem;
+  }
+  .unUseMapText {
+    color: #c4c4c4;
+    margin: 30px 30px 50px 30px;
+  }
+  .unUseMapImgBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .unUseMapImg {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 @media screen and (min-width: 1000px) {
   .container {
@@ -29,48 +93,80 @@
   }
   .diaryMainBox {
     display: grid;
-    grid-template-columns: 500px auto;
+    grid-template-columns: 450px auto;
+  }
+  .dayListBox {
+    display: grid;
+    grid-template-columns: 50px auto 100px;
+    flex-direction: row;
+  }
+  .orderBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30px;
+    margin-left: 20px;
+  }
+  .imgBox {
+    height: 100px;
+    width: 100px;
+  }
+
+  .dateBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .orderCircle {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+  }
+  .title {
+    color: #262626;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .textContent {
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 300px;
+  }
+  .unUseMapText {
+    color: #c4c4c4;
+    margin: 30px;
+  }
+  .unUseMapImgBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 400px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .unUseMapImg {
+    width: 450px;
+    height: 100%;
   }
 }
-.dateBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 30px;
-}
+
 .dateBox p {
   font-weight: bold;
   font-size: 1.2rem;
   color: #262626;
 }
-.dayListBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.leftSection {
-  display: flex;
-  flex-direction: row;
-}
-.orderBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50px;
-}
-.orderCircle {
-  height: 30px;
-  width: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #aba6a6;
-  padding: 10px;
-  border-radius: 50px;
-  color: white;
-}
+
 .orderLine {
   background-color: #d9d9d9;
   width: 4px;
@@ -82,27 +178,13 @@
   width: 8px;
   height: 8px;
 }
-.imgBox {
-  height: 100px;
-  width: 100px;
-}
+
 .img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 25%);
-}
-.textContent {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.title {
-  color: #262626;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
 }
 
 .address {
@@ -127,4 +209,11 @@
 .content {
   font-size: 0.9rem;
   margin-left: 5px;
+}
+
+.unUseMapTextBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

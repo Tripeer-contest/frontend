@@ -3,7 +3,7 @@ import information from '../../../../assets/button/information.svg';
 import usePlanDetailModal from '../../hooks/usePlanDetailModal';
 import styles from '../../assets/chat/modal.module.css';
 import ListController from '../../../../components/controller/ListController';
-import { UIEvent, useState } from 'react';
+import { useState } from 'react';
 import MobileMemberInfo from './MobileMemberInfo';
 import MobileTripInfo from './MobileTripInfo';
 

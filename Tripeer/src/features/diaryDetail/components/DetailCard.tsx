@@ -1,8 +1,12 @@
+import { useShallow } from 'zustand/react/shallow';
+import zustandStore from '../../../store/store';
 import { makeDayToDotFullString } from '../../../utils/utilDate';
 import { DayListCard } from '../../diary/types/DiaryTypes';
 import DayListContent from './DayListContent';
 import DiaryMap from './DiaryMap';
 import styles from './detailCard.module.css';
+import { useCallback } from 'react';
+import unUseMapImg from '../assets/unUseMap.svg';
 
 export default function DetailCard({
   card,
@@ -11,8 +15,27 @@ export default function DetailCard({
   card: DayListCard;
   idx: number;
 }) {
+  const [dayScroll, setDayScroll] = zustandStore(
+    useShallow((state) => [state.diaryDayScroll, state.setDiaryDayScroll]),
+  );
+  const setContainerOffset = useCallback(
+    (elem: HTMLDivElement | null) => {
+      if (
+        dayScroll &&
+        typeof idx === 'number' &&
+        dayScroll[idx] === -1 &&
+        elem
+      ) {
+        const newDayScroll = [...dayScroll];
+        newDayScroll[idx] = elem.offsetTop;
+        setDayScroll(newDayScroll);
+      }
+    },
+    [dayScroll, idx, setDayScroll],
+  );
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={setContainerOffset}>
       <div className={styles.line} />
       <header className={styles.dateBox}>
         <p>{idx + 1}일차,</p>
@@ -20,8 +43,27 @@ export default function DetailCard({
         <p>{makeDayToDotFullString(card.date)}</p>
       </header>
       <div className={styles.diaryMainBox}>
-        <DiaryMap></DiaryMap>
-        <DayListContent></DayListContent>
+        {card.planDetailList.length ? (
+          <>
+            <DiaryMap card={card}></DiaryMap>
+            <DayListContent card={card}></DayListContent>
+          </>
+        ) : (
+          <>
+            <div className={styles.unUseMapImgBox}>
+              <img
+                src={unUseMapImg}
+                className={styles.unUseMapImg}
+                alt="no-map-img"
+              />
+            </div>
+            <div className={styles.unUseMapTextBox}>
+              <p className={styles.unUseMapText}>
+                해당 일자에 일정이 비었습니다.
+              </p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
