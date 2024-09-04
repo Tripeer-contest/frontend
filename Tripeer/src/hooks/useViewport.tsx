@@ -9,6 +9,12 @@ export default function useViewport() {
   useEffect(() => {
     setViewport();
     window.addEventListener('resize', setViewport);
-    window.visualViewport?.addEventListener('resize', setViewport);
+    window.addEventListener('focusin', () => {
+      document.body.style.position = 'fixed';
+    });
+
+    window.addEventListener('focusout', () => {
+      document.body.style.position = '';
+    });
   }, []);
 }
