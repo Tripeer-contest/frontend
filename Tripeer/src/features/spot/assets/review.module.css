@@ -112,6 +112,11 @@
   flex-direction: column;
   gap: 20px;
 }
+.noreview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media screen and (max-width: 1000px) {
   .container {

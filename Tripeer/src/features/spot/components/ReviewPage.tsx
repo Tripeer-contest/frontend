@@ -6,16 +6,21 @@ const Min_Current = 5;
 
 export default function ReviewPage({
   scrollTop,
+  setPage,
+  maxPage,
+  page,
 }: {
   scrollTop: (() => void) | null;
+  setPage: (page: number) => void;
+  maxPage: number;
+  page: number;
 }) {
-  const [currentIdx, setCurrentIdx] = useState(1);
-  const [maxPage] = useState(10);
   const [currentMax, setCurrentMax] = useState(5);
   const pages = useMemo(
-    () => Array.from({ length: 5 }, (_, idx) => currentMax + 1 - 5 + idx),
-    [currentMax],
+    () => Array.from({ length: maxPage }, (_, idx) => currentMax + 1 - 5 + idx),
+    [currentMax, maxPage],
   );
+
   const goNext = () => {
     currentMax < maxPage && setCurrentMax((prev) => prev + 1);
   };
@@ -25,12 +30,13 @@ export default function ReviewPage({
   };
 
   const isActive = (idx: number) => {
-    return currentIdx === idx ? styles.active : styles.inactive;
+    return page === idx ? styles.active : styles.inactive;
   };
 
   const pageChange = (idx: number) => {
+    if (page === idx) return;
     scrollTop && scrollTop();
-    setCurrentIdx(idx);
+    setPage(idx);
   };
 
   return (

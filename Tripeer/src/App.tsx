@@ -64,7 +64,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/home/spot/:id',
-        element: <SpotPage />,
+        element: (
+          <Suspense fallback={<CommonLoading />}>
+            <SpotPage />
+          </Suspense>
+        ),
         // loader: protectRouter(),
       },
       {

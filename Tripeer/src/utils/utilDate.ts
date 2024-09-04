@@ -130,6 +130,18 @@ export const makeDayToDotFullString = (day: string) => {
   return result;
 };
 
+export const makeDateToString = (day: string) => {
+  const date = new Date(day);
+  return (
+    date.getFullYear() +
+    '년 ' +
+    (date.getMonth() + 1) +
+    '월 ' +
+    date.getDate() +
+    '일'
+  );
+};
+
 export const getCorrectlyNow = () => {
   const formatter = new Intl.DateTimeFormat('en-US', {
     timeZone: 'Asia/Seoul',
@@ -155,3 +167,12 @@ export const getCorrectlyNow = () => {
     currentMinutes,
   };
 };
+
+export function daysAgo(date: string) {
+  const now = new Date();
+  const given = new Date(date);
+  const differ = now.getTime() - given.getTime();
+  const result = Math.floor(differ / (1000 * 3600 * 24));
+  if (result > 11) return makeDateToString(date);
+  return result + '일 전';
+}

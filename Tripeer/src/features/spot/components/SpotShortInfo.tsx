@@ -4,56 +4,83 @@ import styles from '../assets/shortInfo.module.css';
 
 import 'swiper/css';
 import { truncateText } from '../../../utils/utilString';
+import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
+import { ReviewInterface } from '../../../types/PlaceType';
+import useParamsId from '../hooks/useParamsId';
+import { daysAgo } from '../../../utils/utilDate';
+
+interface ShortQueryType {
+  title: string;
+  contentType: string;
+  starPointAvg: number;
+  reviewDtoList: ReviewInterface[];
+  reviewTotalCount: number;
+}
 
 export default function SpotShortInfo({
   scrollToReview,
 }: {
   scrollToReview: () => void;
 }) {
+  const id = useParamsId();
+  const { data } = useSpotDetailQuery<ShortQueryType>(id, (data) => ({
+    title: data.data.title,
+    contentType: data.data.contentType,
+    reviewDtoList: data.data.reviewDtoList,
+    starPointAvg: data.data.starPointAvg,
+    reviewTotalCount: data.data.reviewTotalCount,
+  }));
   return (
     <section className={styles.container}>
-      <p className={styles.category}>카테고리 - 숙박</p>
-      <h1 className={styles.spotTitle}>신라스테이 해운대</h1>
+      <p className={styles.category}>카테고리 - {data.contentType}</p>
+      <h1 className={styles.spotTitle}>{data.title}</h1>
       <div className={styles.layoutBox}>
         <div className={styles.rateBox}>
           <img
-            src={getRateImg(4.5)}
+            src={getRateImg(data.starPointAvg)}
             alt="star-rating"
             className={styles.star}
           />
-          <span className={styles.point}>4.5</span>
-          <span> - 1200명 평가</span>
+          <span className={styles.point}>{data.starPointAvg}</span>
+          <span> - {data.reviewTotalCount}명 평가</span>
         </div>
-        <a className={styles.scrollBtn} onClick={scrollToReview}>
-          전체보기
-        </a>
+        {data.reviewDtoList.length ? (
+          <a className={styles.scrollBtn} onClick={scrollToReview}>
+            전체보기
+          </a>
+        ) : (
+          <a className={styles.scrollBtn} onClick={scrollToReview}>
+            리뷰쓰기
+          </a>
+        )}
       </div>
+      {data.reviewDtoList.length === 0 && (
+        <p className={styles.emptyReview}>작성된 리뷰가 없습니다.</p>
+      )}
       <Swiper
         slidesPerView={'auto'}
         spaceBetween={20}
         style={{ width: '100%' }}
       >
-        {[1, 2, 3, 4, 5].map((data) => {
-          return (
-            <SwiperSlide className={styles.ratingBox} key={data}>
-              <div className={styles.nameBox}>
-                <p>부수환</p>
-                <p className={styles.date}>1일전</p>
-              </div>
-              <img
-                src={getRateImg(4.5)}
-                alt="rating"
-                className={styles.starPer}
-              />
-              <p className={styles.reviewArea}>
-                {truncateText(
-                  'akjdvlkajsdlkv;ajsdlkvjas;ldkvja;lksdvja;sldkvjal;sdkvja;lsdjva;lskdjvaskdv',
-                  50,
-                )}
-              </p>
-            </SwiperSlide>
-          );
-        })}
+        {data.reviewDtoList.length > 0 &&
+          data.reviewDtoList.map((data) => {
+            return (
+              <SwiperSlide className={styles.ratingBox} key={data.spotReviewId}>
+                <div className={styles.nameBox}>
+                  <p>{data.nickname}</p>
+                  <p className={styles.date}>{daysAgo(data.createTime)}</p>
+                </div>
+                <img
+                  src={getRateImg(data.starPoint)}
+                  alt="rating"
+                  className={styles.starPer}
+                />
+                <p className={styles.reviewArea}>
+                  {truncateText(data.message, 50)}
+                </p>
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </section>
   );

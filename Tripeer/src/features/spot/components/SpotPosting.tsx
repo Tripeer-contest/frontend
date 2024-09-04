@@ -3,8 +3,17 @@ import styles from '../assets/posting.module.css';
 
 import 'swiper/css';
 import { truncateText } from '../../../utils/utilString';
+import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
+import { blogInfoInterface } from '../../../types/PlaceType';
+import useParamsId from '../hooks/useParamsId';
+import { makeDateToString } from '../../../utils/utilDate';
 
 export default function SpotPosting() {
+  const id = useParamsId();
+  const { data } = useSpotDetailQuery<blogInfoInterface[]>(
+    id,
+    (data) => data.data.blogInfoList,
+  );
   return (
     <section className={styles.container}>
       <h3 className={styles.title}>관련 블로그 포스팅</h3>
@@ -14,24 +23,21 @@ export default function SpotPosting() {
         style={{ width: '100%' }}
         nested={true}
       >
-        {[1, 2, 3, 4, 5, 6].map((data) => {
+        {data.map((blog, idx) => {
           return (
-            <SwiperSlide className={styles.cardPosting} key={data}>
-              <img
-                src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/quick-actions/remove-background-before-qa1.png"
-                alt="blog-img"
-                className={styles.img}
-              />
+            <SwiperSlide className={styles.cardPosting} key={idx}>
+              <img src={blog.thumbnail} alt="blog-img" className={styles.img} />
               <div className={styles.contentInfo}>
-                <p className={styles.infoTitle}>블로그 제목</p>
+                <p className={styles.infoTitle}>
+                  {truncateText(blog.title, 10)}
+                </p>
                 <p className={styles.infoContent}>
-                  {truncateText(
-                    '블로그 내요암어피ㅏㅁㄴ어피;마ㅓㅇㅍ;ㅣㅏㅁ으ㅓㅍ;ㅏ멍ㄴ파',
-                    30,
-                  )}
+                  {truncateText(blog.contents, 40)}
                 </p>
               </div>
-              <span className={styles.dayInfo}>3091.05.12</span>
+              <span className={styles.dayInfo}>
+                {makeDateToString(blog.datetime)}
+              </span>
             </SwiperSlide>
           );
         })}

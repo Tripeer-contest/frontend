@@ -1,14 +1,23 @@
 import styles from '../assets/header.module.css';
-import fullHeart from '../../../assets/button/full_heart.svg';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperInterface } from 'swiper/types';
 import { useState } from 'react';
 
 import 'swiper/css';
+import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
+import SpotHeart from './SpotHeart';
+import useParamsId from '../hooks/useParamsId';
+
+type HeaderType = string[];
 
 export default function SpotHeader() {
   const [swiper, setSwiper] = useState<SwiperInterface | undefined>(undefined);
   const [currentPage, setCurrentPage] = useState(1);
+  const id = useParamsId();
+  const { data } = useSpotDetailQuery<HeaderType>(
+    id,
+    (data) => data.data.imageList,
+  );
   const maxPage = swiper && swiper.slides ? swiper.slides.length : 1;
   return (
     <header className={styles.header}>
@@ -22,19 +31,15 @@ export default function SpotHeader() {
         }}
         loop={true}
       >
-        {[1, 2, 3].map((data) => {
+        {data.map((img, idx) => {
           return (
-            <SwiperSlide className={styles.container} key={data}>
-              <img
-                className={styles.img}
-                src="https://cdn.pixabay.com/photo/2022/10/24/12/20/mountains-7543273_1280.jpg"
-                alt="spot-img"
-              />
+            <SwiperSlide className={styles.container} key={idx}>
+              <img className={styles.img} src={img} alt="spot-img" />
             </SwiperSlide>
           );
         })}
       </Swiper>
-      <img src={fullHeart} alt="heart-btn" className={styles.heart} />
+      <SpotHeart />
       <div className={styles.page}>{`${currentPage} / ${maxPage}`}</div>
     </header>
   );

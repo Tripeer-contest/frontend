@@ -16,6 +16,7 @@
   border-radius: 10px;
   border: 1px solid #e6e6e6;
   display: flex;
+  overflow: hidden;
   gap: 8px;
 }
 
@@ -40,6 +41,8 @@
 }
 
 .infoContent {
+  width: 140px;
+  display: flex;
   font-size: 14px;
   color: #6d6d6d;
 }
