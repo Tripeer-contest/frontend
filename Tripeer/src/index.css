@@ -131,6 +131,8 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+html,
 body {
   overflow-y: hidden;
+  height: 100%;
 }

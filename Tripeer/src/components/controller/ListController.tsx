@@ -5,6 +5,7 @@ export default function ListController({
   Category,
   selectedCategry,
   slideTo,
+  maxWidth,
 }: ControllerInterface) {
   const step = 100 / Category.length;
 
@@ -20,7 +21,13 @@ export default function ListController({
 
   return (
     <aside className={styles.remoteContainer}>
-      <ul className={styles.cartRemote}>
+      <ul
+        className={styles.cartRemote}
+        style={{
+          gridTemplateColumns: `repeat(${Category.length}, 1fr)`,
+          maxWidth: maxWidth ? maxWidth : '400px',
+        }}
+      >
         {Category.map((category, idx) => (
           <li
             style={isCategoryHighlight(idx)}

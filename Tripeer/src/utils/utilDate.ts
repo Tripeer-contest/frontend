@@ -27,6 +27,7 @@ const compareWithToday = (date: Date) => {
   const nowYear = koreaTime.getFullYear();
   const nowMonth = koreaTime.getMonth();
   const nowDate = koreaTime.getDate();
+
   if (
     compareYear < nowYear ||
     (compareYear === nowYear && compareMonth < nowMonth) ||
@@ -151,6 +152,7 @@ export const getCorrectlyNow = () => {
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric',
+    hour12: true,
   });
 
   const parts = formatter.formatToParts(new Date());
@@ -159,15 +161,32 @@ export const getCorrectlyNow = () => {
   const currentDay = parts.find((part) => part.type === 'day')?.value;
   const currentHours = parts.find((part) => part.type === 'hour')?.value;
   const currentMinutes = parts.find((part) => part.type === 'minute')?.value;
+  const currentPeriod = parts.find((part) => part.type === 'dayPeriod')?.value;
   return {
     currentYear,
     currentMonth,
     currentDay,
     currentHours,
     currentMinutes,
+    currentPeriod,
   };
 };
 
+export const getChatDateString = (
+  year: string,
+  month: string,
+  day: string,
+  hours: string,
+  minutes: string,
+  amOrPm: string,
+) => {
+  const date = new Date(year + '-' + month + '-' + day);
+  const result = compareWithToday(date);
+  const ampmStr = amOrPm === 'AM' ? '오전' : '오후';
+  return result
+    ? `${year}년 ${month}월 ${day}일 ${ampmStr} ${hours}:${minutes}`
+    : `${ampmStr} ${hours}:${minutes}`;
+};
 export function daysAgo(date: string) {
   const now = new Date();
   const given = new Date(date);
