@@ -3,7 +3,6 @@ import { DayListCard } from '../../diary/types/DiaryTypes';
 import { getCategoryStyle } from '../../../data/categoryStyle';
 
 export default function DayListContent({ card }: { card: DayListCard }) {
-  getCategoryStyle;
   return (
     <div className={styles.dayListContainer}>
       {card.planDetailList.map((item, idx: number) => {
