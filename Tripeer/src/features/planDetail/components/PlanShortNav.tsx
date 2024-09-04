@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import zustandStore from '../../../store/store';
 import { useShallow } from 'zustand/react/shallow';
 import Tripper_icon from '../../../assets/tripeer_icon.webp';
+import useUnreadChat from '../hooks/useUnreadChat';
 
 export default function PlanShortNav() {
   const [page, setPage] = zustandStore(
@@ -12,6 +13,7 @@ export default function PlanShortNav() {
   );
   const { calendarBtn, mapBtn, chatBtn } = useNavBtn(page);
   const navigate = useNavigate();
+  const haveNewChat = useUnreadChat();
 
   return (
     <aside className={styles.container}>
@@ -22,6 +24,7 @@ export default function PlanShortNav() {
         <div className={styles.pageInfo}>
           <button onClick={() => setPage(0)}>
             <img src={chatBtn.img} alt="chat-icon" />
+            {haveNewChat && <div className={styles.unread} />}
           </button>
           <button onClick={() => setPage(1)}>
             <img src={mapBtn.img} alt="map-icon" />

@@ -17,6 +17,7 @@ export default function useSendChat() {
         currentDay,
         currentHours,
         currentMinutes,
+        currentPeriod,
       } = getCorrectlyNow();
       const chatInfo = doc?.getArray('chatInfo');
       if (isConnected && tokenInfo.userId !== null && chatInfo) {
@@ -28,9 +29,9 @@ export default function useSendChat() {
           day: currentDay,
           hours: currentHours,
           minutes: currentMinutes,
+          amOrPm: currentPeriod,
         };
         chatInfo.insert(chatInfo.length, [newChat]);
-        console.log(chatInfo.toJSON());
       }
     },
     [isConnected, doc],
