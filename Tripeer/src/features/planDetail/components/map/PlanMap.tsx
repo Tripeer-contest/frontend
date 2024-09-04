@@ -2,10 +2,10 @@ import { useState } from 'react';
 import styles from '../../assets/map/map.module.css';
 import PlanShortNav from '../PlanShortNav';
 import MapLayout from './layout/MapLayout';
-import MapHeader from './MapHeader';
 import PlaceMap from './mapNav/PlaceMap';
 import SearchPlace from './mapNav/SearchPlace';
 import PlaceList from './mapNav/PlaceList';
+import MapMenu from './mapNav/MapMenu';
 
 export default function PlanMap() {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,7 +31,6 @@ export default function PlanMap() {
         <PlanShortNav />
       </aside>
       <section className={styles.contentBox}>
-        <MapHeader />
         <MapLayout>
           {active === 'search' && (
             <>
@@ -80,32 +79,7 @@ export default function PlanMap() {
             </>
           )}
         </MapLayout>
-        <div className={styles.mapNavBox}>
-          <div
-            className={styles.mapBtnBox}
-            onClick={() => {
-              activeComponent('search');
-            }}
-          >
-            여행지 검색
-          </div>
-          <div
-            className={styles.mapBtnBox}
-            onClick={() => {
-              activeComponent('map');
-            }}
-          >
-            여행 지도
-          </div>
-          <div
-            className={styles.mapBtnBox}
-            onClick={() => {
-              activeComponent('list');
-            }}
-          >
-            여행지 목록
-          </div>
-        </div>
+        <MapMenu active={active} activeComponent={activeComponent} />
       </section>
     </main>
   );
