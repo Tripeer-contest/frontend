@@ -1,5 +1,5 @@
 import styles from '../modules/searchBanner.module.css';
-import searchImg from '../assets/search.png';
+import SearchBar from './SearchBar.tsx';
 
 const SearchBanner = () => {
   return (
@@ -17,13 +17,7 @@ const SearchBanner = () => {
           다양한 여행지 한눈 살펴보세요 원하는 여행지를 검색하고, 여행에 대한
           설렘을 느껴보세요
         </p>
-        <div className={styles.inputBox}>
-          <img src={searchImg} alt={'searchImg'} className={styles.searchImg} />
-          <input
-            className={styles.input}
-            placeholder={'여행지를 검색해보세요'}
-          />
-        </div>
+        <SearchBar />
       </div>
     </div>
   );

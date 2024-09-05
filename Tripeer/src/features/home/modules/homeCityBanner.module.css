@@ -14,7 +14,12 @@
 }
 
 .img{
-    width: 100px
+    width: 100px;
+    border-radius: 10px;
+}
+
+.check{
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 600px) {
@@ -28,6 +33,7 @@
     }
 
     .img{
-        width: 80px
+        width: 80px;
+        border-radius: 10px;
     }
 }

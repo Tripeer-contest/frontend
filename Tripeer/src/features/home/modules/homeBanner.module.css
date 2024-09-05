@@ -2,15 +2,12 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    position: sticky;
     top: 0;
     background-color: #FFFFFF;
-    z-index: 1000;
 }
 
 @media screen and (max-width: 600px) {
     .container{
-        z-index: 1000;
         padding: 0 15px;
     }
 }

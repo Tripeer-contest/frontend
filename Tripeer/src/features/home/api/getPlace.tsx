@@ -1,5 +1,9 @@
 import api from '../../../utils/api.ts';
 
+const RESTAURANT = 39;
+const STAY = 32;
+const MECCA = 100;
+
 export const getPlace = async (
   h_nowCityId: number,
   h_nowTownId: number,
@@ -8,21 +12,23 @@ export const getPlace = async (
 ) => {
   let contentTypeId = -1;
   if (h_nowPlaceId === 1) {
-    contentTypeId = 39;
+    contentTypeId = RESTAURANT;
   } else if (h_nowPlaceId === 2) {
-    contentTypeId = 32;
+    contentTypeId = STAY;
   } else if (h_nowPlaceId === 3) {
-    contentTypeId = 100;
+    contentTypeId = MECCA;
   }
-
-  const res = await api.get('/place/search', {
-    params: {
-      contentTypeId,
-      cityId: h_nowCityId,
-      townId: h_nowTownId,
-      page: pageParams,
-    },
-  });
-
-  return res.data.data;
+  try {
+    const res = await api.get('/place/search', {
+      params: {
+        contentTypeId,
+        cityId: h_nowCityId,
+        townId: h_nowTownId,
+        page: pageParams,
+      },
+    });
+    return res.data.data;
+  } catch {
+    throw new Error('에러');
+  }
 };

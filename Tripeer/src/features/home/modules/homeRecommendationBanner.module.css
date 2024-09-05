@@ -1,86 +1,55 @@
+.container {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 1.3rem;
+    color: #262626;
+    font-weight: 600;
+}
+
+.readMoreSection {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+}
+
+.readMore {
+    color: #4FBDB7;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 930px) {
-    .container{
-        width: 100%;
+    .container {
         height: 400px;
-        margin-top: 50px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .title{
-        font-size: 1.3rem;
-        color: #262626;
-        font-weight: 600;
-    }
-
-    .readMoreSection{
-        display: flex;
-        justify-content: end;
-        margin-bottom: 10px;
-    }
-
-    .readMore{
-        color: #4FBDB7;
-        font-weight: 600;
-        font-size: 0.9rem;
-        margin-right: 10px;
     }
 }
 
 @media screen and (max-width: 930px) {
-    .container{
+    .container {
         width: 100vw;
         height: 160px;
-        margin-top: 50px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .title{
-        font-size: 1.3rem;
-        color: #262626;
-        font-weight: 600;
-    }
-
-    .readMoreSection{
-        display: flex;
-        justify-content: end;
-        margin-bottom: 10px;
-    }
-
-    .readMore{
-        color: #4FBDB7;
-        font-weight: 600;
-        font-size: 0.9rem;
-        margin-right: 10px;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .container{
+    .container {
         width: calc(100vw - 30px);
         height: 160px;
         margin: 50px 15px 0 15px;
-        display: flex;
-        flex-direction: column;
     }
 
-    .title{
+    .title {
         font-size: 1rem;
-        color: #262626;
-        font-weight: 600;
     }
 
-    .readMoreSection{
-        display: flex;
-        justify-content: end;
-        margin-bottom: 10px;
-    }
-
-    .readMore{
-        color: #4FBDB7;
-        font-weight: 600;
+    .readMore {
         font-size: 0.7rem;
-        margin-right: 10px;
     }
 }
