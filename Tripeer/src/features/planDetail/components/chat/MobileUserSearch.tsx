@@ -20,10 +20,16 @@ export default function MobileUserSearch({ setMode }: { setMode: () => void }) {
           text={keyword}
           textHandler={textHandler}
           placeholder="초대할 유저를 검색하세요."
-          style={{ height: '40px', width: '280px' }}
+          style={{ height: '40px', maxWidth: '800px', width: '80%' }}
         />
       </header>
-      <div style={{ display: 'flex', overflowY: 'scroll' }}>
+      <div
+        style={{
+          display: 'flex',
+          overflowY: 'scroll',
+          height: '240px',
+        }}
+      >
         <MemberSearchResult
           data={data}
           isError={isError}
