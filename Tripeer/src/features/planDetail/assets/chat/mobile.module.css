@@ -22,6 +22,8 @@
 }
 
 .memberBox {
+  height: 270px;
+  padding-bottom: 30px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -43,7 +45,7 @@
 }
 
 .searchBox {
-  margin-top: 20px;
+  padding-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;

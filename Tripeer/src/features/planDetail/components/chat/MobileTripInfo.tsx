@@ -28,7 +28,7 @@ export default function MobileTripInfo() {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        height: '100%',
+        height: '280px',
         justifyContent: 'center',
         gap: '50px',
         padding: '30px',

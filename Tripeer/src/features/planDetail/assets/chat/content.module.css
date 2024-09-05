@@ -50,6 +50,7 @@
 .chat {
   padding-top: 4px;
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
   gap: 8px;
   color: #000e08;
@@ -77,12 +78,18 @@
   padding: 10px;
   font-size: 14px;
   border-radius: 0px 10px 10px 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .myMessage {
   background-color: #04acb5;
   color: #fff;
   width: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
   max-width: 300px;
   overflow: hidden;
   padding: 10px;

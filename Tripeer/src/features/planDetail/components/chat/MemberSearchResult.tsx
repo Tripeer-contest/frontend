@@ -25,7 +25,15 @@ export default function MemberSearchResult({
     }
   };
   return (
-    <>
+    <div
+      style={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        width: '100%',
+      }}
+    >
       {isLoading ? (
         <div className={styles.noResult}>
           <div className={styles.spinner} />
@@ -78,6 +86,6 @@ export default function MemberSearchResult({
         message="초대 메시지를 발송을 성공했어요!"
         isActive={mutation.isSuccess}
       />
-    </>
+    </div>
   );
 }
