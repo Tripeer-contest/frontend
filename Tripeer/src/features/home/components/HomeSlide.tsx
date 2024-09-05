@@ -7,7 +7,7 @@ const test = {
   spotName: '신라스테이 해운대',
   spotImg: 'https://tripeer207.s3.ap-northeast-2.amazonaws.com/spot/136039.png',
   address: '부산 해운대구 해운대로 507번길 46',
-  wishList: false,
+  wishlist: false,
 };
 const testData = [test, test, test, test, test, test, test];
 
