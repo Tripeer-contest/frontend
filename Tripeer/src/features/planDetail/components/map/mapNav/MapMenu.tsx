@@ -1,6 +1,6 @@
 import styles from '../../../assets/map/map.module.css';
-import searchIcon from '../../../assets/map/mapNav/assets/search.svg';
-import searchIconActive from '../../../assets/map/mapNav/assets/search_Active.svg';
+import recommendIcon from '../../../assets/map/mapNav/assets/recommend.svg';
+import recommendActive from '../../../assets/map/mapNav/assets/recommend_Active.svg';
 import mapIcon from '../../../assets/map/mapNav/assets/map.svg';
 import mapIconActive from '../../../assets/map/mapNav/assets/map_Active.svg';
 import listIcon from '../../../assets/map/mapNav/assets/list.svg';
@@ -22,11 +22,11 @@ export default function MapMenu({
         }}
       >
         {page === 0 ? (
-          <img src={searchIconActive} className={styles.Icon} />
+          <img src={recommendActive} className={styles.Icon} />
         ) : (
-          <img src={searchIcon} className={styles.Icon} />
+          <img src={recommendIcon} className={styles.Icon} />
         )}
-        <p style={page === 0 ? { color: '#04ACB5' } : undefined}>여행지 검색</p>
+        <p style={page === 0 ? { color: '#04ACB5' } : undefined}>여행지 추천</p>
       </div>
       <div
         className={styles.mapBtnBox}
@@ -39,7 +39,7 @@ export default function MapMenu({
         ) : (
           <img src={mapIcon} className={styles.Icon} />
         )}
-        <p style={page === 1 ? { color: '#04ACB5' } : undefined}>여행 지도</p>
+        <p style={page === 1 ? { color: '#04ACB5' } : undefined}>지도 검색</p>
       </div>
       <div
         className={styles.mapBtnBox}
