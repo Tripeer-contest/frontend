@@ -2,8 +2,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import PlaceBox from '../../home/components/PlaceBox';
 import styles from '../assets/simular.module.css';
+
 export default function SpotSimular() {
   const items = [1, 2, 3, 4, 5];
+  const testData = {
+    spotId: 1,
+    spotName: '이름',
+    spotImg: '../../home/assets/testImg.png',
+    address: '주소',
+    wishlist: false,
+  };
   return (
     <>
       <section className={styles.container}>
@@ -15,7 +23,7 @@ export default function SpotSimular() {
         >
           {items.map((item) => (
             <SwiperSlide key={item} className={styles.itemBox}>
-              <PlaceBox />
+              <PlaceBox place={testData} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -29,7 +37,7 @@ export default function SpotSimular() {
         >
           {items.map((item) => (
             <SwiperSlide key={item} className={styles.itemBox}>
-              <PlaceBox />
+              <PlaceBox place={testData} />
             </SwiperSlide>
           ))}
         </Swiper>
