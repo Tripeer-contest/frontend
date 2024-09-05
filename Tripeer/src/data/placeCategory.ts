@@ -8,7 +8,7 @@ import unMeccaImg from '../assets/category/unMecca.png';
 export const placeCategory = [
   {
     name: '전체',
-    id: -1,
+    id: 0,
     image: '',
     unImage: ',',
   },

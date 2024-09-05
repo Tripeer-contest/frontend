@@ -11,8 +11,12 @@ const HomeBanner = () => {
   return (
     <div className={styles.container}>
       <HomeCityBanner />
-      <HomeCategoryChips title={'지역별'} arr={h_townList} />
-      <HomeCategoryChips title={'카테고리별'} arr={categoryList} />
+      <HomeCategoryChips title={'지역별'} arr={h_townList} type={'town'} />
+      <HomeCategoryChips
+        title={'카테고리별'}
+        arr={categoryList}
+        type={'category'}
+      />
     </div>
   );
 };

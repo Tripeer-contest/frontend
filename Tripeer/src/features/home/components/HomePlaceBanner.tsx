@@ -3,34 +3,30 @@ import { PlaceType } from '../../../types/PlaceType.ts';
 import HomeLoading from './HomeLoading.tsx';
 import ToTop from './ToTop.tsx';
 import useHomePlaceBanner from '../hooks/useHomePlaceBanner.tsx';
+import SkeletonPlaceBox from './SkeletonPlaceBox.tsx';
 import PlaceBox from './PlaceBox.tsx';
 
 const HomePlaceBanner = () => {
-  const {
-    data,
-    isLoading,
-    hasNextPage,
-    loadingRef,
-    scrollHandler,
-    getCityTownName,
-  } = useHomePlaceBanner();
-
-  const cityTownName = getCityTownName();
+  const { data, isLoading, hasNextPage, loadingRef, scrollHandler, titleName } =
+    useHomePlaceBanner();
+  const title = titleName();
 
   return (
     <div className={styles.container}>
       <div className={styles.titleBox}>
-        <p
-          className={styles.title}
-        >{`${cityTownName[0]} ${cityTownName[1]} ${cityTownName[2]}`}</p>
+        <p className={styles.title}>{`${title}`}</p>
       </div>
-      {data?.pages.map((page, idx) => (
-        <div key={idx} className={styles.gridBox}>
-          {page.spotInfoDtos.map((place: PlaceType) => (
-            <PlaceBox place={place} key={place.spotId} />
-          ))}
-        </div>
-      ))}
+      <div className={styles.gridBox}>
+        {!isLoading && data
+          ? data.pages.map((page) =>
+              page.spotInfoDtos.map((place: PlaceType) => (
+                <PlaceBox place={place} key={place.spotId} />
+              )),
+            )
+          : Array.from({ length: 15 }).map((_, idx) => (
+              <SkeletonPlaceBox key={idx} />
+            ))}
+      </div>
       {!isLoading && hasNextPage && <HomeLoading ref={loadingRef} />}
       <ToTop scrollHandler={scrollHandler} />
     </div>

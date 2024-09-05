@@ -20,7 +20,6 @@ const useSearchBanner = () => {
       (searchRef.current && !searchRef.current.contains(e.target as Node)) ||
       backRef.current?.contains(e.target as Node)
     ) {
-      console.log('ok');
       setShowModal(false);
     }
   };

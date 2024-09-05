@@ -10,7 +10,7 @@ interface Props {
 }
 
 const PlaceBox = ({ place }: Props) => {
-  const { clickHandler, likeClickHandler, isLike, rating } = usePlaceBox(
+  const { clickHandler, likeClickHandler, rating } = usePlaceBox(
     place.wishlist,
     place.spotId,
   );
@@ -21,7 +21,7 @@ const PlaceBox = ({ place }: Props) => {
       <div className={styles.imgBox}>
         <img src={place.spotImg} alt={'placeImg'} className={styles.img} />
         <img
-          src={isLike ? like : unLike}
+          src={place.wishlist ? like : unLike}
           alt={'likeImg'}
           className={styles.like}
           onClick={(e) => likeClickHandler(e)}

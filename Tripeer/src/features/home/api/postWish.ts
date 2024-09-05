@@ -2,16 +2,14 @@ import api from '../../../utils/api.ts';
 
 interface Props {
   spotId: number;
-  isLike: boolean;
+  like: boolean;
 }
 
-export const postWish = async ({ spotId, isLike }: Props) => {
+export const postWish = async ({ spotId, like }: Props) => {
   const response = await api.post('/user/wishlist', {
     spotInfoId: spotId,
-    like: isLike,
+    like,
   });
-
-  console.log(response.data);
 
   return response.data;
 };
