@@ -7,58 +7,52 @@ import listIcon from '../../../assets/map/mapNav/assets/list.svg';
 import listIconActive from '../../../assets/map/mapNav/assets/list_Active.svg';
 
 export default function MapMenu({
-  active,
-  activeComponent,
+  page,
+  pageHandler,
 }: {
-  active: string;
-  activeComponent: (str: string) => void;
+  page: number;
+  pageHandler: (idx: number) => void;
 }) {
   return (
     <div className={styles.mapNavBox}>
       <div
         className={styles.mapBtnBox}
         onClick={() => {
-          activeComponent('search');
+          pageHandler(0);
         }}
       >
-        {active === 'search' ? (
+        {page === 0 ? (
           <img src={searchIconActive} className={styles.Icon} />
         ) : (
           <img src={searchIcon} className={styles.Icon} />
         )}
-        <p style={active === 'search' ? { color: '#04ACB5' } : undefined}>
-          여행지 검색
-        </p>
+        <p style={page === 0 ? { color: '#04ACB5' } : undefined}>여행지 검색</p>
       </div>
       <div
         className={styles.mapBtnBox}
         onClick={() => {
-          activeComponent('map');
+          pageHandler(1);
         }}
       >
-        {active === 'map' ? (
+        {page === 1 ? (
           <img src={mapIconActive} className={styles.Icon} />
         ) : (
           <img src={mapIcon} className={styles.Icon} />
         )}
-        <p style={active === 'map' ? { color: '#04ACB5' } : undefined}>
-          여행 지도
-        </p>
+        <p style={page === 1 ? { color: '#04ACB5' } : undefined}>여행 지도</p>
       </div>
       <div
         className={styles.mapBtnBox}
         onClick={() => {
-          activeComponent('list');
+          pageHandler(2);
         }}
       >
-        {active === 'list' ? (
+        {page === 2 ? (
           <img src={listIconActive} className={styles.Icon} />
         ) : (
           <img src={listIcon} className={styles.Icon} />
         )}
-        <p style={active === 'list' ? { color: '#04ACB5' } : undefined}>
-          여행지 목록
-        </p>
+        <p style={page === 2 ? { color: '#04ACB5' } : undefined}>여행지 목록</p>
       </div>
     </div>
   );
