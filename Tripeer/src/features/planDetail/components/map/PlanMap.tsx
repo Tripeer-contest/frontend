@@ -2,27 +2,16 @@ import { useState } from 'react';
 import styles from '../../assets/map/map.module.css';
 import PlanShortNav from '../PlanShortNav';
 import MapLayout from './layout/MapLayout';
-import PlaceMap from './mapNav/PlaceMap';
-import SearchPlace from './mapNav/SearchPlace';
-import PlaceList from './mapNav/PlaceList';
+
 import MapMenu from './mapNav/MapMenu';
+import DesktopMap from './mapNav/DesktopMap';
+import MobileMap from './mapNav/MobileMap';
 
 export default function PlanMap() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [active, setActive] = useState('search');
+  const [page, setPage] = useState(0);
 
-  const activeComponent = (value: string) => {
-    if (value === 'search' && isVisible === true) {
-      setIsVisible(false);
-    }
-    setActive(value);
-  };
-
-  const openPlaceList = () => {
-    if (active === 'list') {
-      setActive('search');
-    }
-    setIsVisible(!isVisible);
+  const pageHandler = (page: number) => {
+    setPage(page);
   };
 
   return (
@@ -32,54 +21,10 @@ export default function PlanMap() {
       </aside>
       <section className={styles.contentBox}>
         <MapLayout>
-          {active === 'search' && (
-            <>
-              <div className={styles.noMobile}>
-                <SearchPlace
-                  isVisible={isVisible}
-                  openPlaceList={openPlaceList}
-                />
-                <PlaceMap />
-              </div>
-              <div className={styles.mobile}>
-                <SearchPlace
-                  isVisible={isVisible}
-                  openPlaceList={openPlaceList}
-                />
-              </div>
-            </>
-          )}
-          {active === 'list' && (
-            <>
-              <div className={styles.noMobile}>
-                <SearchPlace
-                  isVisible={isVisible}
-                  openPlaceList={openPlaceList}
-                />
-                <PlaceList />
-                <PlaceMap />
-              </div>
-              <div className={styles.mobile}>
-                <PlaceList />
-              </div>
-            </>
-          )}
-          {active === 'map' && (
-            <>
-              <div className={styles.noMobile}>
-                <SearchPlace
-                  isVisible={isVisible}
-                  openPlaceList={openPlaceList}
-                />
-                <PlaceMap />
-              </div>
-              <div className={styles.mobile}>
-                <PlaceMap />
-              </div>
-            </>
-          )}
+          <DesktopMap />
+          <MobileMap page={page} />
         </MapLayout>
-        <MapMenu active={active} activeComponent={activeComponent} />
+        <MapMenu page={page} pageHandler={pageHandler} />
       </section>
     </main>
   );
