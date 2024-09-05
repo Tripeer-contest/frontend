@@ -11,17 +11,26 @@ export default function useChatInfo() {
   );
 
   useEffect(() => {
-    if (isConnected) {
-      const YChatInfo = doc?.getArray('chatInfo');
+    const chatSomething = () => {
+      const YChatInfo = doc?.getArray<ChatInterface[]>('chatInfo');
       if (YChatInfo) {
-        const chatInfo = YChatInfo?.toJSON() as ChatInterface[];
+        const newChatInfo = YChatInfo.toJSON();
+        setChatInfo(newChatInfo);
+      }
+    };
+    if (isConnected) {
+      const YChatInfo = doc?.getArray<ChatInterface[]>('chatInfo');
+      const readMap = doc?.getMap('readMessage');
+      if (YChatInfo && readMap) {
+        const chatInfo = YChatInfo?.toJSON();
         setChatInfo(chatInfo);
-        YChatInfo.observe(() => {
-          const newChatInfo = YChatInfo.toJSON() as ChatInterface[];
-          setChatInfo(newChatInfo);
-        });
+        YChatInfo.observe(chatSomething);
       }
     }
+
+    return () => {
+      if (isConnected) doc?.getArray('chatInfo').unobserve(chatSomething);
+    };
   }, [isConnected, doc]);
 
   useEffect(() => {

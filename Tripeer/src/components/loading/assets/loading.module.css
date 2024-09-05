@@ -20,6 +20,13 @@
   background-color: transparent;
   padding: 0;
 }
+
+.smallContainer {
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .mutationBox {
   display: flex;
   height: 100%;
@@ -31,6 +38,14 @@
 .ball {
   width: 8px;
   height: 8px;
+  border-radius: 50%;
+  background-color: #04acb5;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.smallBall {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background-color: #04acb5;
   animation: bounce 1.2s infinite ease-in-out;

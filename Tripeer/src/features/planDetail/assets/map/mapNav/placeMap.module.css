@@ -1,0 +1,31 @@
+@media screen and (max-width: 1000px) {
+  .container {
+    height: 100vh;
+    width: 100%;
+  }
+  .headerBox {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    padding-left: 12px;
+  }
+  .hamburgerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 5;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    height: 100vh;
+    width: calc(100vw - 500px);
+  }
+}

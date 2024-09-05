@@ -3,11 +3,18 @@ import { StoreState } from '../store';
 
 const initState = {
   diaryScrollTo: null,
+  diaryContainerScroll: null,
+  diaryDayScroll: null,
 };
 
 export interface diarySliceState {
   diaryScrollTo: ((offset: number) => void) | null;
   setDiaryScrollFn: (payload: (offset: number) => void) => void;
+  diaryContainerScroll: null | number;
+  diaryDayScroll: null | number[];
+  setDiaryContainerScroll: (offset: number) => void;
+  setDiaryDayScroll: (dayOffset: number[]) => void;
+  setDiaryDayInit: () => void;
 }
 
 export const DiarySlice: StateCreator<
@@ -18,4 +25,8 @@ export const DiarySlice: StateCreator<
 > = (set) => ({
   ...initState,
   setDiaryScrollFn: (payload) => set(() => ({ diaryScrollTo: payload })),
+  setDiaryContainerScroll: (offset) =>
+    set(() => ({ diaryContainerScroll: offset })),
+  setDiaryDayScroll: (dayOffset) => set(() => ({ diaryDayScroll: dayOffset })),
+  setDiaryDayInit: () => set(() => ({ ...initState })),
 });

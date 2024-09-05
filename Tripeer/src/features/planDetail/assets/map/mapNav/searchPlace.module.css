@@ -1,0 +1,42 @@
+@media screen and (max-width: 1000px) {
+  .container {
+    background-color: yellow;
+    height: 100vh;
+    width: 100%;
+  }
+  .openBtn {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    position: relative;
+    background-color: yellow;
+    height: 100vh;
+    width: 500px;
+  }
+  .openBtn {
+    position: absolute;
+    z-index: 5;
+    right: -17px;
+    top: 30px;
+    background-color: white;
+    padding: 5px;
+    border: #c4c4c4 1px solid;
+    border-radius: 5px;
+    transform: rotate(180deg);
+    cursor: pointer;
+  }
+  .closeBtn {
+    position: absolute;
+    z-index: 5;
+    top: 30px;
+    right: -17px;
+    background-color: white;
+    padding: 5px;
+    border: #c4c4c4 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

@@ -9,10 +9,8 @@
 .cartRemote {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   height: 57px;
-  max-width: 400px;
 }
 
 .category {

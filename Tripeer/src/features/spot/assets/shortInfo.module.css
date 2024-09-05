@@ -80,6 +80,10 @@
   word-wrap: break-word;
 }
 
+.emptyReview {
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 1000px) {
   .container {
     padding-left: 20px;

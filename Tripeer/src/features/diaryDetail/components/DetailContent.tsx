@@ -1,22 +1,19 @@
 // 내부 모듈
-import zustandStore from '../../../store/store';
 import styles from '../diaryDetail.module.css';
 
 // 외부 모듈
-import { ReactNode, useRef } from 'react';
+import { ReactNode } from 'react';
+import useDiaryScroll from '../hooks/useDiaryScroll';
+import { useParams } from 'react-router-dom';
+import { useGetDayListQuery } from '../hooks/useGetDiary';
 
 export default function DetailLayout({ children }: { children: ReactNode }) {
-  const setScrollFn = zustandStore((state) => state.setDiaryScrollFn);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  setScrollFn((offset: number) => {
-    if (containerRef.current)
-      containerRef.current.scrollTo({
-        top: offset,
-        behavior: 'smooth',
-      });
-  });
+  const params = useParams();
+  const data = useGetDayListQuery(params.id);
+  const { setScrollRef, onScroll } = useDiaryScroll(data.length);
+
   return (
-    <main className={styles.container} ref={containerRef}>
+    <main className={styles.container} ref={setScrollRef} onScroll={onScroll}>
       {children}
     </main>
   );

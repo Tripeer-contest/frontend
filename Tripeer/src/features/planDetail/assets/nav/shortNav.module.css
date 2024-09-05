@@ -63,8 +63,18 @@
   border: none;
   background-color: #fff;
   cursor: pointer;
+  position: relative;
 }
 
 .controller > button > img {
   width: 20px;
+}
+
+.unread {
+  position: absolute;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  background-color: #b23845;
+  border-radius: 50%;
 }

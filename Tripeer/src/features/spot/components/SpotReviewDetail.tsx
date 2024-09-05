@@ -6,19 +6,14 @@ import SpotLine from './SpotLine';
 import useModal from '../../../hooks/useModal';
 import styles from '../assets/review.module.css';
 import { getRateImg } from '../../../utils/rating';
+import { ReviewInterface } from '../../../types/PlaceType';
+import { daysAgo } from '../../../utils/utilDate';
 
-const revieImg = [
-  'https://t1.daumcdn.net/cfile/tistory/9906804C5FB7337315',
-  'https://t1.daumcdn.net/cfile/tistory/9906804C5FB7337315',
-  'https://t1.daumcdn.net/cfile/tistory/9906804C5FB7337315',
-  'https://t1.daumcdn.net/cfile/tistory/9906804C5FB7337315',
-  'https://t1.daumcdn.net/cfile/tistory/9906804C5FB7337315',
-  'https://t1.daumcdn.net/cfile/tistory/9906804C5FB7337315',
-  'https://t1.daumcdn.net/cfile/tistory/9906804C5FB7337315',
-  'https://t1.daumcdn.net/cfile/tistory/9906804C5FB7337315',
-];
-
-export default function SpotReviewDetail() {
+export default function SpotReviewDetail({
+  review,
+}: {
+  review: ReviewInterface;
+}) {
   const [img, setImg] = useState('');
   const { ModalLayout, close, open } = useModal();
   const imgClickHandler = (img: string) => {
@@ -35,45 +30,44 @@ export default function SpotReviewDetail() {
         <section className={styles.container}>
           <div className={styles.reviewBox}>
             <div className={styles.userBox}>
-              <div className={styles.userImg} />
+              <img
+                className={styles.userImg}
+                alt="user-image"
+                src={review.profileImage}
+              />
               <div className={styles.userInfo}>
-                <p className={styles.userName}>부수환</p>
+                <p className={styles.userName}>{review.nickname}</p>
                 <div className={styles.rateUserBox}>
                   <img
                     className={styles.star}
-                    src={getRateImg(4.5)}
+                    src={getRateImg(review.starPoint)}
                     alt="rate-img"
                   />
-                  <p className={styles.rateUser}>4.5</p>
+                  <p className={styles.rateUser}>{review.starPoint}</p>
                 </div>
               </div>
             </div>
             <div className={styles.reviewDetail}>
-              {revieImg.length > 0 && (
-                <Swiper
-                  spaceBetween={20}
-                  slidesPerView={'auto'}
-                  style={{ width: '100%' }}
-                >
-                  {revieImg.map((data, idx) => {
-                    return (
-                      <SwiperSlide key={idx} style={{ width: '130px' }}>
-                        <img
-                          src={data}
-                          alt="리뷰 이미지"
-                          className={styles.reviewImg}
-                          onClick={() => imgClickHandler(data)}
-                        />
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
-              )}
-              <p className={styles.reviewText}>
-                마퍼ㅣ마엎;ㅏㅁㄴ어피;ㅏㅁㄴ어파ㅣㅁㄴ엎;ㅏㅁㄴ엎;ㅣ만엎ㅁ;ㅣㅏ엎;ㅏㅣㅁㄴㅇ파ㅣㅁㄴ엎;ㅣ망넢
-                마퍼ㅣ마엎;ㅏㅁㄴ어피;ㅏㅁㄴ어파ㅣㅁㄴ엎;ㅏㅁㄴ엎;ㅣ만엎ㅁ;ㅣㅏ엎;ㅏㅣㅁㄴㅇ파ㅣㅁㄴ엎;ㅣ망넢마퍼ㅣ마엎;ㅏㅁㄴ어피;ㅏㅁㄴ어파ㅣㅁㄴ엎;ㅏㅁㄴ엎;ㅣ만엎ㅁ;ㅣㅏ엎;ㅏㅣㅁㄴㅇ파ㅣㅁㄴ엎;ㅣ망넢마퍼ㅣ마엎;ㅏㅁㄴ어피;ㅏㅁㄴ어파ㅣㅁㄴ엎;ㅏㅁㄴ엎;ㅣ만엎ㅁ;ㅣㅏ엎;ㅏㅣㅁㄴㅇ파ㅣㅁㄴ엎;ㅣ망넢마퍼ㅣ마엎;ㅏㅁㄴ어피;ㅏㅁㄴ어파ㅣㅁㄴ엎;ㅏㅁㄴ엎;ㅣ만엎ㅁ;ㅣㅏ엎;ㅏㅣㅁㄴㅇ파ㅣㅁㄴ엎;ㅣ망넢마퍼ㅣ마엎;ㅏㅁㄴ어피;ㅏㅁㄴ어파ㅣㅁㄴ엎;ㅏㅁㄴ엎;ㅣ만엎ㅁ;ㅣㅏ엎;ㅏㅣㅁㄴㅇ파ㅣㅁㄴ엎;ㅣ망넢
-              </p>
-              <p className={styles.reviewDate}>1일전</p>
+              <Swiper
+                spaceBetween={20}
+                slidesPerView={'auto'}
+                style={{ width: '100%' }}
+              >
+                {review.img.map((data, idx) => {
+                  return (
+                    <SwiperSlide key={idx} style={{ width: '130px' }}>
+                      <img
+                        src={data}
+                        alt="리뷰 이미지"
+                        className={styles.reviewImg}
+                        onClick={() => imgClickHandler(data)}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+              <p className={styles.reviewText}>{review.message}</p>
+              <p className={styles.reviewDate}>{daysAgo(review.createTime)}</p>
             </div>
           </div>
         </section>
