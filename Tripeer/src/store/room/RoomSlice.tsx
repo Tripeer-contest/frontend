@@ -17,6 +17,7 @@ const initState = {
   room_chatScrollIsBottom: true,
   room_chatScrollTo: null,
   room_chatScrollToBottom: null,
+  room_mapSearchKeyword: '',
 };
 
 export const RoomSlice: StateCreator<
@@ -41,4 +42,6 @@ export const RoomSlice: StateCreator<
     set(() => ({ room_chatScrollIsBottom: isTrue })),
   room_chatSetScrollToBottom: (payload) =>
     set(() => ({ room_chatScrollToBottom: payload })),
+  room_setMapSearchKeyword: (keyword) =>
+    set(() => ({ room_mapSearchKeyword: keyword })),
 });

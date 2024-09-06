@@ -46,6 +46,7 @@ export default function BottomDragModal({ children }: { children: ReactNode }) {
     window.addEventListener('resize', () => {
       MAX_BOTTOM.current = window.innerHeight * 0.7;
       MIN_BOTTOM.current = window.innerHeight * 0.15;
+      setOffset(MAX_BOTTOM.current);
     });
   }, []);
 
