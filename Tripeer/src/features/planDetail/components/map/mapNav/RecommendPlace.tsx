@@ -12,6 +12,8 @@ export default function RecommendPlace() {
       <div className={styles.container}>
         <RecommendHeader />
         <RecommendContent />
+        <RecommendContent />
+
         <img
           src={btnImg}
           className={isVisible ? styles.closeBtn : styles.openBtn}

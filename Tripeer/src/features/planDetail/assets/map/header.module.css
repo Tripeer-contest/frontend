@@ -18,23 +18,8 @@
 
   .funcBox {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
     width: 100%;
-  }
-  .leftSection {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .newPlaceBtn {
-    border: #e5e7eb 1px solid;
-    padding: 8px 10px;
-    font-size: 0.9rem;
-    border-radius: 30px;
-    cursor: pointer;
   }
 }
 @media screen and (min-width: 1000px) {
