@@ -27,7 +27,7 @@ export default function MemberSearchResult({
   return (
     <div
       style={{
-        height: '100%',
+        height: '90%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
