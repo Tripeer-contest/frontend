@@ -31,8 +31,8 @@ export default function SpotItem() {
       <SpotLine />
       <SpotReview ref={reviewRef} scrollToReview={scrollToReview} />
       <SpotMeta />
-      <SpotPosting />
       <SpotSimular />
+      <SpotPosting />
       <br />
     </main>
   );

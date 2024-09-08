@@ -17,6 +17,7 @@ import { CommonSlice } from './common/CommonSlice.tsx';
 import { createHomeSlice } from './home/HomeStore.tsx';
 import { HomeSlice } from './home/HomeType.ts';
 import { DiarySlice, diarySliceState } from './diary/DiarySlice.tsx';
+import { SpotSlice, SpotSliceInterface } from './spot/SpotSlice.tsx';
 
 export type StoreState = AuthState &
   PlanState &
@@ -26,7 +27,8 @@ export type StoreState = AuthState &
   RoomSliceState &
   CommonSliceState &
   diarySliceState &
-  HomeSlice;
+  HomeSlice &
+  SpotSliceInterface;
 
 const zustandStore = create<StoreState>()(
   devtools((...rest) => ({
@@ -39,6 +41,7 @@ const zustandStore = create<StoreState>()(
     ...CommonSlice(...rest),
     ...createHomeSlice(...rest),
     ...DiarySlice(...rest),
+    ...SpotSlice(...rest),
   })),
 );
 
