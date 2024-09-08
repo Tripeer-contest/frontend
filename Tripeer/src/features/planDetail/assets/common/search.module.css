@@ -1,0 +1,13 @@
+.search {
+  border-radius: 50px;
+  border: 1px solid #04acb5;
+  background-image: url(../../../../assets/button//light_search.svg);
+  background-repeat: no-repeat;
+  padding-left: 25px;
+  padding-right: 50px;
+  outline: none;
+}
+
+.search::placeholder {
+  color: #6b7280;
+}

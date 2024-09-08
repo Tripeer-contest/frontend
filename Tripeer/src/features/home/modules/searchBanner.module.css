@@ -1,22 +1,30 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/home.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (min-width: 600px) {
-    .container{
-        width: 100%;
-        height: 400px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-image: url("../assets/home.png");
-        background-position: center;
+    .container {
+        height: 350px;
     }
 
-    .box{
+    .box {
         width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
     }
 
     .titlePc {
@@ -30,63 +38,25 @@
         display: none;
     }
 
-    .subP{
+    .subP {
         color: white;
         font-size: 1rem;
         font-weight: lighter;
         margin-top: 30px;
         text-shadow: 2px 3px 2px rgba(0,0,0,0.5);
     }
-
-    .inputBox {
-        width: 600px;
-        height: 50px;
-        border-radius: 50px;
-        border: none;
-        margin-top: 60px;
-        font-size: 1.5rem;
-        background-color: white;
-        display: flex;
-        align-items: center;
-    }
-
-    .searchImg{
-        height: 25px;
-        width: auto;
-        margin: 0 20px;
-    }
-
-    .input{
-        background-color: white;
-        border: none;
-        font-size: 1.2rem;
-        outline: none;
-        width: 500px;
-    }
 }
 
 @media screen and (max-width: 600px) {
-    .container{
-        width: 100%;
-        height: 225px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-image: url("../assets/home.png");
-        background-position: center;
+    .container {
+        height: 150px;
     }
 
-    .box{
-        width: 300px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    .box {
+        width: 70%;
     }
 
-    .titleBox{
+    .titleBox {
         width: 100%;
         display: flex;
         justify-content: start;
@@ -105,32 +75,7 @@
         line-height: 1.4;
     }
 
-    .subP{
+    .subP {
         display: none;
-    }
-
-    .inputBox {
-        width: 100%;
-        height: 35px;
-        border-radius: 50px;
-        border: none;
-        margin-top: 20px;
-        background-color: white;
-        display: flex;
-        align-items: center;
-    }
-
-    .searchImg{
-        height: 15px;
-        width: auto;
-        margin: 0 5px 0 15px;
-    }
-
-    .input{
-        background-color: white;
-        border: none;
-        font-size: 0.9rem;
-        outline: none;
-        width: 82%;
     }
 }

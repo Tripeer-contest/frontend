@@ -50,9 +50,9 @@ export default function useConnect(id: string | undefined) {
                     (user) => user.userId === state.online,
                   );
                   if (idx !== -1) newUserInfo[idx].isOnline = true;
-                  setUserInfo(newUserInfo);
                 }
               }
+              setUserInfo(newUserInfo);
               connected();
             }, 500);
           });

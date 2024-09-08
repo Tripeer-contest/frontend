@@ -9,6 +9,8 @@ interface Props {
   unImage: string;
 }
 
+const imageArr = ['', styles.resImg, styles.stayImg, styles.mecImg];
+
 const PlaceChip = ({ title, id, image, unImage }: Props) => {
   const h_nowPlaceId = zustandStore((state) => state.h_nowPlaceId);
   const { chipClickHandler } = usePlaceChip();
@@ -18,16 +20,12 @@ const PlaceChip = ({ title, id, image, unImage }: Props) => {
       className={`${styles.container} ${id === h_nowPlaceId ? styles.check : ''}`}
       onClick={() => chipClickHandler(id)}
     >
-      {image ? (
+      {image && (
         <img
           src={id === h_nowPlaceId ? unImage : image}
           alt={'categoryImg'}
-          className={
-            id === 1 ? styles.resImg : id === 2 ? styles.stayImg : styles.mecImg
-          }
+          className={imageArr[id]}
         />
-      ) : (
-        ''
       )}
       <p>{title}</p>
     </div>

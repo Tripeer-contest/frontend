@@ -1,7 +1,7 @@
 import { ChangeEvent, InputHTMLAttributes } from 'react';
 import styles from './searchbar.module.css';
 
-interface SearchProps {
+export interface SearchProps {
   text: string;
   textHandler: (e: ChangeEvent<HTMLInputElement>) => void;
 }

@@ -14,6 +14,7 @@ export default function useDocInfo() {
     setStartDay,
     setEndDay,
     setTitle,
+    syncUser,
   ] = zustandStore(
     useShallow((state) => [
       state.y_ws,
@@ -23,6 +24,7 @@ export default function useDocInfo() {
       state.room_setStartDay,
       state.room_setEndDay,
       state.room_setTitle,
+      state.room_syncUser,
     ]),
   );
 
@@ -32,6 +34,12 @@ export default function useDocInfo() {
       const title = ws?.doc.getText('title').toJSON();
       const startDay = ws?.doc.getText('startDay').toJSON();
       const endDay = ws?.doc.getText('endDay').toJSON();
+      const YUser = ws?.doc.getArray('userInfo');
+      YUser?.observe(() => {
+        const user = YUser.toJSON();
+        const newUser = user.map((u) => ({ ...u, isOnline: false }));
+        syncUser(newUser);
+      });
       if (townList) setTownList(townList);
       if (title) setTitle(title);
       if (startDay) setStartDay(startDay);
@@ -51,6 +59,7 @@ export default function useDocInfo() {
     setStartDay,
     setEndDay,
     setTownList,
+    syncUser,
   ]);
 
   return { isLoading };

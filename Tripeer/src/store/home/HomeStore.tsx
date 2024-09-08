@@ -5,18 +5,10 @@ import { TownType } from '../../types/TownType.ts';
 export const createHomeSlice: StateCreator<HomeSlice> = (set) => ({
   h_region: [],
   h_category: [],
-  h_nowCityId: -1,
-  h_nowTownId: -1,
-  h_nowPlaceId: -1,
-  h_townList: [
-    {
-      cityId: -1,
-      description: '',
-      townId: -1,
-      townImg: '',
-      townName: '전체',
-    },
-  ],
+  h_nowCityId: 0,
+  h_nowTownId: 0,
+  h_nowPlaceId: 0,
+  h_townList: [{ id: 0, name: '전체' }],
 
   h_setRegion: (arr: number[]) => set(() => ({ h_region: arr })),
   h_setCategory: (arr: number[]) => set(() => ({ h_category: arr })),
