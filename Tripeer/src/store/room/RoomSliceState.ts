@@ -18,6 +18,8 @@ export interface RoomSliceState {
   room_startDay: string;
   room_endDay: string;
   room_chatScrollIsBottom: boolean;
+  room_mapSearchKeyword: string;
+  room_map: any;
   room_chatScrollToBottom: (() => void) | null;
   room_chatSetScrollToBottom: (payload: () => void) => void;
   room_setChatScrollIsBottom: (isTrue: boolean) => void;
@@ -30,6 +32,9 @@ export interface RoomSliceState {
   room_setTitle: (title: string) => void;
   room_setStartDay: (day: string) => void;
   room_setEndDay: (day: string) => void;
+  room_setMapSearchKeyword: (keyword: string) => void;
+  room_setMap: (map: any) => void;
+  room_syncUser: (coworkers: OnlineInfo[]) => void;
 }
 
 export interface RoomTownInfo {

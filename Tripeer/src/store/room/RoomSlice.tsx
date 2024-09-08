@@ -17,6 +17,8 @@ const initState = {
   room_chatScrollIsBottom: true,
   room_chatScrollTo: null,
   room_chatScrollToBottom: null,
+  room_mapSearchKeyword: '',
+  room_map: null,
 };
 
 export const RoomSlice: StateCreator<
@@ -41,4 +43,15 @@ export const RoomSlice: StateCreator<
     set(() => ({ room_chatScrollIsBottom: isTrue })),
   room_chatSetScrollToBottom: (payload) =>
     set(() => ({ room_chatScrollToBottom: payload })),
+  room_setMapSearchKeyword: (keyword) =>
+    set(() => ({ room_mapSearchKeyword: keyword })),
+  room_setMap: (map) => set({ room_map: map }),
+  room_syncUser: (coworkers) =>
+    set((store) => {
+      const newOne = coworkers.filter(
+        (newUser) =>
+          !store.room_userInfo.some((user) => user.userId === newUser.userId),
+      );
+      return { room_userInfo: [...store.room_userInfo, ...newOne] };
+    }),
 });
