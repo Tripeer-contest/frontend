@@ -21,6 +21,7 @@ import SpotPage from './features/spot/SpotPage.tsx';
 import DiaryDetailPage from './features/diaryDetail/DiaryDetailPage.tsx';
 import ErrorPage from './components/error/ErrorPage.tsx';
 import ErrorBoundary from './components/error/ErrorBoundary.tsx';
+import MyPage from './features/mypage/MyPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -82,7 +83,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/mypage',
-        element: <p>마이페이지</p>,
+        element: (
+          <ErrorBoundary fallback={<ErrorPage />}>
+            <Suspense fallback={<CommonLoading />}>
+              <MyPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
         loader: protectRouter(),
       },
     ],
