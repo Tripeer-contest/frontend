@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from '../assets/posting.module.css';
 
 import 'swiper/css';
-import { truncateText } from '../../../utils/utilString';
+import { cleanHTMLString, truncateText } from '../../../utils/utilString';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 import { blogInfoInterface } from '../../../types/PlaceType';
 import useParamsId from '../hooks/useParamsId';
@@ -25,14 +25,18 @@ export default function SpotPosting() {
       >
         {data.map((blog, idx) => {
           return (
-            <SwiperSlide className={styles.cardPosting} key={idx}>
+            <SwiperSlide
+              className={styles.cardPosting}
+              key={idx}
+              onClick={() => window.open(blog.url)}
+            >
               <img src={blog.thumbnail} alt="blog-img" className={styles.img} />
               <div className={styles.contentInfo}>
                 <p className={styles.infoTitle}>
-                  {truncateText(blog.title, 10)}
+                  {cleanHTMLString(truncateText(blog.title, 10))}
                 </p>
                 <p className={styles.infoContent}>
-                  {truncateText(blog.contents, 40)}
+                  {cleanHTMLString(truncateText(blog.contents, 40))}
                 </p>
               </div>
               <span className={styles.dayInfo}>
