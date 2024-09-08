@@ -1,25 +1,24 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import useMap from '../../../../../hooks/useMap';
+import zustandStore from '../../../../../store/store';
 import styles from '../../../assets/map/mapNav/placeMap.module.css';
-import BottomDragModal from '../../common/BottomDragModal';
-
 import MapHeader from './MapHeader';
+import MapSearchResult from './MapSearchResult';
 
 export default function PlaceMap() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const { setMapRef } = useMap();
-  // const open = () => setModalVisible(true);
-  const close = () => setModalVisible(false);
+  const setStoreMap = zustandStore((state) => state.room_setMap);
+  const { setMapRef, map } = useMap();
+  useEffect(() => {
+    if (map) setStoreMap(map);
+    return () => setStoreMap(null);
+  }, [setStoreMap, map]);
+
   return (
     <>
       <div className={styles.container} ref={setMapRef}>
-        <MapHeader modalVisible={modalVisible} close={close} />
+        <MapHeader />
       </div>
-      {modalVisible && (
-        <BottomDragModal>
-          <p>드래그 모달</p>
-        </BottomDragModal>
-      )}
+      <MapSearchResult />
     </>
   );
 }

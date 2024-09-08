@@ -7,13 +7,24 @@ import {
   useState,
 } from 'react';
 import styles from '../../assets/common/drag.module.css';
+import ListController from '../../../../components/controller/ListController';
+import { ControllerInterface } from '../../../../types/CartTypes';
 
 const DRAG_TOP_HEIGHT = 30;
+const LIST_HEADER_HEIGHT = 57;
 
-export default function BottomDragModal({ children }: { children: ReactNode }) {
+const TOTAL_MINUS_HEIGHT = DRAG_TOP_HEIGHT + LIST_HEADER_HEIGHT;
+
+export default function BottomDragListModal({
+  Category,
+  selectedCategry,
+  slideTo,
+  maxWidth,
+  children,
+}: ControllerInterface & { children: ReactNode }) {
   const MAX_BOTTOM = useRef(window.innerHeight * 0.7);
   const MIN_BOTTOM = useRef(window.innerHeight * 0.15);
-  const BOX_HEIGHT = useRef(window.innerHeight * 1.0 - DRAG_TOP_HEIGHT);
+  const BOX_HEIGHT = useRef(window.innerHeight * 1.0 - TOTAL_MINUS_HEIGHT);
   const drag = useRef(false);
   const [offset, setOffset] = useState(window.innerHeight * 0.7);
   const [height, setHeight] = useState(BOX_HEIGHT.current - MAX_BOTTOM.current);
@@ -56,7 +67,7 @@ export default function BottomDragModal({ children }: { children: ReactNode }) {
     window.addEventListener('resize', () => {
       MAX_BOTTOM.current = window.innerHeight * 0.7;
       MIN_BOTTOM.current = window.innerHeight * 0.15;
-      BOX_HEIGHT.current = window.innerHeight - DRAG_TOP_HEIGHT;
+      BOX_HEIGHT.current = window.innerHeight - TOTAL_MINUS_HEIGHT;
       setOffset(MAX_BOTTOM.current);
     });
   }, []);
@@ -70,6 +81,12 @@ export default function BottomDragModal({ children }: { children: ReactNode }) {
       >
         <div className={styles.dragBtn} />
       </div>
+      <ListController
+        Category={Category}
+        selectedCategry={selectedCategry}
+        slideTo={slideTo}
+        maxWidth={maxWidth}
+      />
       <div
         style={{
           height: `${height}px`,
