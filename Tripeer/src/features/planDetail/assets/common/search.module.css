@@ -4,8 +4,11 @@
   background-image: url(../../../../assets/button//light_search.svg);
   background-repeat: no-repeat;
   padding-left: 25px;
-  padding-right: 50px;
+  padding-right: 25px;
+  margin-left: 2%;
+  margin-right: 2%;
   outline: none;
+  width: 100%;
 }
 
 .search::placeholder {

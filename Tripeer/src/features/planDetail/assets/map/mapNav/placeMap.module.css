@@ -13,16 +13,14 @@
     z-index: 5;
   }
   .topBox {
-    padding-left: 8px;
+    margin-top: 50px;
     padding-top: 12px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 8px;
   }
   .hamburgerBtn {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background-color: white;
@@ -61,7 +59,7 @@
     cursor: pointer;
   }
   .addPlaceBtn {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background-color: #04acb5;

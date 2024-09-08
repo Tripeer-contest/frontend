@@ -1,5 +1,7 @@
 @media screen and (max-width: 1000px) {
   .header {
+    position: absolute;
+    z-index: 11;
     width: 100%;
     height: 50px;
     border-bottom: 1px solid #d9d9d9;
@@ -20,6 +22,21 @@
     display: flex;
     gap: 20px;
     width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .leftSection {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+  }
+  .addPlaceBtn {
+    font-size: 0.9rem;
+    border: #04acb5 1px solid;
+    border-radius: 30px;
+    padding: 7px 15px;
+    cursor: pointer;
   }
 }
 @media screen and (min-width: 1000px) {
@@ -43,5 +60,21 @@
   .funcBox {
     display: flex;
     gap: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .leftSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .addPlaceBtn {
+    font-size: 0.9rem;
+    border: #04acb5 1px solid;
+    border-radius: 30px;
+    padding: 7px 15px;
+    cursor: pointer;
   }
 }
