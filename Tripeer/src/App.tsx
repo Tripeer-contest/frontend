@@ -22,6 +22,7 @@ import DiaryDetailPage from './features/diaryDetail/DiaryDetailPage.tsx';
 import ErrorPage from './components/error/ErrorPage.tsx';
 import ErrorBoundary from './components/error/ErrorBoundary.tsx';
 import MyPage from './features/mypage/MyPage.tsx';
+import MyConfig from './features/mypage/MyConfig.tsx';
 
 const router = createBrowserRouter([
   {
@@ -83,13 +84,28 @@ const router = createBrowserRouter([
       },
       {
         path: '/mypage',
-        element: (
-          <ErrorBoundary fallback={<ErrorPage />}>
-            <Suspense fallback={<CommonLoading />}>
-              <MyPage />
-            </Suspense>
-          </ErrorBoundary>
-        ),
+        children: [
+          {
+            index: true,
+            element: (
+              <ErrorBoundary fallback={<ErrorPage />}>
+                <Suspense fallback={<CommonLoading />}>
+                  <MyPage />
+                </Suspense>
+              </ErrorBoundary>
+            ),
+          },
+          {
+            path: 'edit',
+            element: (
+              <ErrorBoundary fallback={<ErrorPage />}>
+                <Suspense fallback={<CommonLoading />}>
+                  <MyConfig />
+                </Suspense>
+              </ErrorBoundary>
+            ),
+          },
+        ],
         loader: protectRouter(),
       },
     ],

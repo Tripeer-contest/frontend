@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import styles from '../assets/menu.module.css';
-import direction_icon from '../../../assets/button/arrow.svg';
 import useMyInfoQuery from '../hooks/useMyInfoQuery';
+import MyMainBtn from './button/MyMainBtn';
+import MySubBtn from './button/MySubBtn';
 
 export default function MyPageMenu() {
   const { data } = useMyInfoQuery();
+  const navigate = useNavigate();
   return (
     <main className={styles.container}>
       <div className={styles.imgBox}>
@@ -14,24 +17,12 @@ export default function MyPageMenu() {
         />
         <p className={styles.nickname}>{data.nickname}</p>
       </div>
-      <div className={styles.mainBtn}>
-        <span>내 정보 수정</span>
-        <img src={direction_icon} alt="direction-icon" />
-      </div>
+      <MyMainBtn name="내 정보 수정" clickHandler={() => navigate('./edit')} />
       <div className={styles.part}>
         <h3 className={styles.subTitle}>고객지원</h3>
-        <div className={styles.subBtn}>
-          <span>공지사항</span>
-          <img src={direction_icon} alt="direction-icon" />
-        </div>
-        <div className={styles.subBtn}>
-          <span>문의하기</span>
-          <img src={direction_icon} alt="direction-icon" />
-        </div>
-        <div className={styles.subBtn}>
-          <span>초대링크 복사하기</span>
-          <img src={direction_icon} alt="direction-icon" />
-        </div>
+        <MySubBtn name="공지사항" />
+        <MySubBtn name="문의하기" />
+        <MySubBtn name="초대링크 복사하기" />
       </div>
       <div className={styles.part}>
         <h3 className={styles.subTitle}>알림설정</h3>
@@ -44,14 +35,8 @@ export default function MyPageMenu() {
       </div>
       <div className={styles.part}>
         <h3 className={styles.subTitle}>로그인 설정</h3>
-        <div className={styles.subBtn}>
-          <span>로그아웃</span>
-          <img src={direction_icon} alt="direction-icon" />
-        </div>
-        <div className={styles.subBtn}>
-          <span>서비스 탈퇴</span>
-          <img src={direction_icon} alt="direction-icon" />
-        </div>
+        <MySubBtn name="로그아웃" />
+        <MySubBtn name="서비스 탈퇴" />
       </div>
     </main>
   );

@@ -1,11 +1,19 @@
 import styles from '../assets/aside.module.css';
 
-export default function MyPageAside() {
+export default function MyPageAside({
+  description,
+  subTitle,
+  title,
+}: {
+  subTitle: string;
+  title: string;
+  description: string;
+}) {
   return (
     <aside className={styles.container}>
-      <h3 className={styles.subTitle}>MYPAGE</h3>
-      <h1 className={styles.title}>마이 페이지</h1>
-      <div className={styles.description}>만나서 반갑습니다. 회원님</div>
+      <h3 className={styles.subTitle}>{subTitle}</h3>
+      <h1 className={styles.title}>{title}</h1>
+      <div className={styles.description}>{description}</div>
     </aside>
   );
 }

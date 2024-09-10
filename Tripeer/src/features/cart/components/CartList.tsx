@@ -8,17 +8,14 @@ import { wishItem } from '../types/wishListItem';
 import useCategoryFilter from '../hooks/useCategoryFilter';
 import TripeerRecommends from '../../../components/empty/TripeerRecommends';
 import useWishListLike from '../hooks/useWIshListLike';
-import zustandStore from '../../../store/store';
 import { useNavigate } from 'react-router-dom';
 
 export default function CartList({ items }: { items: wishItem[] }) {
-  const setPrev = zustandStore((state) => state.spot_setPrevPage);
   const navigate = useNavigate();
   const filteredItem = useCategoryFilter(items);
   const mutation = useWishListLike();
 
   const clickHandler = (id: number) => {
-    setPrev('/cart');
     navigate(`/home/spot/${id}`);
   };
 

@@ -30,6 +30,7 @@
     flex-direction: column;
     border-radius: 10px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
   }
   .imgBox {
     position: relative;
@@ -64,6 +65,7 @@
   .container {
     display: flex;
     gap: 30px;
+    cursor: pointer;
   }
 
   .imgBox {

@@ -1,20 +1,20 @@
 import BoxLayout from '../../layout/BoxLayout';
 import ContentLayout from '../../layout/ContentLayout';
+import MyConfigMenu from './components/MyConfigMenu';
 import MyPageAside from './components/MyPageAside';
-import MyPageMenu from './components/MyPageMenu';
 import MyLayout from './layout/MyLayout';
 
-export default function MyPage() {
+export default function MyConfig() {
   return (
     <ContentLayout>
       <BoxLayout>
         <MyLayout>
           <MyPageAside
-            description="만나서 반갑습니다. 회원님"
-            title="마이 페이지"
-            subTitle="MY PAGE"
+            title="내 정보 수정"
+            subTitle="EDIT PROFILE"
+            description="정보를 수정할 수 있습니다."
           />
-          <MyPageMenu />
+          <MyConfigMenu />
         </MyLayout>
       </BoxLayout>
     </ContentLayout>
