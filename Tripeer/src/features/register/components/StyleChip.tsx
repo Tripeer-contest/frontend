@@ -6,9 +6,10 @@ import zustandStore from '../../../store/store.tsx';
 interface Props {
   idx: number;
   title: string;
+  image: string;
 }
 
-const StyleChip: React.FC<Props> = ({ idx, title }) => {
+const StyleChip: React.FC<Props> = ({ idx, title, image }) => {
   const { onClickHandler } = useStyleChip();
   const r_style = zustandStore((state) => state.r_style);
 
@@ -17,11 +18,7 @@ const StyleChip: React.FC<Props> = ({ idx, title }) => {
       className={`${styles.body} ${r_style.includes(idx + 1) ? styles.check : ''}`}
       onClick={() => onClickHandler(idx)}
     >
-      <img
-        src={`/styleChip/style${idx + 1}.png`}
-        alt={'styleChip'}
-        className={styles.image}
-      />
+      <img src={image} alt={'styleChip'} className={styles.image} />
       <p className={styles.p}>{title}</p>
     </main>
   );

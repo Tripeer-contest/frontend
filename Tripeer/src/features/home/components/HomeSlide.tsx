@@ -17,7 +17,12 @@ const HomeSlide = () => {
       <Swiper slidesPerView={'auto'} grabCursor={true}>
         {testData.map((item, idx) => (
           <SwiperSlide key={`${item}-${idx}`} className={styles.swiperSlide}>
-            <PlaceBox place={item} />
+            <PlaceBox
+              place={item}
+              clickHandler={() => {}}
+              likeClickHandler={() => {}}
+              rating={4.5}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
