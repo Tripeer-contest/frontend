@@ -1,6 +1,7 @@
 import styles from './registerStyle.module.css';
 import img from '../assets/style.png';
-import styleList from '../../../data/styleData.json';
+import { styleData } from '../../../data/styleData.ts';
+import { StyleTypes } from '../../../types/StyleTypes.ts';
 import StyleChip from './StyleChip.tsx';
 import CancelRegister from './CancelRegister.tsx';
 import NextRegister from './NextRegister.tsx';
@@ -21,9 +22,14 @@ const RegisterStyle = () => {
           <p className={styles.body_p}>{r_nickname} 님의</p>
           <p className={styles.body_p}>여행스타일을 골라주세요</p>
           <div className={styles.chipBox}>
-            {styleList.map((item, i) => {
+            {styleData.map((item: StyleTypes, i) => {
               return (
-                <StyleChip key={`${item}-${i}`} idx={i} title={styleList[i]} />
+                <StyleChip
+                  key={`${item}-${i}`}
+                  idx={i}
+                  title={item.name}
+                  image={item.image}
+                />
               );
             })}
           </div>

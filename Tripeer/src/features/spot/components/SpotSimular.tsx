@@ -23,7 +23,12 @@ export default function SpotSimular() {
         >
           {items.map((item) => (
             <SwiperSlide key={item} className={styles.itemBox}>
-              <PlaceBox place={testData} />
+              <PlaceBox
+                place={testData}
+                clickHandler={() => {}}
+                likeClickHandler={() => {}}
+                rating={4.5}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -37,7 +42,12 @@ export default function SpotSimular() {
         >
           {items.map((item) => (
             <SwiperSlide key={item} className={styles.itemBox}>
-              <PlaceBox place={testData} />
+              <PlaceBox
+                place={testData}
+                clickHandler={() => {}}
+                likeClickHandler={() => {}}
+                rating={4.5}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

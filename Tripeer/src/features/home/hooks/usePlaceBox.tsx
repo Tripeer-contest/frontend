@@ -5,7 +5,7 @@ import { postWish } from '../api/postWish.ts';
 import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../store/store.tsx';
 
-const usePlaceBox = (like: boolean, spotId: number) => {
+const usePlaceBox = () => {
   const [rating, setRating] = useState<number>(4.5);
   const [h_nowCityId, h_nowTownId, h_nowPlaceId] = zustandStore(
     useShallow((state) => [
@@ -23,7 +23,11 @@ const usePlaceBox = (like: boolean, spotId: number) => {
 
   const clickHandler = () => {};
 
-  const likeClickHandler = (e: React.MouseEvent<HTMLImageElement>) => {
+  const likeClickHandler = (
+    e: React.MouseEvent<HTMLImageElement>,
+    spotId: number,
+    like: boolean,
+  ) => {
     e.stopPropagation();
     mutation.mutate({ spotId, like });
   };
@@ -32,7 +36,7 @@ const usePlaceBox = (like: boolean, spotId: number) => {
 
   const mutation = useMutation({
     mutationFn: postWish,
-    onMutate: async () => {
+    onMutate: async ({ spotId }) => {
       await client.cancelQueries({ queryKey: queryKey });
       const prev = client.getQueryData(queryKey);
 
@@ -42,7 +46,7 @@ const usePlaceBox = (like: boolean, spotId: number) => {
           ...old,
           pages: old.pages.map((page: any) => ({
             ...page,
-            spotInfoDtos: page.spotInfoDtos.map((place: PlaceType) =>
+            spotInfoDTOList: page.spotInfoDTOList.map((place: PlaceType) =>
               place.spotId === spotId
                 ? { ...place, wishlist: !place.wishlist }
                 : place,

@@ -20,7 +20,7 @@
 
 @media screen and (min-width: 860px){
     .imgBox{
-        width: 50vw;
+        width: 49vw;
         height: 100vh;
     }
 
@@ -30,7 +30,7 @@
     }
 
     .body{
-        width: 50vw;
+        width: 51vw;
         height: 100vh;
         display: flex;
         justify-content: center;
