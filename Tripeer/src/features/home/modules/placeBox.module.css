@@ -1,159 +1,156 @@
+.container {
+    cursor: pointer;
+}
+
+.container p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.imgBox {
+    position: relative;
+}
+
+.img {
+    object-fit: cover;
+}
+
+.like {
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+.like:hover {
+    transform: scale(1.1);
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+}
+
+.ratingBox {
+    display: flex;
+}
+
+.title {
+    color: #545454;
+    font-weight: bold;
+}
+
+.ratingScore,
+.desP {
+    color: #BABABA;
+}
+
 @media screen and (min-width: 930px) {
-    .container{
+    .container {
         height: 330px;
         width: 300px;
         border-radius: 10px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
     }
 
-    .container p{
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .title{
+    .title {
         font-size: 1rem;
-        color: #545454;
-        font-weight: bold;
+        margin-bottom: 4px;
     }
 
-    .imgBox{
+    .imgBox {
         width: 100%;
         height: 230px;
-        position: relative;
     }
 
-    .img{
+    .img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
         border-radius: 10px 10px 0 0;
     }
 
-    .like{
+    .like {
         height: 20px;
         width: 20px;
-        position: absolute;
         top: 10px;
         right: 10px;
-        transition: transform 0.3s ease;
     }
 
-    .like:hover{
-        transform: scale(1.1);
-    }
-
-    .description{
-        display: flex;
-        flex-direction: column;
+    .description {
         margin: 15px 10px 5px 10px;
+        gap: 6px;
     }
 
-    .ratingBox{
-        margin-top: 8px;
-        margin-bottom: 5px;
-        display: flex;
-        flex-direction: row;
+    .ratingBox {
         align-items: end;
     }
 
-    .rating{
+    .rating {
         width: 70px;
     }
 
-    .ratingScore{
+    .ratingScore {
+        font-size: 0.7rem;
         margin-left: 5px;
-        font-size: 0.7rem;
-        color: #BABABA;
     }
 
-    .desP{
+    .desP {
         font-size: 0.7rem;
-        color: #BABABA;
-        margin-top: 6px;
     }
-
 }
 
 @media screen and (max-width: 930px) {
-    .container{
+    .container {
         display: flex;
         justify-content: start;
         align-items: center;
         width: 250px;
         height: 100px;
-        cursor: pointer;
     }
 
-    .imgBox{
+    .imgBox {
         width: 100px;
         height: 100px;
-        position: relative;
     }
 
-    .img{
+    .img {
         width: 100px;
         height: 100px;
-        border-radius: 5px
+        border-radius: 5px;
     }
 
-    .like{
+    .like {
         height: 15px;
         width: 15px;
-        position: absolute;
         top: 5px;
         right: 5px;
-        transition: transform 0.3s ease;
     }
 
-    .like:hover{
-        transform: scale(1.1);
-    }
-
-    .description{
+    .description {
         width: 150px;
         height: 100%;
-        display: flex;
-        flex-direction: column;
         align-items: start;
         justify-content: center;
-        padding: 0 0 0 10px;
+        padding-left: 10px;
+        gap: 10px;
+        margin-left: 20px;
     }
 
-    .description p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .ratingBox{
-        display: flex;
-        justify-content: end;
-    }
-
-    .title{
+    .title {
         font-size: 0.9rem;
-        font-weight: bold;
-        color: #545454;
         width: 130px;
-        margin-bottom: 8px;
+        margin-bottom: 5px;
     }
 
-    .rating{
+    .rating {
         height: 10px;
     }
 
-    .ratingScore{
+    .ratingScore {
         font-size: 0.6rem;
-        color: #BABABA;
     }
 
-    .desP{
+    .desP {
         font-size: 0.7rem;
-        color: #BABABA;
-        width: 130px;
-        margin-top: 5px;
+        width: 125px;
     }
 }

@@ -44,6 +44,7 @@ const RegisterBirthday = () => {
               value={r_year}
               onKeyDown={onKeyDown}
             />
+            <p className={styles.bw}>/</p>
             <input
               className={styles.input}
               placeholder={'월'}
@@ -52,6 +53,7 @@ const RegisterBirthday = () => {
               value={r_month}
               onKeyDown={onKeyDown}
             />
+            <p className={styles.bw}>/</p>
             <input
               className={styles.input}
               placeholder={'일'}

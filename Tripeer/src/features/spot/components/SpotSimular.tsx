@@ -28,7 +28,12 @@ export default function SpotSimular() {
         >
           {SimilarSpot.data.map((item) => (
             <SwiperSlide key={item.spotId} className={styles.itemBox}>
-              <PlaceBox place={item} />
+              <PlaceBox
+                clickHandler={() => {}}
+                likeClickHandler={() => {}}
+                rating={4.5}
+                place={item}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -42,7 +47,12 @@ export default function SpotSimular() {
         >
           {NearSpot.data.map((item) => (
             <SwiperSlide key={item.spotId} className={styles.itemBox}>
-              <PlaceBox place={item} />
+              <PlaceBox
+                clickHandler={() => {}}
+                likeClickHandler={() => {}}
+                rating={4.5}
+                place={item}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
