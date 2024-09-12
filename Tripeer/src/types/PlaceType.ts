@@ -6,6 +6,16 @@ export interface PlaceType {
   wishlist: boolean;
 }
 
+export interface PlaceDetailType extends PlaceType {
+  latitude: number;
+  longitude: number;
+}
+
+export interface MetaInfoType {
+  title: string;
+  content: string;
+}
+
 export interface SpotDetailInterface {
   data: {
     title: string;
@@ -21,6 +31,9 @@ export interface SpotDetailInterface {
     reviewDtoList: ReviewInterface[];
     blogInfoList: blogInfoInterface[];
     reviewTotalCount: number;
+    similarSpotList: PlaceDetailType[];
+    nearSpotList: PlaceDetailType[];
+    additionalInfo: MetaInfoType[];
   };
 }
 

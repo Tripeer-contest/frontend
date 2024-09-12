@@ -11,3 +11,11 @@ export const truncateText = (text: string, maxLength: number) => {
   }
   return text;
 };
+
+export const cleanHTMLString = (text: string) => {
+  return text.replace(/<[^>]*>?/g, '');
+};
+
+export const cleanHTMLBRString = (text: string) => {
+  return text.replace(/<br\s*\/?>/gi, `\n`);
+};

@@ -1,0 +1,94 @@
+.container {
+  padding: 20px 20px 0px 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  gap: 25px;
+}
+
+.imgBox {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profileImg {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+}
+
+.nickname {
+  font-size: 20px;
+  font-weight: bold;
+  color: #262626;
+}
+
+.mainBtn {
+  flex: none;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #d9d9d9;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.mainBtn > img {
+  height: 14px;
+}
+
+.part {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.subTitle {
+  flex: none;
+  font-size: 18px;
+}
+
+.subBtn {
+  flex: none;
+  display: flex;
+  height: 45px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid #d9d9d9;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-left: 20px;
+}
+
+.subBtn > img {
+  height: 14px;
+}
+
+.pushBtn {
+  position: relative;
+  width: 70px;
+  height: 35px;
+  background-color: #d9d9d9;
+  border-radius: 50px 50px 50px 50px;
+}
+
+.push {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}

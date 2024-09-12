@@ -7,10 +7,12 @@ import 'swiper/css';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 import SpotHeart from './SpotHeart';
 import useParamsId from '../hooks/useParamsId';
+import back_icon from '../../../assets/button/back_white.svg';
+import { useNavigate } from 'react-router-dom';
 
 type HeaderType = string[];
 
-export default function SpotHeader() {
+export default function SpotHeader({ isPrevPage }: { isPrevPage: boolean }) {
   const [swiper, setSwiper] = useState<SwiperInterface | undefined>(undefined);
   const [currentPage, setCurrentPage] = useState(1);
   const id = useParamsId();
@@ -18,6 +20,8 @@ export default function SpotHeader() {
     id,
     (data) => data.data.imageList,
   );
+  const navigate = useNavigate();
+
   const maxPage = swiper && swiper.slides ? swiper.slides.length : 1;
   return (
     <header className={styles.header}>
@@ -41,6 +45,14 @@ export default function SpotHeader() {
       </Swiper>
       <SpotHeart />
       <div className={styles.page}>{`${currentPage} / ${maxPage}`}</div>
+      {isPrevPage && (
+        <img
+          src={back_icon}
+          alt="back"
+          className={styles.back}
+          onClick={() => navigate(-1)}
+        />
+      )}
     </header>
   );
 }

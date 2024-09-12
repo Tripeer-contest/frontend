@@ -1,0 +1,46 @@
+.container{
+    height: 30px;
+    border: #dddddd solid 1px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 15px;
+}
+
+.resImg {
+    display: inline;
+    margin-right: 5px;
+    width: 12px;
+    height: 10px;
+}
+
+.stayImg {
+    display: inline;
+    margin-right: 5px;
+    width: 16px;
+    height: 10px;
+}
+
+.mecImg {
+    display: inline;
+    margin-right: 5px;
+    width: 13px;
+    height: 14px;
+}
+
+.check {
+    background-color: #4FBDB7;
+    border-color: #4FBDB7;
+}
+
+.title{
+    color: #333333;
+    font-size: 0.8rem;
+}
+
+.titleCheck{
+    color: white;
+    font-size: 0.8rem;
+}

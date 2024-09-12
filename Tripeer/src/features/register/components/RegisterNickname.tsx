@@ -16,7 +16,7 @@ const RegisterNickname = () => {
       </div>
       <div className={styles.body}>
         <section className={styles.box}>
-          <p className={styles.body_p}>닉네임을 입력해주세요</p>
+          <p className={styles.body_p}>닉네임을 입력해주세요.</p>
           <InputNickname
             placeholder={'10글자 내로 입력하세요'}
             value={value}

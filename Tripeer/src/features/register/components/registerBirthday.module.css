@@ -1,4 +1,4 @@
-.container{
+.container {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -11,146 +11,147 @@
     margin-top: 10px;
 }
 
+.imgBox {
+    width: 49vw;
+    height: 100vh;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.body_p {
+    font-weight: bold;
+    color: #212529;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputBox, .btnBox {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    width: 50px;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #858687;
+    justify-items: left;
+    border: 0;
+    outline: none;
+}
+
+.errBox {
+    height: 50px;
+}
+
+.example {
+    margin-left: 5px;
+    font-weight: normal;
+    color: #858687;
+}
+
+.bw {
+    color: #858687;
+}
+
 @media screen and (min-width: 860px) {
-    .imgBox{
-        width: 50vw;
+    .body {
+        width: 51vw;
         height: 100vh;
-    }
-
-    .img{
-        width: 100%;
-        height: 100%
-    }
-
-    .body{
-        width: 50vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
     }
 
     .body_p {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #212529;
-        margin-bottom: 30px;
+        font-size: 1.9rem;
+        margin-bottom: 20px;
     }
 
-    .box{
-        width: 320px;
-        height: 420px;
-        display: flex;
-        flex-direction: column;
+    .box {
+        width: 290px;
+        height: 280px;
+    }
+
+    .btnBox {
+        width: 100%;
+    }
+
+    .example {
+        margin-top: 10px;
+        font-size: 0.9rem;
+    }
+
+    .bw {
+        font-size: 1.3rem;
+        margin-right: 17px;
     }
 
     .inputBox{
         margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .btnBox{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 50px;
-    }
-
-    .input{
-        width: 100px;
-        font-size: 1.3rem;
-        font-weight: normal;
-        color: #858687;
-        justify-items: left;
-        border: 0;
-        outline: none;
-        margin-top: 20px;
-    }
-
-    .errBox{
-        height: 50px;
-    }
-
-    .example {
-        margin: 20px 0 0 5px;
-        font-size: 0.9rem;
-        font-weight: normal;
-        color: #858687;
     }
 }
 
 @media screen and (max-width: 860px) {
-    .imgBox, .img{
+    .imgBox, .img {
         display: none;
     }
 
-    .body{
+    .body {
         width: 100vw;
         height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
     }
 
     .body_p {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #212529;
+        font-size: 1.8rem;
         margin-bottom: 20px;
     }
 
-    .box{
+    .box {
         width: 300px;
         height: 260px;
-        display: flex;
-        flex-direction: column;
     }
 
-    .inputBox{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .inputBox {
         margin-top: 10px;
     }
 
-    .btnBox{
+    .btnBox {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin-top: 0;
     }
 
-    .input{
-        width: 100px;
-        font-size: 1rem;
-        font-weight: normal;
-        color: #858687;
-        justify-items: left;
-        border: 0;
-        outline: none;
-    }
-
-    .errBox{
-        height: 50px;
+    .errBox {
         font-size: 0.8rem;
     }
 
     .example {
-        margin: 20px 0 0 5px;
+        margin-top: 20px;
         font-size: 0.8rem;
-        font-weight: normal;
-        color: #858687;
+    }
+
+    .bw {
+        font-size: 1rem;
+        margin-right: 30px;
+    }
+
+    .inputBox{
+        margin-top: 15px;
     }
 }
 
 @keyframes fadein {
-    to{
+    to {
         opacity: 1;
     }
 }
