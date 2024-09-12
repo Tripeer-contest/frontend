@@ -1,15 +1,19 @@
 import styles from '../../../assets/map/mapNav/placeMap.module.css';
-import SearchHeader from '../search/searchHeader';
-
+import useIsMobileSize from '../../../hooks/useIsMobileSize';
 import MapBasicHeader from './MapBasicHeader';
 import MapKeywordHeader from './MapKeywordHeader';
 
 export default function MapHeader() {
+  const isMobileSize = useIsMobileSize();
+
   return (
-    <header className={styles.headerBox}>
-      <SearchHeader />
-      <MapBasicHeader />
-      <MapKeywordHeader />
-    </header>
+    <>
+      {isMobileSize && (
+        <header className={styles.headerBox}>
+          <MapBasicHeader />
+          <MapKeywordHeader />
+        </header>
+      )}
+    </>
   );
 }

@@ -3,6 +3,7 @@ import LightSearchBar from '../../common/LightSearchBar';
 import PlanHamburger from '../../common/PlanHamburger';
 import MapCategory from './MapCategory';
 import zustandStore from '../../../../../store/store';
+import SearchHeader from '../search/searchHeader';
 
 export default function MapBasicHeader() {
   const keyword = zustandStore((state) => state.room_mapSearchKeyword);
@@ -10,6 +11,7 @@ export default function MapBasicHeader() {
     <>
       {keyword === '' && (
         <>
+          <SearchHeader />
           <div className={styles.topBox}>
             <div className={styles.hamburgerBtn}>
               <PlanHamburger />
