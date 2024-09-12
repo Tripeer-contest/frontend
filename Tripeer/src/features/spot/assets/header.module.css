@@ -25,6 +25,16 @@
   cursor: pointer;
 }
 
+.back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  cursor: pointer;
+}
+
 .page {
   position: absolute;
   bottom: 20px;

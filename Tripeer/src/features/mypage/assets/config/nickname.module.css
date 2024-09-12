@@ -1,0 +1,65 @@
+.gridBox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 80px auto;
+  align-items: center;
+  max-width: 500px;
+  padding-left: 80px;
+}
+
+@media screen and (max-width: 1000px) {
+  .gridBox {
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 60px auto;
+
+    padding-left: 0px;
+  }
+}
+
+.subTitle {
+  color: #606060;
+  font-size: 14px;
+}
+
+.nicknameBox {
+  display: grid;
+  grid-template-columns: auto 60px;
+  gap: 20px;
+  align-items: center;
+}
+
+.nicknameInput {
+  outline: none;
+  width: 100%;
+  border: 1px solid #d9d9d9;
+  font-size: 14px;
+  height: 24px;
+  border-radius: 5px;
+  color: #606060;
+  padding-left: 10px;
+}
+
+.duplicateInput {
+  outline: none;
+  width: 100%;
+  border: 1px solid red;
+  font-size: 14px;
+  height: 24px;
+  border-radius: 5px;
+  color: #606060;
+  padding-left: 10px;
+}
+
+.duplicateBtn {
+  border: 1px solid #04acb5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #04acb5;
+  height: 24px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}

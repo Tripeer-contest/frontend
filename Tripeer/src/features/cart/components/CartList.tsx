@@ -8,10 +8,16 @@ import { wishItem } from '../types/wishListItem';
 import useCategoryFilter from '../hooks/useCategoryFilter';
 import TripeerRecommends from '../../../components/empty/TripeerRecommends';
 import useWishListLike from '../hooks/useWIshListLike';
+import { useNavigate } from 'react-router-dom';
 
 export default function CartList({ items }: { items: wishItem[] }) {
+  const navigate = useNavigate();
   const filteredItem = useCategoryFilter(items);
   const mutation = useWishListLike();
+
+  const clickHandler = (id: number) => {
+    navigate(`/home/spot/${id}`);
+  };
 
   return (
     <>
@@ -28,6 +34,7 @@ export default function CartList({ items }: { items: wishItem[] }) {
               <div className={styles.cardBox}>
                 <MainCard
                   itemInfo={wishItemToItemInfo(item)}
+                  itemClickHandler={() => clickHandler(item.spotInfoId)}
                   heartClickHandler={() =>
                     mutation.mutate({
                       id: item.spotInfoId,

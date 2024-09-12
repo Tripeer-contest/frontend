@@ -24,15 +24,15 @@ export default function SpotItem() {
         gap: '40px',
       }}
     >
-      <SpotHeader />
+      <SpotHeader isPrevPage={true} />
       <SpotShortInfo scrollToReview={scrollToReview} />
       <SpotLine />
       <SpotMap />
       <SpotLine />
       <SpotReview ref={reviewRef} scrollToReview={scrollToReview} />
       <SpotMeta />
-      <SpotPosting />
       <SpotSimular />
+      <SpotPosting />
       <br />
     </main>
   );
