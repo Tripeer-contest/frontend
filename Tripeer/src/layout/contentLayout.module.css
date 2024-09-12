@@ -5,10 +5,6 @@
     display: grid;
     grid-template-columns: auto 1000px auto;
   }
-
-  .ContentLayout aside {
-    background-color: burlywood;
-  }
 }
 
 @media screen and (max-width: 1000px) {

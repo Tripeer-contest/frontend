@@ -1,5 +1,6 @@
 import styles from '../../../assets/map/mapNav/recommend.module.css';
 import PlanHamburger from '../../common/PlanHamburger';
+import TownController from '../mapNav/TownController';
 
 export default function RecommendHeader() {
   return (
@@ -7,7 +8,7 @@ export default function RecommendHeader() {
       <header className={styles.header}>
         <div className={styles.funcBox}>
           <PlanHamburger />
-          <p className={styles.title}>대구광역시</p>
+          <TownController />
         </div>
       </header>
     </>

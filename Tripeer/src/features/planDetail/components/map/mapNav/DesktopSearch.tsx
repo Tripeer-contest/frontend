@@ -4,9 +4,11 @@ import SearchHeader from '../search/searchHeader';
 import { useState } from 'react';
 import PlaceList from './PlaceList';
 import SearchTopContent from '../search/SearchTopContent';
+import RecommendContent from '../recommend/RecommendContent';
 
 export default function DesktopSearch() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isRecommendSelected, setIsRecommendSelected] = useState(true);
 
   return (
     <>
@@ -17,7 +19,8 @@ export default function DesktopSearch() {
           className={isVisible ? styles.closeBtn : styles.openBtn}
           onClick={() => setIsVisible((prev) => !prev)}
         ></img>
-        <SearchTopContent />
+        <SearchTopContent setIsRecommendSelected={setIsRecommendSelected} />
+        {isRecommendSelected && <RecommendContent />}
       </div>
       {isVisible && <PlaceList />}
     </>

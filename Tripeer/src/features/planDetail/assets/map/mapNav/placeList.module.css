@@ -19,7 +19,6 @@
     z-index: 11;
     width: 100%;
     height: 50px;
-    border-bottom: 1px solid #d9d9d9;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -39,6 +38,13 @@
     flex-direction: row;
     width: 100%;
   }
+  .memberBox {
+    width: calc(100% - 30px);
+    margin: 50px 15px 0px 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb;
+    border-top: 1px solid #e5e7eb;
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -50,51 +56,13 @@
     margin-left: 500px;
     background-color: white;
     box-shadow: 5px 0 10px rgba(0, 0, 0, 10%);
-    border-left: 1px solid #c4c4c4;
+    border-left: 1px solid #e5e7eb;
   }
-  @media screen and (min-width: 1000px) {
-    .header {
-      width: 500px;
-      height: 50px;
-      border-bottom: 1px solid #d9d9d9;
-      display: flex;
-      align-items: center;
-      padding-left: 20px;
-      justify-content: space-between;
-      padding-right: 20px;
-      background-color: white;
-    }
 
-    .header p {
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    .funcBox {
-      display: flex;
-      gap: 20px;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-    }
-    .leftSection {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-
-    .addPlaceBtn {
-      font-size: 0.9rem;
-      border: #04acb5 1px solid;
-      border-radius: 30px;
-      padding: 7px 15px;
-      cursor: pointer;
-    }
-  }
   .header {
-    width: 500px;
+    box-sizing: border-box;
+    width: 499px;
     height: 50px;
-    border-bottom: 1px solid #d9d9d9;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -128,4 +96,20 @@
     padding: 7px 15px;
     cursor: pointer;
   }
+
+  .memberBox {
+    width: calc(100% - 30px);
+    margin: 0 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb;
+    border-top: 1px solid #e5e7eb;
+  }
+}
+
+.memberImg {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  margin-right: 10px;
+  cursor: pointer;
 }

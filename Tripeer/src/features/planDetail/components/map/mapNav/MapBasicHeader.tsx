@@ -22,7 +22,16 @@ export default function MapBasicHeader() {
             />
           </div>
           <div className={styles.categoryBox}>
-            <MapCategory />
+            <MapCategory
+              categoryList={[
+                '여행지',
+                '전체',
+                '숙박',
+                '맛집',
+                '명소',
+                '즐겨찾기',
+              ]}
+            />
           </div>
         </>
       )}

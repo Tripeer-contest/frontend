@@ -19,6 +19,7 @@ const initState = {
   room_chatScrollToBottom: null,
   room_mapSearchKeyword: '',
   room_map: null,
+  room_selectedTownIdx: 0,
 };
 
 export const RoomSlice: StateCreator<
@@ -54,4 +55,6 @@ export const RoomSlice: StateCreator<
       );
       return { room_userInfo: [...store.room_userInfo, ...newOne] };
     }),
+  room_setSelectedTownIdx: (idx: number) =>
+    set(() => ({ room_selectedTownIdx: idx })),
 });

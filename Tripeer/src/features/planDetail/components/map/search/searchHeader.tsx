@@ -1,5 +1,6 @@
 import styles from '../../../assets/map/header.module.css';
 import PlanHamburger from '../../common/PlanHamburger';
+import TownController from '../mapNav/TownController';
 
 export default function SearchHeader() {
   return (
@@ -8,7 +9,7 @@ export default function SearchHeader() {
         <div className={styles.funcBox}>
           <div className={styles.leftSection}>
             <PlanHamburger />
-            <p className={styles.title}>대구광역시</p>
+            <TownController />
           </div>
           <div className={styles.addPlaceBtn}>신규 장소 등록</div>
         </div>

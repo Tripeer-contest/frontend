@@ -20,30 +20,49 @@
     background-color: white;
   }
 
-  .header p {
-    font-size: 1rem;
+  .title {
     font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 10px;
   }
-
   .funcBox {
     display: flex;
     gap: 20px;
     flex-direction: row;
   }
-  .openBtn {
-    display: none;
-  }
+
   .contentContainer {
     width: 100%;
     height: 100%;
     padding: 25px 15px;
     overflow-y: scroll;
+    padding-top: 70px;
+    padding-bottom: 50px;
   }
   .contentContainer::-webkit-scrollbar {
     display: none;
   }
   .cardlistBox {
     margin-bottom: 50px;
+  }
+  .modalContainer {
+    margin-bottom: 0px;
+    outline: none;
+    border: none;
+    border-radius: 15px 15px 0 0;
+    height: 200px;
+    width: 100%;
+    max-width: 100vw;
+    animation: slideUp 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  @keyframes slideUp {
+    0% {
+      margin-bottom: -150px;
+    }
+    100% {
+      margin-bottom: 0px;
+    }
   }
 }
 
@@ -53,10 +72,44 @@
     height: 100vh;
     width: 500px;
   }
-}
-.title {
-  font-size: 1.1rem;
-  font-weight: bold;
+  .title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .funcBox {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+  }
+  .contentContainer {
+    width: 100%;
+    height: calc(100vh - 70px);
+    padding: 25px 15px;
+    overflow-y: scroll;
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+  .contentContainer::-webkit-scrollbar {
+    width: 5px;
+  }
+  .contentContainer::-webkit-scrollbar-track {
+    background-color: #e3e3e3;
+  }
+  .contentContainer::-webkit-scrollbar-thumb {
+    background-color: #04acb5;
+  }
+  .cardlistBox {
+    margin-bottom: 50px;
+  }
+  .modalContainer {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 200px;
+    width: 300px;
+    overflow: hidden;
+  }
 }
 
 .cardBox {
@@ -125,4 +178,61 @@
   font-size: 0.7rem;
   color: white;
   border-radius: 5px;
+}
+.selectTownBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+.selectTownIcon {
+  width: 12px;
+  height: 12px;
+}
+.modalContainer {
+  outline: none;
+  border: none;
+}
+
+.descriptionText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 10px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.emptyBox {
+  height: 25px;
+  width: 25px;
+}
+.closeIcon {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.itemBox {
+  margin-top: 20px;
+  height: 100px;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow-y: scroll;
+}
+.itemText {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.itemText:hover {
+  color: #04acb5;
+}
+.itemBox::-webkit-scrollbar {
+  width: 5px;
+}
+.itemBox::-webkit-scrollbar-track {
+  background-color: #e3e3e3;
+}
+.itemBox::-webkit-scrollbar-thumb {
+  background-color: #04acb5;
 }
