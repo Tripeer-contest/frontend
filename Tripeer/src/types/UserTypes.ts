@@ -14,3 +14,10 @@ export interface ProfileType extends UserType {
   style3: null | string;
   style3Num: number;
 }
+
+export interface ProfileFormType {
+  nickname: string;
+  nickWarn: boolean;
+  styleWarn: boolean;
+  style: number[];
+}
