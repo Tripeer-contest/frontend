@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 export default function useIntersectionScroll(fetchToNext: () => void) {
   const ioRef = useRef<IntersectionObserver | null>(null);
@@ -9,7 +9,10 @@ export default function useIntersectionScroll(fetchToNext: () => void) {
         ioRef.current = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              entry.isIntersecting && fetchToNext();
+              if (entry.isIntersecting) {
+                fetchToNext();
+                ioRef.current?.unobserve(entry.target);
+              }
             });
           },
           { threshold: 0.5 },
@@ -20,6 +23,13 @@ export default function useIntersectionScroll(fetchToNext: () => void) {
     },
     [fetchToNext],
   );
+
+  useEffect(() => {
+    return () => {
+      ioRef.current?.disconnect();
+      ioRef.current = null;
+    };
+  }, []);
 
   return { setRef };
 }

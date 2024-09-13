@@ -72,7 +72,7 @@ export function useNoticeQuery() {
     queryKey: ['notice'],
     queryFn: ({ pageParam }) => getNotice(pageParam),
     getNextPageParam: (lastPage, page) =>
-      lastPage.totalPage > page.length ? page.length : undefined,
+      lastPage.totalPage > page.length ? page.length + 1 : undefined,
     initialPageParam: 1,
   });
   return { data, fetchNextPage, isLoading, hasNextPage };
