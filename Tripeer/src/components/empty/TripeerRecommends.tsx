@@ -32,6 +32,7 @@ export default function TripeerRecommends({
               src={banner.img}
               alt={`banner-${banner.title}`}
               className={styles.imgSlide}
+              loading="lazy"
             />
           </SwiperSlide>
         ))}

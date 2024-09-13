@@ -15,6 +15,12 @@ export interface ProfileType extends UserType {
   style3Num: number;
 }
 
+export interface ProfileFormType {
+  nickname: string;
+  nickWarn: boolean;
+  styleWarn: boolean;
+  style: number[];
+}
 export type ORDER_COLOR_TYPE = {
   1: string;
   2: string;
