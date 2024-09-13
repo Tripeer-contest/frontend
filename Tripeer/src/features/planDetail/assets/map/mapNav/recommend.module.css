@@ -132,34 +132,39 @@
   flex-direction: column;
 }
 .cardImg {
-  background-color: #c4c4c4;
   width: 150px;
   height: 150px;
   border-radius: 10px;
   margin-top: 10px;
 }
 .placeName {
-  background-color: #c4c4c4;
   width: 150px;
   height: 20px;
   border-radius: 5px;
   margin-top: 10px;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .addressBox {
   display: flex;
   flex-direction: row;
   gap: 5px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .addressIcon {
-  height: 15px;
-  width: 15px;
+  height: 10px;
+  width: 10px;
 }
 .addressText {
-  background-color: #c4c4c4;
+  font-size: 0.7rem;
   border-radius: 5px;
   height: 15px;
   width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .bottomSection {
   margin-top: 10px;

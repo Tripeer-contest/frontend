@@ -32,9 +32,8 @@ export interface ChatInterface {
   amOrPm: string;
 }
 
-export interface RecommendInterfaceAPI {
-  data: RecommendInterface[];
-}
+export type RecommendInterfaceAPI = RecommendInterface[];
+
 export interface RecommendInterface {
   keyword: string;
   comment: string;

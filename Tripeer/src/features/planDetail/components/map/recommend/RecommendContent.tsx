@@ -8,13 +8,17 @@ import useParamsId from '../../../../spot/hooks/useParamsId';
 import { useShallow } from 'zustand/react/shallow';
 import SmallLoading from '../../../../../components/loading/SmallLoading';
 
+import {
+  RecommendInterface,
+  SpotInterface,
+} from '../../../../../types/PlanDetailTypes';
+
 export default function RecommendContent() {
   const id = useParamsId();
   const [townInfo, townIdx] = zustandStore(
     useShallow((state) => [state.room_townList, state.room_selectedTownIdx]),
   );
-  console.log(id, townInfo[townIdx].cityId, townInfo[townIdx].townId);
-  const { data, isLoading } = useGetRecommendQuery(
+  const { data, isLoading, isError } = useGetRecommendQuery(
     id,
     townInfo[townIdx].cityId,
     townInfo[townIdx].townId,
@@ -22,20 +26,23 @@ export default function RecommendContent() {
 
   return (
     <>
-      {!isLoading && (
+      {!isLoading && !isError && data && (
         <main className={styles.contentContainer}>
-          {townInfo.map((item, idx) => {
+          {data.map((itemlist: RecommendInterface, idx: number) => {
             return (
               <section className={styles.cardlistBox} key={idx}>
-                <h1 className={styles.title}>호텔을 즐겨찾는 당신의 위해</h1>
+                <h1 className={styles.title}>{itemlist.comment}</h1>
                 <Swiper
                   slidesPerView={'auto'}
                   spaceBetween={20}
                   style={{ display: 'flex' }}
                 >
-                  {[1, 2, 3, 4, 5, 6].map((card, idx) => {
+                  {itemlist.spotInfoDtos.map((card: SpotInterface) => {
                     return (
-                      <SwiperSlide key={idx} style={{ width: '150px' }}>
+                      <SwiperSlide
+                        key={card.spotInfoId}
+                        style={{ width: '150px' }}
+                      >
                         <RecommendCard card={card} />
                       </SwiperSlide>
                     );
@@ -51,6 +58,7 @@ export default function RecommendContent() {
           <SmallLoading />
         </div>
       )}
+      {isError && <div className={styles.loadingBox}>에러발생</div>}
     </>
   );
 }
