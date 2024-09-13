@@ -32,11 +32,11 @@ export default function useStyleValidate(
   useEffect(() => {
     const newSelected = [];
     if (data.style1)
-      newSelected.push({ name: data.style1, num: data.style1Num });
+      newSelected.push({ name: data.style1, num: data.style1Num - 1 });
     if (data.style2)
-      newSelected.push({ name: data.style2, num: data.style2Num });
+      newSelected.push({ name: data.style2, num: data.style2Num - 1 });
     if (data.style3)
-      newSelected.push({ name: data.style3, num: data.style3Num });
+      newSelected.push({ name: data.style3, num: data.style3Num - 1 });
     setSelectedStyle(newSelected);
   }, [data]);
 

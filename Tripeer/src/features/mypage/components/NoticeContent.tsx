@@ -15,7 +15,7 @@ export default function NoticeContent() {
         {!isLoading &&
           data &&
           data.pages.map((page) =>
-            page.summaryList.map((notice: summary) => (
+            page.noticeList.map((notice: summary) => (
               <li
                 key={notice.noticeId}
                 className={styles.noticeContainer}
@@ -32,12 +32,12 @@ export default function NoticeContent() {
                   className={styles.content}
                   ref={(elem) => setHeightRef(elem, notice.noticeId)}
                 >
-                  {notice.title}
+                  {notice.content}
                 </div>
               </li>
             )),
           )}
-        {!isLoading && hasNextPage && (
+        {!isLoading && hasNextPage && data?.pages.length && (
           <li className={styles.ballBox} ref={setRef}>
             <div className={styles.ball} />
             <div className={styles.ball} />
