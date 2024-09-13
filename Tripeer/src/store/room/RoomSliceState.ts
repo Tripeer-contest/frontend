@@ -20,6 +20,7 @@ export interface RoomSliceState {
   room_chatScrollIsBottom: boolean;
   room_mapSearchKeyword: string;
   room_map: any;
+  room_selectedTownIdx: number;
   room_chatScrollToBottom: (() => void) | null;
   room_chatSetScrollToBottom: (payload: () => void) => void;
   room_setChatScrollIsBottom: (isTrue: boolean) => void;
@@ -35,6 +36,7 @@ export interface RoomSliceState {
   room_setMapSearchKeyword: (keyword: string) => void;
   room_setMap: (map: any) => void;
   room_syncUser: (coworkers: OnlineInfo[]) => void;
+  room_setSelectedTownIdx: (param: number) => void;
 }
 
 export interface RoomTownInfo {
