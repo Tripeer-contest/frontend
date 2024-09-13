@@ -1,4 +1,4 @@
-import styles from '../../../assets/map/header.module.css';
+import styles from '../../../assets/map/mapNav/placeList.module.css';
 import PlanHamburger from '../../common/PlanHamburger';
 
 export default function ListhHeader() {
