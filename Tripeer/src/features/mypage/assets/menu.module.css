@@ -1,5 +1,5 @@
 .container {
-  padding: 20px 20px 0px 20px;
+  padding: 20px 20px 20px 20px;
   height: 100%;
   width: 100%;
   display: flex;
@@ -91,4 +91,34 @@
   height: 30px;
   border-radius: 50%;
   background-color: #fff;
+}
+
+.clipConfirm {
+  display: flex;
+  z-index: 2;
+  justify-content: center;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100px;
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  animation: fade 2.5s ease-in-out forwards;
+}
+
+.disappear {
+  display: none;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
