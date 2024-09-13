@@ -9,7 +9,6 @@ import useMyInfoQuery, { useDuplicateQuery } from './useMyInfoQuery';
 import { ProfileFormType } from '../../../types/UserTypes';
 
 export default function useNickValidate(
-  form: ProfileFormType,
   setForm: Dispatch<SetStateAction<ProfileFormType>>,
 ) {
   const { data } = useMyInfoQuery();
@@ -21,7 +20,6 @@ export default function useNickValidate(
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const typing = e.target.value;
     const regExp = /[^a-zA-Z0-9가-힣]/;
-    const newForm = { ...form };
     if (regExp.test(typing) || typing.length < 2 || typing.length > 10) {
       setWarn(true);
     } else {
@@ -48,7 +46,7 @@ export default function useNickValidate(
   }, [duplicate.isSuccess, warn, setForm, duplicate.data, data, nick]);
 
   useEffect(() => {
-    setForm((prev) => ({ ...prev, nickname: data.nickname }));
+    setForm && setForm((prev) => ({ ...prev, nickname: data.nickname }));
   }, [data, setForm]);
 
   return { duplicate, warn, nick, changeHandler, duplicateCheck };

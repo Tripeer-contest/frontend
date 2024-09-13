@@ -9,6 +9,8 @@ import { ProfileFormType } from '../../../types/UserTypes';
 import Notify from '../../planDetail/components/notify/Notify';
 import warn_icon from '../../../assets/error/warn.svg';
 import { usePatchProfile } from '../hooks/useMyInfoQuery';
+import MutationLoading from '../../../components/loading/MutationLoading';
+import logo_icon from '../../../assets/tripeer_icon.webp';
 
 export default function MyConfigMenu() {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ export default function MyConfigMenu() {
     styleWarn: false,
   });
   const [warn, setWarn] = useState(false);
-  const { mutate } = usePatchProfile();
+  const { mutate, isPending, error, isError, isSuccess } = usePatchProfile();
   const cancelHandler = () => {
     navigate('/mypage');
   };
@@ -47,6 +49,19 @@ export default function MyConfigMenu() {
           <div onClick={clickHandler}>수정 완료</div>
         </div>
       </main>
+      <MutationLoading isShow={isPending} />
+      <Notify
+        isActive={isSuccess}
+        message="정보를 변경하였습니다."
+        title="알림"
+        img={logo_icon}
+      />
+      <Notify
+        isActive={isError}
+        message={error?.message ? error.message : '에러가 발생하였습니다.'}
+        title="알림"
+        img={warn_icon}
+      />
       <Notify
         isActive={warn}
         message="항목의 조건들을 모두 채워주세요."

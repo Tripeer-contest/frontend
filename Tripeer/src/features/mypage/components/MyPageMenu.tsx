@@ -20,9 +20,9 @@ export default function MyPageMenu() {
       <MyMainBtn name="내 정보 수정" clickHandler={() => navigate('./edit')} />
       <div className={styles.part}>
         <h3 className={styles.subTitle}>고객지원</h3>
-        <MySubBtn name="공지사항" />
-        <MySubBtn name="문의하기" />
-        <MySubBtn name="초대링크 복사하기" />
+        <MySubBtn name="공지사항" clickHandler={() => navigate('./notice')} />
+        <MySubBtn name="문의하기" clickHandler={() => navigate('./qna')} />
+        <MySubBtn name="초대링크 복사하기" clickHandler={() => {}} />
       </div>
       <div className={styles.part}>
         <h3 className={styles.subTitle}>알림설정</h3>
@@ -35,8 +35,8 @@ export default function MyPageMenu() {
       </div>
       <div className={styles.part}>
         <h3 className={styles.subTitle}>로그인 설정</h3>
-        <MySubBtn name="로그아웃" />
-        <MySubBtn name="서비스 탈퇴" />
+        <MySubBtn name="로그아웃" clickHandler={() => {}} />
+        <MySubBtn name="서비스 탈퇴" clickHandler={() => {}} />
       </div>
     </main>
   );

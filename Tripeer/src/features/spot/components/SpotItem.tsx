@@ -13,7 +13,8 @@ export default function SpotItem() {
   const scrollTo = zustandStore((state) => state.scrollTo);
   const reviewRef = useRef<HTMLDivElement | null>(null);
   const scrollToReview = () => {
-    if (reviewRef.current && scrollTo) scrollTo(reviewRef.current.offsetTop);
+    if (reviewRef.current && scrollTo)
+      scrollTo(reviewRef.current.offsetTop - 100);
   };
 
   return (

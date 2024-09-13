@@ -16,7 +16,7 @@ export async function patchImage(img: File) {
 export async function patchMyInfo(nickname: string, style: number[]) {
   try {
     const body: any = { nickname };
-    style.forEach((st, idx) => (body[`style${idx + 1}Num`] = st));
+    style.forEach((st, idx) => (body[`style${idx + 1}Num`] = st + 1));
     const res = await api.patch(`user/myinfo`, JSON.stringify(body), {
       headers: { 'Content-Type': 'application/json' },
     });

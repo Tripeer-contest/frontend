@@ -1,13 +1,15 @@
 import {
+  useInfiniteQuery,
   useMutation,
   useQuery,
   useQueryClient,
   useSuspenseQuery,
 } from '@tanstack/react-query';
-import getMyInfo, { getIsDuplicate } from '../api/getMyInfo';
+import getMyInfo, { getIsDuplicate, getNotice } from '../api/getMyInfo';
 import { ProfileType } from '../../../types/UserTypes';
 import { useEffect } from 'react';
 import { patchImage, patchMyInfo } from '../api/patchMyInfo';
+import NoticeInterface from '../../../types/NoticeTypes';
 
 export default function useMyInfoQuery() {
   const { data } = useSuspenseQuery<ProfileType>({
@@ -50,7 +52,7 @@ export function usePatchImage() {
 
 export function usePatchProfile() {
   const queryClient = useQueryClient();
-  const { mutate, isError, isPending, error } = useMutation({
+  const { mutate, isError, isPending, error, isSuccess } = useMutation({
     mutationFn: ({
       nickname,
       styles,
@@ -63,5 +65,16 @@ export function usePatchProfile() {
     },
   });
 
-  return { mutate, isError, isPending, error };
+  return { mutate, isError, isPending, error, isSuccess };
+}
+
+export function useNoticeQuery() {
+  const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteQuery({
+    queryKey: ['notice'],
+    queryFn: ({ pageParam }) => getNotice(pageParam),
+    getNextPageParam: (lastPage, page) =>
+      lastPage.totalPage > page.length ? page.length : undefined,
+    initialPageParam: 1,
+  });
+  return { data, fetchNextPage, isLoading, hasNextPage };
 }
