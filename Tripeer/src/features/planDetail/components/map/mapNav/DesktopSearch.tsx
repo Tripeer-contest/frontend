@@ -5,6 +5,7 @@ import { useState } from 'react';
 import PlaceList from './PlaceList';
 import SearchTopContent from '../search/SearchTopContent';
 import RecommendContent from '../recommend/RecommendContent';
+import SearchMainContent from '../search/SearchMainContent';
 
 export default function DesktopSearch() {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,7 +21,8 @@ export default function DesktopSearch() {
           onClick={() => setIsVisible((prev) => !prev)}
         ></img>
         <SearchTopContent setIsRecommendSelected={setIsRecommendSelected} />
-        {isRecommendSelected && <RecommendContent />}
+
+        {isRecommendSelected ? <RecommendContent /> : <SearchMainContent />}
       </div>
       {isVisible && <PlaceList />}
     </>
