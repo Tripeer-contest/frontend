@@ -19,6 +19,8 @@ const initState = {
   room_chatScrollToBottom: null,
   room_mapSearchKeyword: '',
   room_map: null,
+  room_totalYList: [],
+  room_timeYList: [],
 };
 
 export const RoomSlice: StateCreator<
@@ -54,4 +56,6 @@ export const RoomSlice: StateCreator<
       );
       return { room_userInfo: [...store.room_userInfo, ...newOne] };
     }),
+  room_setTotalYList: (payload) => set({ room_totalYList: payload }),
+  room_setTimeYList: (payload) => set({ room_timeYList: payload }),
 });
