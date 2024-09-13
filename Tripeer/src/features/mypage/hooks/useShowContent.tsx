@@ -8,8 +8,7 @@ export default function useShowContent() {
   const showContent = (noticeId: number) => {
     const newHeight = { ...heightState };
     if (newHeight[noticeId]) newHeight[noticeId] = 0;
-    else newHeight[noticeId] = +heightRef.current[noticeId];
-    console.log(newHeight[noticeId]);
+    else newHeight[noticeId] = +heightRef.current[noticeId] + 20;
     setHeightState(newHeight);
   };
 
