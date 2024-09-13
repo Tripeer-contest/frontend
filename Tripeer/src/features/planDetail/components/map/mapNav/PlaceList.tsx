@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import zustandStore from '../../../../../store/store';
 import styles from '../../../assets/map/mapNav/placeList.module.css';
-import ListHeader from './ListHeader';
+import ListHeader from '../mapNav/placeList/ListHeader';
 import MemberCategory from './placeList/MemberCategory';
 import PlaceContent from './placeList/PlaceListContent';
 

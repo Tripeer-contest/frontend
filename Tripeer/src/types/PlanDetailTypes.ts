@@ -31,3 +31,26 @@ export interface ChatInterface {
   minutes: string;
   amOrPm: string;
 }
+
+export interface RecommendInterfaceAPI {
+  data: RecommendInterface[];
+}
+export interface RecommendInterface {
+  keyword: string;
+  comment: string;
+  spotInfoDtos: SpotInterface[];
+}
+
+export interface SpotInterface {
+  spotInfoId: number;
+  title: string;
+  contentType: string;
+  addr: string;
+  starPointAvg: number;
+  latitude: number;
+  longitude: number;
+  img: string;
+  wishlist: boolean;
+  spot: false;
+  description: string;
+}

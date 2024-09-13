@@ -16,6 +16,8 @@
   border-radius: 5px;
   transform: rotate(180deg);
   cursor: pointer;
+  width: 30px;
+  height: 30px;
 }
 .closeBtn {
   position: absolute;
@@ -27,4 +29,6 @@
   border: #c4c4c4 1px solid;
   border-radius: 5px;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
 }

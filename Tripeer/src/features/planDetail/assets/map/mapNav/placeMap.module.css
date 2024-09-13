@@ -125,7 +125,6 @@
     border-radius: 20px;
     padding: 7px 10px;
     width: auto;
-    box-shadow: 0px 1px 2px 0px rgba(31, 41, 55, 0.08);
     cursor: pointer;
   }
   .activeCategoryBtn {
@@ -136,7 +135,6 @@
     border-radius: 20px;
     padding: 7px 10px;
     width: auto;
-    box-shadow: 0px 1px 2px 0px rgba(31, 41, 55, 0.08);
     cursor: pointer;
   }
   .categoryItem {
