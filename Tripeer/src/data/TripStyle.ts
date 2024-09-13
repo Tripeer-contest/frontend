@@ -1,4 +1,3 @@
-import { v4 } from 'uuid';
 import style1 from '../assets/styleChip/style1.png';
 import style2 from '../assets/styleChip/style2.png';
 import style3 from '../assets/styleChip/style3.png';
@@ -9,37 +8,37 @@ import style7 from '../assets/styleChip/style7.png';
 
 const styleCategory = [
   {
-    id: v4(),
+    id: 1,
     title: '관광지',
     img: style1,
   },
   {
-    id: v4(),
+    id: 2,
     title: '문화시설',
     img: style2,
   },
   {
-    id: v4(),
+    id: 3,
     title: '축제',
     img: style3,
   },
   {
-    id: v4(),
+    id: 4,
     title: '패키지',
     img: style4,
   },
   {
-    id: v4(),
+    id: 5,
     title: '레포츠',
     img: style5,
   },
   {
-    id: v4(),
+    id: 6,
     title: '쇼핑',
     img: style6,
   },
   {
-    id: v4(),
+    id: 7,
     title: '음식점',
     img: style7,
   },
