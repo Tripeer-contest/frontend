@@ -9,7 +9,6 @@ import getMyInfo, { getIsDuplicate, getNotice } from '../api/getMyInfo';
 import { ProfileType } from '../../../types/UserTypes';
 import { useEffect } from 'react';
 import { patchImage, patchMyInfo } from '../api/patchMyInfo';
-import NoticeInterface from '../../../types/NoticeTypes';
 
 export default function useMyInfoQuery() {
   const { data } = useSuspenseQuery<ProfileType>({
