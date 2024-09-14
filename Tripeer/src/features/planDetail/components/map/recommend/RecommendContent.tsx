@@ -12,17 +12,26 @@ import {
   RecommendInterface,
   SpotInterface,
 } from '../../../../../types/PlanDetailTypes';
+import { useEffect } from 'react';
 
 export default function RecommendContent() {
   const id = useParamsId();
-  const [townInfo, townIdx] = zustandStore(
-    useShallow((state) => [state.room_townList, state.room_selectedTownIdx]),
+  const [townInfo, townIdx, setSort] = zustandStore(
+    useShallow((state) => [
+      state.room_townList,
+      state.room_selectedTownIdx,
+      state.room_setSortType,
+    ]),
   );
   const { data, isLoading, isError } = useGetRecommendQuery(
     id,
     townInfo[townIdx].cityId,
     townInfo[townIdx].townId,
   );
+
+  useEffect(() => {
+    setSort('');
+  }, [setSort]);
 
   return (
     <>

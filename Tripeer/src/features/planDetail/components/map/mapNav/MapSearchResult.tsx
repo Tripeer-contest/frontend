@@ -4,7 +4,7 @@ import BottomDragModal from '../../common/BottomDragModal';
 import BottomDragListModal from '../../common/BottomDragListModal';
 
 export default function MapSearchResult() {
-  const keyword = zustandStore((state) => state.room_mapSearchKeyword);
+  const keyword = zustandStore((state) => state.room_sortType);
   const [category, setCategory] = useState(0);
   const isSearchMode = keyword !== '여행지' && keyword !== '즐겨찾기';
   return (

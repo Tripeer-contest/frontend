@@ -13,10 +13,7 @@ export default function MapCategory({
   setIsRecommendSelected?: (params: boolean) => void;
 }) {
   const [setKeyword, keyword] = zustandStore(
-    useShallow((state) => [
-      state.room_setMapSearchKeyword,
-      state.room_mapSearchKeyword,
-    ]),
+    useShallow((state) => [state.room_setSortType, state.room_sortType]),
   );
   const clickHandler = (category: string) => {
     if (category === '추천') {

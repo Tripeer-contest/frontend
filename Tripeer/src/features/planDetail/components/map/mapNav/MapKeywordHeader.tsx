@@ -5,10 +5,7 @@ import { useShallow } from 'zustand/react/shallow';
 
 export default function MapKeywordHeader() {
   const [keyword, setKeyword] = zustandStore(
-    useShallow((state) => [
-      state.room_mapSearchKeyword,
-      state.room_setMapSearchKeyword,
-    ]),
+    useShallow((state) => [state.room_sortType, state.room_setSortType]),
   );
 
   const cancel = () => setKeyword('');

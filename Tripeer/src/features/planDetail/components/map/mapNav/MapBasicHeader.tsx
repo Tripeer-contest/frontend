@@ -6,7 +6,7 @@ import zustandStore from '../../../../../store/store';
 import SearchHeader from '../search/searchHeader';
 
 export default function MapBasicHeader() {
-  const keyword = zustandStore((state) => state.room_mapSearchKeyword);
+  const keyword = zustandStore((state) => state.room_sortType);
   return (
     <>
       {keyword === '' && (

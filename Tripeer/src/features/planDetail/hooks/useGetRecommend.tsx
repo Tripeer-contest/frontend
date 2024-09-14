@@ -23,7 +23,7 @@ export function useRecommendLikeQuery(
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: async ({ id, like }: { id: number; like: boolean }) =>
-      await postWishItem(id, like),
+      postWishItem(id, like),
     onMutate: async ({ id, like }) => {
       await queryClient.cancelQueries({
         queryKey: ['plan', 'recommend', planId, cityId, townId],
