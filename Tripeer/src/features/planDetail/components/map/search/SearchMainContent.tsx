@@ -2,27 +2,53 @@ import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../../../store/store';
 import useParamsId from '../../../../spot/hooks/useParamsId';
 import styles from '../../../assets/map/mapNav/searchContent.module.css';
-import useGetPlanSpotSearchQuery from '../../../hooks/useGetPlanSpotSearch';
+import useGetPlanSpotSearchQuery, {
+  usePlanSpotLikeQuery,
+} from '../../../hooks/useGetPlanSpotSearch';
 import SearchSpotCard from './SearchSpotCard';
-import { useState } from 'react';
+import { Fragment } from 'react/jsx-runtime';
+import { PlanSearchSpotInterface } from '../../../../../types/PlaceType';
+import useIntersectionScroll from '../../../../../hooks/useIntersectionScroll';
 
-export default function SearchMainContent() {
-  const [keyword] = useState('');
+export default function SearchMainContent({ sortNum }: { sortNum: number }) {
   const id = useParamsId();
   const [townInfo, townIdx] = zustandStore(
     useShallow((state) => [state.room_townList, state.room_selectedTownIdx]),
   );
-  const data = useGetPlanSpotSearchQuery(
+  const { data, isLoading, isError, hasNextPage, fetchNextPage } =
+    useGetPlanSpotSearchQuery(
+      id,
+      townInfo[townIdx].cityId,
+      townInfo[townIdx].townId === 0 ? -1 : townInfo[townIdx].townId,
+      '',
+      sortNum,
+    );
+  const { setRef } = useIntersectionScroll(fetchNextPage);
+  const { mutate } = usePlanSpotLikeQuery(
     id,
     townInfo[townIdx].cityId,
-    townInfo[townIdx].townId === 0 ? -1 : townInfo[townIdx].townId - 1,
-    keyword,
-    1,
+    townInfo[townIdx].townId === 0 ? -1 : townInfo[townIdx].townId,
+    '',
+    sortNum,
   );
-  console.log(data);
   return (
     <div className={styles.container}>
-      <SearchSpotCard />
+      {!isLoading &&
+        !isError &&
+        data?.pages.map((page) =>
+          page.searchResultList.map((result: PlanSearchSpotInterface) => (
+            <Fragment key={result.spotInfoId}>
+              <SearchSpotCard spot={result} mutate={mutate} />
+            </Fragment>
+          )),
+        )}
+      {!isLoading && hasNextPage && data?.pages.length && (
+        <li className={styles.ballBox} ref={setRef}>
+          <div className={styles.ball} />
+          <div className={styles.ball} />
+          <div className={styles.ball} />
+        </li>
+      )}
     </div>
   );
 }

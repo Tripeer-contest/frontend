@@ -61,3 +61,20 @@ export interface blogInfoInterface {
   thumbnail: string;
   datetime: string;
 }
+
+export interface PlanSearchSpotInterface {
+  spotInfoId: number;
+  title: string;
+  contentType: string;
+  addr: string;
+  latitude: number;
+  longitude: number;
+  img: string;
+  wishlist: boolean;
+  spot: boolean;
+}
+
+export interface PlanSearchSpotAPI {
+  pageParams: number[];
+  pages: { lastPage: boolean; searchResultList: PlanSearchSpotInterface[] }[];
+}

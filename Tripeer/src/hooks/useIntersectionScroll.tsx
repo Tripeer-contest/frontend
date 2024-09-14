@@ -11,7 +11,6 @@ export default function useIntersectionScroll(fetchToNext: () => void) {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 fetchToNext();
-                ioRef.current?.unobserve(entry.target);
               }
             });
           },

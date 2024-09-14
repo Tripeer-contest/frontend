@@ -18,6 +18,7 @@ export interface RoomSliceState {
   room_startDay: string;
   room_endDay: string;
   room_chatScrollIsBottom: boolean;
+  room_sortType: string;
   room_mapSearchKeyword: string;
   room_map: any;
   room_selectedTownIdx: number;
@@ -37,6 +38,7 @@ export interface RoomSliceState {
   room_setMap: (map: any) => void;
   room_syncUser: (coworkers: OnlineInfo[]) => void;
   room_setSelectedTownIdx: (param: number) => void;
+  room_setSortType: (param: string) => void;
 }
 
 export interface RoomTownInfo {

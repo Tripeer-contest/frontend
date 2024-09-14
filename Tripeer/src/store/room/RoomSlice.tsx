@@ -20,6 +20,7 @@ const initState = {
   room_mapSearchKeyword: '',
   room_map: null,
   room_selectedTownIdx: 0,
+  room_sortType: '',
 };
 
 export const RoomSlice: StateCreator<
@@ -57,4 +58,5 @@ export const RoomSlice: StateCreator<
     }),
   room_setSelectedTownIdx: (idx: number) =>
     set(() => ({ room_selectedTownIdx: idx })),
+  room_setSortType: (type) => set(() => ({ room_sortType: type })),
 });
