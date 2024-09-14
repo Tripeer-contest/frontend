@@ -1,7 +1,7 @@
 import {
-  useInfiniteQuery,
   useMutation,
   useQueryClient,
+  useSuspenseInfiniteQuery,
 } from '@tanstack/react-query';
 import getPlanSpotSearch from '../api/getPlanSpotSearch';
 import postWishItem from '../../cart/api/postWishItem';
@@ -14,7 +14,7 @@ export default function useGetPlanSpotSearchQuery(
   sortType: number,
 ) {
   const { data, isLoading, isError, hasNextPage, fetchNextPage } =
-    useInfiniteQuery({
+    useSuspenseInfiniteQuery({
       queryKey: [
         'getPlanSpotSearch',
         cityId,

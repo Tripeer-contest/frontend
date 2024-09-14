@@ -19,6 +19,7 @@ export default function BottomDragModal({ children }: { children: ReactNode }) {
   const [height, setHeight] = useState(BOX_HEIGHT.current - MAX_BOTTOM.current);
 
   const moveTouch = (e: TouchEvent<HTMLDivElement>) => {
+    e.preventDefault();
     const position = e.touches[0].clientY;
     if (position > MAX_BOTTOM.current) setOffset(MAX_BOTTOM.current);
     else if (position < MIN_BOTTOM.current) setOffset(MIN_BOTTOM.current);

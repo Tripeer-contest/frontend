@@ -1,12 +1,14 @@
 import styles from '../../../assets/map/mapNav/searchPlace.module.css';
 import btnImg from '../../../assets/map/mapNav/assets/openListBtn.svg';
 import SearchHeader from '../search/searchHeader';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import PlaceList from './PlaceList';
 import SearchTopContent from '../search/SearchTopContent';
 import RecommendContent from '../recommend/RecommendContent';
 import SearchMainContent from '../search/SearchMainContent';
 import zustandStore from '../../../../../store/store';
+import ErrorBoundary from '../../../../../components/error/ErrorBoundary';
+import SkeletonSearch from '../../../../../components/loading/SkeletonSearch';
 
 export default function DesktopSearch() {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,13 +30,16 @@ export default function DesktopSearch() {
           onClick={() => setIsVisible((prev) => !prev)}
         ></img>
         <SearchTopContent setIsRecommendSelected={setIsRecommendSelected} />
-
         {isRecommendSelected ? (
           <RecommendContent />
         ) : (
           <>
             {sortNum[sortType] ? (
-              <SearchMainContent sortNum={sortNum[sortType]} />
+              <ErrorBoundary fallback={<div>에러</div>}>
+                <Suspense fallback={<SkeletonSearch />}>
+                  <SearchMainContent sortNum={sortNum[sortType]} />
+                </Suspense>
+              </ErrorBoundary>
             ) : undefined}
           </>
         )}
