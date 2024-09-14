@@ -21,7 +21,7 @@ export default function SearchSpotCard({
       <img src={spot.img} className={styles.cardImg} alt="spot-img" />
       <div className={styles.cardContentBox}>
         <div className={styles.cardTopContent}>
-          <p className={styles.spotTitle}>{truncateText(spot.title, 20)}</p>
+          <p className={styles.spotTitle}>{truncateText(spot.title, 15)}</p>
           <div className={styles.contentTypeBox}>
             <img
               src={getCategoryStyle(spot.contentType).icon}
@@ -37,7 +37,7 @@ export default function SearchSpotCard({
         </div>
         <div className={styles.addrBox}>
           <img src={mapIcon} alt="address-icon" className={styles.addrIcon} />
-          <p className={styles.addrText}>{truncateText(spot.addr, 30)}</p>
+          <p className={styles.addrText}>{truncateText(spot.addr, 23)}</p>
         </div>
         <div className={styles.line}></div>
         <div className={styles.cardBotContent}>
