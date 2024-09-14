@@ -1,39 +1,42 @@
-.container{
-    width: 100%;
-    display: flex;
+.container {
+  width: 100%;
+  display: flex;
 }
 
-.imgBox{
-    display: flex;
-    width: 100px;
+.imgBox {
+  display: flex;
+  width: 120px;
 }
 
-.swiper{
-    display: flex;
-    width: 100%
+.swiper {
+  display: flex;
+  width: 100%;
 }
 
-.img{
-    width: 100px;
-    border-radius: 10px;
+.img {
+  width: 120px;
+  border-radius: 5px;
+}
+.img:hover {
+  opacity: 1;
 }
 
-.check{
-    opacity: 0.6;
+.check {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 600px) {
-    .container{
-        margin-top: 20px;
-    }
+  .container {
+    margin-top: 20px;
+  }
 
-    .swiper{
-        display: flex;
-        width: 100%
-    }
+  .swiper {
+    display: flex;
+    width: 100%;
+  }
 
-    .img{
-        width: 80px;
-        border-radius: 10px;
-    }
+  .img {
+    width: 100px;
+    border-radius: 5px;
+  }
 }
