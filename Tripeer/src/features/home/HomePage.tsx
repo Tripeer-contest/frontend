@@ -12,7 +12,7 @@ export default function HomePage() {
       <div className={styles.container}>
         <SearchBanner />
         <ContentLayout>
-          <p className={styles.title}>취향에 맞는 여행지를 찾아보세요</p>
+          <p className={styles.title}>취향에 맞는 여행지를 찾아보세요.</p>
           <HomeBanner />
           <HomeRecommendationBanner title={'호텔을'} />
           <HomeRecommendationBanner title={'호텔을'} />
