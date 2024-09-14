@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default function FullLogo() {
   return (
-    <Link to="/">
+    <Link to="/home">
       <img src={Logo} alt="Tripeer Logo" className={styles.logoImg} />
     </Link>
   );
