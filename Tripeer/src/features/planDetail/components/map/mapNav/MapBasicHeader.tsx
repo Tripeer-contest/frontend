@@ -4,12 +4,15 @@ import PlanHamburger from '../../common/PlanHamburger';
 import MapCategory from './MapCategory';
 import zustandStore from '../../../../../store/store';
 import SearchHeader from '../search/searchHeader';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function MapBasicHeader() {
-  const keyword = zustandStore((state) => state.room_sortType);
+  const [sortType, keyword] = zustandStore(
+    useShallow((state) => [state.room_sortType, state.room_mapSearchKeyword]),
+  );
   return (
     <>
-      {keyword === '' && (
+      {sortType === '' && keyword === '' && (
         <>
           <SearchHeader />
           <div className={styles.topBox}>

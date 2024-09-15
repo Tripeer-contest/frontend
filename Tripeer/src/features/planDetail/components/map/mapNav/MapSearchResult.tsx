@@ -3,9 +3,12 @@ import zustandStore from '../../../../../store/store';
 import BottomDragModal from '../../common/BottomDragModal';
 import BottomDragListModal from '../../common/BottomDragListModal';
 import MobileSearchResult from './MobileSearchResult';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function MapSearchResult() {
-  const sortType = zustandStore((state) => state.room_sortType);
+  const [sortType, keyword] = zustandStore(
+    useShallow((state) => [state.room_sortType, state.room_mapSearchKeyword]),
+  );
   const [category, setCategory] = useState(0);
   const isSearchMode = sortType !== '여행지' && sortType !== '즐겨찾기';
   const sortNum: { [param: string]: number } = {
@@ -27,6 +30,7 @@ export default function MapSearchResult() {
             <MobileSearchResult
               searchMode={category}
               sortNum={sortNum[sortType]}
+              keyword=""
             />
           </BottomDragListModal>
         ) : (
@@ -34,6 +38,20 @@ export default function MapSearchResult() {
             <p></p>
           </BottomDragModal>
         ))}
+      {keyword && (
+        <BottomDragListModal
+          Category={['전체 검색', '현 지도 검색']}
+          selectedCategry={category}
+          slideTo={setCategory}
+          maxWidth="100%"
+        >
+          <MobileSearchResult
+            searchMode={category}
+            sortNum={1}
+            keyword={keyword}
+          />
+        </BottomDragListModal>
+      )}
     </>
   );
 }

@@ -2,24 +2,42 @@ import zustandStore from '../../../../../store/store';
 import styles from '../../../assets/map/mapNav/placeMap.module.css';
 import cancel_icon from '../../../../../assets/button/cancel_gray.svg';
 import { useShallow } from 'zustand/react/shallow';
+import { truncateText } from '../../../../../utils/utilString';
 
 export default function MapKeywordHeader() {
-  const [keyword, setKeyword] = zustandStore(
-    useShallow((state) => [state.room_sortType, state.room_setSortType]),
+  const [sortType, setSortType, keyword, setKeyword] = zustandStore(
+    useShallow((state) => [
+      state.room_sortType,
+      state.room_setSortType,
+      state.room_mapSearchKeyword,
+      state.room_setMapSearchKeyword,
+    ]),
   );
 
-  const cancel = () => setKeyword('');
+  const cancelSort = () => setSortType('');
+  const cancelKeyword = () => setKeyword('');
 
   return (
     <>
-      {keyword && (
+      {sortType && (
         <div className={styles.keywordBox}>
-          {keyword}
+          {sortType}
           <img
             src={cancel_icon}
             alt="cancel-icon"
             className={styles.cancel}
-            onClick={cancel}
+            onClick={cancelSort}
+          />
+        </div>
+      )}
+      {keyword && (
+        <div className={styles.keywordBox}>
+          {truncateText(keyword, 8)}
+          <img
+            src={cancel_icon}
+            alt="cancel-icon"
+            className={styles.cancel}
+            onClick={cancelKeyword}
           />
         </div>
       )}

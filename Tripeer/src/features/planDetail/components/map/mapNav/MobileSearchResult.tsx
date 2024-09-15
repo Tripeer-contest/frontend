@@ -7,16 +7,18 @@ import SkeletonSearch from '../../../../../components/loading/SkeletonSearch';
 export default function MobileSearchResult({
   searchMode,
   sortNum,
+  keyword,
 }: {
   searchMode: number;
   sortNum: number;
+  keyword: string;
 }) {
   return (
     <div className={styles.container}>
       {searchMode === 0 && (
         <ErrorBoundary fallback={<div>에러중</div>}>
           <Suspense fallback={<SkeletonSearch />}>
-            <MobileSearchAll sortNum={sortNum} />
+            <MobileSearchAll sortNum={sortNum} keyword={keyword} />
           </Suspense>
         </ErrorBoundary>
       )}
