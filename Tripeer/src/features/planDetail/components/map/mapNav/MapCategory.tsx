@@ -12,23 +12,28 @@ export default function MapCategory({
   categoryList: string[];
   setIsRecommendSelected?: (params: boolean) => void;
 }) {
-  const [setKeyword, keyword] = zustandStore(
-    useShallow((state) => [state.room_setSortType, state.room_sortType]),
+  const [setSortType, sortType, setKeyword] = zustandStore(
+    useShallow((state) => [
+      state.room_setSortType,
+      state.room_sortType,
+      state.room_setMapSearchKeyword,
+    ]),
   );
   const clickHandler = (category: string) => {
+    setKeyword('');
     if (category === '추천') {
       setIsRecommendSelected && setIsRecommendSelected(true);
-      setKeyword('');
+      setSortType('');
     } else {
       setIsRecommendSelected && setIsRecommendSelected(false);
-      setKeyword(category);
+      setSortType(category);
     }
   };
   const getCategroyStyle = (category: string) => {
     if (category === '추천') {
       return styles.categoryItem;
     } else {
-      return keyword === category
+      return sortType === category
         ? styles.activeCategoryBtn
         : styles.categoryBtn;
     }

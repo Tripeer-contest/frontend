@@ -12,15 +12,19 @@ import useIntersectionScroll from '../../../../../hooks/useIntersectionScroll';
 
 export default function SearchMainContent({ sortNum }: { sortNum: number }) {
   const id = useParamsId();
-  const [townInfo, townIdx] = zustandStore(
-    useShallow((state) => [state.room_townList, state.room_selectedTownIdx]),
+  const [townInfo, townIdx, searchKeyword] = zustandStore(
+    useShallow((state) => [
+      state.room_townList,
+      state.room_selectedTownIdx,
+      state.room_mapSearchKeyword,
+    ]),
   );
   const { data, isLoading, isError, hasNextPage, fetchNextPage } =
     useGetPlanSpotSearchQuery(
       id,
       townInfo[townIdx].cityId,
       townInfo[townIdx].townId === 0 ? -1 : townInfo[townIdx].townId,
-      '',
+      searchKeyword,
       sortNum,
     );
   const { setRef } = useIntersectionScroll(fetchNextPage);

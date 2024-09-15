@@ -10,7 +10,13 @@ import { PlanSearchSpotInterface } from '../../../../../types/PlaceType';
 import { Fragment } from 'react/jsx-runtime';
 import styles from '../../../assets/map/mapNav/mobileResult.module.css';
 
-export default function MobileSearchAll({ sortNum }: { sortNum: number }) {
+export default function MobileSearchAll({
+  sortNum,
+  keyword,
+}: {
+  sortNum: number;
+  keyword: string;
+}) {
   const id = useParamsId();
   const [townInfo, townIdx] = zustandStore(
     useShallow((state) => [state.room_townList, state.room_selectedTownIdx]),
@@ -20,7 +26,7 @@ export default function MobileSearchAll({ sortNum }: { sortNum: number }) {
       id,
       townInfo[townIdx].cityId,
       townInfo[townIdx].townId === 0 ? -1 : townInfo[townIdx].townId,
-      '',
+      keyword,
       sortNum,
     );
   const { setRef } = useIntersectionScroll(fetchNextPage);
