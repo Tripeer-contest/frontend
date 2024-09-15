@@ -29,9 +29,6 @@ export default function BottomDragModal({ children }: { children: ReactNode }) {
     if ($elem) {
       $elem.addEventListener('touchmove', moveTouch, { passive: false });
     }
-    return () => {
-      $elem && $elem.removeEventListener('touchmove', moveTouch);
-    };
   }, []);
   const dragStart = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();

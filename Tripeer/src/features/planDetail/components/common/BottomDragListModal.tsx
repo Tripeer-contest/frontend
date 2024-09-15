@@ -41,9 +41,6 @@ export default function BottomDragListModal({
     if ($elem) {
       $elem.addEventListener('touchmove', moveTouch, { passive: false });
     }
-    return () => {
-      $elem && $elem.removeEventListener('touchmove', moveTouch);
-    };
   }, []);
   const dragStart = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();

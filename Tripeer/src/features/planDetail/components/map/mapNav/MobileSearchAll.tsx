@@ -39,8 +39,7 @@ export default function MobileSearchAll({
   );
   return (
     <>
-      {!isLoading &&
-        !isError &&
+      {!isError &&
         data?.pages.map((page) =>
           page.searchResultList.map((result: PlanSearchSpotInterface) => (
             <Fragment key={result.spotInfoId}>

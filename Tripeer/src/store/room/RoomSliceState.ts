@@ -22,6 +22,10 @@ export interface RoomSliceState {
   room_mapSearchKeyword: string;
   room_map: any;
   room_selectedTownIdx: number;
+  room_minLat: number;
+  room_minLon: number;
+  room_maxLat: number;
+  room_maxLon: number;
   room_chatScrollToBottom: (() => void) | null;
   room_chatSetScrollToBottom: (payload: () => void) => void;
   room_setChatScrollIsBottom: (isTrue: boolean) => void;
@@ -39,6 +43,16 @@ export interface RoomSliceState {
   room_syncUser: (coworkers: OnlineInfo[]) => void;
   room_setSelectedTownIdx: (param: number) => void;
   room_setSortType: (param: string) => void;
+  room_moveMap: ((latitude: number, longitude: number) => void) | null;
+  room_setMoveMap: (
+    payload: (latitude: number, longitude: number) => void,
+  ) => void;
+  room_setBound: (
+    minLa: number,
+    minLo: number,
+    maxLa: number,
+    maxLo: number,
+  ) => void;
 }
 
 export interface RoomTownInfo {
