@@ -40,7 +40,17 @@ export default function useDocInfo() {
         const newUser = user.map((u) => ({ ...u, isOnline: false }));
         syncUser(newUser);
       });
-      if (townList) setTownList(townList);
+      if (townList)
+        setTownList([
+          {
+            title: '전체',
+            cityId: -1,
+            townId: -1,
+            latitude: townList[0].latitude,
+            longitude: townList[0].longitude,
+          },
+          ...townList,
+        ]);
       if (title) setTitle(title);
       if (startDay) setStartDay(startDay);
       if (endDay) setEndDay(endDay);

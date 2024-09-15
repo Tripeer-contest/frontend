@@ -21,6 +21,11 @@ const initState = {
   room_map: null,
   room_selectedTownIdx: 0,
   room_sortType: '',
+  room_minLat: 0,
+  room_minLon: 0,
+  room_maxLat: 0,
+  room_maxLon: 0,
+  room_moveMap: null,
 };
 
 export const RoomSlice: StateCreator<
@@ -59,4 +64,12 @@ export const RoomSlice: StateCreator<
   room_setSelectedTownIdx: (idx: number) =>
     set(() => ({ room_selectedTownIdx: idx })),
   room_setSortType: (type) => set(() => ({ room_sortType: type })),
+  room_setBound: (param1, param2, param3, param4) =>
+    set(() => ({
+      room_minLat: param1,
+      room_minLon: param2,
+      room_maxLat: param3,
+      room_maxLon: param4,
+    })),
+  room_setMoveMap: (callback) => set(() => ({ room_moveMap: callback })),
 });

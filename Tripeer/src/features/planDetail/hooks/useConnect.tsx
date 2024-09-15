@@ -26,7 +26,7 @@ export default function useConnect(id: string | undefined) {
   useEffect(() => {
     let doc: Y.Doc;
     let ws: WebsocketProvider;
-    if (id && isSuccess) {
+    if (id && isSuccess && !yws) {
       doc = new Y.Doc();
       ws = new WebsocketProvider('wss://tripeer.co.kr/node', `room-${id}`, doc);
       setYDoc(doc);
@@ -61,7 +61,7 @@ export default function useConnect(id: string | undefined) {
         }
       });
     }
-  }, [id, setYDoc, setYWs, connected, setUserInfo, isSuccess]);
+  }, [id, setYDoc, setYWs, connected, setUserInfo, isSuccess, yws]);
 
   useEffect(() => {
     return () => {
