@@ -4,11 +4,18 @@ import BottomDragModal from '../../common/BottomDragModal';
 import BottomDragListModal from '../../common/BottomDragListModal';
 import MobileSearchResult from './MobileSearchResult';
 import { useShallow } from 'zustand/react/shallow';
+import MobileMapTravel from './MobileMapTravel';
+import MapMobileModal from './MapMobileModal';
 
 export default function MapSearchResult() {
-  const [sortType, keyword] = zustandStore(
-    useShallow((state) => [state.room_sortType, state.room_mapSearchKeyword]),
+  const [sortType, keyword, spotInfo] = zustandStore(
+    useShallow((state) => [
+      state.room_sortType,
+      state.room_mapSearchKeyword,
+      state.room_spotInfo,
+    ]),
   );
+
   const [category, setCategory] = useState(0);
   const isSearchMode = sortType !== '여행지' && sortType !== '즐겨찾기';
   const sortNum: { [param: string]: number } = {
@@ -20,6 +27,7 @@ export default function MapSearchResult() {
   return (
     <>
       {sortType &&
+        !spotInfo &&
         (isSearchMode ? (
           <BottomDragListModal
             Category={['전체 검색', '현 지도 검색']}
@@ -35,10 +43,10 @@ export default function MapSearchResult() {
           </BottomDragListModal>
         ) : (
           <BottomDragModal>
-            <p></p>
+            {sortType === '여행지' && <MobileMapTravel />}
           </BottomDragModal>
         ))}
-      {keyword && (
+      {keyword && !spotInfo && (
         <BottomDragListModal
           Category={['전체 검색', '현 지도 검색']}
           selectedCategry={category}
@@ -51,6 +59,11 @@ export default function MapSearchResult() {
             keyword={keyword}
           />
         </BottomDragListModal>
+      )}
+      {spotInfo && (
+        <BottomDragModal>
+          <MapMobileModal />
+        </BottomDragModal>
       )}
     </>
   );

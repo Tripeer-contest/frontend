@@ -26,6 +26,13 @@ const initState = {
   room_maxLat: 0,
   room_maxLon: 0,
   room_moveMap: null,
+  room_makeMarkerBySpot: null,
+  room_makeMarkerByGroup: null,
+  room_removeMarkerBySpot: null,
+  room_removeMarkerByGroup: null,
+  room_removeMarkerAll: null,
+  room_spotList: [],
+  room_spotInfo: null,
 };
 
 export const RoomSlice: StateCreator<
@@ -72,4 +79,16 @@ export const RoomSlice: StateCreator<
       room_maxLon: param4,
     })),
   room_setMoveMap: (callback) => set(() => ({ room_moveMap: callback })),
+  room_setMakeMarkerBySpot: (callback) =>
+    set(() => ({ room_makeMarkerBySpot: callback })),
+  room_setMakeMarkerByGroup: (callback) =>
+    set(() => ({ room_makeMarkerByGroup: callback })),
+  room_setRemoveMarkerBySpot: (callback) =>
+    set(() => ({ room_removeMarkerBySpot: callback })),
+  room_setRemoveMarkerByGroup: (callback) =>
+    set(() => ({ room_removeMarkerByGroup: callback })),
+  room_setRemoveMarkerAll: (callback) =>
+    set(() => ({ room_removeMarkerAll: callback })),
+  room_setSpotList: (param) => set(() => ({ room_spotList: param })),
+  room_setSpotInfo: (param) => set(() => ({ room_spotInfo: param })),
 });

@@ -3,7 +3,6 @@ import useMap from '../../../hooks/useMap';
 import styles from '../assets/map.module.css';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 import useClipBoard from '../../../hooks/useClipBoard';
-import useParamsId from '../hooks/useParamsId';
 
 interface SpotMapInterface {
   latitude: number;
@@ -17,9 +16,8 @@ const queryCallback = (data: any) => ({
   longitude: data.data.longitude,
 });
 
-export default function SpotMap() {
+export default function SpotMap({ id }: { id: number }) {
   const { setMapRef, map } = useMap();
-  const id = useParamsId();
   const { data } = useSpotDetailQuery<SpotMapInterface>(id, queryCallback);
   const { isClip, saveClipBoard } = useClipBoard(data.addr1);
 

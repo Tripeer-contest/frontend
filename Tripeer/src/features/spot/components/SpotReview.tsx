@@ -7,7 +7,6 @@ import ReviewPage from './ReviewPage';
 import useSpotDetailQuery, {
   useReviewDetailQuery,
 } from '../hooks/useSpotDetailQuery';
-import useParamsId from '../hooks/useParamsId';
 import SmallLoading from '../../../components/loading/SmallLoading';
 
 interface ReviewInterface {
@@ -18,10 +17,9 @@ interface ReviewInterface {
 
 export const SpotReview = forwardRef<
   HTMLDivElement | null,
-  { scrollToReview: (() => void) | null }
->(function SpotReview({ scrollToReview }, ref) {
+  { scrollToReview: (() => void) | null; id: number; mode: boolean }
+>(function SpotReview({ scrollToReview, id, mode }, ref) {
   const [page, setPage] = useState(0);
-  const id = useParamsId();
   const { data } = useSpotDetailQuery<ReviewInterface>(id, (data) => ({
     reviewPageCount: data.data.reviewPageCount,
     reviewTotalCount: data.data.reviewTotalCount,
@@ -48,7 +46,7 @@ export const SpotReview = forwardRef<
               <p className={styles.rate}>{data.starPointAvg}</p>
               <p> - {data.reviewTotalCount}명 평가</p>
             </div>
-            <p className={styles.rateBtn}>리뷰 작성</p>
+            {mode && <p className={styles.rateBtn}>리뷰 작성</p>}
           </div>
         </aside>
         <SpotLine />

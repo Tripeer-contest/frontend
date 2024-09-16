@@ -7,17 +7,22 @@ import zustandStore from '../../../../../store/store';
 import useParamsId from '../../../../spot/hooks/useParamsId';
 import { useShallow } from 'zustand/react/shallow';
 import fullHeartIcon from '../../../../../assets/button/full_heart.svg';
+import useShowMarkerInBound from '../../../hooks/useShowMarkerInBound';
+import useIsSpotInSpotList from '../../../hooks/useIsSpotInSpotList';
 
 export default function RecommendCard({ card }: { card: SpotInterface }) {
   const id = useParamsId();
   const [townList, townIdx] = zustandStore(
     useShallow((state) => [state.room_townList, state.room_selectedTownIdx]),
   );
+  const { addSpot, isExist, removeSpot } = useIsSpotInSpotList(card);
+
   const { mutate } = useRecommendLikeQuery(
     id,
     townList[townIdx].cityId,
     townList[townIdx].townId,
   );
+  useShowMarkerInBound(card);
   const likeHandler = () => {
     mutate({ id: cardInfo.spotInfoId, like: cardInfo.wishlist });
   };
@@ -47,7 +52,15 @@ export default function RecommendCard({ card }: { card: SpotInterface }) {
             />
           )}
         </div>
-        <div className={styles.addPlaceListBtn}>여행지 추가</div>
+        {!isExist ? (
+          <div className={styles.addPlaceListBtn} onClick={addSpot}>
+            여행지 추가
+          </div>
+        ) : (
+          <div className={styles.removePlaceListBtn} onClick={removeSpot}>
+            선택 취소
+          </div>
+        )}
       </section>
     </div>
   );

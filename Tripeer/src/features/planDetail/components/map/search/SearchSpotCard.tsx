@@ -5,6 +5,9 @@ import unlikeIcon from '../../../../../assets/button/heart_empty.svg';
 import { PlanSearchSpotInterface } from '../../../../../types/PlaceType';
 import { truncateText } from '../../../../../utils/utilString';
 import { getCategoryStyle } from '../../../../../data/categoryStyle';
+import useShowMarkerInBound from '../../../hooks/useShowMarkerInBound';
+import useIsSpotInSpotList from '../../../hooks/useIsSpotInSpotList';
+import zustandStore from '../../../../../store/store';
 
 export default function SearchSpotCard({
   spot,
@@ -16,8 +19,18 @@ export default function SearchSpotCard({
   const likeHandler = () => {
     mutate({ id: spot.spotInfoId, like: spot.wishlist });
   };
+  const setSpot = zustandStore((state) => state.room_setSpotInfo);
+  const { addSpot, isExist, removeSpot } = useIsSpotInSpotList(spot);
+  const clickEvent = () => {
+    setSpot({
+      spotInfoId: spot.spotInfoId,
+      longitude: spot.longitude,
+      latitude: spot.latitude,
+    });
+  };
+  useShowMarkerInBound(spot);
   return (
-    <div className={styles.cardBox}>
+    <div className={styles.cardBox} onClick={clickEvent}>
       <img src={spot.img} className={styles.cardImg} alt="spot-img" />
       <div className={styles.cardContentBox}>
         <div className={styles.cardTopContent}>
@@ -41,7 +54,13 @@ export default function SearchSpotCard({
         </div>
         <div className={styles.line}></div>
         <div className={styles.cardBotContent}>
-          <div className={styles.likeBtnBox} onClick={likeHandler}>
+          <div
+            className={styles.likeBtnBox}
+            onClick={(e) => {
+              e.stopPropagation();
+              likeHandler();
+            }}
+          >
             {spot.wishlist ? (
               <img
                 src={likeIcon}
@@ -56,7 +75,27 @@ export default function SearchSpotCard({
               />
             )}
           </div>
-          <div className={styles.addBucketBtn}>여행지 추가</div>
+          {isExist ? (
+            <div
+              className={styles.removeBucketBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                removeSpot();
+              }}
+            >
+              선택 취소
+            </div>
+          ) : (
+            <div
+              className={styles.addBucketBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                addSpot();
+              }}
+            >
+              여행지 추가
+            </div>
+          )}
         </div>
       </div>
     </div>

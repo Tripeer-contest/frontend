@@ -6,7 +6,6 @@ import 'swiper/css';
 import { truncateText } from '../../../utils/utilString';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 import { ReviewInterface } from '../../../types/PlaceType';
-import useParamsId from '../hooks/useParamsId';
 import { daysAgo } from '../../../utils/utilDate';
 
 interface ShortQueryType {
@@ -19,10 +18,13 @@ interface ShortQueryType {
 
 export default function SpotShortInfo({
   scrollToReview,
+  id,
+  mode,
 }: {
   scrollToReview: () => void;
+  id: number;
+  mode: boolean;
 }) {
-  const id = useParamsId();
   const { data } = useSpotDetailQuery<ShortQueryType>(id, (data) => ({
     title: data.data.title,
     contentType: data.data.contentType,
@@ -44,14 +46,18 @@ export default function SpotShortInfo({
           <span className={styles.point}>{data.starPointAvg}</span>
           <span> - {data.reviewTotalCount}명 평가</span>
         </div>
-        {data.reviewDtoList.length ? (
-          <a className={styles.scrollBtn} onClick={scrollToReview}>
-            전체보기
-          </a>
-        ) : (
-          <a className={styles.scrollBtn} onClick={scrollToReview}>
-            리뷰쓰기
-          </a>
+        {mode && (
+          <>
+            {data.reviewDtoList.length ? (
+              <a className={styles.scrollBtn} onClick={scrollToReview}>
+                전체보기
+              </a>
+            ) : (
+              <a className={styles.scrollBtn} onClick={scrollToReview}>
+                리뷰쓰기
+              </a>
+            )}
+          </>
         )}
       </div>
       {data.reviewDtoList.length === 0 && (

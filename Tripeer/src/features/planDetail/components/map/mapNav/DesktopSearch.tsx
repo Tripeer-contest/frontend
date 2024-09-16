@@ -9,6 +9,7 @@ import SearchMainContent from '../search/SearchMainContent';
 import zustandStore from '../../../../../store/store';
 import ErrorBoundary from '../../../../../components/error/ErrorBoundary';
 import SkeletonSearch from '../../../../../components/loading/SkeletonSearch';
+import DesktopMapDetail from './DesktopMapDetail';
 
 export default function DesktopSearch() {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,6 +45,7 @@ export default function DesktopSearch() {
           </>
         )}
       </div>
+      <DesktopMapDetail />
       {isVisible && <PlaceList />}
     </>
   );

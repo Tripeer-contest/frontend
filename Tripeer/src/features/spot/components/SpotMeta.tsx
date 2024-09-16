@@ -2,11 +2,9 @@ import { Fragment } from 'react/jsx-runtime';
 import SpotLine from './SpotLine';
 import styles from '../assets/meta.module.css';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
-import useParamsId from '../hooks/useParamsId';
 import { cleanHTMLBRString, cleanHTMLString } from '../../../utils/utilString';
 
-export default function SpotMeta() {
-  const id = useParamsId();
+export default function SpotMeta({ id }: { id: number }) {
   const { data } = useSpotDetailQuery(id, (data) => data.data.additionalInfo);
 
   return (
