@@ -195,3 +195,23 @@ export function daysAgo(date: string) {
   if (result > 11) return makeDateToString(date);
   return result + '일 전';
 }
+
+// 날짜 추가
+export function addDays(dateStr: string, daysToAdd: number): string {
+  // 문자열을 분리하여 연도, 월, 일을 얻음
+  const [year, month, day] = dateStr.split('-').map(Number);
+
+  // Date 객체 생성 (연도는 2000년대를 기준으로 해석)
+  const date = new Date(2000 + year, month - 1, day); // month는 0부터 시작
+
+  // 주어진 일 수만큼 날짜 증가
+  date.setDate(date.getDate() + daysToAdd);
+
+  // 새로운 날짜를 "YY-M-D" 형식으로 반환
+  const newYear = date.getFullYear() - 2000; // 2000년 기준으로 연도 처리
+  const newMonth = date.getMonth() + 1; // 0부터 시작하므로 +1
+  const newDay = date.getDate();
+
+  // 숫자를 문자열로 변환해 다시 합침
+  return `${newYear}-${newMonth}-${newDay}`;
+}

@@ -1,28 +1,18 @@
 import styles from '../../../../assets/calendar/Desktop/leftSide/chip.module.css';
-import { PlaceCategoryTypes } from '../../../../../../types/PlaceCategoryTypes.ts';
-import useChip from '../../hooks/useChip.tsx';
+import { getCategoryStyle } from '../../../../../../data/categoryStyle.ts';
 
 interface Props {
-  item: PlaceCategoryTypes;
+  contentType: string;
 }
 
-const Chip = ({ item }: Props) => {
-  const imageArr = ['', styles.resImg, styles.stayImg, styles.mecImg];
-  const { clickHandler, isCheck } = useChip(item.id);
-
+const Chip = ({ contentType }: Props) => {
+  const category = getCategoryStyle(contentType);
   return (
-    <main
-      className={`${styles.container} ${isCheck && styles.check}`}
-      onClick={clickHandler}
-    >
-      {item.image && (
-        <img
-          src={isCheck ? item.unImage : item.image}
-          alt={'Category Image'}
-          className={imageArr[item.id]}
-        />
-      )}
-      <p className={isCheck ? styles.titleCheck : styles.title}>{item.name}</p>
+    <main className={styles.container}>
+      <img src={category.icon} alt={'Category Icon'} />
+      <p className={styles.title} style={{ color: `${category.color}` }}>
+        {contentType}
+      </p>
     </main>
   );
 };

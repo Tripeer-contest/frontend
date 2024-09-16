@@ -16,5 +16,22 @@
     width: 97%;
     height: 100%;
     display: flex;
-    overflow-x: scroll;
+    overflow: auto;
+    margin: 0 0 0 20px;
+}
+
+.dndBox::-webkit-scrollbar {
+    height: 8px;
+}
+
+.dndBox::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+}
+
+.dndBox::-webkit-scrollbar-thumb:horizontal {
+    background-color: #d9d9d9;
+}
+
+.dndBox::-webkit-scrollbar:vertical {
+    display: none;
 }

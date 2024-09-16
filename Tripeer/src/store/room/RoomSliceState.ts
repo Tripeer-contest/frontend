@@ -37,8 +37,8 @@ export interface RoomSliceState {
   room_syncUser: (coworkers: OnlineInfo[]) => void;
   room_totalYList: totalYListInfo[][];
   room_setTotalYList: (totalYList: totalYListInfo[][]) => void;
-  room_timeYList: timeYListInfo[];
-  room_setTimeYList: (timeYList: timeYListInfo[]) => void;
+  room_timeYList: [number, number, timeYListInfo][];
+  room_setTimeYList: (timeYList: [number, number, timeYListInfo][]) => void;
 }
 
 export interface RoomTownInfo {

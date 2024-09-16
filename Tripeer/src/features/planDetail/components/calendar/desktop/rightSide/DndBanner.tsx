@@ -1,47 +1,57 @@
 import styles from '../../../../assets/calendar/Desktop/rightSide/dndBanner.module.css';
-import { Draggable, Droppable } from '@hello-pangea/dnd';
-import zustandStore from '../../../../../../store/store.tsx';
+import { Droppable } from '@hello-pangea/dnd';
+import React from 'react';
 import { useShallow } from 'zustand/react/shallow';
+import {
+  makeDayToDotFullString,
+  addDays,
+} from '../../../../../../utils/utilDate.ts';
+import OpBtn from './OpBtn.tsx';
+import DndCard from './DndCard.tsx';
+import zustandStore from '../../../../../../store/store.tsx';
 
 interface Props {
   idx: number;
 }
 
 const DndBanner = ({ idx }: Props) => {
-  const [totalYList] = zustandStore(
-    useShallow((state) => [state.room_totalYList]),
+  const [totalYList, startDay] = zustandStore(
+    useShallow((state) => [state.room_totalYList, state.room_startDay]),
   );
 
+  const now = addDays(startDay, idx);
+  const day = makeDayToDotFullString(now);
+
   return (
-    <Droppable droppableId={`${idx}`}>
-      {(provided) => (
-        <div
-          className={styles.container}
-          ref={provided.innerRef} // ref for Droppable
-          {...provided.droppableProps}
-        >
-          {totalYList[idx].map((item, idx) => (
-            <Draggable
-              key={item.spotInfoId}
-              draggableId={item.spotInfoId.toString()}
-              index={idx}
-            >
-              {(provided) => (
-                <div
-                  className={styles.box}
-                  ref={provided.innerRef} // ref for Draggable
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                >
-                  {item.spotInfoId}
-                </div>
-              )}
-            </Draggable>
-          ))}
-          {provided.placeholder} {/* Placeholder for Droppable */}
+    <main className={styles.container}>
+      <section className={styles.titleBox}>
+        <div className={styles.dayBox}>
+          <p className={styles.xDay}>{idx}일차</p>
+          <p className={styles.day}>{day}</p>
         </div>
-      )}
-    </Droppable>
+        <OpBtn />
+      </section>
+      <Droppable droppableId={`${idx}`}>
+        {(provided) => (
+          <div
+            className={styles.droppableBox}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {totalYList[idx].map((item, itemIdx) => (
+              <React.Fragment key={item.spotInfoId}>
+                <DndCard
+                  item={item}
+                  itemIdx={itemIdx}
+                  length={totalYList[idx].length}
+                />
+              </React.Fragment>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </main>
   );
 };
 

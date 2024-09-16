@@ -1,7 +1,8 @@
 import styles from '../../../../assets/calendar/Desktop/leftSide/dndBanner.module.css';
-import { Draggable, Droppable } from '@hello-pangea/dnd';
-import zustandStore from '../../../../../../store/store.tsx';
+import { Droppable } from '@hello-pangea/dnd';
 import { useShallow } from 'zustand/react/shallow';
+import zustandStore from '../../../../../../store/store.tsx';
+import DndCard from './DndCard.tsx';
 
 const DndBanner = () => {
   const [totalYList] = zustandStore(
@@ -13,28 +14,13 @@ const DndBanner = () => {
       {(provided) => (
         <div
           className={styles.container}
-          ref={provided.innerRef} // ref for Droppable
+          ref={provided.innerRef}
           {...provided.droppableProps}
         >
           {totalYList[0].map((item, idx) => (
-            <Draggable
-              key={item.spotInfoId}
-              draggableId={item.spotInfoId.toString()}
-              index={idx}
-            >
-              {(provided) => (
-                <div
-                  className={styles.box}
-                  ref={provided.innerRef} // ref for Draggable
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                >
-                  {item.spotInfoId}
-                </div>
-              )}
-            </Draggable>
+            <DndCard item={item} idx={idx} key={item.spotInfoId} />
           ))}
-          {provided.placeholder} {/* Placeholder for Droppable */}
+          {provided.placeholder}
         </div>
       )}
     </Droppable>
