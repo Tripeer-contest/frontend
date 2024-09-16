@@ -17,3 +17,12 @@ export async function getIsDuplicate(nickname: string) {
     throw new Error('에러발생');
   }
 }
+
+export async function getNotice(page: number) {
+  try {
+    const res = await api.get(`/board/notice/${page}`);
+    return res.data.data;
+  } catch {
+    throw new Error('에러발생');
+  }
+}

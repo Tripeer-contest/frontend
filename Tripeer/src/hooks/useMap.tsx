@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { KakaoMapOptions } from '../types/kakaoTypes';
 
 declare global {
@@ -23,11 +23,17 @@ export default function useMap(mapOptions?: KakaoMapOptions) {
           level: level ? level : 3,
         };
         const map = new window.kakao.maps.Map(container, options);
+        map.setMaxLevel(11);
         setMap(map);
       }
     },
     [mapOptions],
   );
+
+  useEffect(() => {
+    if (map) map.relayout();
+  }, [map]);
+
   return {
     setMapRef,
     map,

@@ -2,12 +2,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import PlaceBox from '../../home/components/PlaceBox';
 import styles from '../assets/simular.module.css';
-import useParamsId from '../hooks/useParamsId';
 import { PlaceDetailType } from '../../../types/PlaceType';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 
-export default function SpotSimular() {
-  const id = useParamsId();
+export default function SpotSimular({ id }: { id: number }) {
   const SimilarSpot = useSpotDetailQuery<PlaceDetailType[]>(
     id,
     (data) => data.data.similarSpotList,

@@ -2,7 +2,7 @@
   .container {
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
-    width: 100%;
+    width: 100vw;
   }
   .headerBox {
     display: flex;
@@ -13,16 +13,14 @@
     z-index: 5;
   }
   .topBox {
-    padding-left: 8px;
+    margin-top: 50px;
     padding-top: 12px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 8px;
   }
   .hamburgerBtn {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background-color: white;
@@ -43,7 +41,7 @@
   }
 
   .search {
-    width: calc(100% - 90px);
+    width: 100%;
     height: 40px;
     background-size: 30px;
     background-position-x: 98%;
@@ -60,8 +58,19 @@
     box-shadow: 0px 1px 2px 0px rgba(31, 41, 55, 0.08);
     cursor: pointer;
   }
+  .activeCategoryBtn {
+    font-size: 14px;
+    color: #fff;
+    border: 2px solid #e5e7eb;
+    background: #04acb5;
+    border-radius: 20px;
+    padding: 7px 10px;
+    width: auto;
+    box-shadow: 0px 1px 2px 0px rgba(31, 41, 55, 0.08);
+    cursor: pointer;
+  }
   .addPlaceBtn {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background-color: #04acb5;
@@ -97,11 +106,81 @@
     transform: translateY(-50%);
     height: 40px;
   }
+  .spotBox {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 70px;
+    padding: 0px 20px;
+    justify-content: flex-end;
+    align-items: center;
+    animation: showup 0.5s ease-in-out;
+  }
+  .spotIconBox {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 1px 2px 0px rgba(31, 41, 55, 0.08);
+  }
+
+  .cancelIcon {
+    height: 40px;
+  }
 }
 
 @media screen and (min-width: 1000px) {
   .container {
     height: 100vh;
     width: calc(100vw - 500px);
+  }
+  .headerBox {
+    display: none;
+  }
+
+  .categoryBtn {
+    font-size: 14px;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+    background: #fff;
+    border-radius: 20px;
+    padding: 7px 10px;
+    width: auto;
+    cursor: pointer;
+  }
+  .activeCategoryBtn {
+    font-size: 14px;
+    color: #fff;
+    border: 2px solid #e5e7eb;
+    background: #04acb5;
+    border-radius: 20px;
+    padding: 7px 10px;
+    width: auto;
+    cursor: pointer;
+  }
+  .categoryItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: #fff8ba;
+    width: auto;
+    font-size: 14px;
+    color: #374151;
+    border: 2px solid #ffd9a8;
+    border-radius: 20px;
+    width: 60px;
+    height: 30px;
+    box-shadow: 0px 1px 2px 0px rgba(31, 41, 55, 0.08);
+    cursor: pointer;
+  }
+  .likeIcon {
+    height: 12px;
+    width: 12px;
+    margin-right: 5px;
   }
 }

@@ -1,7 +1,7 @@
 import {
   MouseEvent,
   ReactNode,
-  TouchEvent,
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -29,12 +29,19 @@ export default function BottomDragListModal({
   const [offset, setOffset] = useState(window.innerHeight * 0.7);
   const [height, setHeight] = useState(BOX_HEIGHT.current - MAX_BOTTOM.current);
 
-  const moveTouch = (e: TouchEvent<HTMLDivElement>) => {
+  const moveTouch = (e: TouchEvent) => {
+    e.preventDefault();
     const position = e.touches[0].clientY;
     if (position > MAX_BOTTOM.current) setOffset(MAX_BOTTOM.current);
     else if (position < MIN_BOTTOM.current) setOffset(MIN_BOTTOM.current);
     else setOffset(position);
   };
+
+  const touchRef = useCallback(($elem: HTMLDivElement | null) => {
+    if ($elem) {
+      $elem.addEventListener('touchmove', moveTouch, { passive: false });
+    }
+  }, []);
   const dragStart = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     drag.current = true;
@@ -74,11 +81,7 @@ export default function BottomDragListModal({
 
   return (
     <aside className={styles.box} style={{ top: `${offset}px` }}>
-      <div
-        className={styles.dragBox}
-        onTouchMove={moveTouch}
-        onMouseDown={dragStart}
-      >
+      <div className={styles.dragBox} ref={touchRef} onMouseDown={dragStart}>
         <div className={styles.dragBtn} />
       </div>
       <ListController
@@ -91,6 +94,7 @@ export default function BottomDragListModal({
         style={{
           height: `${height}px`,
           overflowY: 'scroll',
+          scrollbarWidth: 'none',
         }}
       >
         {children}

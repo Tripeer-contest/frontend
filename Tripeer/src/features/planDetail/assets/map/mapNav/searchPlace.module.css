@@ -1,0 +1,34 @@
+.container {
+  position: relative;
+  width: 500px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 10%);
+}
+.openBtn {
+  position: absolute;
+  z-index: 5;
+  right: -17px;
+  top: 30px;
+  background-color: white;
+  padding: 5px;
+  border: #c4c4c4 1px solid;
+  border-radius: 5px;
+  transform: rotate(180deg);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+.closeBtn {
+  position: absolute;
+  z-index: 5;
+  top: 30px;
+  right: -17px;
+  background-color: white;
+  padding: 5px;
+  border: #c4c4c4 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}

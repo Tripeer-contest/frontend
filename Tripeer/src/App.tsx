@@ -23,6 +23,7 @@ import ErrorPage from './components/error/ErrorPage.tsx';
 import ErrorBoundary from './components/error/ErrorBoundary.tsx';
 import MyPage from './features/mypage/MyPage.tsx';
 import MyConfig from './features/mypage/MyConfig.tsx';
+import MyNotice from './features/mypage/MyNotice.tsx';
 
 const router = createBrowserRouter([
   {
@@ -101,6 +102,16 @@ const router = createBrowserRouter([
               <ErrorBoundary fallback={<ErrorPage />}>
                 <Suspense fallback={<CommonLoading />}>
                   <MyConfig />
+                </Suspense>
+              </ErrorBoundary>
+            ),
+          },
+          {
+            path: 'notice',
+            element: (
+              <ErrorBoundary fallback={<ErrorPage />}>
+                <Suspense fallback={<CommonLoading />}>
+                  <MyNotice />
                 </Suspense>
               </ErrorBoundary>
             ),

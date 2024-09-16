@@ -1,5 +1,5 @@
-import styles from '../../../assets/map/header.module.css';
-import PlanHamburger from '../../common/PlanHamburger';
+import styles from '../../../../assets/map/mapNav/placeList.module.css';
+import PlanHamburger from '../../../common/PlanHamburger';
 
 export default function ListhHeader() {
   return (

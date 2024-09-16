@@ -21,6 +21,20 @@ const initState = {
   room_map: null,
   room_totalYList: [],
   room_timeYList: [],
+  room_selectedTownIdx: 0,
+  room_sortType: '',
+  room_minLat: 0,
+  room_minLon: 0,
+  room_maxLat: 0,
+  room_maxLon: 0,
+  room_moveMap: null,
+  room_makeMarkerBySpot: null,
+  room_makeMarkerByGroup: null,
+  room_removeMarkerBySpot: null,
+  room_removeMarkerByGroup: null,
+  room_removeMarkerAll: null,
+  room_spotList: [],
+  room_spotInfo: null,
 };
 
 export const RoomSlice: StateCreator<
@@ -56,6 +70,29 @@ export const RoomSlice: StateCreator<
       );
       return { room_userInfo: [...store.room_userInfo, ...newOne] };
     }),
+  room_setSelectedTownIdx: (idx: number) =>
+    set(() => ({ room_selectedTownIdx: idx })),
+  room_setSortType: (type) => set(() => ({ room_sortType: type })),
+  room_setBound: (param1, param2, param3, param4) =>
+    set(() => ({
+      room_minLat: param1,
+      room_minLon: param2,
+      room_maxLat: param3,
+      room_maxLon: param4,
+    })),
+  room_setMoveMap: (callback) => set(() => ({ room_moveMap: callback })),
+  room_setMakeMarkerBySpot: (callback) =>
+    set(() => ({ room_makeMarkerBySpot: callback })),
+  room_setMakeMarkerByGroup: (callback) =>
+    set(() => ({ room_makeMarkerByGroup: callback })),
+  room_setRemoveMarkerBySpot: (callback) =>
+    set(() => ({ room_removeMarkerBySpot: callback })),
+  room_setRemoveMarkerByGroup: (callback) =>
+    set(() => ({ room_removeMarkerByGroup: callback })),
+  room_setRemoveMarkerAll: (callback) =>
+    set(() => ({ room_removeMarkerAll: callback })),
+  room_setSpotList: (param) => set(() => ({ room_spotList: param })),
+  room_setSpotInfo: (param) => set(() => ({ room_spotInfo: param })),
   room_setTotalYList: (payload) => set({ room_totalYList: payload }),
   room_setTimeYList: (payload) => set({ room_timeYList: payload }),
 });

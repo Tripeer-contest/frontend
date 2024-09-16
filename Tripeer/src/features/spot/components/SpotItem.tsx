@@ -8,13 +8,16 @@ import { SpotReview } from './SpotReview';
 import zustandStore from '../../../store/store';
 import SpotSimular from './SpotSimular';
 import SpotMeta from './SpotMeta';
+import useParamsId from '../hooks/useParamsId';
 
 export default function SpotItem() {
   const scrollTo = zustandStore((state) => state.scrollTo);
   const reviewRef = useRef<HTMLDivElement | null>(null);
   const scrollToReview = () => {
-    if (reviewRef.current && scrollTo) scrollTo(reviewRef.current.offsetTop);
+    if (reviewRef.current && scrollTo)
+      scrollTo(reviewRef.current.offsetTop - 100);
   };
+  const id = useParamsId();
 
   return (
     <main
@@ -24,15 +27,20 @@ export default function SpotItem() {
         gap: '40px',
       }}
     >
-      <SpotHeader isPrevPage={true} />
-      <SpotShortInfo scrollToReview={scrollToReview} />
+      <SpotHeader isPrevPage={true} id={id} />
+      <SpotShortInfo scrollToReview={scrollToReview} id={id} mode={true} />
       <SpotLine />
-      <SpotMap />
+      <SpotMap id={id} />
       <SpotLine />
-      <SpotReview ref={reviewRef} scrollToReview={scrollToReview} />
-      <SpotMeta />
-      <SpotSimular />
-      <SpotPosting />
+      <SpotReview
+        ref={reviewRef}
+        scrollToReview={scrollToReview}
+        id={id}
+        mode={true}
+      />
+      <SpotMeta id={id} />
+      <SpotSimular id={id} />
+      <SpotPosting id={id} />
       <br />
     </main>
   );

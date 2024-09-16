@@ -2,15 +2,23 @@ import styles from '../../../assets/map/mapNav/placeMap.module.css';
 import LightSearchBar from '../../common/LightSearchBar';
 import PlanHamburger from '../../common/PlanHamburger';
 import MapCategory from './MapCategory';
-import add_icon from '../../../../../assets/button/add_map.svg';
 import zustandStore from '../../../../../store/store';
+import SearchHeader from '../search/searchHeader';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function MapBasicHeader() {
-  const keyword = zustandStore((state) => state.room_mapSearchKeyword);
+  const [sortType, keyword, spotInfo] = zustandStore(
+    useShallow((state) => [
+      state.room_sortType,
+      state.room_mapSearchKeyword,
+      state.room_spotInfo,
+    ]),
+  );
   return (
     <>
-      {keyword === '' && (
+      {sortType === '' && keyword === '' && !spotInfo && (
         <>
+          <SearchHeader />
           <div className={styles.topBox}>
             <div className={styles.hamburgerBtn}>
               <PlanHamburger />
@@ -19,12 +27,18 @@ export default function MapBasicHeader() {
               className={styles.search}
               placeholder="여행지를 입력하세요"
             />
-            <div className={styles.addPlaceBtn}>
-              <img src={add_icon} alt="add-map" />
-            </div>
           </div>
           <div className={styles.categoryBox}>
-            <MapCategory />
+            <MapCategory
+              categoryList={[
+                '여행지',
+                '전체',
+                '숙박',
+                '맛집',
+                '명소',
+                '즐겨찾기',
+              ]}
+            />
           </div>
         </>
       )}

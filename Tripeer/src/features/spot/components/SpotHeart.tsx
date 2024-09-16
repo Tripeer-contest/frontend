@@ -5,10 +5,8 @@ import useSpotDetailQuery, {
 import styles from '../assets/header.module.css';
 import fullHeart from '../../../assets/button/full_heart.svg';
 import heart from '../../../assets/button/heart.svg';
-import useParamsId from '../hooks/useParamsId';
 
-export default function SpotHeart() {
-  const id = useParamsId();
+export default function SpotHeart({ id }: { id: number }) {
   const { data } = useSpotDetailQuery<boolean>(id, (data) => data.data.like);
   const mutation = useHeartDetailMutation();
   const clickLike = () => {

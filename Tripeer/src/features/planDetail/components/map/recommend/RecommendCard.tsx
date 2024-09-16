@@ -1,21 +1,66 @@
 import styles from '../../../assets/map/mapNav/recommend.module.css';
 import mapIcon from '../../../../../assets/button/mapIcon_gray.svg';
 import heartIcon from '../../../../../assets/button/heart_empty.svg';
+import { SpotInterface } from '../../../../../types/PlanDetailTypes';
+import { useRecommendLikeQuery } from '../../../hooks/useGetRecommend';
+import zustandStore from '../../../../../store/store';
+import useParamsId from '../../../../spot/hooks/useParamsId';
+import { useShallow } from 'zustand/react/shallow';
+import fullHeartIcon from '../../../../../assets/button/full_heart.svg';
+import useShowMarkerInBound from '../../../hooks/useShowMarkerInBound';
+import useIsSpotInSpotList from '../../../hooks/useIsSpotInSpotList';
 
-export default function RecommendCard({ card }: { card: number }) {
+export default function RecommendCard({ card }: { card: SpotInterface }) {
+  const id = useParamsId();
+  const [townList, townIdx] = zustandStore(
+    useShallow((state) => [state.room_townList, state.room_selectedTownIdx]),
+  );
+  const { addSpot, isExist, removeSpot } = useIsSpotInSpotList(card);
+
+  const { mutate } = useRecommendLikeQuery(
+    id,
+    townList[townIdx].cityId,
+    townList[townIdx].townId,
+  );
+  useShowMarkerInBound(card);
+  const likeHandler = () => {
+    mutate({ id: cardInfo.spotInfoId, like: cardInfo.wishlist });
+  };
+  const cardInfo = card;
+
   return (
     <div className={styles.cardBox}>
-      <div className={styles.cardImg}></div>
-      <p className={styles.placeName}>{card}</p>
+      <img src={cardInfo.img} alt="spot-img" className={styles.cardImg} />
+      <p className={styles.placeName}>{cardInfo.title}</p>
       <div className={styles.addressBox}>
         <img src={mapIcon} className={styles.addressIcon} alt="map-icon" />
-        <p className={styles.addressText}></p>
+        <p className={styles.addressText}>{cardInfo.addr}</p>
       </div>
       <section className={styles.bottomSection}>
-        <div className={styles.likeIconBox}>
-          <img src={heartIcon} className={styles.likeIcon} alt="like-icon" />
+        <div className={styles.likeIconBox} onClick={likeHandler}>
+          {cardInfo.wishlist ? (
+            <img
+              src={fullHeartIcon}
+              className={styles.likeIcon}
+              alt="like-icon"
+            />
+          ) : (
+            <img
+              src={heartIcon}
+              className={styles.likeIcon}
+              alt="unlike-icon"
+            />
+          )}
         </div>
-        <div className={styles.addPlaceListBtn}>여행지 추가</div>
+        {!isExist ? (
+          <div className={styles.addPlaceListBtn} onClick={addSpot}>
+            여행지 추가
+          </div>
+        ) : (
+          <div className={styles.removePlaceListBtn} onClick={removeSpot}>
+            선택 취소
+          </div>
+        )}
       </section>
     </div>
   );

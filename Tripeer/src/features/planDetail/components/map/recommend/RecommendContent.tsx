@@ -2,27 +2,72 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from '../../../assets/map/mapNav/recommend.module.css';
 import RecommendCard from './RecommendCard';
 import 'swiper/css';
+import zustandStore from '../../../../../store/store';
+import useGetRecommendQuery from '../../../hooks/useGetRecommend';
+import useParamsId from '../../../../spot/hooks/useParamsId';
+import { useShallow } from 'zustand/react/shallow';
+import SmallLoading from '../../../../../components/loading/SmallLoading';
+
+import {
+  RecommendInterface,
+  SpotInterface,
+} from '../../../../../types/PlanDetailTypes';
+import { useEffect } from 'react';
 
 export default function RecommendContent() {
-  Swiper;
+  const id = useParamsId();
+  const [townInfo, townIdx, setSort] = zustandStore(
+    useShallow((state) => [
+      state.room_townList,
+      state.room_selectedTownIdx,
+      state.room_setSortType,
+    ]),
+  );
+  const { data, isLoading, isError } = useGetRecommendQuery(
+    id,
+    townInfo[townIdx].cityId,
+    townInfo[townIdx].townId,
+  );
+
+  useEffect(() => {
+    setSort('');
+  }, [setSort]);
+
   return (
-    <main className={styles.contentContainer}>
-      <section className={styles.cardlistBox}>
-        <h1 className={styles.title}>호텔을 즐겨찾는 당신의 위해</h1>
-        <Swiper
-          slidesPerView={'auto'}
-          spaceBetween={20}
-          style={{ display: 'flex' }}
-        >
-          {[1, 2, 3, 4, 5, 6].map((card, idx) => {
+    <>
+      {!isLoading && !isError && data && (
+        <main className={styles.contentContainer}>
+          {data.map((itemlist: RecommendInterface, idx: number) => {
             return (
-              <SwiperSlide key={idx} style={{ width: '150px' }}>
-                <RecommendCard card={card} />
-              </SwiperSlide>
+              <section className={styles.cardlistBox} key={idx}>
+                <h1 className={styles.title}>{itemlist.comment}</h1>
+                <Swiper
+                  slidesPerView={'auto'}
+                  spaceBetween={20}
+                  style={{ display: 'flex' }}
+                >
+                  {itemlist.spotInfoDtos.map((card: SpotInterface) => {
+                    return (
+                      <SwiperSlide
+                        key={card.spotInfoId}
+                        style={{ width: '150px' }}
+                      >
+                        <RecommendCard card={card} />
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
+              </section>
             );
           })}
-        </Swiper>
-      </section>
-    </main>
+        </main>
+      )}
+      {isLoading && (
+        <div className={styles.loadingBox}>
+          <SmallLoading />
+        </div>
+      )}
+      {isError && <div className={styles.loadingBox}>에러발생</div>}
+    </>
   );
 }
