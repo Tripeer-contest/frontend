@@ -7,12 +7,16 @@ import SearchHeader from '../search/searchHeader';
 import { useShallow } from 'zustand/react/shallow';
 
 export default function MapBasicHeader() {
-  const [sortType, keyword] = zustandStore(
-    useShallow((state) => [state.room_sortType, state.room_mapSearchKeyword]),
+  const [sortType, keyword, spotInfo] = zustandStore(
+    useShallow((state) => [
+      state.room_sortType,
+      state.room_mapSearchKeyword,
+      state.room_spotInfo,
+    ]),
   );
   return (
     <>
-      {sortType === '' && keyword === '' && (
+      {sortType === '' && keyword === '' && !spotInfo && (
         <>
           <SearchHeader />
           <div className={styles.topBox}>

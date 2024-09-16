@@ -5,11 +5,9 @@ import 'swiper/css';
 import { cleanHTMLString, truncateText } from '../../../utils/utilString';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 import { blogInfoInterface } from '../../../types/PlaceType';
-import useParamsId from '../hooks/useParamsId';
 import { makeDateToString } from '../../../utils/utilDate';
 
-export default function SpotPosting() {
-  const id = useParamsId();
+export default function SpotPosting({ id }: { id: number }) {
   const { data } = useSpotDetailQuery<blogInfoInterface[]>(
     id,
     (data) => data.data.blogInfoList,

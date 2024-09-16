@@ -7,6 +7,7 @@ import MapMenu from './mapNav/MapMenu';
 import DesktopMap from './mapNav/DesktopMap';
 import MobileMap from './mapNav/MobileMap';
 import useIsMobileSize from '../../hooks/useIsMobileSize';
+import useSpotList from '../../hooks/useSpotList';
 
 export default function PlanMap() {
   const [page, setPage] = useState(0);
@@ -14,7 +15,7 @@ export default function PlanMap() {
   const pageHandler = (page: number) => {
     setPage(page);
   };
-
+  useSpotList();
   const isMobileSize = useIsMobileSize();
 
   return (

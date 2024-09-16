@@ -1,3 +1,5 @@
+import { PlanSearchSpotInterface } from '../../types/PlaceType';
+
 export interface YUserInfo {
   nickname: string;
   profileImage: string;
@@ -26,6 +28,16 @@ export interface RoomSliceState {
   room_minLon: number;
   room_maxLat: number;
   room_maxLon: number;
+  room_spotList: SpotYInterface[];
+  room_spotInfo: {
+    spotInfoId: number;
+    latitude: number;
+    longitude: number;
+  } | null;
+  room_setSpotInfo: (
+    param: { spotInfoId: number; latitude: number; longitude: number } | null,
+  ) => void;
+  room_setSpotList: (param: SpotYInterface[]) => void;
   room_chatScrollToBottom: (() => void) | null;
   room_chatSetScrollToBottom: (payload: () => void) => void;
   room_setChatScrollIsBottom: (isTrue: boolean) => void;
@@ -53,7 +65,46 @@ export interface RoomSliceState {
     maxLa: number,
     maxLo: number,
   ) => void;
+  room_makeMarkerBySpot:
+    | null
+    | ((spot: MapSpotType, options?: { imgSrc?: string }) => void);
+  room_makeMarkerByGroup:
+    | null
+    | ((
+        groupdId: number,
+        spot: MapGroupType[],
+        options?: { imgSrc?: string },
+      ) => void);
+  room_removeMarkerBySpot: null | ((id: number) => void);
+  room_removeMarkerByGroup: null | ((id: number) => void);
+  room_removeMarkerAll: null | (() => void);
+  room_setMakeMarkerBySpot: (
+    callback: (spot: MapSpotType, options?: { imgSrc?: string }) => void,
+  ) => void;
+  room_setMakeMarkerByGroup: (
+    callback: (
+      groupId: number,
+      spot: MapGroupType[],
+      options?: { imgSrc?: string },
+    ) => void,
+  ) => void;
+  room_setRemoveMarkerBySpot: (callback: (id: number) => void) => void;
+  room_setRemoveMarkerByGroup: (callback: (id: number) => void) => void;
+  room_setRemoveMarkerAll: (callback: () => void) => void;
 }
+
+export type MapGroupType = {
+  latitude: number;
+  longitude: number;
+  clickEvent?: (...param: unknown[]) => void;
+};
+
+export type MapSpotType = {
+  spotInfoId: number;
+  latitude: number;
+  longitude: number;
+  clickEvent?: (...param: unknown[]) => void;
+};
 
 export interface RoomTownInfo {
   cityId: number;
@@ -62,3 +113,5 @@ export interface RoomTownInfo {
   longitude: number;
   title: string;
 }
+
+export type SpotYInterface = YUserInfo & PlanSearchSpotInterface;
