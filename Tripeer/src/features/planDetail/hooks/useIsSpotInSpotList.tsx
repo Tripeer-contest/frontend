@@ -1,7 +1,10 @@
 import zustandStore from '../../../store/store';
 import { useEffect, useState } from 'react';
 import { PlanSearchSpotInterface } from '../../../types/PlaceType';
-import { SpotYInterface } from '../../../store/room/RoomSliceState';
+import {
+  SpotYInterface,
+  totalYListInfo,
+} from '../../../store/room/RoomSliceState';
 import getTokenInfo from '../../../utils/jwtDecode';
 import { useShallow } from 'zustand/react/shallow';
 
@@ -22,6 +25,7 @@ export default function useIsSpotInSpotList(spot: PlanSearchSpotInterface) {
         const newSpot: SpotYInterface = { ...spot, ...myDetal };
         spots.push([{ ...newSpot }]);
         const totalZero: any = totalYList.get(0);
+
         totalZero.push([{ ...newSpot }]);
       }
     }
@@ -29,10 +33,21 @@ export default function useIsSpotInSpotList(spot: PlanSearchSpotInterface) {
   const removeSpot = () => {
     if (doc) {
       const spots = doc.getArray('spotList');
+      const totalYList = doc.getArray('totalYList');
+      const totalZero: any = totalYList.get(0);
+
       const idx = spotList.findIndex((info) => {
         return info.spotInfoId === spot.spotInfoId;
       });
-      if (idx !== -1) spots.delete(idx, 1);
+
+      totalZero.toArray().forEach((info: totalYListInfo, i: number) => {
+        if (info.spotInfoId === spot.spotInfoId) {
+          if (idx !== -1) {
+            spots.delete(idx, 1);
+            totalZero.delete(i, 1);
+          }
+        }
+      });
     }
   };
   useEffect(() => {
