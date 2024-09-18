@@ -10,3 +10,22 @@
     font-size: 0.9rem;
     cursor: pointer;
 }
+
+.modalBox{
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.day{
+    color: #545454;
+    font-size: 1rem;
+}
+
+.green{
+    color: #04ACB5;
+
+}

@@ -29,7 +29,7 @@ const DndBanner = ({ idx }: Props) => {
           <p className={styles.xDay}>{idx}일차</p>
           <p className={styles.day}>{day}</p>
         </div>
-        <OpBtn />
+        <OpBtn day={day} />
       </section>
       <Droppable droppableId={`${idx}`}>
         {(provided) => (
@@ -44,6 +44,7 @@ const DndBanner = ({ idx }: Props) => {
                   item={item}
                   itemIdx={itemIdx}
                   length={totalYList[idx].length}
+                  idx={idx}
                 />
               </React.Fragment>
             ))}

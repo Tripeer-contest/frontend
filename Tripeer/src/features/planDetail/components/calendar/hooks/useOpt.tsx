@@ -1,27 +1,22 @@
-// import zustandStore from '../../../../../store/store.tsx';
-// import { useShallow } from 'zustand/react/shallow';
-// import { useQuery } from '@tanstack/react-query';
-// import postAtoB from '../../../api/postAtoB.ts';
+import zustandStore from '../../../../../store/store.tsx';
+import { useShallow } from 'zustand/react/shallow';
+import usePlanDetailModal from '../../../hooks/usePlanDetailModal.tsx';
 
 const useOpt = () => {
-  // const [totalYList] = zustandStore(
-  //   useShallow((state) => [state.room_totalYList]),
-  // );
+  const [totalYList, timeYList] = zustandStore(
+    useShallow((state) => [state.room_totalYList, state.room_timeYList]),
+  );
+
+  const { close, PlanModal } = usePlanDetailModal();
 
   const onClickHandler = () => {
-    // const startId = totalYList[0][0].spotInfoId;
-    // const endId = totalYList[0][1].spotInfoId;
-    // const option = '0';
-    //
-    // const query = useQuery({
-    //   queryKey: ['AtoB'],
-    //   queryFn: () => postAtoB(startId, endId, option),
-    // });
-    //
-    // console.log(query.data);
+    console.log(totalYList[1]);
+    console.log(timeYList[1]);
+
+    // open();
   };
 
-  return { onClickHandler };
+  return { onClickHandler, close, PlanModal };
 };
 
 export default useOpt;

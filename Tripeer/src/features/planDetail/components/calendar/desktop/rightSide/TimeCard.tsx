@@ -1,12 +1,17 @@
 import styles from '../../../../assets/calendar/Desktop/rightSide/timeCard.module.css';
 import transportImage from '../../../../assets/calendar/assets/transport.png';
+import zustandStore from '../../../../../../store/store.tsx';
 // import carImage from '../../../../assets/calendar/assets/car.png';
 
 interface Props {
   isDragging: boolean;
+  idx: number;
+  itemIdx: number;
 }
 
-const TimeCard = ({ isDragging }: Props) => {
+const TimeCard = ({ isDragging, idx, itemIdx }: Props) => {
+  const timeYList = zustandStore((state) => state.room_timeYList);
+
   return (
     !isDragging && (
       <main className={styles.container}>
@@ -17,7 +22,7 @@ const TimeCard = ({ isDragging }: Props) => {
             alt={'Option Image'}
             className={styles.image}
           />
-          <p className={styles.time}>10시간 36분</p>
+          <p className={styles.time}>{timeYList[idx]?.[itemIdx]?.[0]}</p>
         </section>
         <div className={styles.line} />
       </main>
