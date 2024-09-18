@@ -2,7 +2,7 @@ import React from 'react';
 import zustandStore from '../../../../../store/store.tsx';
 import { useShallow } from 'zustand/react/shallow';
 import { totalYListInfo } from '../../../../../store/room/RoomSliceState.ts';
-import Y from 'yjs';
+import { Array as YArray } from 'yjs';
 
 const useDndCard = (item: totalYListInfo) => {
   const [spotList, doc, totalYList] = zustandStore(
@@ -17,7 +17,7 @@ const useDndCard = (item: totalYListInfo) => {
     e.preventDefault();
     if (doc) {
       const total = doc.getArray('totalYList');
-      const totalZero = total.get(0) as Y.Array<totalYListInfo>;
+      const totalZero = total.get(0) as YArray<totalYListInfo>;
       const idx = totalYList[0].findIndex(
         (data) => item.spotInfoId === data.spotInfoId,
       );

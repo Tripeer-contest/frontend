@@ -1,9 +1,10 @@
-import Y from 'yjs';
+import { Array as YArray } from 'yjs';
 import { DropResult } from '@hello-pangea/dnd';
 import { totalYListInfo } from '../../../../../store/room/RoomSliceState.ts';
 import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../../../store/store.tsx';
+
 // import { useMutation } from '@tanstack/react-query';
 // import postAtoB from '../../../api/postAtoB.ts';
 //
@@ -38,12 +39,12 @@ const useDesktopDnd = () => {
   }, [isConnected, setTotalYList, ws, doc]);
 
   // const updateTimeYList = (
-  //   sourceYArray: Y.Array<totalYListInfo>,
-  //   destinationYArray: Y.Array<totalYListInfo>,
+  //   sourceYArray: YArray<totalYListInfo>,
+  //   destinationYArray: YArray<totalYListInfo>,
   //   sourceIdx: number,
   //   destinationIdx: number,
-  //   sourceYTime: Y.Array<[number, number, timeYListInfo]>,
-  //   destinationYTime: Y.Array<[number, number, timeYListInfo]>,
+  //   sourceYTime: YArray<[number, number, timeYListInfo]>,
+  //   destinationYTime: YArray<[number, number, timeYListInfo]>,
   // ) => {
   //   const startId = 125636;
   //   const endId = 125691;
@@ -106,15 +107,15 @@ const useDesktopDnd = () => {
     const yArray = ws.doc.getArray('totalYList');
     // const timeYList = ws.doc.getArray('timeYList');
     // 원래 있던 배열
-    const sourceYArray = yArray.get(sourceArrIdx) as Y.Array<totalYListInfo>;
-    // const sourceYTime = timeYList.get(sourceArrIdx) as Y.Array<
+    const sourceYArray = yArray.get(sourceArrIdx) as YArray<totalYListInfo>;
+    // const sourceYTime = timeYList.get(sourceArrIdx) as Array<
     //   [number, number, timeYListInfo]
     // >;
     // 이동한 배열
     const destinationYArray = yArray.get(
       destinationArrIdx,
-    ) as Y.Array<totalYListInfo>;
-    // const destinationYTime = timeYList.get(destinationArrIdx) as Y.Array<
+    ) as YArray<totalYListInfo>;
+    // const destinationYTime = timeYList.get(destinationArrIdx) as YArray<
     //   [number, number, timeYListInfo]
     // >;
 
