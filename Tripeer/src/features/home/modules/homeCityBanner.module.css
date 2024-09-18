@@ -1,33 +1,7 @@
-.container {
-  width: 100%;
-  display: flex;
-}
-
-.imgBox {
-  display: flex;
-  width: 120px;
-}
-
-.swiper {
-  display: flex;
-  width: 100%;
-}
-
-.img {
-  width: 120px;
-  border-radius: 5px;
-}
-.img:hover {
-  opacity: 1;
-}
-
-.check {
-  opacity: 0.6;
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .container {
     margin-top: 20px;
+    margin-bottom: 10px;
   }
 
   .swiper {
@@ -38,5 +12,35 @@
   .img {
     width: 100px;
     border-radius: 5px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .container {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  .imgBox {
+    display: flex;
+    width: 120px;
+  }
+
+  .swiper {
+    display: flex;
+    width: 100%;
+  }
+
+  .img {
+    width: 120px;
+    border-radius: 5px;
+  }
+  .img:hover {
+    opacity: 1;
+  }
+
+  .check {
+    opacity: 0.6;
   }
 }
