@@ -10,6 +10,7 @@ import zustandStore from '../../../../../store/store';
 import ErrorBoundary from '../../../../../components/error/ErrorBoundary';
 import SkeletonSearch from '../../../../../components/loading/SkeletonSearch';
 import DesktopMapDetail from './DesktopMapDetail';
+import PlanDetailWish from './PlanDetailWish';
 
 export default function DesktopSearch() {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,7 +42,13 @@ export default function DesktopSearch() {
                   <SearchMainContent sortNum={sortNum[sortType]} />
                 </Suspense>
               </ErrorBoundary>
-            ) : undefined}
+            ) : (
+              <ErrorBoundary fallback={<div>에러</div>}>
+                <Suspense fallback={<SkeletonSearch />}>
+                  <PlanDetailWish />
+                </Suspense>
+              </ErrorBoundary>
+            )}
           </>
         )}
       </div>

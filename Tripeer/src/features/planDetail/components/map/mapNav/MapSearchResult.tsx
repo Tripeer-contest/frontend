@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import zustandStore from '../../../../../store/store';
 import BottomDragModal from '../../common/BottomDragModal';
 import BottomDragListModal from '../../common/BottomDragListModal';
@@ -6,6 +6,10 @@ import MobileSearchResult from './MobileSearchResult';
 import { useShallow } from 'zustand/react/shallow';
 import MobileMapTravel from './MobileMapTravel';
 import MapMobileModal from './MapMobileModal';
+import MobilePlanWish from './MobilePlanWish';
+import ErrorBoundary from '../../../../../components/error/ErrorBoundary';
+import SkeletonSearch from '../../../../../components/loading/SkeletonSearch';
+import styles from '../../../assets/map/mapNav/mobileResult.module.css';
 
 export default function MapSearchResult() {
   const [sortType, keyword, spotInfo] = zustandStore(
@@ -44,6 +48,15 @@ export default function MapSearchResult() {
         ) : (
           <BottomDragModal>
             {sortType === '여행지' && <MobileMapTravel />}
+            {sortType === '즐겨찾기' && (
+              <div className={styles.container}>
+                <ErrorBoundary fallback={<div>에러</div>}>
+                  <Suspense fallback={<SkeletonSearch />}>
+                    <MobilePlanWish />
+                  </Suspense>
+                </ErrorBoundary>
+              </div>
+            )}
           </BottomDragModal>
         ))}
       {keyword && !spotInfo && (
