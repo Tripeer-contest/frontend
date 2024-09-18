@@ -9,6 +9,8 @@ import zustandStore from '../../store/store';
 import { useShallow } from 'zustand/react/shallow';
 import PlanMap from './components/map/PlanMap';
 import PlanCalendar from './components/calendar/PlanCalendar';
+import useCalendarInfo from './components/calendar/hooks/useCalendarInfo.tsx';
+import useDesktopDnd from './components/calendar/hooks/useDesktopDnd.tsx';
 
 export default function PlanDetail() {
   const [init, page] = zustandStore(
@@ -18,6 +20,8 @@ export default function PlanDetail() {
   const Access = useAccess(params.id);
   const Connect = useConnect(params.id);
   const Online = useDocInfo();
+  useCalendarInfo();
+  useDesktopDnd();
 
   const MAIN_PAGE = useMemo(() => {
     return [

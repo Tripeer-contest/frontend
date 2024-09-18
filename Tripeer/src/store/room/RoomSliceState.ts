@@ -53,6 +53,10 @@ export interface RoomSliceState {
   room_setMapSearchKeyword: (keyword: string) => void;
   room_setMap: (map: any) => void;
   room_syncUser: (coworkers: OnlineInfo[]) => void;
+  room_totalYList: totalYListInfo[][];
+  room_setTotalYList: (totalYList: totalYListInfo[][]) => void;
+  room_timeYList: [number, number, timeYListInfo][];
+  room_setTimeYList: (timeYList: [number, number, timeYListInfo][]) => void;
   room_setSelectedTownIdx: (param: number) => void;
   room_setSortType: (param: string) => void;
   room_moveMap: ((latitude: number, longitude: number) => void) | null;
@@ -112,6 +116,46 @@ export interface RoomTownInfo {
   latitude: number;
   longitude: number;
   title: string;
+}
+
+export interface totalYListInfo {
+  addr: string;
+  contentType: string;
+  img: string;
+  latitude: number;
+  longitude: number;
+  nickname: string;
+  order: number;
+  planId: number;
+  profileImage: string;
+  spot: boolean;
+  spotInfoId: number;
+  title: string;
+  userId: number;
+  wishlist: boolean;
+}
+
+export interface timeYListInfo {
+  totalTime: number;
+  totalDistance: number;
+  totalWalkTime: number;
+  totalWalkDistance: number;
+  pathType: number;
+  totalFare: number;
+  publicRootDetailList: rootDetail[];
+}
+
+export interface rootDetail {
+  distance: number;
+  sectionTime: number;
+  mode: string;
+  route: string;
+  startName: string;
+  startLat: number;
+  startLon: number;
+  endName: string;
+  endLat: number;
+  endLon: number;
 }
 
 export type SpotYInterface = YUserInfo & PlanSearchSpotInterface;

@@ -1,0 +1,43 @@
+.container{
+    width: 390px;
+    height: 100%;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0 70px 0 0;
+}
+
+.titleBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dayBox{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: end;
+    margin: 0 0 10px 0;
+}
+
+.xDay{
+    color: #3d3c3c;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.day{
+    color: #979797;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0 0 0 5px;
+}
+
+.droppableBox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}

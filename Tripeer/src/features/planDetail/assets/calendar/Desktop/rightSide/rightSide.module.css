@@ -1,0 +1,37 @@
+.container{
+    width: calc(100vw - 450px - 72px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.line{
+    border-bottom: 1px solid #d9d9d9;
+    width: 97%;
+    margin: 20px 0 20px 0;
+}
+
+.dndBox{
+    width: 97%;
+    height: 100%;
+    display: flex;
+    overflow: auto;
+    margin: 0 0 0 20px;
+}
+
+.dndBox::-webkit-scrollbar {
+    height: 8px;
+}
+
+.dndBox::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+}
+
+.dndBox::-webkit-scrollbar-thumb:horizontal {
+    background-color: #d9d9d9;
+}
+
+.dndBox::-webkit-scrollbar:vertical {
+    display: none;
+}

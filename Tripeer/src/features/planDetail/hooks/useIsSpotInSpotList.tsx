@@ -14,12 +14,15 @@ export default function useIsSpotInSpotList(spot: PlanSearchSpotInterface) {
   const addSpot = () => {
     if (doc) {
       const spots = doc.getArray('spotList');
+      const totalYList = doc.getArray('totalYList');
       const userInfo = doc.getArray('userInfo').toJSON();
       const myInfo = getTokenInfo();
       const myDetal = userInfo.find((user) => user.userId === myInfo.userId);
       if (myDetal) {
         const newSpot: SpotYInterface = { ...spot, ...myDetal };
         spots.push([{ ...newSpot }]);
+        const totalZero: any = totalYList.get(0);
+        totalZero.push([{ ...newSpot }]);
       }
     }
   };

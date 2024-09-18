@@ -19,6 +19,8 @@ const initState = {
   room_chatScrollToBottom: null,
   room_mapSearchKeyword: '',
   room_map: null,
+  room_totalYList: [],
+  room_timeYList: [],
   room_selectedTownIdx: 0,
   room_sortType: '',
   room_minLat: 0,
@@ -91,4 +93,6 @@ export const RoomSlice: StateCreator<
     set(() => ({ room_removeMarkerAll: callback })),
   room_setSpotList: (param) => set(() => ({ room_spotList: param })),
   room_setSpotInfo: (param) => set(() => ({ room_spotInfo: param })),
+  room_setTotalYList: (payload) => set({ room_totalYList: payload }),
+  room_setTimeYList: (payload) => set({ room_timeYList: payload }),
 });
