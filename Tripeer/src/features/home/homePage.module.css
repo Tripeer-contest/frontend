@@ -1,28 +1,40 @@
-.container{
+@media screen and (max-width: 1000px) {
+  .container {
+    height: auto;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 15px;
+  }
+  .recommendBox {
+    margin-top: 10px;
+  }
+  .title {
+    font-size: 1.2rem;
+    color: #262626;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .container {
     height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-@media screen and (min-width: 600px) {
-    .title{
-        font-size: 1.3rem;
-        color: #262626;
-        font-weight: 600;
-        margin-top: 80px;
-        margin-bottom: 20px;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .title{
-        font-size: 1.2rem;
-        color: #262626;
-        font-weight: 600;
-        margin-top: 40px;
-        margin-left: 15px;
-    }
+    gap: 20px;
+  }
+  .recommendBox {
+    margin-top: 50px;
+    padding-bottom: 10px;
+  }
+  .title {
+    font-size: 1.3rem;
+    color: #262626;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
 }

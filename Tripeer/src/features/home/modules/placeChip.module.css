@@ -10,13 +10,12 @@
     cursor: pointer;
     margin: 5px;
     font-size: 0.8rem;
-    font-weight: bold;
     color: #333333;
     height: 30px;
   }
 
   .container:hover {
-    border: 2px solid #4fbdb7;
+    border: 1px solid #4fbdb7;
   }
 
   .resImg {
@@ -66,11 +65,10 @@
     font-size: 0.7rem;
     color: #333333;
     height: 25px;
-    font-weight: bold;
   }
 
   .container:hover {
-    border: 2px solid #4fbdb7;
+    border: 1px solid #4fbdb7;
   }
 
   .resImg {

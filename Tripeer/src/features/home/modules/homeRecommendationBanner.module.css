@@ -1,55 +1,41 @@
 .container {
-    width: 100%;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
-    font-size: 1.3rem;
-    color: #262626;
-    font-weight: 600;
+  font-size: 1.3rem;
+  color: #262626;
+  font-weight: 600;
 }
 
 .readMoreSection {
-    display: flex;
-    justify-content: end;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
 }
 
 .readMore {
-    color: #4FBDB7;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-@media screen and (min-width: 930px) {
-    .container {
-        height: 400px;
-    }
-}
-
-@media screen and (max-width: 930px) {
-    .container {
-        width: 100vw;
-        height: 160px;
-    }
+  color: #4fbdb7;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {
-    .container {
-        width: calc(100vw - 30px);
-        height: 160px;
-        margin: 50px 15px 0 15px;
-    }
+  .container {
+    width: calc(100vw - 30px);
+    height: 160px;
+  }
 
-    .title {
-        font-size: 1rem;
-    }
+  .title {
+    font-size: 1rem;
+  }
 
-    .readMore {
-        font-size: 0.7rem;
-    }
+  .readMore {
+    font-size: 0.7rem;
+  }
 }
