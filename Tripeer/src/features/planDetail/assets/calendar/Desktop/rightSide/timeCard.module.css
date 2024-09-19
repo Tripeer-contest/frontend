@@ -6,6 +6,10 @@
     gap: 6px;
 }
 
+.fadeIn{
+    animation: fadeIn 1s ease-in-out;
+}
+
 .line{
     background-color: #858585;
     height: 22px;
@@ -29,4 +33,18 @@
 .time{
     color: #757575;
     font-size: 1rem;
+}
+
+.error{
+    color: #757575;
+    font-size: 0.8rem;
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }

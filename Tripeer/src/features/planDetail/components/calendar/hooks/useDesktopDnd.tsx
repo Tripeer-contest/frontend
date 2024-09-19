@@ -98,9 +98,15 @@ const useDesktopDnd = () => {
           sourceYTime.delete(sourceIdx, 1);
           sourceYTime.delete(sourceIdx - 1, 1);
           sourceYTime.insert(sourceIdx - 1, [loadingData]);
+
+          const i =
+            sourceArrIdx === destinationArrIdx && sourceIdx > destinationIdx
+              ? sourceIdx + 1
+              : sourceIdx;
+
           const data = await getAtoB(
-            sourceYArray.get(sourceIdx - 1),
-            sourceYArray.get(sourceIdx),
+            sourceYArray.get(i - 1),
+            sourceYArray.get(i),
             '0',
           );
 
