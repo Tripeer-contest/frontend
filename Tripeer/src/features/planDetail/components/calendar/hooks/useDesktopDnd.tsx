@@ -85,9 +85,14 @@ const useDesktopDnd = () => {
         // 길이가 2 이상이면
         //// 맨앞을 빼는 경우 >> 0번을 삭제
         if (sourceIdx === 0) sourceYTime.delete(0, 1);
-        //// 맨뒤를 뺴는 경우 >> 맨끝을 삭제
-        else if (sourceIdx === sourceYArray.length)
+        //// 맨뒤를 뺴는 경우(같은 배열 내 이동 조건 추가) >> 맨끝을 삭제
+        else if (
+          sourceIdx === sourceYArray.length ||
+          (sourceArrIdx === destinationArrIdx &&
+            sourceIdx === sourceYArray.length - 1)
+        ) {
           sourceYTime.delete(sourceIdx - 1, 1);
+        }
         //// 중간을 뺄때 >> i번째를 삭제, i번과 i-1번을 계산해 i-1 번을 수정
         else {
           sourceYTime.delete(sourceIdx, 1);
