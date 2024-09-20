@@ -10,8 +10,19 @@
   }
 
   .img {
-    width: 100px;
+    width: 120px;
     border-radius: 5px;
+  }
+  .img:hover {
+    opacity: 1;
+  }
+
+  .check {
+    opacity: 0.6;
+  }
+  .imgBox {
+    display: flex;
+    width: 120px;
   }
 }
 @media screen and (min-width: 1000px) {
