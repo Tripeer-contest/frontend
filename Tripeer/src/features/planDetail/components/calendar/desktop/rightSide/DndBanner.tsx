@@ -29,7 +29,7 @@ const DndBanner = ({ idx }: Props) => {
           <p className={styles.xDay}>{idx}일차</p>
           <p className={styles.day}>{day}</p>
         </div>
-        <OpBtn day={day} />
+        <OpBtn day={day} idx={idx} />
       </section>
       <Droppable droppableId={`${idx}`}>
         {(provided) => (

@@ -4,6 +4,7 @@ import postAtoB from '../../../api/postAtoB.ts';
 import { timeYListInfo } from '../../../../../store/room/RoomSliceState.ts';
 import { Array as YArray } from 'yjs';
 import { useEffect, useState } from 'react';
+import usePlanDetailModal from '../../../hooks/usePlanDetailModal.tsx';
 
 const useTimeCard = (arrIdx: number, idx: number) => {
   const [totalYList, timeYList, ws] = zustandStore(
@@ -13,6 +14,8 @@ const useTimeCard = (arrIdx: number, idx: number) => {
       state.y_ws,
     ]),
   );
+
+  const { open, close, PlanModal } = usePlanDetailModal();
 
   const loadingData: [string, string, timeYListInfo | null] = [
     '계산중',
@@ -35,6 +38,7 @@ const useTimeCard = (arrIdx: number, idx: number) => {
       >;
 
       if (content === '계산중') option = timeArr[1];
+      else if (content === '경로를 찾을 수 없습니다.') option = '1';
       else if (option === '0') option = '1';
       else option = '0';
 
@@ -76,7 +80,23 @@ const useTimeCard = (arrIdx: number, idx: number) => {
     }
   }, [displayValue, arrIdx, idx, timeYList]);
 
-  return { onClickHandler, isFading };
+  const newOnclickHandler = () => {
+    open();
+  };
+
+  const onClickBackground = (close: () => void) => {
+    close();
+  };
+
+  return {
+    newOnclickHandler,
+    onClickHandler,
+    isFading,
+    open,
+    close,
+    PlanModal,
+    onClickBackground,
+  };
 };
 
 export default useTimeCard;
