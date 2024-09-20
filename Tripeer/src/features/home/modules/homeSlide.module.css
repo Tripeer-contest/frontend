@@ -1,4 +1,4 @@
-@media screen and (min-width: 930px) {
+@media screen and (min-width: 1000px) {
   .container {
     width: 100%;
   }
@@ -20,11 +20,10 @@
   .swiperSlide {
     display: flex;
     align-items: center;
-    width: 275px;
-    height: 110px;
-    padding: 5px;
+    width: 320px;
+    height: 120px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
-    border-radius: 5px;
+    border-radius: 10px;
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
