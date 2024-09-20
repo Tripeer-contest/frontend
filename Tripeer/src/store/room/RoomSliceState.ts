@@ -34,6 +34,20 @@ export interface RoomSliceState {
     latitude: number;
     longitude: number;
   } | null;
+  room_modeBound: null | {
+    minLat: number;
+    minLon: number;
+    maxLat: number;
+    maxLon: number;
+  };
+  room_setModeBound: (
+    param: null | {
+      minLat: number;
+      minLon: number;
+      maxLat: number;
+      maxLon: number;
+    },
+  ) => void;
   room_setSpotInfo: (
     param: { spotInfoId: number; latitude: number; longitude: number } | null,
   ) => void;
