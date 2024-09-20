@@ -35,6 +35,7 @@ const initState = {
   room_removeMarkerAll: null,
   room_spotList: [],
   room_spotInfo: null,
+  room_modeBound: null,
 };
 
 export const RoomSlice: StateCreator<
@@ -95,4 +96,5 @@ export const RoomSlice: StateCreator<
   room_setSpotInfo: (param) => set(() => ({ room_spotInfo: param })),
   room_setTotalYList: (payload) => set({ room_totalYList: payload }),
   room_setTimeYList: (payload) => set({ room_timeYList: payload }),
+  room_setModeBound: (payload) => set(() => ({ room_modeBound: payload })),
 });

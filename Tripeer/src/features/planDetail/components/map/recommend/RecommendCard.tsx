@@ -12,8 +12,12 @@ import useIsSpotInSpotList from '../../../hooks/useIsSpotInSpotList';
 
 export default function RecommendCard({ card }: { card: SpotInterface }) {
   const id = useParamsId();
-  const [townList, townIdx] = zustandStore(
-    useShallow((state) => [state.room_townList, state.room_selectedTownIdx]),
+  const [townList, townIdx, setSpot] = zustandStore(
+    useShallow((state) => [
+      state.room_townList,
+      state.room_selectedTownIdx,
+      state.room_setSpotInfo,
+    ]),
   );
   const { addSpot, isExist, removeSpot } = useIsSpotInSpotList(card);
 
@@ -26,10 +30,20 @@ export default function RecommendCard({ card }: { card: SpotInterface }) {
   const likeHandler = () => {
     mutate({ id: cardInfo.spotInfoId, like: cardInfo.wishlist });
   };
+
+  const clickEvent = () => {
+    window.innerWidth > 1000 &&
+      setSpot({
+        spotInfoId: card.spotInfoId,
+        longitude: card.longitude,
+        latitude: card.latitude,
+      });
+  };
+
   const cardInfo = card;
 
   return (
-    <div className={styles.cardBox}>
+    <div className={styles.cardBox} onClick={clickEvent}>
       <img src={cardInfo.img} alt="spot-img" className={styles.cardImg} />
       <p className={styles.placeName}>{cardInfo.title}</p>
       <div className={styles.addressBox}>
@@ -37,7 +51,13 @@ export default function RecommendCard({ card }: { card: SpotInterface }) {
         <p className={styles.addressText}>{cardInfo.addr}</p>
       </div>
       <section className={styles.bottomSection}>
-        <div className={styles.likeIconBox} onClick={likeHandler}>
+        <div
+          className={styles.likeIconBox}
+          onClick={(e) => {
+            e.stopPropagation();
+            likeHandler();
+          }}
+        >
           {cardInfo.wishlist ? (
             <img
               src={fullHeartIcon}
@@ -53,11 +73,23 @@ export default function RecommendCard({ card }: { card: SpotInterface }) {
           )}
         </div>
         {!isExist ? (
-          <div className={styles.addPlaceListBtn} onClick={addSpot}>
+          <div
+            className={styles.addPlaceListBtn}
+            onClick={(e) => {
+              e.stopPropagation();
+              addSpot();
+            }}
+          >
             여행지 추가
           </div>
         ) : (
-          <div className={styles.removePlaceListBtn} onClick={removeSpot}>
+          <div
+            className={styles.removePlaceListBtn}
+            onClick={(e) => {
+              e.stopPropagation();
+              removeSpot();
+            }}
+          >
             선택 취소
           </div>
         )}
