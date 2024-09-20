@@ -1,4 +1,5 @@
 import styles from '../modules/toTop.module.css';
+import toUpIcon from '../../../assets/button/toUp.svg';
 
 interface Props {
   scrollHandler: () => void;
@@ -7,7 +8,7 @@ interface Props {
 const ToTop = ({ scrollHandler }: Props) => {
   return (
     <div className={styles.container} onClick={scrollHandler}>
-      Top
+      <img src={toUpIcon} alt="to-up-icon" className={styles.icon} />
     </div>
   );
 };

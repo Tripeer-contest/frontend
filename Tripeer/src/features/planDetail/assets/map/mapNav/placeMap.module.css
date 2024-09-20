@@ -138,7 +138,13 @@
     width: calc(100vw - 500px);
   }
   .headerBox {
-    display: none;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 100%;
+    position: absolute;
   }
 
   .categoryBtn {
@@ -183,4 +189,23 @@
     width: 12px;
     margin-right: 5px;
   }
+}
+
+.refreshBtn {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 14px;
+  width: auto;
+  height: 30px;
+  color: #04acb5;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.refreshBtn > img {
+  height: 20px;
 }

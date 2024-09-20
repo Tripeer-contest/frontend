@@ -10,11 +10,16 @@ import zustandStore from '../../../../../store/store';
 import ErrorBoundary from '../../../../../components/error/ErrorBoundary';
 import SkeletonSearch from '../../../../../components/loading/SkeletonSearch';
 import DesktopMapDetail from './DesktopMapDetail';
+import PlanDetailWish from './PlanDetailWish';
+import { useShallow } from 'zustand/react/shallow';
+import SearchNowContent from './SearchNowContent';
 
 export default function DesktopSearch() {
   const [isVisible, setIsVisible] = useState(false);
   const [isRecommendSelected, setIsRecommendSelected] = useState(true);
-  const sortType = zustandStore((state) => state.room_sortType);
+  const [sortType, mode] = zustandStore(
+    useShallow((state) => [state.room_sortType, state.room_modeBound]),
+  );
   const sortNum: { [param: string]: number } = {
     전체: 1,
     명소: 2,
@@ -38,10 +43,20 @@ export default function DesktopSearch() {
             {sortNum[sortType] ? (
               <ErrorBoundary fallback={<div>에러</div>}>
                 <Suspense fallback={<SkeletonSearch />}>
-                  <SearchMainContent sortNum={sortNum[sortType]} />
+                  {mode ? (
+                    <SearchNowContent sortNum={sortNum[sortType]} />
+                  ) : (
+                    <SearchMainContent sortNum={sortNum[sortType]} />
+                  )}
                 </Suspense>
               </ErrorBoundary>
-            ) : undefined}
+            ) : (
+              <ErrorBoundary fallback={<div>에러</div>}>
+                <Suspense fallback={<SkeletonSearch />}>
+                  <PlanDetailWish />
+                </Suspense>
+              </ErrorBoundary>
+            )}
           </>
         )}
       </div>

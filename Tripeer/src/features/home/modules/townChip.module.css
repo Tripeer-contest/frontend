@@ -1,4 +1,4 @@
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1000px) {
   .container {
     display: flex;
     justify-content: center;
@@ -12,11 +12,10 @@
     font-size: 0.8rem;
     color: #333333;
     height: 30px;
-    font-weight: bold;
   }
 
   .container:hover {
-    border: 2px solid #4fbdb7;
+    border: 1px solid #4fbdb7;
   }
 
   .check {
@@ -31,7 +30,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .container {
     display: flex;
     justify-content: center;
@@ -45,11 +44,10 @@
     font-size: 0.7rem;
     color: #333333;
     height: 25px;
-    font-weight: bold;
   }
 
   .container:hover {
-    border: 2px solid #4fbdb7;
+    border: 1px solid #4fbdb7;
   }
 
   .check {
