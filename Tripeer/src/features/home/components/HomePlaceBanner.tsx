@@ -17,19 +17,20 @@ const HomePlaceBanner = () => {
   return (
     <div className={styles.container}>
       <div className={styles.titleBox}>
-        <p className={styles.title}>{`${title}`}</p>
+        <p className={styles.title}>{`' ${title}' 에 대한 검색결과 `}</p>
       </div>
       <div className={styles.gridBox}>
         {!isLoading && data
           ? data.pages.map((page) =>
               page.spotInfoDTOList.map((place: PlaceType) => (
-                <PlaceBox
-                  place={place}
-                  key={place.spotId}
-                  clickHandler={clickHandler}
-                  likeClickHandler={likeClickHandler}
-                  rating={rating}
-                />
+                <div key={place.spotId} className={styles.cardBox}>
+                  <PlaceBox
+                    place={place}
+                    clickHandler={clickHandler}
+                    likeClickHandler={likeClickHandler}
+                    rating={rating}
+                  />
+                </div>
               )),
             )
           : Array.from({ length: 15 }).map((_, idx) => (

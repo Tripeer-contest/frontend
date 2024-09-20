@@ -1,4 +1,93 @@
+@keyframes rotate {
+  0%,
+  75% {
+    color: #04acb5;
+  }
+}
+
+.logoText span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.logoText span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.logoText span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.logoText span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.logoText span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.logoText span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
 @media screen and (max-width: 1000px) {
+  .topSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logoText {
+    height: auto;
+    margin: 30px 0 20px 0;
+  }
+
+  .logoText span {
+    font-size: 2.5rem;
+    font-family: 'Monomaniac One', sans-serif;
+    font-weight: bold;
+    color: #4fbdb7;
+    position: relative;
+    display: inline-block;
+    animation: rotate 3s infinite;
+  }
+  .container {
+    height: auto;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    padding: 0 15px;
+  }
+  .recommendBox {
+    margin-top: 10px;
+  }
+  .title {
+    font-size: 1.1rem;
+    color: #262626;
+    font-weight: 600;
+    margin-top: 40px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .topSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logoText {
+    height: auto;
+    margin: 30px 0 50px 0;
+  }
+
+  .logoText span {
+    font-size: 3rem;
+    font-family: 'Monomaniac One', sans-serif;
+    font-weight: bold;
+    color: #4fbdb7;
+    position: relative;
+    display: inline-block;
+    animation: rotate 3s infinite;
+  }
   .container {
     height: auto;
     width: 100vw;
@@ -19,6 +108,29 @@
   }
 }
 @media screen and (min-width: 1000px) {
+  .topSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logoText {
+    height: auto;
+    margin: 30px 0 50px 0;
+  }
+
+  .logoText span {
+    font-size: 3.5rem;
+    font-family: 'Monomaniac One', sans-serif;
+    font-weight: bold;
+    color: #4fbdb7;
+    position: relative;
+    display: inline-block;
+    animation: rotate 3s infinite;
+  }
+
   .container {
     height: auto;
     width: 100%;

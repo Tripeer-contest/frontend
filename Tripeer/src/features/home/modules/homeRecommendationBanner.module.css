@@ -4,6 +4,12 @@
   display: flex;
   flex-direction: column;
 }
+.topSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
 
 .title {
   font-size: 1.3rem;
@@ -20,22 +26,47 @@
 .readMore {
   color: #4fbdb7;
   font-weight: 600;
-  font-size: 0.9rem;
-  margin-right: 10px;
   cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .container {
     width: calc(100vw - 30px);
     height: 160px;
   }
-
+  .topSection {
+    margin-bottom: 5px;
+  }
   .title {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .readMore {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    color: #262626;
+    font-weight: 600;
+  }
+
+  .readMoreSection {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+  }
+
+  .readMore {
+    font-size: 1rem;
   }
 }

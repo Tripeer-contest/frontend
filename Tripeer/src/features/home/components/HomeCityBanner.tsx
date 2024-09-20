@@ -17,8 +17,10 @@ const HomeCityBanner = () => {
     <div className={styles.container}>
       <Swiper
         slidesPerView={'auto'}
-        spaceBetween={1}
-        breakpoints={{ 600: { spaceBetween: 10 } }}
+        spaceBetween={15}
+        breakpoints={{
+          1000: { spaceBetween: 20 },
+        }}
         grabCursor={true}
         className={styles.swiper}
       >
