@@ -5,8 +5,9 @@ export const createPlanCalendarSlice: StateCreator<PlanCalendarSlice> = (
   set,
 ) => ({
   c_nowCategory: 0,
-  c_setNowCategory: (id: number) => set(() => ({ c_nowCategory: id })),
+  c_setNowCategory: (id) => set(() => ({ c_nowCategory: id })),
   c_isDragging: false,
-  c_setIsDragging: (isDragging: boolean) =>
-    set(() => ({ c_isDragging: isDragging })),
+  c_setIsDragging: (isDragging) => set(() => ({ c_isDragging: isDragging })),
+  c_searchList: [],
+  c_setSearchList: (arr) => set(() => ({ c_searchList: arr })),
 });

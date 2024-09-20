@@ -69,8 +69,10 @@ export interface RoomSliceState {
   room_syncUser: (coworkers: OnlineInfo[]) => void;
   room_totalYList: totalYListInfo[][];
   room_setTotalYList: (totalYList: totalYListInfo[][]) => void;
-  room_timeYList: [number, number, timeYListInfo][];
-  room_setTimeYList: (timeYList: [number, number, timeYListInfo][]) => void;
+  room_timeYList: [string, string, timeYListInfo | null][][];
+  room_setTimeYList: (
+    timeYList: [string, string, timeYListInfo | null][][],
+  ) => void;
   room_setSelectedTownIdx: (param: number) => void;
   room_setSortType: (param: string) => void;
   room_moveMap: ((latitude: number, longitude: number) => void) | null;

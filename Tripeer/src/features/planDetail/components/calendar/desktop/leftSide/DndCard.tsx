@@ -6,6 +6,7 @@ import Profile from './Profile.tsx';
 import { Draggable } from '@hello-pangea/dnd';
 import { totalYListInfo } from '../../../../../../store/room/RoomSliceState.ts';
 import useDndCard from '../../hooks/useDndCard.tsx';
+import zustandStore from '../../../../../../store/store.tsx';
 
 interface Props {
   item: totalYListInfo;
@@ -14,12 +15,13 @@ interface Props {
 
 const DndCard = ({ item, idx }: Props) => {
   const { onDelete } = useDndCard(item);
+  const searchList = zustandStore((state) => state.c_searchList);
 
   return (
     <Draggable draggableId={item.spotInfoId.toString()} index={idx}>
       {(provided) => (
         <section
-          className={styles.draggableBox}
+          className={`${styles.draggableBox} ${!searchList.includes(item.spotInfoId) && styles.none}`}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}

@@ -22,6 +22,7 @@ export default function NotifyContainer({
         setAnimation('');
         if (timerId.current) clearTimeout(timerId.current);
       }, 3000);
+      // @ts-ignore
       timerId.current = id;
     }
   }, [isActive]);
