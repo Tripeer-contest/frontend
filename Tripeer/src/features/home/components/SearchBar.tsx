@@ -21,7 +21,7 @@ const SearchBar = () => {
       <img src={searchImg} alt={'searchImg'} className={styles.searchImg} />
       <input
         className={styles.input}
-        placeholder={'여행지를 검색해보세요'}
+        placeholder={'여행지를 검색해보세요.'}
         onChange={inputChangeHandler}
       />
       {showModal && (
