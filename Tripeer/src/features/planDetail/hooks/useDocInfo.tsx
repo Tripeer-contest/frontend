@@ -3,30 +3,21 @@ import zustandStore from '../../../store/store';
 import { useParams } from 'react-router-dom';
 import { useShallow } from 'zustand/react/shallow';
 
-export default function useDocInfo() {
+export default function useDocInfo(isYConnected: boolean) {
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
-  const [
-    ws,
-    isConnected,
-    y_doc,
-    setTownList,
-    setStartDay,
-    setEndDay,
-    setTitle,
-    syncUser,
-  ] = zustandStore(
-    useShallow((state) => [
-      state.y_ws,
-      state.y_connected,
-      state.y_doc,
-      state.room_setTownList,
-      state.room_setStartDay,
-      state.room_setEndDay,
-      state.room_setTitle,
-      state.room_syncUser,
-    ]),
-  );
+  const [ws, y_doc, setTownList, setStartDay, setEndDay, setTitle, syncUser] =
+    zustandStore(
+      useShallow((state) => [
+        state.y_ws,
+        state.y_doc,
+        state.room_setTownList,
+        state.room_setStartDay,
+        state.room_setEndDay,
+        state.room_setTitle,
+        state.room_syncUser,
+      ]),
+    );
 
   useEffect(() => {
     const setStateField = () => {
@@ -40,7 +31,7 @@ export default function useDocInfo() {
         const newUser = user.map((u) => ({ ...u, isOnline: false }));
         syncUser(newUser);
       });
-      if (townList)
+      if (townList && townList.length > 0)
         setTownList([
           {
             title: '전체',
@@ -57,19 +48,19 @@ export default function useDocInfo() {
       setIsLoading(false);
     };
 
-    if (isConnected) {
+    if (isYConnected) {
       setStateField();
     }
   }, [
     ws,
     params,
-    isConnected,
     y_doc,
     setTitle,
     setStartDay,
     setEndDay,
     setTownList,
     syncUser,
+    isYConnected,
   ]);
 
   return { isLoading };

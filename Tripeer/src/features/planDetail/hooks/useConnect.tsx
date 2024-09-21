@@ -8,7 +8,10 @@ import useRoomInfo from './useAccess';
 import getTokenInfo from '../../../utils/jwtDecode';
 import { OnlineInfo } from '../../../store/room/RoomSliceState';
 
-export default function useConnect(id: string | undefined) {
+export default function useConnect(
+  id: string | undefined,
+  setIsConnected: (param: boolean) => void,
+) {
   const { isSuccess } = useRoomInfo(id);
   const [setYDoc, setYWs, init, yws, connected, isConnected, setUserInfo] =
     zustandStore(
@@ -31,7 +34,6 @@ export default function useConnect(id: string | undefined) {
       ws = new WebsocketProvider('wss://tripeer.co.kr/node', `room-${id}`, doc);
       setYDoc(doc);
       setYWs(ws);
-
       ws.on('sync', (isSynced: boolean) => {
         if (isSynced) {
           ws.awareness.on('change', () => {
@@ -53,6 +55,7 @@ export default function useConnect(id: string | undefined) {
                 }
               }
               setUserInfo(newUserInfo);
+              setIsConnected(true);
               connected();
             }, 500);
           });
@@ -61,7 +64,16 @@ export default function useConnect(id: string | undefined) {
         }
       });
     }
-  }, [id, setYDoc, setYWs, connected, setUserInfo, isSuccess, yws]);
+  }, [
+    id,
+    setYDoc,
+    setYWs,
+    connected,
+    setUserInfo,
+    isSuccess,
+    yws,
+    setIsConnected,
+  ]);
 
   useEffect(() => {
     return () => {

@@ -4,7 +4,7 @@ import CommonLoading from '../../components/loading/CommonLoading';
 import useDocInfo from './hooks/useDocInfo';
 import useAccess from './hooks/useAccess';
 import PlanChat from './components/chat/PlanChat';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import zustandStore from '../../store/store';
 import { useShallow } from 'zustand/react/shallow';
 import PlanMap from './components/map/PlanMap';
@@ -13,13 +13,14 @@ import useCalendarInfo from './components/calendar/hooks/useCalendarInfo.tsx';
 import useDesktopDnd from './components/calendar/hooks/useDesktopDnd.tsx';
 
 export default function PlanDetail() {
-  const [init, page] = zustandStore(
-    useShallow((state) => [state.y_init, state.room_page]),
+  const [init, page, roomInit] = zustandStore(
+    useShallow((state) => [state.y_init, state.room_page, state.room_init]),
   );
+  const [isConnected, setIsConnected] = useState(false);
   const params = useParams();
   const Access = useAccess(params.id);
-  const Connect = useConnect(params.id);
-  const Online = useDocInfo();
+  useConnect(params.id, setIsConnected);
+  const Online = useDocInfo(isConnected);
   useCalendarInfo();
   useDesktopDnd();
 
@@ -34,11 +35,12 @@ export default function PlanDetail() {
   useEffect(() => {
     return () => {
       init();
+      roomInit();
     };
-  }, [init]);
+  }, [init, roomInit]);
   return (
     <>
-      {Connect.isLoading && Access.isLoading && Online.isLoading ? (
+      {Access.isLoading || Online.isLoading || !isConnected ? (
         <CommonLoading />
       ) : (
         <>{MAIN_PAGE}</>
