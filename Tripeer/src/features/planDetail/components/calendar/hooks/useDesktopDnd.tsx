@@ -9,14 +9,13 @@ import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../../../store/store.tsx';
 import postAtoB from '../../../api/postAtoB.ts';
 
-const useDesktopDnd = () => {
-  const [setTotalYList, setTimeYList, ws, doc, isConnected] = zustandStore(
+const useDesktopDnd = (isConnected: boolean) => {
+  const [setTotalYList, setTimeYList, ws, doc] = zustandStore(
     useShallow((state) => [
       state.room_setTotalYList,
       state.room_setTimeYList,
       state.y_ws,
       state.y_doc,
-      state.y_connected,
     ]),
   );
 
