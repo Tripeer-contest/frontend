@@ -27,6 +27,7 @@ const useDndCard = (item: totalYListInfo) => {
       const sIdx = spotList.findIndex((info) => {
         return info.spotInfoId === item.spotInfoId;
       });
+      console.log(spots.length, sIdx);
       if (sIdx !== -1) spots.delete(sIdx, 1);
     }
   };

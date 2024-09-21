@@ -9,9 +9,10 @@ interface Props {
   item: totalYListInfo;
   itemIdx: number;
   length: number;
+  idx: number;
 }
 
-const DndCard = ({ item, itemIdx, length }: Props) => {
+const DndCard = ({ item, itemIdx, length, idx }: Props) => {
   return (
     <>
       <Draggable
@@ -52,7 +53,11 @@ const DndCard = ({ item, itemIdx, length }: Props) => {
               </div>
             </div>
             {itemIdx < length - 1 && (
-              <TimeCard isDragging={snapshot.isDragging} />
+              <TimeCard
+                isDragging={snapshot.isDragging}
+                idx={idx}
+                itemIdx={itemIdx}
+              />
             )}
           </div>
         )}
