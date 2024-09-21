@@ -2,12 +2,11 @@ import zustandStore from '../../../../../store/store.tsx';
 import { useShallow } from 'zustand/react/shallow';
 import { useEffect } from 'react';
 
-const useCalendarInfo = () => {
-  const [ws, doc, isConnected, setTotalYList, setTimeYList] = zustandStore(
+const useCalendarInfo = (isConnected: boolean) => {
+  const [ws, doc, setTotalYList, setTimeYList] = zustandStore(
     useShallow((state) => [
       state.y_ws,
       state.y_doc,
-      state.y_connected,
       state.room_setTotalYList,
       state.room_setTimeYList,
     ]),

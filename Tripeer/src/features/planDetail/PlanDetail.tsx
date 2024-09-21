@@ -21,7 +21,7 @@ export default function PlanDetail() {
   const Access = useAccess(params.id);
   useConnect(params.id, setIsConnected);
   const Online = useDocInfo(isConnected);
-  useCalendarInfo();
+  useCalendarInfo(isConnected);
   useDesktopDnd();
 
   const MAIN_PAGE = useMemo(() => {
