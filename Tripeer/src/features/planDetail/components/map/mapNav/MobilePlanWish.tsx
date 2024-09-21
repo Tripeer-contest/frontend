@@ -18,6 +18,19 @@ export default function MobilePlanWish() {
           <SearchSpotCard spot={item} mutate={mutate} />
         </Fragment>
       ))}
+      {data && data.length === 0 && (
+        <div
+          style={{
+            display: 'flex',
+            height: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#D9D9D9',
+          }}
+        >
+          이번 계획 아직 좋아하시는 장소가 없습니다.
+        </div>
+      )}
     </>
   );
 }

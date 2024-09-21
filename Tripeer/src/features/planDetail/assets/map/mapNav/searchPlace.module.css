@@ -7,7 +7,7 @@
 }
 .openBtn {
   position: absolute;
-  z-index: 5;
+  z-index: 7;
   right: -17px;
   top: 30px;
   background-color: white;
@@ -21,7 +21,7 @@
 }
 .closeBtn {
   position: absolute;
-  z-index: 5;
+  z-index: 7;
   top: 30px;
   right: -17px;
   background-color: white;

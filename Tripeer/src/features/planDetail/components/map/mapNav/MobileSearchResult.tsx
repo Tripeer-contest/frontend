@@ -17,14 +17,14 @@ export default function MobileSearchResult({
   return (
     <div className={styles.container}>
       {searchMode === 0 && (
-        <ErrorBoundary fallback={<div>에러중</div>}>
+        <ErrorBoundary fallback={<div>네트워크가 원할하지 않습니다.</div>}>
           <Suspense fallback={<SkeletonSearch />}>
             <MobileSearchAll sortNum={sortNum} keyword={keyword} />
           </Suspense>
         </ErrorBoundary>
       )}
       {searchMode === 1 && (
-        <ErrorBoundary fallback={<div>에러중</div>}>
+        <ErrorBoundary fallback={<div>네트워크가 원할하지 않습니다.</div>}>
           <Suspense fallback={<SkeletonSearch />}>
             <MobileSearchNow sortNum={sortNum} keyword={keyword} />
           </Suspense>

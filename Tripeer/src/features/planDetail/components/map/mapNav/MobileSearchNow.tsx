@@ -93,6 +93,21 @@ export default function MobileSearchNow({
             </Fragment>
           )),
         )}
+      {!isError &&
+        data?.pages.length === 1 &&
+        data.pages[0].searchResultList.length === 0 && (
+          <div
+            style={{
+              display: 'flex',
+              height: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#D9D9D9',
+            }}
+          >
+            검색 결과가 없습니다.
+          </div>
+        )}
       {!isLoading && hasNextPage && data?.pages.length && (
         <li className={styles.ballBox} ref={setRef}>
           <div className={styles.ball} />

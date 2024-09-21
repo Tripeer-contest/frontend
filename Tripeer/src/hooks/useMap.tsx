@@ -33,7 +33,6 @@ export default function useMap(mapOptions?: KakaoMapOptions) {
   useEffect(() => {
     if (map) {
       map.relayout();
-      console.log('dd');
     }
   }, [map]);
 

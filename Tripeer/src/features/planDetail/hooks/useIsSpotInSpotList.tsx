@@ -12,6 +12,7 @@ export default function useIsSpotInSpotList(spot: PlanSearchSpotInterface) {
   const [spotList, doc] = zustandStore(
     useShallow((state) => [state.room_spotList, state.y_doc]),
   );
+  const [message, setMessage] = useState('');
   const [isExist, setIsExist] = useState(false);
 
   const addSpot = () => {
@@ -39,15 +40,21 @@ export default function useIsSpotInSpotList(spot: PlanSearchSpotInterface) {
       const idx = spotList.findIndex((info) => {
         return info.spotInfoId === spot.spotInfoId;
       });
-
+      let isRemoved = false;
       totalZero.toArray().forEach((info: totalYListInfo, i: number) => {
         if (info.spotInfoId === spot.spotInfoId) {
           if (idx !== -1) {
+            isRemoved = true;
             spots.delete(idx, 1);
             totalZero.delete(i, 1);
           }
         }
       });
+      isRemoved
+        ? setMessage('')
+        : setMessage(
+            '여행지가 이미 계획에 포함되어있습니다. 계획에서 삭제 후 시도해주세요.',
+          );
     }
   };
   useEffect(() => {
@@ -58,5 +65,12 @@ export default function useIsSpotInSpotList(spot: PlanSearchSpotInterface) {
     }
   }, [spot, spotList]);
 
-  return { isExist, addSpot, removeSpot };
+  useEffect(() => {
+    if (message.length > 0)
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
+  }, [message]);
+
+  return { isExist, addSpot, removeSpot, message };
 }
