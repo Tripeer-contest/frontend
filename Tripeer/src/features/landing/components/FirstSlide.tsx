@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import styles from './firstSlide.module.css';
 import useAnimation from '../hook/useAnimation';
-import firstImg from '../assets/firstSlideImg.png';
+import firstImg from '../assets/firstImg.png';
 
 interface Props {
   scrollTop: () => void;
@@ -12,7 +11,7 @@ export default function FirstSlide({ scrollTop }: Props): JSX.Element {
   const titleRef1 = useRef<null | HTMLHeadingElement>(null);
   const titleRef2 = useRef<null | HTMLHeadingElement>(null);
   const subRef = useRef<null | HTMLParagraphElement>(null);
-  const linkRef = useRef<null | HTMLAnchorElement>(null);
+  const linkRef = useRef<null | HTMLDivElement>(null);
   const bannerRef = useRef<null | HTMLDivElement>(null);
 
   useAnimation([titleRef1, titleRef2, subRef, linkRef, bannerRef]);
@@ -30,19 +29,13 @@ export default function FirstSlide({ scrollTop }: Props): JSX.Element {
           <p className={styles.subTitle} ref={subRef}>
             여행 계획의 모든 것, 한곳에서 같이 계획하세요.
           </p>
-          <Link
-            to=""
-            className={styles.startBtn}
-            ref={linkRef}
-            onClick={scrollTop}
-          >
+          <div className={styles.startBtn} ref={linkRef} onClick={scrollTop}>
             시작하기
-          </Link>
+          </div>
         </article>
       </section>
       <figure className={styles.box2} ref={bannerRef}>
         <img className={styles.banner} src={firstImg} alt="landing-img" />
-        <div></div>
       </figure>
     </main>
   );

@@ -5,7 +5,7 @@ import RightSide from './rightSide/RightSide.tsx';
 import useDesktopDnd from '../hooks/useDesktopDnd.tsx';
 
 const DesktopCalendar = () => {
-  const { onDragend } = useDesktopDnd();
+  const { onDragend } = useDesktopDnd(true);
 
   return (
     <DragDropContext onDragEnd={onDragend}>

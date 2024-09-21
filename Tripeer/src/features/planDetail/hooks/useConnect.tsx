@@ -8,20 +8,21 @@ import useRoomInfo from './useAccess';
 import getTokenInfo from '../../../utils/jwtDecode';
 import { OnlineInfo } from '../../../store/room/RoomSliceState';
 
-export default function useConnect(id: string | undefined) {
+export default function useConnect(
+  id: string | undefined,
+  setIsConnected: (param: boolean) => void,
+) {
   const { isSuccess } = useRoomInfo(id);
-  const [setYDoc, setYWs, init, yws, connected, isConnected, setUserInfo] =
-    zustandStore(
-      useShallow((state) => [
-        state.setYDoc,
-        state.setYWs,
-        state.y_init,
-        state.y_ws,
-        state.setYConnect,
-        state.y_connected,
-        state.room_setUserInfo,
-      ]),
-    );
+  const [setYDoc, setYWs, init, yws, setUserInfo] = zustandStore(
+    useShallow((state) => [
+      state.setYDoc,
+      state.setYWs,
+      state.y_init,
+      state.y_ws,
+
+      state.room_setUserInfo,
+    ]),
+  );
 
   useEffect(() => {
     let doc: Y.Doc;
@@ -31,7 +32,6 @@ export default function useConnect(id: string | undefined) {
       ws = new WebsocketProvider('wss://tripeer.co.kr/node', `room-${id}`, doc);
       setYDoc(doc);
       setYWs(ws);
-
       ws.on('sync', (isSynced: boolean) => {
         if (isSynced) {
           ws.awareness.on('change', () => {
@@ -53,7 +53,7 @@ export default function useConnect(id: string | undefined) {
                 }
               }
               setUserInfo(newUserInfo);
-              connected();
+              setIsConnected(true);
             }, 500);
           });
           const tokenInfo = getTokenInfo();
@@ -61,7 +61,7 @@ export default function useConnect(id: string | undefined) {
         }
       });
     }
-  }, [id, setYDoc, setYWs, connected, setUserInfo, isSuccess, yws]);
+  }, [id, setYDoc, setYWs, setUserInfo, isSuccess, yws, setIsConnected]);
 
   useEffect(() => {
     return () => {
@@ -71,6 +71,4 @@ export default function useConnect(id: string | undefined) {
       }
     };
   }, [yws, init]);
-
-  return { isLoading: !isConnected };
 }

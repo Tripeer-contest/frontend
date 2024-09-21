@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import styles from '../../assets/notify/container.module.css';
+import { createPortal } from 'react-dom';
 
 export default function NotifyContainer({
   isActive,
@@ -27,7 +28,8 @@ export default function NotifyContainer({
     }
   }, [isActive]);
 
-  return (
-    <aside className={`${styles.container} ${animation}`}>{children}</aside>
+  return createPortal(
+    <aside className={`${styles.container} ${animation}`}>{children}</aside>,
+    document.getElementById('modal-root') as Element,
   );
 }

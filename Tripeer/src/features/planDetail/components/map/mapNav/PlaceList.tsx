@@ -14,7 +14,7 @@ export default function PlaceList() {
     <div className={styles.container}>
       <ListHeader />
       <MemberCategory userInfo={clickedMember} setUserInfo={setClickedMember} />
-      <PlaceContent />
+      <PlaceContent clickedMember={clickedMember} />
     </div>
   );
 }

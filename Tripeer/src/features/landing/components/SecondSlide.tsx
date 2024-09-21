@@ -1,7 +1,7 @@
 import useAnimation from '../hook/useAnimation';
 import { useRef } from 'react';
 import styles from './secondSlide.module.css';
-import secondImg from '../assets/secondSlideImg.png';
+import secondImg from '../assets/secondImg.png';
 
 export default function SecondSlide(): JSX.Element {
   const titleRef1 = useRef<null | HTMLHeadingElement>(null);
@@ -47,12 +47,14 @@ export default function SecondSlide(): JSX.Element {
             여행 일정을 쉽게 계획하고
             <br /> 조정할 수 있게 도와줍니다.
           </h1>
-          <p className={styles.subTitle} ref={subRef1}>
-            일정 공유, 채팅, 실시간 업데이트 기능을 통해
-          </p>
-          <p className={styles.subTitle} ref={subRef2}>
-            모두가 만족하는 여행 계획을 완성하세요.
-          </p>
+          <div className={styles.subTitleBox}>
+            <p className={styles.subTitle} ref={subRef1}>
+              일정 공유, 채팅, 실시간 업데이트 기능을 통해
+            </p>
+            <p className={styles.subTitle} ref={subRef2}>
+              모두가 만족하는 여행 계획을 완성하세요.
+            </p>
+          </div>
         </article>
       </section>
     </main>

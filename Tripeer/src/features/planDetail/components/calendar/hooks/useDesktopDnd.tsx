@@ -9,7 +9,7 @@ import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../../../store/store.tsx';
 import postAtoB from '../../../api/postAtoB.ts';
 
-const useDesktopDnd = () => {
+const useDesktopDnd = (isConnected: boolean) => {
   const [setTotalYList, setTimeYList, ws, doc] = zustandStore(
     useShallow((state) => [
       state.room_setTotalYList,
@@ -26,7 +26,7 @@ const useDesktopDnd = () => {
   };
 
   useEffect(() => {
-    if (ws) {
+    if (isConnected && ws) {
       const yArray = ws.doc.get('totalYList');
       const observer = () => {
         setTotalYList(yArray.toJSON());
@@ -37,10 +37,10 @@ const useDesktopDnd = () => {
         yArray.unobserveDeep(observer);
       };
     }
-  }, [setTotalYList, ws, doc]);
+  }, [isConnected, setTotalYList, ws, doc]);
 
   useEffect(() => {
-    if (ws) {
+    if (isConnected && ws) {
       const yArray = ws.doc.get('timeYList');
       const observer = () => {
         setTimeYList(yArray.toJSON());
@@ -51,7 +51,7 @@ const useDesktopDnd = () => {
         yArray.unobserveDeep(observer);
       };
     }
-  }, [setTimeYList, ws, doc]);
+  }, [isConnected, setTimeYList, ws, doc]);
 
   const getAtoB = async (start: totalYListInfo, end: totalYListInfo) => {
     try {

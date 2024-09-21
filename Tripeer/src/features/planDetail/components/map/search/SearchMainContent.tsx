@@ -53,6 +53,22 @@ export default function SearchMainContent({ sortNum }: { sortNum: number }) {
           <div className={styles.ball} />
         </li>
       )}
+      {!isLoading &&
+        !isError &&
+        data?.pages.length === 1 &&
+        data?.pages[0].searchResultList.length === 0 && (
+          <div
+            style={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#D9D9D9',
+            }}
+          >
+            검색 결과가 없습니다.
+          </div>
+        )}
     </div>
   );
 }

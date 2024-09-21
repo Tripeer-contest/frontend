@@ -4,23 +4,19 @@ import LastSlide from './components/LastSlide';
 import PhotoSlide from './components/PhotoSlide';
 import SecondSlide from './components/SecondSlide';
 import ThirdSlide from './components/ThirdSlide';
-import LandingLayout from './layout/LandingLayout';
-import LandingScene from './layout/LandingScene';
 import styles from './landing.module.css';
 import { ReactNode, useRef } from 'react';
 import LoginPage from '../auth/LoginPage.tsx';
 
 export default function LandingPage(): JSX.Element {
-  const loginRef = useRef<null | HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const scrollTop = () => {
-    if (loginRef.current) {
-      loginRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (containerRef.current) containerRef.current.scrollTop = 0;
   };
 
   const slides: ReactNode[] = [
-    <LoginPage key={'login'} loginRef={loginRef} />,
+    <LoginPage key={'login'} />,
     <FirstSlide key="first" scrollTop={scrollTop} />,
     <SecondSlide key="second" />,
     <ThirdSlide key="third" />,
@@ -30,14 +26,12 @@ export default function LandingPage(): JSX.Element {
   ];
 
   return (
-    <LandingLayout>
-      <LandingScene>
-        {slides.map((slide, index) => (
-          <div key={index} className={styles.landingSlide}>
-            {slide}
-          </div>
-        ))}
-      </LandingScene>
-    </LandingLayout>
+    <div className={styles.outer} ref={containerRef}>
+      {slides.map((slide, index) => (
+        <div key={index} className={styles.landingSlide}>
+          {slide}
+        </div>
+      ))}
+    </div>
   );
 }

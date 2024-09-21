@@ -34,7 +34,7 @@ export default function DesktopSearch() {
           src={btnImg}
           className={isVisible ? styles.closeBtn : styles.openBtn}
           onClick={() => setIsVisible((prev) => !prev)}
-        ></img>
+        />
         <SearchTopContent setIsRecommendSelected={setIsRecommendSelected} />
         {isRecommendSelected ? (
           <RecommendContent />
