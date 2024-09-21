@@ -10,7 +10,7 @@ export default function DiaryDetailPage() {
       <DetailHeader></DetailHeader>
       <DetailContent>
         <DiarySummary />
-        <CardList></CardList>
+        <CardList />
       </DetailContent>
     </ContentLayout>
   );
