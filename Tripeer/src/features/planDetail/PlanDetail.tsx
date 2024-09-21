@@ -22,7 +22,7 @@ export default function PlanDetail() {
   useConnect(params.id, setIsConnected);
   const Online = useDocInfo(isConnected);
   useCalendarInfo(isConnected);
-  useDesktopDnd();
+  useDesktopDnd(isConnected);
 
   const MAIN_PAGE = useMemo(() => {
     return [
