@@ -1,6 +1,6 @@
 import CreatePlanLayout from '../../layout/CreatePlanLayout';
 import styles from '../../assets/title.module.css';
-import busAni from '../../assets/img/busAnimation.gif';
+import travel_illustration from '../../assets/img/travel_illust.svg';
 
 import zustandStore from '../../../../store/store';
 import { useShallow } from 'zustand/react/shallow';
@@ -24,7 +24,11 @@ export default function PlanTitle() {
   return (
     <CreatePlanLayout pageInfo={pageInfo}>
       <div className={styles.container}>
-        <img src={busAni} alt="bus-animation" className={styles.animation} />
+        <img
+          src={travel_illustration}
+          alt="bus-animation"
+          className={styles.animation}
+        />
         <h3 className={styles.title}>계획 이름을 입력해주세요.</h3>
         <input
           type="text"
