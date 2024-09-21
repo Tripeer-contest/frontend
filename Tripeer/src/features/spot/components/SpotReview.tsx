@@ -8,6 +8,7 @@ import useSpotDetailQuery, {
   useReviewDetailQuery,
 } from '../hooks/useSpotDetailQuery';
 import SmallLoading from '../../../components/loading/SmallLoading';
+import { useNavigate } from 'react-router-dom';
 
 interface ReviewInterface {
   starPointAvg: number;
@@ -30,7 +31,10 @@ export const SpotReview = forwardRef<
   useEffect(() => {
     if (data.reviewPageCount) setPage(1);
   }, [data]);
-
+  const navigate = useNavigate();
+  const OpenCreateReview = () => {
+    navigate(`./createReview`);
+  };
   return (
     <>
       <div className={styles.headerBox} ref={ref}>
@@ -46,7 +50,16 @@ export const SpotReview = forwardRef<
               <p className={styles.rate}>{data.starPointAvg}</p>
               <p> - {data.reviewTotalCount}명 평가</p>
             </div>
-            {mode && <p className={styles.rateBtn}>리뷰 작성</p>}
+            {mode && (
+              <p
+                className={styles.rateBtn}
+                onClick={() => {
+                  OpenCreateReview();
+                }}
+              >
+                리뷰 작성
+              </p>
+            )}
           </div>
         </aside>
         <SpotLine />
