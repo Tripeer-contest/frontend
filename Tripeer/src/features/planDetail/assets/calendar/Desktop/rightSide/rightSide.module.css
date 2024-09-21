@@ -12,12 +12,18 @@
     margin: 20px 0 20px 0;
 }
 
+.box{
+    width: 97%;
+    height: 100%;
+    display: flex;
+    margin: 0 0 0 20px;
+    overflow: auto;
+}
+
 .dndBox{
     width: 97%;
     height: 100%;
     display: flex;
-    overflow: auto;
-    margin: 0 0 0 20px;
 }
 
 .dndBox::-webkit-scrollbar {
