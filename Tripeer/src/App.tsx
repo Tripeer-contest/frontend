@@ -24,6 +24,7 @@ import ErrorBoundary from './components/error/ErrorBoundary.tsx';
 import MyPage from './features/mypage/MyPage.tsx';
 import MyConfig from './features/mypage/MyConfig.tsx';
 import MyNotice from './features/mypage/MyNotice.tsx';
+import CreateReview from './features/spot/components/CreateReview.tsx';
 
 const router = createBrowserRouter([
   {
@@ -67,11 +68,36 @@ const router = createBrowserRouter([
       },
       {
         path: '/home/spot/:id',
+
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<CommonLoading />}>
+                <SpotPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'createReview',
+            element: (
+              <Suspense fallback={<CommonLoading />}>
+                <CreateReview />
+              </Suspense>
+            ),
+          },
+        ],
+
+        // loader: protectRouter(),
+      },
+      {
+        path: '/home/spot/:id/createReview',
         element: (
           <Suspense fallback={<CommonLoading />}>
-            <SpotPage />
+            <CreateReview />
           </Suspense>
         ),
+
         // loader: protectRouter(),
       },
       {

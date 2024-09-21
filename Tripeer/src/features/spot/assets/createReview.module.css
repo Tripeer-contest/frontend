@@ -1,0 +1,238 @@
+@media screen and (max-width: 1000px) {
+  .container {
+    height: calc(100vh - 130px);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  .container::-webkit-scrollbar {
+    display: none;
+  }
+  .headerBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .backIcon {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+  .spotTitle {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .sectionBox {
+    height: calc(100% - 80px);
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .starSection {
+    display: grid;
+    grid-template-columns: 80px auto;
+  }
+  .reviewSection {
+    display: grid;
+    grid-template-columns: 80px auto;
+  }
+  .imgSection {
+    display: grid;
+    grid-template-columns: 80px auto;
+  }
+  .imgBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+  .imgContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    border: #c4c4c4 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .noimg {
+    height: 40px;
+    width: 40px;
+  }
+  .imgText {
+    margin-left: 80px;
+    color: #c4c4c4;
+    font-size: 0.9rem;
+    line-height: 160%;
+  }
+  .btnBox {
+    margin-left: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .cancelBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 2 - 10px);
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #f7f7f7;
+    color: #606060;
+  }
+  .confirmBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 2 - 10px);
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background: #04acb5;
+  }
+  .inputBox {
+    border: #cecece 1px solid;
+    border-radius: 5px;
+    height: 250px;
+    width: 100%;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    padding: 5px;
+    font-size: 1rem;
+  }
+  .leftText {
+    font-weight: bold;
+    color: #262626;
+  }
+  .leftText span {
+    margin-left: 3px;
+    color: #04acb5;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .container {
+    height: 100vh;
+    padding-top: 20px;
+  }
+  .headerBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px;
+  }
+  .backIcon {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+  .spotTitle {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .sectionBox {
+    margin-left: 50px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .starSection {
+    display: grid;
+    grid-template-columns: 120px auto;
+  }
+  .reviewSection {
+    display: grid;
+    grid-template-columns: 120px auto;
+  }
+  .imgSection {
+    display: grid;
+    grid-template-columns: 120px auto;
+  }
+  .imgBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+  .imgContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+    border: #c4c4c4 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .noimg {
+    height: 70px;
+    width: 70px;
+  }
+  .imgText {
+    margin-left: 120px;
+    color: #c4c4c4;
+  }
+  .btnBox {
+    margin-left: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .cancelBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #f7f7f7;
+    color: #606060;
+  }
+  .confirmBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background: #04acb5;
+  }
+  .inputBox {
+    border: #cecece 1px solid;
+    border-radius: 5px;
+    height: 120px;
+    width: 100%;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    padding: 5px;
+    font-size: 1rem;
+  }
+  .leftText {
+    font-weight: bold;
+    color: #262626;
+  }
+  .leftText span {
+    margin-left: 3px;
+    color: #04acb5;
+  }
+}
+.fiveStar {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  margin-bottom: 5px;
+}
