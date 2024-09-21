@@ -1,6 +1,10 @@
+import zustandStore from '../../../../../store/store';
 import PlaceContent from './placeList/PlaceListContent';
 
 export default function MobileMapTravel() {
+  const userInfo = zustandStore((state) => state.room_userInfo);
+  const clickedMember = userInfo.map((user) => ({ ...user, isClicked: true }));
+
   return (
     <div
       style={{
@@ -10,7 +14,7 @@ export default function MobileMapTravel() {
         overflowY: 'scroll',
       }}
     >
-      <PlaceContent />
+      <PlaceContent clickedMember={clickedMember} />
     </div>
   );
 }

@@ -37,25 +37,42 @@ export default function SearchNowContent({ sortNum }: { sortNum: number }) {
     bound ? bound.maxLon : 0,
     sortNum,
   );
-  console.log(data);
   return (
-    <div className={styles.container}>
-      {!isLoading &&
-        !isError &&
-        data?.pages.map((page) =>
-          page.searchResultList.map((result: PlanSearchSpotInterface) => (
-            <Fragment key={result.spotInfoId}>
-              <SearchSpotCard spot={result} mutate={mutate} />
-            </Fragment>
-          )),
+    <>
+      <div className={styles.container}>
+        {!isLoading &&
+          !isError &&
+          data?.pages.map((page) =>
+            page.searchResultList.map((result: PlanSearchSpotInterface) => (
+              <Fragment key={result.spotInfoId}>
+                <SearchSpotCard spot={result} mutate={mutate} />
+              </Fragment>
+            )),
+          )}
+        {!isLoading && hasNextPage && data?.pages.length && (
+          <li className={styles.ballBox} ref={setRef}>
+            <div className={styles.ball} />
+            <div className={styles.ball} />
+            <div className={styles.ball} />
+          </li>
         )}
-      {!isLoading && hasNextPage && data?.pages.length && (
-        <li className={styles.ballBox} ref={setRef}>
-          <div className={styles.ball} />
-          <div className={styles.ball} />
-          <div className={styles.ball} />
-        </li>
-      )}
-    </div>
+        {!isLoading &&
+          !isError &&
+          data?.pages.length === 1 &&
+          data?.pages[0].searchResultList.length === 0 && (
+            <div
+              style={{
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#D9D9D9',
+              }}
+            >
+              검색 결과가 없습니다.
+            </div>
+          )}
+      </div>
+    </>
   );
 }
