@@ -13,18 +13,16 @@ export default function useConnect(
   setIsConnected: (param: boolean) => void,
 ) {
   const { isSuccess } = useRoomInfo(id);
-  const [setYDoc, setYWs, init, yws, connected, isConnected, setUserInfo] =
-    zustandStore(
-      useShallow((state) => [
-        state.setYDoc,
-        state.setYWs,
-        state.y_init,
-        state.y_ws,
-        state.setYConnect,
-        state.y_connected,
-        state.room_setUserInfo,
-      ]),
-    );
+  const [setYDoc, setYWs, init, yws, setUserInfo] = zustandStore(
+    useShallow((state) => [
+      state.setYDoc,
+      state.setYWs,
+      state.y_init,
+      state.y_ws,
+
+      state.room_setUserInfo,
+    ]),
+  );
 
   useEffect(() => {
     let doc: Y.Doc;
@@ -56,7 +54,6 @@ export default function useConnect(
               }
               setUserInfo(newUserInfo);
               setIsConnected(true);
-              connected();
             }, 500);
           });
           const tokenInfo = getTokenInfo();
@@ -64,16 +61,7 @@ export default function useConnect(
         }
       });
     }
-  }, [
-    id,
-    setYDoc,
-    setYWs,
-    connected,
-    setUserInfo,
-    isSuccess,
-    yws,
-    setIsConnected,
-  ]);
+  }, [id, setYDoc, setYWs, setUserInfo, isSuccess, yws, setIsConnected]);
 
   useEffect(() => {
     return () => {
@@ -83,6 +71,4 @@ export default function useConnect(
       }
     };
   }, [yws, init]);
-
-  return { isLoading: !isConnected };
 }
