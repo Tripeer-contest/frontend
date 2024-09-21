@@ -51,9 +51,14 @@ export default function ConfirmPlanLayout({
     <div className={styles.createPlanContainer}>
       <header className={styles.desktopHeader}>
         <p className={styles.title}>여행 계획 정보를 확인해주세요.</p>
-        <p className={styles.nextText} onClick={nextHandler}>
-          생성
-        </p>
+        <div className={styles.textBox}>
+          <p className={styles.prevText} onClick={prevHandler}>
+            이전
+          </p>
+          <p className={styles.nextText} onClick={nextHandler}>
+            생성
+          </p>
+        </div>
       </header>
       <header className={styles.mobileHeader}>
         <img
