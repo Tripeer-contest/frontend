@@ -1,6 +1,5 @@
 import useAnimation from '../hook/useAnimation';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './lastSlide.module.css';
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 
 export default function LastSlide({ scrollTop }: Props): JSX.Element {
   const titleRef = useRef<null | HTMLHeadingElement>(null);
-  const linkRef = useRef<null | HTMLAnchorElement>(null);
+  const linkRef = useRef<null | HTMLDivElement>(null);
 
   useAnimation([titleRef, linkRef]);
 
@@ -23,9 +22,9 @@ export default function LastSlide({ scrollTop }: Props): JSX.Element {
           </h1>
         </article>
       </section>
-      <Link to="" className={styles.startBtn} ref={linkRef} onClick={scrollTop}>
+      <div className={styles.startBtn} ref={linkRef} onClick={scrollTop}>
         시작하기
-      </Link>
+      </div>
     </main>
   );
 }
