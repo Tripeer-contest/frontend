@@ -10,24 +10,23 @@ import zustandStore from '../../../../../store/store.tsx';
 import postAtoB from '../../../api/postAtoB.ts';
 
 const useDesktopDnd = () => {
-  const [setTotalYList, setTimeYList, ws, doc, isConnected] = zustandStore(
+  const [setTotalYList, setTimeYList, ws, doc] = zustandStore(
     useShallow((state) => [
       state.room_setTotalYList,
       state.room_setTimeYList,
       state.y_ws,
       state.y_doc,
-      state.y_connected,
     ]),
   );
 
-  const loadingData: [string, string, timeYListInfo | null] = [
-    '계산중',
-    '0',
-    null,
-  ];
+  const loadingData: timeYListInfo = {
+    option: 0,
+    time: ['계산중', '계산중', '계산중', '계산중'],
+    rootList: [null, null, null, null],
+  };
 
   useEffect(() => {
-    if (isConnected && ws) {
+    if (ws) {
       const yArray = ws.doc.get('totalYList');
       const observer = () => {
         setTotalYList(yArray.toJSON());
@@ -38,10 +37,10 @@ const useDesktopDnd = () => {
         yArray.unobserveDeep(observer);
       };
     }
-  }, [isConnected, setTotalYList, ws, doc]);
+  }, [setTotalYList, ws, doc]);
 
   useEffect(() => {
-    if (isConnected && ws) {
+    if (ws) {
       const yArray = ws.doc.get('timeYList');
       const observer = () => {
         setTimeYList(yArray.toJSON());
@@ -52,15 +51,11 @@ const useDesktopDnd = () => {
         yArray.unobserveDeep(observer);
       };
     }
-  }, [isConnected, setTimeYList, ws, doc]);
+  }, [setTimeYList, ws, doc]);
 
-  const getAtoB = async (
-    start: totalYListInfo,
-    end: totalYListInfo,
-    option: string,
-  ) => {
+  const getAtoB = async (start: totalYListInfo, end: totalYListInfo) => {
     try {
-      return await postAtoB(start, end, option);
+      return await postAtoB(start, end);
     } catch (error) {
       console.error('A to B Error : ', error);
       return null;
@@ -72,8 +67,8 @@ const useDesktopDnd = () => {
     destinationYArray: YArray<totalYListInfo>,
     sourceIdx: number,
     destinationIdx: number,
-    sourceYTime: YArray<[string, string, timeYListInfo | null]>,
-    destinationYTime: YArray<[string, string, timeYListInfo | null]>,
+    sourceYTime: YArray<timeYListInfo>,
+    destinationYTime: YArray<timeYListInfo>,
     sourceArrIdx: number,
     destinationArrIdx: number,
   ) => {
@@ -107,17 +102,11 @@ const useDesktopDnd = () => {
           const data = await getAtoB(
             sourceYArray.get(i - 1),
             sourceYArray.get(i),
-            '0',
           );
 
           if (data) {
-            const newYArr: [string, string, timeYListInfo | null] = [
-              data.spotTime[0],
-              data.spotTime[1],
-              data.publicRootList,
-            ];
             sourceYTime.delete(sourceIdx - 1, 1);
-            sourceYTime.insert(sourceIdx - 1, [newYArr]);
+            sourceYTime.insert(sourceIdx - 1, [data]);
           }
         }
       }
@@ -136,17 +125,11 @@ const useDesktopDnd = () => {
           const data = await getAtoB(
             destinationYArray.get(0),
             destinationYArray.get(1),
-            '0',
           );
 
           if (data) {
-            const newYArr: [string, string, timeYListInfo | null] = [
-              data.spotTime[0],
-              data.spotTime[1],
-              data.publicRootList,
-            ];
             destinationYTime.delete(0, 1);
-            destinationYTime.insert(0, [newYArr]);
+            destinationYTime.insert(0, [data]);
           }
         }
         //// 맨끝에 넣는경우 >> 길이-1과 길이-2의 이동시간을 계산해서 마지막에 추가
@@ -155,17 +138,11 @@ const useDesktopDnd = () => {
           const data = await getAtoB(
             destinationYArray.get(destinationYArray.length - 2),
             destinationYArray.get(destinationYArray.length - 1),
-            '0',
           );
 
           if (data) {
-            const newYArr: [string, string, timeYListInfo | null] = [
-              data.spotTime[0],
-              data.spotTime[1],
-              data.publicRootList,
-            ];
             destinationYTime.delete(destinationYTime.length - 1, 1);
-            destinationYTime.insert(destinationYTime.length, [newYArr]);
+            destinationYTime.insert(destinationYTime.length, [data]);
           }
         }
         //// 중간에 넣는 경우 >> i와 i+1의 시간을 계산해 i에 추가, i와 i-1을 계산해서 i-1을 수정
@@ -177,33 +154,21 @@ const useDesktopDnd = () => {
           const front = await getAtoB(
             destinationYArray.get(destinationIdx - 1),
             destinationYArray.get(destinationIdx),
-            '0',
           );
 
           if (front) {
-            const newYArr: [string, string, timeYListInfo | null] = [
-              front.spotTime[0],
-              front.spotTime[1],
-              front.publicRootList,
-            ];
             destinationYTime.delete(destinationIdx - 1, 1);
-            destinationYTime.insert(destinationIdx - 1, [newYArr]);
+            destinationYTime.insert(destinationIdx - 1, [front]);
           }
 
           const back = await getAtoB(
             destinationYArray.get(destinationIdx),
             destinationYArray.get(destinationIdx + 1),
-            '0',
           );
 
           if (back) {
-            const newYArr: [string, string, timeYListInfo | null] = [
-              back.spotTime[0],
-              back.spotTime[1],
-              back.publicRootList,
-            ];
             destinationYTime.delete(destinationIdx, 1);
-            destinationYTime.insert(destinationIdx, [newYArr]);
+            destinationYTime.insert(destinationIdx, [back]);
           }
         }
       }
@@ -231,16 +196,14 @@ const useDesktopDnd = () => {
     const timeYList = ws.doc.getArray('timeYList');
     // 원래 있던 배열
     const sourceYArray = yArray.get(sourceArrIdx) as YArray<totalYListInfo>;
-    const sourceYTime = timeYList.get(sourceArrIdx) as YArray<
-      [string, string, timeYListInfo | null]
-    >;
+    const sourceYTime = timeYList.get(sourceArrIdx) as YArray<timeYListInfo>;
     // 이동한 배열
     const destinationYArray = yArray.get(
       destinationArrIdx,
     ) as YArray<totalYListInfo>;
-    const destinationYTime = timeYList.get(destinationArrIdx) as YArray<
-      [string, string, timeYListInfo | null]
-    >;
+    const destinationYTime = timeYList.get(
+      destinationArrIdx,
+    ) as YArray<timeYListInfo>;
 
     // 삭제할 아이템 저장
     const movedItem = sourceYArray.get(sourceIdx);

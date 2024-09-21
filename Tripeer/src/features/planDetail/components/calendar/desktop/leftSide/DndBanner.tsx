@@ -17,7 +17,7 @@ const DndBanner = () => {
           ref={provided.innerRef}
           {...provided.droppableProps}
         >
-          {totalYList[0].map((item, idx) => (
+          {totalYList[0]?.map((item, idx) => (
             <DndCard item={item} idx={idx} key={item.spotInfoId} />
           ))}
           {provided.placeholder}

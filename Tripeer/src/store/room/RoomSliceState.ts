@@ -69,10 +69,8 @@ export interface RoomSliceState {
   room_syncUser: (coworkers: OnlineInfo[]) => void;
   room_totalYList: totalYListInfo[][];
   room_setTotalYList: (totalYList: totalYListInfo[][]) => void;
-  room_timeYList: [string, string, timeYListInfo | null][][];
-  room_setTimeYList: (
-    timeYList: [string, string, timeYListInfo | null][][],
-  ) => void;
+  room_timeYList: timeYListInfo[][];
+  room_setTimeYList: (timeYList: timeYListInfo[][]) => void;
   room_setSelectedTownIdx: (param: number) => void;
   room_setSortType: (param: string) => void;
   room_moveMap: ((latitude: number, longitude: number) => void) | null;
@@ -134,6 +132,12 @@ export interface RoomTownInfo {
   title: string;
 }
 
+export interface timeYListInfo {
+  option: number;
+  rootList: (rootList | null)[];
+  time: string[];
+}
+
 export interface totalYListInfo {
   addr: string;
   contentType: string;
@@ -151,17 +155,17 @@ export interface totalYListInfo {
   wishlist: boolean;
 }
 
-export interface timeYListInfo {
+export interface rootList {
   totalTime: number;
   totalDistance: number;
   totalWalkTime: number;
   totalWalkDistance: number;
   pathType: number;
   totalFare: number;
-  publicRootDetailList: rootDetail[];
+  publicRootDetailList: publicRootDetailList[];
 }
 
-export interface rootDetail {
+export interface publicRootDetailList {
   distance: number;
   sectionTime: number;
   mode: string;
