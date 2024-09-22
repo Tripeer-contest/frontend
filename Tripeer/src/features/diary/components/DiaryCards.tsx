@@ -7,7 +7,7 @@ import useDeleteDiary from '../hook/useDeleteDiary';
 import { useState } from 'react';
 import MutationLoading from '../../../components/loading/MutationLoading';
 import { useNavigate } from 'react-router-dom';
-import { makeDayToFullYearString } from '../../../utils/utilDate';
+import { makeDayToDotFullString } from '../../../utils/utilDate';
 
 export default function DiaryCards({
   diaryListData,
@@ -18,7 +18,6 @@ export default function DiaryCards({
   const { open, DeleteModal } = useDeleteModal();
   const { mutate, isPending } = useDeleteDiary();
   const navigate = useNavigate();
-
   const openHandler = (id: number) => {
     setPlanId(id);
     open();
@@ -32,13 +31,7 @@ export default function DiaryCards({
     <main className={styles.cardsBox}>
       {diaryListData.map((item, idx) => {
         return (
-          <div
-            className={styles.diaryCard}
-            key={idx}
-            onClick={() => {
-              goDiaryDetail(item.planId);
-            }}
-          >
+          <div className={styles.diaryCard} key={idx}>
             <img
               className={styles.topDeleteBtn}
               src={deleteWhiteBtn}
@@ -56,10 +49,18 @@ export default function DiaryCards({
                   onClick={() => openHandler(item.planId)}
                 />
               </div>
-              <div className={styles.centerBox}>
+
+              <div className={styles.bottomBox}>
+                <p>
+                  {makeDayToDotFullString(item.startDay)} ~
+                  {makeDayToDotFullString(item.endDay)}
+                  <span>, {item.member.length}명</span>
+                </p>
+              </div>
+              <div className={styles.bottomSubtitleBox}>
                 {item.townList.map((town, idx) => {
                   return (
-                    <p key={idx} className={styles.topSubtitle}>
+                    <p key={idx}>
                       {idx === item.townList.length - 1 ? (
                         <span>{town}</span>
                       ) : (
@@ -68,29 +69,14 @@ export default function DiaryCards({
                     </p>
                   );
                 })}
-                <div className={styles.bottomBox}>
-                  <p>
-                    {makeDayToFullYearString(item.startDay)} ~{' '}
-                    {makeDayToFullYearString(item.endDay)}
-                    <span>, {item.member.length}명</span>
-                  </p>
-                </div>
-                <p className={styles.bottomSubtitle}>
-                  {item.townList.map((town, idx) => {
-                    return (
-                      <p key={idx}>
-                        {idx === item.townList.length - 1 ? (
-                          <span>{town}</span>
-                        ) : (
-                          <span>{town},</span>
-                        )}
-                      </p>
-                    );
-                  })}
-                </p>
-                <div className={styles.detailBtn}>
-                  <p className={styles.detailText}>상세보기</p>
-                </div>
+              </div>
+              <div
+                className={styles.detailBtn}
+                onClick={() => {
+                  goDiaryDetail(item.planId);
+                }}
+              >
+                <p className={styles.detailText}>상세보기</p>
               </div>
             </div>
           </div>

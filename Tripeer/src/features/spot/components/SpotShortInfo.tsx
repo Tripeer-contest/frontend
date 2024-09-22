@@ -7,6 +7,7 @@ import { truncateText } from '../../../utils/utilString';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 import { ReviewInterface } from '../../../types/PlaceType';
 import { daysAgo } from '../../../utils/utilDate';
+import { useNavigate } from 'react-router-dom';
 
 interface ShortQueryType {
   title: string;
@@ -32,6 +33,10 @@ export default function SpotShortInfo({
     starPointAvg: data.data.starPointAvg,
     reviewTotalCount: data.data.reviewTotalCount,
   }));
+  const navigate = useNavigate();
+  const OpenCreateReview = () => {
+    navigate(`./createReview`);
+  };
   return (
     <section className={styles.container}>
       <p className={styles.category}>카테고리 - {data.contentType}</p>
@@ -53,7 +58,12 @@ export default function SpotShortInfo({
                 전체보기
               </a>
             ) : (
-              <a className={styles.scrollBtn} onClick={scrollToReview}>
+              <a
+                className={styles.scrollBtn}
+                onClick={() => {
+                  OpenCreateReview();
+                }}
+              >
                 리뷰쓰기
               </a>
             )}

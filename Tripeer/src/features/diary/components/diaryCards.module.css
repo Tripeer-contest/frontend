@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    position: relative;
   }
 
   .diaryCard {
@@ -22,11 +23,12 @@
     height: 120px;
     border-radius: 5px 0 0 5px;
   }
+
   .cardTextBox {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 20px 15px;
+    gap: 5px;
+    padding: 12px;
     width: calc(100% - 120px);
     height: 100%;
   }
@@ -47,34 +49,51 @@
     cursor: pointer;
     z-index: 10;
   }
-  .topSubtitle {
-    font-size: 1em;
-    display: inline;
-  }
-  .bottomSubtitle {
-    display: none;
-  }
   .bottomBox {
+    width: calc(100% - 35px);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .bottomSubtitleBox {
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 35px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .bottomSubtitle {
+    font-size: 1em;
   }
   .bottomBox p {
     color: #999999;
     font-size: 0.8em;
   }
+
   .detailBtn {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #04acb5;
     border-radius: 5px;
+    width: calc(100%);
+    height: 30px;
     cursor: pointer;
+    bottom: 12px;
+    right: 12px;
+  }
+  .detailBtn:hover {
+    transform: scale(0.98);
   }
   .detailText {
-    display: none;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    font-size: 0.9rem;
   }
   .modalContainer {
     margin-bottom: 0px;
@@ -165,6 +184,7 @@
     top: 10px;
     height: 20px;
     width: 20px;
+    z-index: 10;
     cursor: pointer;
   }
   .cardImg {
@@ -180,7 +200,7 @@
     text-align: center;
     width: 100%;
     height: 40%;
-    padding: 20px 10px;
+    padding: 10px;
   }
   .topBox {
     display: flex;
@@ -196,7 +216,7 @@
   .deleteBtn {
     display: none;
   }
-  .topSubtitle {
+  .topSubtitleBox {
     display: none;
   }
   .centerBox {
@@ -207,11 +227,20 @@
     text-align: center;
     width: 100%;
   }
+  .bottomSubtitleBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 10px);
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .bottomSubtitle {
     font-size: 0.9em;
     margin-top: 10px;
-    display: flex;
-    flex-direction: row;
   }
   .bottomBox {
     display: flex;
@@ -229,8 +258,8 @@
     align-items: center;
     background-color: #04acb5;
     border-radius: 5px;
-    width: 120px;
-    height: 30px;
+    width: calc(100% - 100px);
+    height: 120px;
     margin-top: 10px;
     cursor: pointer;
   }

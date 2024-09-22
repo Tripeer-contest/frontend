@@ -52,9 +52,7 @@ export default function useIsSpotInSpotList(spot: PlanSearchSpotInterface) {
       });
       isRemoved
         ? setMessage('')
-        : setMessage(
-            '여행지가 이미 계획에 포함되어있습니다. 계획에서 삭제 후 시도해주세요.',
-          );
+        : setMessage('여행지가 이미 일정에 포함되어있습니다.');
     }
   };
   useEffect(() => {
