@@ -167,16 +167,6 @@ const useDesktopDnd = (isConnected: boolean) => {
           destinationYTime.insert(destinationIdx - 1, [loadingData]);
           destinationYTime.insert(destinationIdx, [loadingData]);
 
-          const front = await getAtoB(
-            destinationYArray.get(destinationIdx - 1),
-            destinationYArray.get(destinationIdx),
-          );
-
-          if (front) {
-            destinationYTime.delete(destinationIdx - 1, 1);
-            destinationYTime.insert(destinationIdx - 1, [front]);
-          }
-
           const back = await getAtoB(
             destinationYArray.get(destinationIdx),
             destinationYArray.get(destinationIdx + 1),
@@ -185,6 +175,16 @@ const useDesktopDnd = (isConnected: boolean) => {
           if (back) {
             destinationYTime.delete(destinationIdx, 1);
             destinationYTime.insert(destinationIdx, [back]);
+          }
+
+          const front = await getAtoB(
+            destinationYArray.get(destinationIdx - 1),
+            destinationYArray.get(destinationIdx),
+          );
+
+          if (front) {
+            destinationYTime.delete(destinationIdx - 1, 1);
+            destinationYTime.insert(destinationIdx - 1, [front]);
           }
         }
       }

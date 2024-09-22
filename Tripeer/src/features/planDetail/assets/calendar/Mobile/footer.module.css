@@ -1,0 +1,49 @@
+.footer{
+    width: calc(100% - 30px);
+    height: 50px;
+    position: absolute;
+    z-index: 11;
+    bottom: 15px;
+    left: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.placeAddBtn{
+    height: 100%;
+    width: calc(100% - 80px);
+    background-color: #04ACB5;
+    color: white;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.placeAddBtn2{
+    height: 100%;
+    width: 100%;
+    background-color: #04ACB5;
+    color: white;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.rootBtn{
+    height: 100%;
+    width: 50px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rootImage{
+    width: 24px;
+}

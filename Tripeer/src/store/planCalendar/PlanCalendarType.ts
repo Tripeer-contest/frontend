@@ -5,4 +5,8 @@ export interface PlanCalendarSlice {
   c_setIsDragging: (isDragging: boolean) => void;
   c_searchList: number[];
   c_setSearchList: (arr: number[]) => void;
+  c_isModal: boolean;
+  c_setIsModal: (isModal: boolean) => void;
+  c_nowDay: number;
+  c_nowSetDay: (day: number) => void;
 }

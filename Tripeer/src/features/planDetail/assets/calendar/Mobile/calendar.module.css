@@ -1,3 +1,92 @@
 .container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
 
+.header {
+    position: absolute;
+    z-index: 11;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #d9d9d9;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    justify-content: space-between;
+    padding-right: 20px;
+    background-color: white;
+}
+
+.funcBox {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+}
+
+.body{
+    width: 100%;
+    height: 100%;
+    padding: 50px 15px 0 15px;
+    overflow-y: scroll;
+}
+
+.body::-webkit-scrollbar {
+    display: none;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.selectBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    flex-direction: column;
+}
+
+.dayBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+    gap: 15px;
+}
+
+.selectImage{
+    height: 20px;
+}
+
+.optBox{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.dayTextBox{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 10px;
+    width: 50%;
+}
+
+.dayP{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.dayContent{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #979797;
+    margin: 0 0 1px 0;
 }
