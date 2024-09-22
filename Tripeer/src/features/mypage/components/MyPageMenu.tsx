@@ -4,6 +4,7 @@ import useMyInfoQuery from '../hooks/useMyInfoQuery';
 import MyMainBtn from './button/MyMainBtn';
 import MySubBtn from './button/MySubBtn';
 import useClipBoard from '../../../hooks/useClipBoard';
+import cookie from 'js-cookie';
 
 export default function MyPageMenu() {
   const { data } = useMyInfoQuery();
@@ -11,6 +12,10 @@ export default function MyPageMenu() {
   const { isClip, saveClipBoard } = useClipBoard('https://tripeer.co.kr');
   const showClipConfirm = () => {
     return isClip ? styles.clipConfirm : styles.disappear;
+  };
+  const logout = () => {
+    cookie.remove('Authorization');
+    navigate('/');
   };
   return (
     <>
@@ -43,8 +48,8 @@ export default function MyPageMenu() {
         </div>
         <div className={styles.part}>
           <h3 className={styles.subTitle}>로그인 설정</h3>
-          <MySubBtn name="로그아웃" clickHandler={() => {}} />
-          <MySubBtn name="서비스 탈퇴" clickHandler={() => {}} />
+          <MySubBtn name="로그아웃" clickHandler={logout} />
+          <MySubBtn name="서비스 탈퇴" clickHandler={logout} />
         </div>
       </main>
       <p className={showClipConfirm()}>클립보드에 복사가 완료되었습니다.</p>
