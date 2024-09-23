@@ -3,7 +3,6 @@ import PlanShortNav from '../PlanShortNav.tsx';
 import useIsMobileSize from '../../hooks/useIsMobileSize.tsx';
 import MobileCalendar from './mobile/MobileCalendar.tsx';
 import DesktopCalendar from './desktop/DesktopCalendar.tsx';
-import PlanNavigate from './common/PlanNavigate.tsx';
 
 export default function PlanCalendar() {
   const isMobile = useIsMobileSize();
@@ -16,7 +15,6 @@ export default function PlanCalendar() {
       <section className={styles.contentBox}>
         {isMobile ? <MobileCalendar /> : <DesktopCalendar />}
       </section>
-      <PlanNavigate startDay={1} />
     </main>
   );
 }
