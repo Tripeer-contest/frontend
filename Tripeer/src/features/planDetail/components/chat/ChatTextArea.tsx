@@ -10,7 +10,7 @@ export default function ChatTextArea({
 }: {
   setIsChatNow: (chat: boolean) => void;
 }) {
-  const [timeoutId, setId] = useState<number | null>(null);
+  const [timeoutId, setId] = useState<NodeJS.Timeout | null>(null);
   const scrollToBottom = zustandStore((state) => state.room_chatScrollToBottom);
   const textRef = useRef<HTMLTextAreaElement | null>(null);
   const { sendMessage } = useSendChat();

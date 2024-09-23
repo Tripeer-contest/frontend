@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function useClipBoard(text: string) {
   const [isClip, setIsClip] = useState(false);
-  const timerId = useRef<number | undefined>();
+  const timerId = useRef<NodeJS.Timeout | undefined>();
 
   const saveClipBoard = () => {
     navigator.clipboard.writeText(text).then(() => {

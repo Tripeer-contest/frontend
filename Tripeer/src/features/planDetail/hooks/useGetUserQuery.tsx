@@ -15,7 +15,7 @@ export function useGetUserQuery(keyword: string) {
 
 export function useGetSlowUserQuery(keyword: string) {
   const [slowKeyword, setSlowKeyword] = useState('');
-  const timerId = useRef<number | null>(null);
+  const timerId = useRef<NodeJS.Timeout | null>(null);
   useEffect(() => {
     if (keyword) {
       if (timerId.current) clearTimeout(timerId.current);
