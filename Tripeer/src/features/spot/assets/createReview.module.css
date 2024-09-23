@@ -1,6 +1,6 @@
 @media screen and (max-width: 1000px) {
   .container {
-    height: calc(100vh - 130px);
+    height: 100%;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -37,6 +37,8 @@
   .starSection {
     display: grid;
     grid-template-columns: 80px auto;
+    align-items: center;
+    margin-bottom: 5px;
   }
   .reviewSection {
     display: grid;
@@ -46,30 +48,13 @@
     display: grid;
     grid-template-columns: 80px auto;
   }
-  .imgBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
-  }
-  .imgContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100px;
-    border: #c4c4c4 1px solid;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .noimg {
-    height: 40px;
-    width: 40px;
-  }
+
   .imgText {
     margin-left: 80px;
     color: #c4c4c4;
     font-size: 0.9rem;
     line-height: 160%;
+    margin-bottom: 10px;
   }
   .btnBox {
     margin-left: 80px;
@@ -102,13 +87,17 @@
   .inputBox {
     border: #cecece 1px solid;
     border-radius: 5px;
-    height: 250px;
+    height: 200px;
     width: 100%;
     resize: none;
     outline: none;
     overflow: hidden;
     padding: 5px;
     font-size: 1rem;
+  }
+  .inputBox::placeholder {
+    font-family: 'Pretendard';
+    color: #cecece;
   }
   .leftText {
     font-weight: bold;
@@ -121,7 +110,7 @@
 }
 @media screen and (min-width: 1000px) {
   .container {
-    height: 100vh;
+    height: 100%;
     padding-top: 20px;
   }
   .headerBox {
@@ -150,6 +139,7 @@
   .starSection {
     display: grid;
     grid-template-columns: 120px auto;
+    align-items: center;
   }
   .reviewSection {
     display: grid;
@@ -158,25 +148,6 @@
   .imgSection {
     display: grid;
     grid-template-columns: 120px auto;
-  }
-  .imgBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
-  }
-  .imgContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 250px;
-    border: #c4c4c4 1px solid;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .noimg {
-    height: 70px;
-    width: 70px;
   }
   .imgText {
     margin-left: 120px;
@@ -221,6 +192,10 @@
     padding: 5px;
     font-size: 1rem;
   }
+  .inputBox::placeholder {
+    font-family: 'Pretendard';
+    color: #cecece;
+  }
   .leftText {
     font-weight: bold;
     color: #262626;
@@ -229,10 +204,4 @@
     margin-left: 3px;
     color: #04acb5;
   }
-}
-.fiveStar {
-  display: flex;
-  flex-direction: row;
-  gap: 2px;
-  margin-bottom: 5px;
 }

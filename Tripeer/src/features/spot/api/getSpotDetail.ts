@@ -21,16 +21,29 @@ export async function getReviewPerPage(spotId: number, page: number) {
 }
 
 export async function postReview(
-  spotId: number,
-  starPoint: number,
-  message: string,
+  reviewReq: {
+    spotInfoId: string;
+    starPoint: string;
+    message: string;
+  },
+  images?: File[],
 ) {
+  const form = new FormData();
+  const blob = new Blob([JSON.stringify(reviewReq)], {
+    type: 'application/json',
+  });
+  form.append('reviewReq', blob);
+
+  images &&
+    images.forEach((image) => {
+      form.append('images', image);
+    });
   try {
-    const res = await api.post(
-      `/place/review/write?spotId=${spotId}&startPoint=${starPoint}&message=${message}`,
-    );
-    return res.data;
-  } catch {
-    throw new Error('에러발생');
+    const res = await api.post(`/place/review/write`, form, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return res.data.data;
+  } catch (err: any) {
+    throw new Error(err?.response?.data?.message);
   }
 }
