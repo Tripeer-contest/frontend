@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function useClipBoard(text: string) {
   const [isClip, setIsClip] = useState(false);
-  const timerId = useRef<NodeJS.Timeout | undefined>();
+  const timerId = useRef<number | undefined>();
 
   const saveClipBoard = () => {
     navigator.clipboard.writeText(text).then(() => {
@@ -11,7 +11,7 @@ export default function useClipBoard(text: string) {
         timerId.current = undefined;
       }
       setIsClip(true);
-      timerId.current = setTimeout(() => {
+      timerId.current = window.setTimeout(() => {
         setIsClip(false);
         clearTimeout(timerId.current);
         timerId.current = undefined;
