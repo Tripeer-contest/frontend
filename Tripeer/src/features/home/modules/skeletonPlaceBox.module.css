@@ -43,7 +43,7 @@
     }
 }
 
-@media screen and (min-width: 930px) {
+@media screen and (min-width: 1000px) {
     .container {
         height: 330px;
         width: 300px;
@@ -68,7 +68,7 @@
     }
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 1000px) {
     .container {
         display: flex;
         justify-content: start;

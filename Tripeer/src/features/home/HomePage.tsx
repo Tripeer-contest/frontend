@@ -6,8 +6,12 @@ import HomeRecommendationBanner from './components/HomeRecommendationBanner.tsx'
 import HomePlaceBanner from './components/HomePlaceBanner.tsx';
 import RecommendSlide from '../../components/empty/RecommendSlide.tsx';
 import SearchBar from './components/SearchBar.tsx';
+import useHomeRecommend from './hooks/useHomeRecommend.tsx';
+import SkeletonRecommendationBanner from './components/SkeletonRecommendationBanner.tsx';
 
 export default function HomePage() {
+  const { recommendData } = useHomeRecommend();
+
   return (
     <BoxLayout>
       <ContentLayout>
@@ -31,8 +35,16 @@ export default function HomePage() {
             <p className={styles.title}>취향에 맞는 여행지를 찾아보세요.</p>
             <HomeBanner />
           </div>
-          <HomeRecommendationBanner title={'호텔을'} />
-          <HomeRecommendationBanner title={'호텔을'} />
+          {recommendData ? (
+            <HomeRecommendationBanner data={recommendData[0]} />
+          ) : (
+            <SkeletonRecommendationBanner />
+          )}
+          {recommendData ? (
+            <HomeRecommendationBanner data={recommendData[1]} />
+          ) : (
+            <SkeletonRecommendationBanner />
+          )}
           <HomePlaceBanner />
         </div>
       </ContentLayout>

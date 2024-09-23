@@ -25,6 +25,7 @@ import MyPage from './features/mypage/MyPage.tsx';
 import MyConfig from './features/mypage/MyConfig.tsx';
 import MyNotice from './features/mypage/MyNotice.tsx';
 import CreateReview from './features/spot/components/CreateReview.tsx';
+import HomeRecommendPage from './features/home/components/HomeRecommendPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
         // loader: protectRouter(),
       },
+      { path: '/home/recommend', element: <HomeRecommendPage /> },
       {
         path: '/home/spot/:id',
 

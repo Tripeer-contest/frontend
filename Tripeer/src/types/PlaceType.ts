@@ -4,11 +4,18 @@ export interface PlaceType {
   spotImg: string;
   address: string;
   wishlist: boolean;
+  starPointAvg: number;
 }
 
 export interface PlaceDetailType extends PlaceType {
   latitude: number;
   longitude: number;
+}
+
+export interface RecommendType {
+  comment: string;
+  keyword: string;
+  spotInfoDtos: PlaceType[];
 }
 
 export interface MetaInfoType {

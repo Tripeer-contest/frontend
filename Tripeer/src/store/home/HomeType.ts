@@ -7,6 +7,7 @@ export interface HomeSlice {
   h_nowCityId: number;
   h_nowTownId: number;
   h_nowPlaceId: number;
+  h_keyword: string;
 
   h_setRegion: (arr: number[]) => void;
   h_setCategory: (arr: number[]) => void;
@@ -14,4 +15,5 @@ export interface HomeSlice {
   h_setNowCityId: (id: number) => void;
   h_setNowTownId: (id: number) => void;
   h_setNowPlaceId: (id: number) => void;
+  h_setKeyword: (value: string) => void;
 }
