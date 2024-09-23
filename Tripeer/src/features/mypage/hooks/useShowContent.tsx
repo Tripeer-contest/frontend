@@ -15,7 +15,6 @@ export default function useShowContent() {
   const setHeightRef = useCallback((elem: HTMLElement | null, id: number) => {
     if (elem) {
       heightRef.current[id] = elem.offsetHeight;
-      console.log(heightRef.current[id]);
     }
   }, []);
 

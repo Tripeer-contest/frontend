@@ -13,6 +13,7 @@ export interface ProfileType extends UserType {
   style2Num: number;
   style3: null | string;
   style3Num: number;
+  allowNotifications: boolean;
 }
 
 export interface ProfileFormType {

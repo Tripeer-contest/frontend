@@ -6,8 +6,10 @@ import HomeRecommendationBanner from './components/HomeRecommendationBanner.tsx'
 import HomePlaceBanner from './components/HomePlaceBanner.tsx';
 import RecommendSlide from '../../components/empty/RecommendSlide.tsx';
 import SearchBar from './components/SearchBar.tsx';
+import useFCM from '../../hooks/useFCM.tsx';
 
 export default function HomePage() {
+  useFCM();
   return (
     <BoxLayout>
       <ContentLayout>
