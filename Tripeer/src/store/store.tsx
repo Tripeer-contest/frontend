@@ -20,6 +20,7 @@ import { DiarySlice, diarySliceState } from './diary/DiarySlice.tsx';
 import { SpotSlice, SpotSliceInterface } from './spot/SpotSlice.tsx';
 import { PlanCalendarSlice } from './planCalendar/PlanCalendarType.ts';
 import { createPlanCalendarSlice } from './planCalendar/PlanCalendarStore.tsx';
+import { FcmSlice, FcmState } from './fcm/FcmSlice.tsx';
 
 export type StoreState = AuthState &
   PlanState &
@@ -31,6 +32,7 @@ export type StoreState = AuthState &
   diarySliceState &
   HomeSlice &
   SpotSliceInterface &
+  FcmState &
   PlanCalendarSlice;
 
 const zustandStore = create<StoreState>()(
@@ -46,6 +48,7 @@ const zustandStore = create<StoreState>()(
     ...DiarySlice(...rest),
     ...SpotSlice(...rest),
     ...createPlanCalendarSlice(...rest),
+    ...FcmSlice(...rest),
   })),
 );
 

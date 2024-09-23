@@ -14,11 +14,12 @@ const firebaseConfig = {
 let app: any = null;
 let message: any = null;
 
-const desktopConnect = async () => {
-  let fcmToken = localStorage.getItem('tripeer-fcm');
-  if (fcmToken) return fcmToken;
-  app = initializeApp(firebaseConfig);
-  message = getMessaging(app);
+const getFCMToken = async () => {
+  let fcmToken = '';
+  if (!app && !message) {
+    app = initializeApp(firebaseConfig);
+    message = getMessaging(app);
+  }
   const permission = await requestPermission();
   if (permission !== 'granted') return null;
   try {
@@ -30,7 +31,6 @@ const desktopConnect = async () => {
       vapidKey: import.meta.env.VITE_FIREBASE_VAPID_KEY,
     });
   }
-  localStorage.setItem('tripeer-fcm', fcmToken);
   return fcmToken;
 };
 
@@ -39,4 +39,4 @@ const requestPermission = async () => {
   return permission.toString();
 };
 
-export { desktopConnect, requestPermission };
+export { getFCMToken, requestPermission };
