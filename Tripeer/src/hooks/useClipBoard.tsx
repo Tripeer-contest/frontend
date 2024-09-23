@@ -11,7 +11,7 @@ export default function useClipBoard(text: string) {
         timerId.current = undefined;
       }
       setIsClip(true);
-      timerId.current = setTimeout(() => {
+      timerId.current = window.setTimeout(() => {
         setIsClip(false);
         clearTimeout(timerId.current);
         timerId.current = undefined;

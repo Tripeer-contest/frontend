@@ -6,10 +6,12 @@ import HomeRecommendationBanner from './components/HomeRecommendationBanner.tsx'
 import HomePlaceBanner from './components/HomePlaceBanner.tsx';
 import RecommendSlide from '../../components/empty/RecommendSlide.tsx';
 import SearchBar from './components/SearchBar.tsx';
+import useFCM from '../../hooks/useFCM.tsx';
 import useHomeRecommend from './hooks/useHomeRecommend.tsx';
 import SkeletonRecommendationBanner from './components/SkeletonRecommendationBanner.tsx';
 
 export default function HomePage() {
+  useFCM();
   const { recommendData } = useHomeRecommend();
 
   return (

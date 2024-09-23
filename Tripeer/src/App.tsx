@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       {
         path: '/plan',
         element: <PlanPage />,
-        // loader: protectRouter(),
+        loader: protectRouter(),
       },
       {
         path: '/plan/detail/:id',
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             </Suspense>
           </ErrorBoundary>
         ),
-        // loader: protectRouter(),
+        loader: protectRouter(),
       },
       {
         path: '/diary/detail/:id',
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
       {
         path: '/home',
         element: <HomePage />,
-        // loader: protectRouter(),
+        loader: protectRouter(),
       },
       { path: '/home/recommend', element: <HomeRecommendPage /> },
       {
@@ -89,8 +89,7 @@ const router = createBrowserRouter([
             ),
           },
         ],
-
-        // loader: protectRouter(),
+        loader: protectRouter(),
       },
       {
         path: '/home/spot/:id/createReview',
@@ -99,8 +98,7 @@ const router = createBrowserRouter([
             <CreateReview />
           </Suspense>
         ),
-
-        // loader: protectRouter(),
+        loader: protectRouter(),
       },
       {
         path: '/cart',
@@ -109,7 +107,7 @@ const router = createBrowserRouter([
             <CartPage />
           </Suspense>
         ),
-        // loader: protectRouter(),
+        loader: protectRouter(),
       },
       {
         path: '/mypage',

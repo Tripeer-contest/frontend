@@ -9,6 +9,7 @@ import getMyInfo, { getIsDuplicate, getNotice } from '../api/getMyInfo';
 import { ProfileType } from '../../../types/UserTypes';
 import { useEffect } from 'react';
 import { patchImage, patchMyInfo } from '../api/patchMyInfo';
+import postMessage from '../api/postMessage';
 
 export default function useMyInfoQuery() {
   const { data } = useSuspenseQuery<ProfileType>({
@@ -76,4 +77,24 @@ export function useNoticeQuery() {
     initialPageParam: 1,
   });
   return { data, fetchNextPage, isLoading, hasNextPage };
+}
+
+export function useMessageMutate() {
+  const queryClient = useQueryClient();
+  const { mutateAsync, isError } = useMutation({
+    mutationFn: async (param: boolean) => await postMessage(param),
+    onMutate: async (param) => {
+      await queryClient.cancelQueries({ queryKey: ['myinfo'] });
+      const prev = queryClient.getQueryData(['myinfo']);
+      queryClient.setQueryData(['myinfo'], (data: ProfileType) => {
+        return { ...data, allowNotifications: param };
+      });
+      return { prev };
+    },
+    onError: (_, __, context) => {
+      queryClient.setQueryData(['myinfo'], context?.prev);
+    },
+  });
+
+  return { mutateAsync, isError };
 }

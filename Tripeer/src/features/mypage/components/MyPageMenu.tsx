@@ -1,16 +1,79 @@
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/menu.module.css';
-import useMyInfoQuery from '../hooks/useMyInfoQuery';
+import useMyInfoQuery, { useMessageMutate } from '../hooks/useMyInfoQuery';
 import MyMainBtn from './button/MyMainBtn';
 import MySubBtn from './button/MySubBtn';
 import useClipBoard from '../../../hooks/useClipBoard';
+import cookie from 'js-cookie';
+import useFCM from '../../../hooks/useFCM';
+import { useRef, useState } from 'react';
+import { isMobileCorrectly } from '../../../utils/checkMobile';
+import MutationLoading from '../../../components/loading/MutationLoading';
+import Notify from '../../planDetail/components/notify/Notify';
+import warn_icon from '../../../assets/error/warn.svg';
 
 export default function MyPageMenu() {
   const { data } = useMyInfoQuery();
+  const [isLoading, setIsLoading] = useState(false);
+  const [occuredError, setOccuredError] = useState(false);
+  const { connectFCM, isSuccess } = useFCM();
+  const { mutateAsync, isError } = useMessageMutate();
   const navigate = useNavigate();
   const { isClip, saveClipBoard } = useClipBoard('https://tripeer.co.kr');
   const showClipConfirm = () => {
     return isClip ? styles.clipConfirm : styles.disappear;
+  };
+  const [notGranted, setNotGranted] = useState(false);
+  const grantRef = useRef<number | null>(null);
+  const timerRef = useRef<number | null>(null);
+  const logout = () => {
+    cookie.remove('Authorization');
+    navigate('/');
+  };
+
+  const errorHandler = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    setOccuredError(true);
+    const id = window.setTimeout(() => {
+      setOccuredError(false);
+    }, 2000);
+    timerRef.current = id;
+  };
+
+  const grantedHandler = () => {
+    if (grantRef.current) {
+      clearTimeout(grantRef.current);
+      grantRef.current = null;
+    }
+    setNotGranted(true);
+    const id = window.setTimeout(() => {
+      setNotGranted(false);
+    }, 2000);
+    grantRef.current = id;
+  };
+
+  const pushHandler = async () => {
+    if (isMobileCorrectly()) return;
+    setIsLoading(true);
+    if (data.allowNotifications && isSuccess) {
+      await mutateAsync(false);
+    } else {
+      const permission = await Notification.requestPermission();
+      if (permission !== 'granted') {
+        grantedHandler();
+      } else {
+        try {
+          await connectFCM();
+          await mutateAsync(true);
+        } catch {
+          errorHandler();
+        }
+      }
+    }
+    setIsLoading(false);
   };
   return (
     <>
@@ -34,20 +97,44 @@ export default function MyPageMenu() {
         </div>
         <div className={styles.part}>
           <h3 className={styles.subTitle}>알림설정</h3>
-          <div className={styles.subBtn}>
+          <div className={styles.subBtn} onClick={pushHandler}>
             <span>여행 소식 알림</span>
-            <div className={styles.pushBtn}>
-              <div className={styles.push} />
+            <div
+              className={styles.pushBtn}
+              style={{
+                backgroundColor:
+                  isSuccess && data.allowNotifications ? '#04ACB5' : '#d9d9d9',
+              }}
+            >
+              <div
+                className={styles.push}
+                style={{
+                  left: isSuccess && data.allowNotifications ? '30px' : '5px',
+                }}
+              />
             </div>
           </div>
         </div>
         <div className={styles.part}>
           <h3 className={styles.subTitle}>로그인 설정</h3>
-          <MySubBtn name="로그아웃" clickHandler={() => {}} />
-          <MySubBtn name="서비스 탈퇴" clickHandler={() => {}} />
+          <MySubBtn name="로그아웃" clickHandler={logout} />
+          <MySubBtn name="서비스 탈퇴" clickHandler={logout} />
         </div>
       </main>
       <p className={showClipConfirm()}>클립보드에 복사가 완료되었습니다.</p>
+      <MutationLoading isShow={isLoading} />
+      <Notify
+        img={warn_icon}
+        title="에러"
+        message="네트워크 요청이 불안정합니다."
+        isActive={isError || occuredError}
+      />
+      <Notify
+        img={warn_icon}
+        title="에러"
+        message="기기 알림 권한을 수락해주세요.."
+        isActive={notGranted}
+      />
     </>
   );
 }
