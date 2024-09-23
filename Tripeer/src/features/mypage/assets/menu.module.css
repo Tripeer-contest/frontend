@@ -78,14 +78,14 @@
   position: relative;
   width: 70px;
   height: 35px;
-  background-color: #d9d9d9;
   border-radius: 50px 50px 50px 50px;
+  cursor: pointer;
 }
 
 .push {
   position: absolute;
   top: 50%;
-  left: 5px;
+  transition: 0.5s ease-in-out;
   transform: translateY(-50%);
   width: 30px;
   height: 30px;

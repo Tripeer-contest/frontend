@@ -19,7 +19,7 @@ export function useGetSlowUserQuery(keyword: string) {
   useEffect(() => {
     if (keyword) {
       if (timerId.current) clearTimeout(timerId.current);
-      const id = setTimeout(() => {
+      const id = window.setTimeout(() => {
         setSlowKeyword(keyword);
       }, 500);
       timerId.current = id;
