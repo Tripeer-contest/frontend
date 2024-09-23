@@ -25,7 +25,7 @@ export default function ChatTextArea({
 
   const handleToBottom = () => {
     if (timeoutId) clearTimeout(timeoutId);
-    const id = setTimeout(() => {
+    const id = window.setTimeout(() => {
       if (scrollToBottom) scrollToBottom();
     }, 300);
     setId(id);

@@ -24,8 +24,8 @@ export default function MyPageMenu() {
     return isClip ? styles.clipConfirm : styles.disappear;
   };
   const [notGranted, setNotGranted] = useState(false);
-  const grantRef = useRef<NodeJS.Timeout | null>(null);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const grantRef = useRef<number | null>(null);
+  const timerRef = useRef<number | null>(null);
   const logout = () => {
     cookie.remove('Authorization');
     navigate('/');
@@ -37,7 +37,7 @@ export default function MyPageMenu() {
       timerRef.current = null;
     }
     setOccuredError(true);
-    const id = setTimeout(() => {
+    const id = window.setTimeout(() => {
       setOccuredError(false);
     }, 2000);
     timerRef.current = id;
@@ -49,7 +49,7 @@ export default function MyPageMenu() {
       grantRef.current = null;
     }
     setNotGranted(true);
-    const id = setTimeout(() => {
+    const id = window.setTimeout(() => {
       setNotGranted(false);
     }, 2000);
     grantRef.current = id;
