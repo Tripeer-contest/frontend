@@ -13,7 +13,6 @@ import SkeletonRecommendationBanner from './components/SkeletonRecommendationBan
 export default function HomePage() {
   useFCM();
   const { recommendData } = useHomeRecommend();
-
   return (
     <BoxLayout>
       <ContentLayout>

@@ -68,7 +68,16 @@ const router = createBrowserRouter([
         element: <HomePage />,
         loader: protectRouter(),
       },
-      { path: '/home/recommend', element: <HomeRecommendPage /> },
+      {
+        path: '/home/recommend/:cityId/:townId/:keyword',
+        element: (
+          <ErrorBoundary fallback={<ErrorPage />}>
+            <Suspense fallback={<CommonLoading />}>
+              <HomeRecommendPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
       {
         path: '/home/spot/:id',
 
