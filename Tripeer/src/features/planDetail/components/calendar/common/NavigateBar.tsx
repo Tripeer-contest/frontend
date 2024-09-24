@@ -10,6 +10,7 @@ import NavigateTrail from './NavigateTrail';
 
 export default function NavigateBar({ timeObject }: { timeObject: any }) {
   const [rootVisible, setRootVisible] = useState(false);
+  console.log(timeObject);
   const option = timeObject.option;
   const rootInfo = timeObject.rootList[option];
   const time = timeObject.time[option];

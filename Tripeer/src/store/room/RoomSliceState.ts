@@ -71,8 +71,8 @@ export interface RoomSliceState {
   room_setTotalYList: (totalYList: totalYListInfo[][]) => void;
   room_timeYList: timeYListInfo[][];
   room_setTimeYList: (timeYList: timeYListInfo[][]) => void;
-  room_blockYList: boolean[][];
-  room_setBlockYList: (blockYList: boolean[][]) => void;
+  room_blockYList: boolean[];
+  room_setBlockYList: (blockYList: boolean[]) => void;
   room_setSelectedTownIdx: (param: number) => void;
   room_setSortType: (param: string) => void;
   room_moveMap: ((latitude: number, longitude: number) => void) | null;

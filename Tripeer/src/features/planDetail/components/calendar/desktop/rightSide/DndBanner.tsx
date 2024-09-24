@@ -36,7 +36,7 @@ const DndBanner = ({ idx }: Props) => {
         <OpBtn day={day} idx={idx} />
       </section>
       <div className={totalYList[idx].length > 3 ? styles.box : styles.minBox}>
-        <Droppable droppableId={`${idx}`}>
+        <Droppable droppableId={`${idx}`} isDropDisabled={blockYList[idx]}>
           {(provided) => (
             <div
               className={styles.droppableBox}
@@ -57,7 +57,13 @@ const DndBanner = ({ idx }: Props) => {
             </div>
           )}
         </Droppable>
-        {blockYList[idx] && <div className={styles.cover}></div>}
+        {blockYList[idx] && (
+          <div className={styles.cover}>
+            <div className={styles.ball} />
+            <div className={styles.ball} />
+            <div className={styles.ball} />
+          </div>
+        )}
       </div>
     </main>
   );

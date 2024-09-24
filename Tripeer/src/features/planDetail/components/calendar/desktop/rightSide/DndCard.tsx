@@ -12,6 +12,7 @@ import deleteImage from '../../../../assets/calendar/assets/deletePlace.png';
 import zustandStore from '../../../../../../store/store.tsx';
 import { useShallow } from 'zustand/react/shallow';
 import React from 'react';
+import MutationLoading from '../../../../../../components/loading/MutationLoading.tsx';
 
 interface Props {
   item: totalYListInfo;
@@ -28,6 +29,7 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
     backHandler,
     addHandler,
     deleteHandler,
+    isLoading,
   } = useMCard(item, itemIdx);
   const [totalYList, nowDay] = zustandStore(
     useShallow((state) => [state.room_totalYList, state.c_nowDay]),
@@ -151,6 +153,7 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
           </section>
         </div>
       </PlanModal>
+      <MutationLoading isShow={isLoading} />
     </>
   );
 };
