@@ -290,3 +290,15 @@
   height: 60%;
   color: #858585;
 }
+
+.rootDetailInfo {
+  font-size: 12px;
+  font-weight: normal;
+  color: #c6c6c6;
+}
+
+.rootDetailBox {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
