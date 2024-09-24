@@ -26,6 +26,7 @@ import MyConfig from './features/mypage/MyConfig.tsx';
 import MyNotice from './features/mypage/MyNotice.tsx';
 import CreateReview from './features/spot/components/CreateReview.tsx';
 import HomeRecommendPage from './features/home/components/HomeRecommendPage.tsx';
+import BannerPage from './components/empty/BannerPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,17 @@ const router = createBrowserRouter([
           <Suspense fallback={<CommonLoading />}>
             <CartPage />
           </Suspense>
+        ),
+        loader: protectRouter(),
+      },
+      {
+        path: '/banner/:idx',
+        element: (
+          <ErrorBoundary fallback={<ErrorPage />}>
+            <Suspense fallback={<CommonLoading />}>
+              <BannerPage />
+            </Suspense>
+          </ErrorBoundary>
         ),
         loader: protectRouter(),
       },
