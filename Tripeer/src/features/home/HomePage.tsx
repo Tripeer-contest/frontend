@@ -9,6 +9,7 @@ import SearchBar from './components/SearchBar.tsx';
 import useFCM from '../../hooks/useFCM.tsx';
 import useHomeRecommend from './hooks/useHomeRecommend.tsx';
 import SkeletonRecommendationBanner from './components/SkeletonRecommendationBanner.tsx';
+import { Fragment } from 'react/jsx-runtime';
 
 export default function HomePage() {
   useFCM();
@@ -38,15 +39,17 @@ export default function HomePage() {
           </div>
 
           {recommendData ? (
-            <HomeRecommendationBanner data={recommendData[0]} />
+            <>
+              {recommendData.map((data, idx) => (
+                <Fragment key={idx}>
+                  <HomeRecommendationBanner data={data} />
+                </Fragment>
+              ))}
+            </>
           ) : (
             <SkeletonRecommendationBanner />
           )}
-          {recommendData ? (
-            <HomeRecommendationBanner data={recommendData[1]} />
-          ) : (
-            <SkeletonRecommendationBanner />
-          )}
+
           <HomePlaceBanner />
         </div>
       </ContentLayout>

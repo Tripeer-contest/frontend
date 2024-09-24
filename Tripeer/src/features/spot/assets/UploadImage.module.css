@@ -16,23 +16,31 @@
   align-items: center;
   border-radius: 5px;
   padding: 3px 15px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   background: #04acb5;
-  height: 30px;
+  height: 35px;
+  justify-content: center;
+  width: 100px;
   color: white;
   border: none;
   cursor: pointer;
 }
-
+.inputHeader label:hover {
+  border: 1px solid #c4c4c4;
+  color: #04acb5;
+  background: white;
+}
 .deleteImgBtn {
   display: flex;
   align-items: center;
   border-radius: 5px;
   border: 1px solid #c4c4c4;
   padding: 3px 15px;
-  font-size: 0.8rem;
+  height: 35px;
+  justify-content: center;
+  width: 100px;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 .deleteImgBtn:hover {
   color: #e33030;

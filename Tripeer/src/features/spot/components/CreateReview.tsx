@@ -42,6 +42,7 @@ export default function CreateReview() {
   function validateMessage() {
     if (message.current.trim() === '') {
       setCheckEmpty(true);
+      return false;
     }
 
     return true;
