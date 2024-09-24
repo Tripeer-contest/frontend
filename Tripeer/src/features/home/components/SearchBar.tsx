@@ -77,7 +77,7 @@ const SearchBar = () => {
                             <div key={place.spotId} className={styles.cardBox}>
                               <PlaceBox
                                 place={place}
-                                clickHandler={clickHandler}
+                                clickHandler={() => clickHandler(place.spotId)}
                                 likeClickHandler={likeClickHandler}
                                 rating={rating}
                               />
