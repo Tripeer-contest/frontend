@@ -3,13 +3,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import PlaceBox from './PlaceBox.tsx';
 import { RecommendType } from '../../../types/PlaceType.ts';
 import usePlaceBox from '../hooks/usePlaceBox.tsx';
+import useHomeRecommendQuery from '../hooks/useHomeRecommendQuery.tsx';
 
 interface Props {
   data: RecommendType;
 }
 
 const HomeSlide = ({ data }: Props) => {
-  const { clickHandler, likeClickHandler } = usePlaceBox();
+  const { clickHandler } = usePlaceBox();
+  const { mutate } = useHomeRecommendQuery();
   return (
     <div className={styles.container}>
       <Swiper slidesPerView={'auto'} grabCursor={true}>
@@ -18,7 +20,10 @@ const HomeSlide = ({ data }: Props) => {
             <PlaceBox
               place={item}
               clickHandler={() => clickHandler(item.spotId)}
-              likeClickHandler={likeClickHandler}
+              likeClickHandler={(e) => {
+                e.stopPropagation();
+                mutate({ spotId: item.spotId, like: item.wishlist });
+              }}
               rating={item.starPointAvg}
             />
           </SwiperSlide>

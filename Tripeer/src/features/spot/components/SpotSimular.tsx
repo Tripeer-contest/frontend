@@ -3,7 +3,10 @@ import 'swiper/css';
 import PlaceBox from '../../home/components/PlaceBox';
 import styles from '../assets/simular.module.css';
 import { PlaceDetailType } from '../../../types/PlaceType';
-import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
+import useSpotDetailQuery, {
+  useSimilarMutate,
+} from '../hooks/useSpotDetailQuery';
+import { useNavigate } from 'react-router-dom';
 
 export default function SpotSimular({ id }: { id: number }) {
   const SimilarSpot = useSpotDetailQuery<PlaceDetailType[]>(
@@ -14,7 +17,12 @@ export default function SpotSimular({ id }: { id: number }) {
     id,
     (data) => data.data.nearSpotList,
   );
+  const navigate = useNavigate();
+  const { mutate } = useSimilarMutate(id);
 
+  const rootHandler = (id: number) => {
+    navigate(`/home/spot/${id}`);
+  };
   return (
     <div className={styles.marginBox}>
       <section className={styles.container}>
@@ -27,8 +35,11 @@ export default function SpotSimular({ id }: { id: number }) {
           {SimilarSpot.data.map((item) => (
             <SwiperSlide key={item.spotId} className={styles.itemBox}>
               <PlaceBox
-                clickHandler={() => {}}
-                likeClickHandler={() => {}}
+                clickHandler={() => rootHandler(item.spotId)}
+                likeClickHandler={(e) => {
+                  e.stopPropagation();
+                  mutate({ like: item.wishlist, spotId: item.spotId });
+                }}
                 rating={4.5}
                 place={item}
               />
@@ -46,8 +57,11 @@ export default function SpotSimular({ id }: { id: number }) {
           {NearSpot.data.map((item) => (
             <SwiperSlide key={item.spotId} className={styles.itemBox}>
               <PlaceBox
-                clickHandler={() => {}}
-                likeClickHandler={() => {}}
+                clickHandler={() => rootHandler(item.spotId)}
+                likeClickHandler={(e) => {
+                  e.stopPropagation();
+                  mutate({ like: item.wishlist, spotId: item.spotId });
+                }}
                 rating={4.5}
                 place={item}
               />

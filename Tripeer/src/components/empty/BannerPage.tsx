@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import useGetBannerQuery from './hook/useGetBannerQuery';
+import useGetBannerQuery, { useBannerMutation } from './hook/useBannerQuery';
 import BoxLayout from '../../layout/BoxLayout';
 import ContentLayout from '../../layout/ContentLayout';
 import styles from './assets/bannerPage.module.css';
@@ -21,8 +21,9 @@ export default function BannerPage() {
   const keyword = bannerData[idx].keyword;
   const comment = bannerData[idx].comment;
   const { data } = useGetBannerQuery(cityId, townId, keyword);
-  const { clickHandler, likeClickHandler, rating } = usePlaceBox();
+  const { clickHandler, rating } = usePlaceBox();
   const { scrollHandler } = useHomePlaceBanner();
+  const { mutate } = useBannerMutation(cityId, townId, keyword);
   const navigate = useNavigate();
   return (
     <BoxLayout>
@@ -45,7 +46,10 @@ export default function BannerPage() {
                     <PlaceBox
                       place={place}
                       clickHandler={() => clickHandler(place.spotId)}
-                      likeClickHandler={likeClickHandler}
+                      likeClickHandler={(e) => {
+                        e.stopPropagation();
+                        mutate({ spotId: place.spotId, like: place.wishlist });
+                      }}
                       rating={rating}
                     />
                   </div>

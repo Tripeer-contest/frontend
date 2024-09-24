@@ -1,7 +1,7 @@
 import styles from '../assets/header.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperInterface } from 'swiper/types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import 'swiper/css';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
@@ -27,6 +27,10 @@ export default function SpotHeader({
   const navigate = useNavigate();
 
   const maxPage = swiper && swiper.slides ? swiper.slides.length : 1;
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [id]);
   return (
     <header className={styles.header}>
       <Swiper
