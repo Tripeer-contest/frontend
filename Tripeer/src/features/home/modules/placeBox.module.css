@@ -53,6 +53,7 @@
     height: 120px;
     padding: 5px;
     background-color: white;
+    border: 1px red solid;
   }
 
   .imgBox {

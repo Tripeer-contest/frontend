@@ -6,6 +6,7 @@ export default function HighlightText({
   search: string;
 }) {
   const words = text.split(new RegExp(`(${search})`, 'gi'));
+  console.log(words);
   return words.map((word, idx) =>
     word === search ? (
       <span key={idx} style={{ color: '#04ACB5' }}>

@@ -15,7 +15,6 @@ interface Props {
   ) => void;
   rating: number;
 }
-
 const PlaceBox = ({ place, clickHandler, likeClickHandler, rating }: Props) => {
   const star = getRateImg(place.starPointAvg);
 
@@ -32,7 +31,7 @@ const PlaceBox = ({ place, clickHandler, likeClickHandler, rating }: Props) => {
       </div>
       <section className={styles.description}>
         <p className={styles.title}>{place.spotName}</p>
-        <p className={styles.desP}>카테고리-숙박</p>
+        <p className={styles.desP}>카테고리 - {place.contentType}</p>
         <div className={styles.ratingBox}>
           <img src={star} alt={'ratingImg'} className={styles.rating} />
           <p className={styles.ratingScore}>({place.starPointAvg})</p>

@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postWish } from '../api/postWish.ts';
 import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../store/store.tsx';
+import { useNavigate } from 'react-router-dom';
 
 const usePlaceBox = () => {
   const [rating, setRating] = useState<number>(4.5);
@@ -14,6 +15,7 @@ const usePlaceBox = () => {
       state.h_nowPlaceId,
     ]),
   );
+  const navigate = useNavigate();
 
   const client = useQueryClient();
 
@@ -21,7 +23,9 @@ const usePlaceBox = () => {
   const townId = h_nowTownId || -1;
   const placeId = h_nowPlaceId || -1;
 
-  const clickHandler = () => {};
+  const clickHandler = (spotId: any) => {
+    navigate(`/home/spot/${spotId}`);
+  };
 
   const likeClickHandler = (
     e: React.MouseEvent<HTMLImageElement>,

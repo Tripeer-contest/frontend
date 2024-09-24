@@ -5,6 +5,7 @@ export interface PlaceType {
   address: string;
   wishlist: boolean;
   starPointAvg: number;
+  contentType: string;
 }
 
 export interface PlaceDetailType extends PlaceType {
