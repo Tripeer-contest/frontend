@@ -16,6 +16,7 @@ export default function NavigateBar({ timeObject }: { timeObject: any }) {
   const vehicle = [car, bus, ferry, airplane][option];
   const vehicleKey = ['CAR', 'BUS', 'FERRY', 'AIRPLANE'][option];
   const vehicleStyle = ROUTE_STYLE[vehicleKey];
+  console.log(rootInfo);
   const getWidth = (totalMinutes: number, minutes: number) => {
     return (100 * minutes) / totalMinutes;
   };
@@ -72,9 +73,12 @@ export default function NavigateBar({ timeObject }: { timeObject: any }) {
                           src={ROUTE_STYLE[root.mode].smallIcon}
                           alt="small-icon"
                         />
-                        <p>
+                        <p className={styles.rootDetailBox}>
                           {ROUTE_STYLE[root.mode].info}로{' '}
                           {getKmOrM(root.distance)} 이동
+                          <p className={styles.rootDetailInfo}>
+                            {root.startName} ~ {root.endName}
+                          </p>
                         </p>
                       </div>
                       <p>({root.sectionTime}분)</p>
