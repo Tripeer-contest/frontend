@@ -10,7 +10,7 @@ export default function HighlightKeyword({
   return words.map((word, idx) =>
     word === search ? (
       <span key={idx} className={styles.highlightText}>
-        {word}
+        &apos;{word}&apos;
       </span>
     ) : (
       <span className={styles.spanText} key={idx}>

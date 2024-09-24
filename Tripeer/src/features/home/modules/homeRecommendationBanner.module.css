@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  margin-top: 50px;
+
   display: flex;
   flex-direction: column;
 }
@@ -32,7 +32,6 @@
 @media screen and (max-width: 1000px) {
   .container {
     width: calc(100vw - 30px);
-    height: 160px;
   }
   .topSection {
     margin-bottom: 5px;

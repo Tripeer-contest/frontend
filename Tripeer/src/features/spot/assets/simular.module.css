@@ -20,7 +20,7 @@
 
 .itemBox {
   width: auto;
-  height: 350px;
+  height: auto;
 }
 
 @media screen and (max-width: 1000px) {
@@ -31,6 +31,6 @@
 
 @media screen and (max-width: 930px) {
   .itemBox {
-    height: 130px;
+    height: auto;
   }
 }

@@ -32,10 +32,11 @@ export default function HomePage() {
           <div className={styles.recommendBox}>
             <RecommendSlide />
           </div>
-          <div>
+          <div className={styles.filterBox}>
             <p className={styles.title}>취향에 맞는 여행지를 찾아보세요.</p>
             <HomeBanner />
           </div>
+
           {recommendData ? (
             <HomeRecommendationBanner data={recommendData[0]} />
           ) : (
