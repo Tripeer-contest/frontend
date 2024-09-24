@@ -84,7 +84,10 @@ const OpBtn = ({ day, idx }: { day: string; idx: number }) => {
           ) : (
             <div className={styles.noneBox} />
           )}
-          <div className={styles.btn} onClick={() => onSubmitHandler(close)}>
+          <div
+            className={styles.btn}
+            onClick={() => onSubmitHandler(close, idx)}
+          >
             {text}
           </div>
         </div>

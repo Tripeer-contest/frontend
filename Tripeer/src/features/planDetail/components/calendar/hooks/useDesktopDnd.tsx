@@ -10,12 +10,13 @@ import zustandStore from '../../../../../store/store.tsx';
 import postAtoB from '../../../api/postAtoB.ts';
 
 const useDesktopDnd = (isConnected: boolean) => {
-  const [setTotalYList, setTimeYList, ws, doc] = zustandStore(
+  const [setTotalYList, setTimeYList, ws, doc, setBlockYList] = zustandStore(
     useShallow((state) => [
       state.room_setTotalYList,
       state.room_setTimeYList,
       state.y_ws,
       state.y_doc,
+      state.room_setBlockYList,
     ]),
   );
 
@@ -24,6 +25,21 @@ const useDesktopDnd = (isConnected: boolean) => {
     time: ['계산중', '계산중', '계산중', '계산중'],
     rootList: [null, null, null, null],
   };
+
+  useEffect(() => {
+    if (isConnected && ws) {
+      const yArray = ws.doc.getArray('blockYList');
+      const observer = () => {
+        setBlockYList(yArray.toJSON());
+      };
+      setBlockYList(yArray.toJSON());
+      yArray.observeDeep(observer);
+
+      return () => {
+        yArray.unobserveDeep(observer);
+      };
+    }
+  }, [isConnected, setBlockYList, ws, doc]);
 
   useEffect(() => {
     if (isConnected && ws) {
@@ -151,16 +167,6 @@ const useDesktopDnd = (isConnected: boolean) => {
           destinationYTime.insert(destinationIdx - 1, [loadingData]);
           destinationYTime.insert(destinationIdx, [loadingData]);
 
-          const front = await getAtoB(
-            destinationYArray.get(destinationIdx - 1),
-            destinationYArray.get(destinationIdx),
-          );
-
-          if (front) {
-            destinationYTime.delete(destinationIdx - 1, 1);
-            destinationYTime.insert(destinationIdx - 1, [front]);
-          }
-
           const back = await getAtoB(
             destinationYArray.get(destinationIdx),
             destinationYArray.get(destinationIdx + 1),
@@ -169,6 +175,16 @@ const useDesktopDnd = (isConnected: boolean) => {
           if (back) {
             destinationYTime.delete(destinationIdx, 1);
             destinationYTime.insert(destinationIdx, [back]);
+          }
+
+          const front = await getAtoB(
+            destinationYArray.get(destinationIdx - 1),
+            destinationYArray.get(destinationIdx),
+          );
+
+          if (front) {
+            destinationYTime.delete(destinationIdx - 1, 1);
+            destinationYTime.insert(destinationIdx - 1, [front]);
           }
         }
       }

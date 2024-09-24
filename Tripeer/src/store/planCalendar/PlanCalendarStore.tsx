@@ -10,4 +10,8 @@ export const createPlanCalendarSlice: StateCreator<PlanCalendarSlice> = (
   c_setIsDragging: (isDragging) => set(() => ({ c_isDragging: isDragging })),
   c_searchList: [],
   c_setSearchList: (arr) => set(() => ({ c_searchList: arr })),
+  c_isModal: false,
+  c_setIsModal: (isModal) => set(() => ({ c_isModal: isModal })),
+  c_nowDay: 0,
+  c_nowSetDay: (day) => set(() => ({ c_nowDay: day })),
 });

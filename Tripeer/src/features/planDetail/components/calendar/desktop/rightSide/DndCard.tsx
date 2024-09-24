@@ -4,6 +4,14 @@ import dotImage from '../../../../assets/calendar/assets/dot.png';
 import { totalYListInfo } from '../../../../../../store/room/RoomSliceState.ts';
 import { userColors } from '../../../../../../data/userColors.ts';
 import TimeCard from './TimeCard.tsx';
+import useMCard from '../../hooks/useMCard.tsx';
+import addrImage from '../../../../assets/calendar/assets/addr.png';
+import Chip from '../leftSide/Chip.tsx';
+import addImage from '../../../../assets/calendar/assets/add2.png';
+import deleteImage from '../../../../assets/calendar/assets/deletePlace.png';
+import zustandStore from '../../../../../../store/store.tsx';
+import { useShallow } from 'zustand/react/shallow';
+import React from 'react';
 
 interface Props {
   item: totalYListInfo;
@@ -13,6 +21,18 @@ interface Props {
 }
 
 const DndCard = ({ item, itemIdx, length, idx }: Props) => {
+  const {
+    onClickHandler,
+    close,
+    PlanModal,
+    backHandler,
+    addHandler,
+    deleteHandler,
+  } = useMCard(item, itemIdx);
+  const [totalYList, nowDay] = zustandStore(
+    useShallow((state) => [state.room_totalYList, state.c_nowDay]),
+  );
+
   return (
     <>
       <Draggable
@@ -26,7 +46,7 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <div className={styles.draggableBox}>
+            <div className={styles.draggableBox} onClick={onClickHandler}>
               <div className={styles.left}>
                 <div
                   className={styles.numberBox}
@@ -62,6 +82,75 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
           </div>
         )}
       </Draggable>
+
+      <PlanModal
+        onClose={close}
+        className={styles.modalContainer}
+        onClick={() => backHandler(close)}
+      >
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <section className={styles.modalCard}>
+            <img
+              src={item.img}
+              alt={'left Dnd Image'}
+              className={styles.image}
+            />
+            <aside className={styles.description}>
+              <div className={styles.desBox}>
+                <p className={styles.title}>{item.title}</p>
+                <div className={styles.addrBox}>
+                  <img
+                    src={addrImage}
+                    alt={'Addr Image'}
+                    className={styles.addrImage}
+                  />
+                  <p className={styles.addr}>{item.addr}</p>
+                </div>
+                <Chip contentType={item.contentType} />
+              </div>
+            </aside>
+          </section>
+
+          <section className={styles.selectBox}>
+            {totalYList.map((_, index) => {
+              if (index > 0 && index !== nowDay + 1)
+                return (
+                  <React.Fragment key={index}>
+                    <div className={styles.modalLine} />
+                    <div
+                      className={styles.modalPlaceBox}
+                      onClick={() => addHandler(close, index)}
+                    >
+                      <img
+                        src={addImage}
+                        alt={'Add Image'}
+                        className={styles.addImage}
+                      />
+                      <p>{index}일차로 이동하기</p>
+                    </div>
+                  </React.Fragment>
+                );
+            })}
+
+            <div className={styles.modalLine} />
+            <div
+              className={styles.modalPlaceBox}
+              onClick={() => deleteHandler(close)}
+            >
+              <img
+                src={deleteImage}
+                alt={'Delete Image'}
+                className={styles.deleteImage}
+              />
+              <p>해당 일차에서 제거하기</p>
+            </div>
+          </section>
+        </div>
+      </PlanModal>
     </>
   );
 };

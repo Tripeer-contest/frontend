@@ -12,26 +12,30 @@
     margin: 20px 0 20px 0;
 }
 
+.box{
+    width: 97%;
+    height: 100%;
+    display: flex;
+    margin: 0 0 0 20px;
+    overflow: auto;
+}
+
 .dndBox{
     width: 97%;
     height: 100%;
     display: flex;
-    overflow: auto;
-    margin: 0 0 0 20px;
 }
 
-.dndBox::-webkit-scrollbar {
-    height: 8px;
-}
-
-.dndBox::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-}
-
-.dndBox::-webkit-scrollbar-thumb:horizontal {
-    background-color: #d9d9d9;
-}
-
-.dndBox::-webkit-scrollbar:vertical {
+.box::-webkit-scrollbar:vertical {
     display: none;
+}
+
+.box::-webkit-scrollbar {
+    height: 5px;
+}
+.box::-webkit-scrollbar-track {
+    background-color: #e3e3e3;
+}
+.box::-webkit-scrollbar-thumb {
+    background-color: #04acb5;
 }

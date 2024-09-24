@@ -21,6 +21,7 @@ const initState = {
   room_map: null,
   room_totalYList: [],
   room_timeYList: [],
+  room_blockYList: [],
   room_selectedTownIdx: 0,
   room_sortType: '',
   room_minLat: 0,
@@ -97,4 +98,6 @@ export const RoomSlice: StateCreator<
   room_setTotalYList: (payload) => set({ room_totalYList: payload }),
   room_setTimeYList: (payload) => set({ room_timeYList: payload }),
   room_setModeBound: (payload) => set(() => ({ room_modeBound: payload })),
+  room_setBlockYList: (blockYList) =>
+    set(() => ({ room_blockYList: blockYList })),
 });

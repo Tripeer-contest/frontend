@@ -9,6 +9,7 @@ export const createHomeSlice: StateCreator<HomeSlice> = (set) => ({
   h_nowTownId: 0,
   h_nowPlaceId: 0,
   h_townList: [{ id: 0, name: '전체' }],
+  h_keyword: '',
 
   h_setRegion: (arr: number[]) => set(() => ({ h_region: arr })),
   h_setCategory: (arr: number[]) => set(() => ({ h_category: arr })),
@@ -16,4 +17,5 @@ export const createHomeSlice: StateCreator<HomeSlice> = (set) => ({
   h_setNowCityId: (id: number) => set(() => ({ h_nowCityId: id })),
   h_setNowTownId: (id: number) => set(() => ({ h_nowTownId: id })),
   h_setNowPlaceId: (id: number) => set(() => ({ h_nowPlaceId: id })),
+  h_setKeyword: (value: string) => set(() => ({ h_keyword: value })),
 });

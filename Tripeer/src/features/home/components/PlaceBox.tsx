@@ -17,7 +17,7 @@ interface Props {
 }
 
 const PlaceBox = ({ place, clickHandler, likeClickHandler, rating }: Props) => {
-  const star = getRateImg(rating);
+  const star = getRateImg(place.starPointAvg);
 
   return (
     <div className={styles.container} onClick={clickHandler}>
@@ -25,7 +25,7 @@ const PlaceBox = ({ place, clickHandler, likeClickHandler, rating }: Props) => {
         <img src={place.spotImg} alt={'placeImg'} className={styles.img} />
         <img
           src={place.wishlist ? like : unLike}
-          alt={'likeImg'}
+          alt={`${rating}`}
           className={styles.like}
           onClick={(e) => likeClickHandler(e, place.spotId, place.wishlist)}
         />
@@ -35,7 +35,7 @@ const PlaceBox = ({ place, clickHandler, likeClickHandler, rating }: Props) => {
         <p className={styles.desP}>카테고리-숙박</p>
         <div className={styles.ratingBox}>
           <img src={star} alt={'ratingImg'} className={styles.rating} />
-          <p className={styles.ratingScore}>({rating})</p>
+          <p className={styles.ratingScore}>({place.starPointAvg})</p>
         </div>
         <p className={styles.desP}>{place.address}</p>
       </section>

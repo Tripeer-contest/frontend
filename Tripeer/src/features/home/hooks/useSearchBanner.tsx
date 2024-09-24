@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const useSearchBanner = () => {
   const [showModal, setShowModal] = useState(false);
@@ -6,9 +6,9 @@ const useSearchBanner = () => {
   const searchRef = useRef<HTMLDivElement | null>(null);
   const backRef = useRef<HTMLImageElement | null>(null);
 
-  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const inputChangeHandler = () => {
     // 나중에 검색로직 들어갈곳
-    e.target.value.length >= 0 ? setShowModal(true) : setShowModal(false);
+    setShowModal(true);
   };
 
   const inputClickHandler = () => {

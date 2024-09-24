@@ -15,8 +15,12 @@ interface Props {
 }
 
 const DndBanner = ({ idx }: Props) => {
-  const [totalYList, startDay] = zustandStore(
-    useShallow((state) => [state.room_totalYList, state.room_startDay]),
+  const [totalYList, startDay, blockYList] = zustandStore(
+    useShallow((state) => [
+      state.room_totalYList,
+      state.room_startDay,
+      state.room_blockYList,
+    ]),
   );
 
   const now = addDays(startDay, idx);
@@ -31,27 +35,30 @@ const DndBanner = ({ idx }: Props) => {
         </div>
         <OpBtn day={day} idx={idx} />
       </section>
-      <Droppable droppableId={`${idx}`}>
-        {(provided) => (
-          <div
-            className={styles.droppableBox}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
-            {totalYList[idx].map((item, itemIdx) => (
-              <React.Fragment key={item.spotInfoId}>
-                <DndCard
-                  item={item}
-                  itemIdx={itemIdx}
-                  length={totalYList[idx].length}
-                  idx={idx}
-                />
-              </React.Fragment>
-            ))}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
+      <div className={totalYList[idx].length > 3 ? styles.box : styles.minBox}>
+        <Droppable droppableId={`${idx}`}>
+          {(provided) => (
+            <div
+              className={styles.droppableBox}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {totalYList[idx].map((item, itemIdx) => (
+                <React.Fragment key={item.spotInfoId}>
+                  <DndCard
+                    item={item}
+                    itemIdx={itemIdx}
+                    length={totalYList[idx].length}
+                    idx={idx}
+                  />
+                </React.Fragment>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+        {blockYList[idx] && <div className={styles.cover}></div>}
+      </div>
     </main>
   );
 };
