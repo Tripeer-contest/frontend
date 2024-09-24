@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import SpotHeader from './SpotHeader';
 import SpotLine from './SpotLine';
 import SpotMap from './SpotMap';
@@ -17,8 +17,14 @@ export default function SpotItem() {
     if (reviewRef.current && scrollTo)
       scrollTo(reviewRef.current.offsetTop - 100);
   };
+  const scrollToTop = useCallback(() => {
+    if (reviewRef.current && scrollTo) scrollTo(0);
+  }, [scrollTo]);
   const id = useParamsId();
 
+  useEffect(() => {
+    scrollToTop();
+  }, [id, scrollToTop]);
   return (
     <main
       style={{

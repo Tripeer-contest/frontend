@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from '../modules/recommendPage.module.css';
 import { PlaceType } from '../../../types/PlaceType.ts';
 import PlaceBox from './PlaceBox.tsx';
@@ -9,14 +9,21 @@ import useHomePlaceBanner from '../hooks/useHomePlaceBanner.tsx';
 import BoxLayout from '../../../layout/BoxLayout.tsx';
 import ContentLayout from '../../../layout/ContentLayout.tsx';
 import backImage from '../../planDetail/assets/calendar/assets/back.png';
+import {
+  useRecommendMutation,
+  useRecommendPageQuery,
+} from '../hooks/useRecommendQuery.tsx';
 
 const HomeRecommendPage = () => {
-  const location = useLocation();
-  const { data } = location.state;
-  const { clickHandler, likeClickHandler, rating } = usePlaceBox();
+  const param = useParams();
+  const cityId = param.cityId ? +param.cityId : -1;
+  const townId = param.townId ? +param.townId : -1;
+  const keyword = param.keyword ? param.keyword : '';
+  const { data } = useRecommendPageQuery(cityId, townId, keyword);
+  const { mutate } = useRecommendMutation(cityId, townId, keyword);
+  const { clickHandler, rating } = usePlaceBox();
   const { scrollHandler } = useHomePlaceBanner();
   const navigate = useNavigate();
-
   return (
     <BoxLayout>
       <ContentLayout>
@@ -36,7 +43,10 @@ const HomeRecommendPage = () => {
                     <PlaceBox
                       place={place}
                       clickHandler={() => clickHandler(place.spotId)}
-                      likeClickHandler={likeClickHandler}
+                      likeClickHandler={(e) => {
+                        e.stopPropagation();
+                        mutate({ spotId: place.spotId, like: place.wishlist });
+                      }}
                       rating={rating}
                     />
                   </div>

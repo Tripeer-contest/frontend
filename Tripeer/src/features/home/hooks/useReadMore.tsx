@@ -1,4 +1,3 @@
-import getReadMore from '../api/getReadMore.ts';
 import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../store/store.tsx';
 import { useNavigate } from 'react-router-dom';
@@ -11,8 +10,7 @@ const useReadMore = (keyword: string) => {
   const navigate = useNavigate();
 
   const onClickHandler = async () => {
-    const data = await getReadMore(cityId, townId, keyword);
-    navigate('/home/recommend', { state: { data } });
+    navigate(`/home/recommend/${cityId}/${townId}/${keyword}`);
   };
   return { onClickHandler };
 };
