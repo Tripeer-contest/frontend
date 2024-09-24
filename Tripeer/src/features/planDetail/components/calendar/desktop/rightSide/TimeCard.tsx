@@ -12,6 +12,7 @@ import useTimeCard from '../../hooks/useTimeCard.tsx';
 import zustandStore from '../../../../../../store/store.tsx';
 import { useShallow } from 'zustand/react/shallow';
 import React from 'react';
+import useReAtoB from '../../hooks/useReAtoB.tsx';
 
 interface Props {
   isDragging: boolean;
@@ -40,6 +41,8 @@ const TimeCard = ({ isDragging, idx, itemIdx }: Props) => {
   const option = timeYList[idx]?.[itemIdx]?.option;
   const time = timeYList[idx]?.[itemIdx]?.time[option];
   const timeArr = timeYList[idx]?.[itemIdx]?.time;
+
+  useReAtoB(time, idx, itemIdx);
 
   return (
     !isDragging && (
