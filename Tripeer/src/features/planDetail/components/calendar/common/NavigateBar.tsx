@@ -12,7 +12,6 @@ export default function NavigateBar({ timeObject }: { timeObject: any }) {
   const [rootVisible, setRootVisible] = useState(false);
   const option = timeObject.option;
   const rootInfo = timeObject.rootList[option];
-  console.log(rootInfo);
   const time = timeObject.time[option];
   const vehicle = [car, bus, ferry, airplane][option];
   const vehicleKey = ['CAR', 'BUS', 'FERRY', 'AIRPLANE'][option];

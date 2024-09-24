@@ -34,51 +34,62 @@ export default function PlanNavigate({
   };
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <span>여행지 경로</span>
-        <img
-          src={backIcon}
-          alt="back-icon"
-          className={styles.backBtn}
-          onClick={closeHandler}
-        />
-      </header>
-      <section className={styles.navigateBox}>
-        <div className={styles.controller}>
-          <img
-            src={arrowIcon}
-            alt="left"
-            style={{ transform: 'rotate(180deg)' }}
-            onClick={setPrevDay}
-          />
-          <div>
-            <p className={styles.dayString}>{dayIdx}일차</p>
-            <p className={styles.dayInfoString}>
-              {makeDayToDotFullString(addDays(startDay, dayIdx - 1))}
-            </p>
-          </div>
-          <img src={arrowIcon} alt="right" onClick={setNextDay} />
-        </div>
-        {totalList.current &&
-          totalList.current[dayIdx].map((item: SpotYInterface, idx: number) => (
-            <Fragment key={item.spotInfoId}>
-              <NavigateCard item={item} idx={idx + 1} />
+      {timeList.current &&
+        timeList.current.length &&
+        totalList.current &&
+        totalList.current.length && (
+          <>
+            <header className={styles.header}>
+              <span>여행지 경로</span>
+              <img
+                src={backIcon}
+                alt="back-icon"
+                className={styles.backBtn}
+                onClick={closeHandler}
+              />
+            </header>
+            <section className={styles.navigateBox}>
+              <div className={styles.controller}>
+                <img
+                  src={arrowIcon}
+                  alt="left"
+                  style={{ transform: 'rotate(180deg)' }}
+                  onClick={setPrevDay}
+                />
+                <div>
+                  <p className={styles.dayString}>{dayIdx}일차</p>
+                  <p className={styles.dayInfoString}>
+                    {makeDayToDotFullString(addDays(startDay, dayIdx - 1))}
+                  </p>
+                </div>
+                <img src={arrowIcon} alt="right" onClick={setNextDay} />
+              </div>
               {totalList.current &&
-                idx !== totalList.current[dayIdx].length - 1 && (
-                  <NavigateBar
-                    timeObject={
-                      timeList.current ? timeList.current[dayIdx][idx] : {}
-                    }
-                  />
+                totalList.current[dayIdx].map(
+                  (item: SpotYInterface, idx: number) => (
+                    <Fragment key={item.spotInfoId}>
+                      <NavigateCard item={item} idx={idx + 1} />
+                      {totalList.current &&
+                        idx !== totalList.current[dayIdx].length - 1 && (
+                          <NavigateBar
+                            timeObject={
+                              timeList.current
+                                ? timeList.current[dayIdx][idx]
+                                : {}
+                            }
+                          />
+                        )}
+                    </Fragment>
+                  ),
                 )}
-            </Fragment>
-          ))}
-        {totalList.current && totalList.current[dayIdx].length === 0 && (
-          <div className={styles.emptyDate}>
-            해당 일차에 계획하신 여행지가 없습니다.
-          </div>
+              {totalList.current && totalList.current[dayIdx].length === 0 && (
+                <div className={styles.emptyDate}>
+                  해당 일차에 계획하신 여행지가 없습니다.
+                </div>
+              )}
+            </section>
+          </>
         )}
-      </section>
     </div>
   );
 }
