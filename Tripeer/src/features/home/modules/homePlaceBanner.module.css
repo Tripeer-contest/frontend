@@ -8,18 +8,11 @@
   .container {
     width: calc(100vw - 30px);
     height: auto;
-    margin-top: 30px;
   }
 
-  .cardBox {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e3e3e3;
-  }
   .gridBox {
-    margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
   }
 
   .title {
@@ -36,12 +29,9 @@
     height: 500px;
     margin-top: 80px;
   }
-  .cardBox {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
-    padding: 5px;
-  }
+
   .gridBox {
-    margin-top: 35px;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -61,9 +51,7 @@
     display: grid;
     justify-items: center;
   }
-  .cardBox {
-    box-shadow: none;
-  }
+
   .gridBox {
     margin-top: 35px;
     display: grid;

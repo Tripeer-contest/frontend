@@ -63,6 +63,9 @@
     font-weight: 600;
     margin-top: 40px;
   }
+  .filterBox {
+    margin-bottom: 50px;
+  }
 }
 @media screen and (min-width: 1000px) {
   .topSection {
