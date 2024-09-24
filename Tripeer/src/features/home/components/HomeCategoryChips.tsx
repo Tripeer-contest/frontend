@@ -30,8 +30,6 @@ const HomeCategoryChips = ({ title, arr, type }: Props) => {
                 key={`${item}-${idx}`}
                 title={item.name}
                 id={item.id}
-                image={(item as PlaceCategoryTypes).image}
-                unImage={(item as PlaceCategoryTypes).unImage}
               />
             )}
           </SwiperSlide>
