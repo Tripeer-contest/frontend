@@ -1,12 +1,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import PlaceBox from '../../home/components/PlaceBox';
 import styles from '../assets/simular.module.css';
 import { PlaceDetailType } from '../../../types/PlaceType';
 import useSpotDetailQuery, {
   useSimilarMutate,
 } from '../hooks/useSpotDetailQuery';
 import { useNavigate } from 'react-router-dom';
+import RecommendSpotBox from '../../home/components/RecommendSpotBox';
 
 export default function SpotSimular({ id }: { id: number }) {
   const SimilarSpot = useSpotDetailQuery<PlaceDetailType[]>(
@@ -34,13 +34,13 @@ export default function SpotSimular({ id }: { id: number }) {
         >
           {SimilarSpot.data.map((item) => (
             <SwiperSlide key={item.spotId} className={styles.itemBox}>
-              <PlaceBox
+              <RecommendSpotBox
                 clickHandler={() => rootHandler(item.spotId)}
                 likeClickHandler={(e) => {
                   e.stopPropagation();
                   mutate({ like: item.wishlist, spotId: item.spotId });
                 }}
-                rating={4.5}
+                rating={item.starPointAvg}
                 place={item}
               />
             </SwiperSlide>
@@ -56,13 +56,13 @@ export default function SpotSimular({ id }: { id: number }) {
         >
           {NearSpot.data.map((item) => (
             <SwiperSlide key={item.spotId} className={styles.itemBox}>
-              <PlaceBox
+              <RecommendSpotBox
                 clickHandler={() => rootHandler(item.spotId)}
                 likeClickHandler={(e) => {
                   e.stopPropagation();
                   mutate({ like: item.wishlist, spotId: item.spotId });
                 }}
-                rating={4.5}
+                rating={item.starPointAvg}
                 place={item}
               />
             </SwiperSlide>

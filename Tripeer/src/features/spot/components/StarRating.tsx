@@ -16,19 +16,21 @@ export default function StarRating({
     <div className={styles.starContainer}>
       {[...Array(5)].map((_, index) => (
         <div key={index} className={styles.starWrapper}>
-          <div
+          <img
+            src={halfStar}
+            alt="star-icon"
             className={`${styles.halfStar} ${styles.leftHalf}`}
             onClick={() => handleClick(index, true)}
             style={{
-              backgroundImage: `url(${halfStar})`,
               opacity: rating >= index + 0.5 ? 1 : 0.4,
             }}
           />
-          <div
+          <img
+            src={halfStar}
+            alt="star-icon"
             className={`${styles.halfStar} ${styles.rightHalf}`}
             onClick={() => handleClick(index, false)}
             style={{
-              backgroundImage: `url(${halfStar})`,
               opacity: rating >= index + 1 ? 1 : 0.4,
             }}
           />

@@ -5,13 +5,9 @@ import usePlaceChip from '../hooks/usePlaceChip.tsx';
 interface Props {
   title: string;
   id: number;
-  image: string;
-  unImage: string;
 }
 
-const imageArr = ['', styles.resImg, styles.stayImg, styles.mecImg];
-
-const PlaceChip = ({ title, id, image, unImage }: Props) => {
+const PlaceChip = ({ title, id }: Props) => {
   const h_nowPlaceId = zustandStore((state) => state.h_nowPlaceId);
   const { chipClickHandler } = usePlaceChip();
 
@@ -20,13 +16,6 @@ const PlaceChip = ({ title, id, image, unImage }: Props) => {
       className={`${styles.container} ${id === h_nowPlaceId ? styles.check : ''}`}
       onClick={() => chipClickHandler(id)}
     >
-      {image && (
-        <img
-          src={id === h_nowPlaceId ? unImage : image}
-          alt={'categoryImg'}
-          className={imageArr[id]}
-        />
-      )}
       <p>{title}</p>
     </div>
   );

@@ -16,17 +16,16 @@ const getRecommend = async (
 
   const data = res.data.data;
 
-  const rdIdx1 = Math.floor(Math.random() * data.length);
-  let rdIdx2;
+  const randomIndexes = new Set<number>();
 
-  do {
-    rdIdx2 = Math.floor(Math.random() * data.length);
-  } while (rdIdx2 === rdIdx1);
+  const MAX_LENGTH = 3;
+  while (randomIndexes.size < MAX_LENGTH) {
+    randomIndexes.add(Math.floor(Math.random() * data.length));
+  }
 
-  const recommend_1 = data[rdIdx1];
-  const recommend_2 = data[rdIdx2];
+  const recommendations = Array.from(randomIndexes).map((index) => data[index]);
 
-  return [recommend_1, recommend_2];
+  return recommendations;
 };
 
 export default getRecommend;
