@@ -17,7 +17,7 @@ const HomePlaceBanner = () => {
   return (
     <div className={styles.container}>
       <div className={styles.titleBox}>
-        <p className={styles.title}>{`' ${title}' 에 대한 검색결과 `}</p>
+        <p className={styles.title}>{`'${title}' 에 대한 검색결과 `}</p>
       </div>
       <div className={styles.gridBox}>
         {!isLoading && data
