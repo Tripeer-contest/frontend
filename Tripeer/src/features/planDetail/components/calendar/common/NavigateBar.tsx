@@ -10,14 +10,12 @@ import NavigateTrail from './NavigateTrail';
 
 export default function NavigateBar({ timeObject }: { timeObject: any }) {
   const [rootVisible, setRootVisible] = useState(false);
-  console.log(timeObject);
   const option = timeObject.option;
   const rootInfo = timeObject.rootList[option];
   const time = timeObject.time[option];
   const vehicle = [car, bus, ferry, airplane][option];
   const vehicleKey = ['CAR', 'BUS', 'FERRY', 'AIRPLANE'][option];
   const vehicleStyle = ROUTE_STYLE[vehicleKey];
-  console.log(rootInfo);
   const getWidth = (totalMinutes: number, minutes: number) => {
     return (100 * minutes) / totalMinutes;
   };
