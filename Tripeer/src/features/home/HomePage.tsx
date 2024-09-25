@@ -47,7 +47,15 @@ export default function HomePage() {
               ))}
             </>
           ) : (
-            <SkeletonRecommendationBanner />
+            <>
+              {[1, 2, 3].map((box: number) => {
+                return (
+                  <Fragment key={box}>
+                    <SkeletonRecommendationBanner />
+                  </Fragment>
+                );
+              })}
+            </>
           )}
 
           <HomePlaceBanner />

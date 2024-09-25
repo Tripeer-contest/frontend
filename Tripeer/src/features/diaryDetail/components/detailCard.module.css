@@ -1,9 +1,7 @@
 @media screen and (max-width: 1000px) {
   .container {
     width: 100vw;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
+    padding: 10px 20px 0px 20px;
     margin-top: 20px;
     margin-bottom: 10px;
   }
@@ -21,13 +19,13 @@
   }
   .dayListBox {
     display: grid;
-    grid-template-columns: 30px auto 70px;
+    grid-template-columns: 20px auto 70px;
   }
   .orderBox {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30px;
+    width: 20px;
   }
   .imgBox {
     height: 70px;
@@ -80,6 +78,30 @@
   }
   .unUseMapImg {
     width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .deleteModalBox {
+    margin-bottom: 0px;
+    outline: none;
+    border: none;
+    border-radius: 15px 15px 0 0;
+    height: 200px;
+    width: 100%;
+    max-width: 100vw;
+    animation: slideUp 0.3s ease-in-out;
+    overflow: hidden;
+    padding: 15px;
+  }
+  .btnBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
   }
@@ -162,6 +184,32 @@
     width: 450px;
     height: 100%;
   }
+
+  .deleteModalBox {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 150px;
+    width: 400px;
+    overflow: hidden;
+  }
+  .btnBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 120px;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .createReviewBtn {
+    font-size: 0.9rem;
+  }
+  .deleteReviewBtn {
+    font-size: 0.9rem;
+  }
 }
 
 .dateBox p {
@@ -193,6 +241,7 @@
 .address {
   color: #858585;
   margin-bottom: 10px;
+  line-height: 160%;
 }
 .contentTypeBox {
   display: inline-flex;
@@ -202,7 +251,7 @@
   border: 1px solid #d9d9d9;
   border-radius: 30px;
   padding: 5px 10px;
-  margin-bottom: 30px;
+
   box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
 }
 .contentIcon {
@@ -219,4 +268,70 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+.bottomSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.createReviewBtn {
+  color: #4fbdb7;
+  border-bottom: 1px solid #4fbdb7;
+  line-height: 150%;
+}
+.createReviewBtn:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.deleteReviewBtn {
+  color: #cd5d47;
+  border-bottom: 1px solid #cd5d47;
+  line-height: 150%;
+}
+.deleteReviewBtn:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+.deleteModalTopBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.deleteModalTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.closeBoxs {
+  height: 15px;
+  width: 15px;
+}
+
+.cancelBtn {
+  background-color: #f7f7f7;
+  color: #3d3c3c;
+  width: calc(100% / 2);
+  border-radius: 5px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.confirmBtn {
+  background-color: #04acb5;
+  color: white;
+  width: calc(100% / 2);
+  border-radius: 5px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
