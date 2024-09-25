@@ -8,6 +8,7 @@ import {
   totalYListInfo,
 } from '../../../../../store/room/RoomSliceState.ts';
 import postAtoB from '../../../api/postAtoB.ts';
+import { useState } from 'react';
 
 const useMCard = (item: totalYListInfo, itemIdx: number) => {
   const isMobile = useIsMobileSize();
@@ -15,6 +16,7 @@ const useMCard = (item: totalYListInfo, itemIdx: number) => {
   const [nowDay, doc] = zustandStore(
     useShallow((state) => [state.c_nowDay, state.y_doc]),
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   const onClickHandler = () => {
     if (isMobile) open();
@@ -26,6 +28,7 @@ const useMCard = (item: totalYListInfo, itemIdx: number) => {
 
   const addHandler = async (close: () => void, toIdx: number) => {
     if (doc) {
+      setIsLoading(true);
       const totalY = doc.getArray('totalYList');
       const syArr = totalY.get(nowDay + 1) as YArray<totalYListInfo>;
       const dyArr = totalY.get(toIdx) as YArray<totalYListInfo>;
@@ -77,11 +80,13 @@ const useMCard = (item: totalYListInfo, itemIdx: number) => {
           dyTArr.insert(dyTArr.length, [data]);
         }
       }
+      setIsLoading(false);
     }
   };
 
   const deleteHandler = async (close: () => void) => {
     if (doc) {
+      setIsLoading(true);
       const totalY = doc.getArray('totalYList');
       const syArr = totalY.get(nowDay + 1) as YArray<totalYListInfo>;
       const timeY = doc.getArray('timeYList');
@@ -112,6 +117,7 @@ const useMCard = (item: totalYListInfo, itemIdx: number) => {
         syArr.delete(itemIdx, 1);
       }
       tZero.insert(tZero.length, [item]);
+      setIsLoading(false);
     }
     close();
   };
@@ -125,6 +131,7 @@ const useMCard = (item: totalYListInfo, itemIdx: number) => {
     backHandler,
     addHandler,
     deleteHandler,
+    isLoading,
   };
 };
 

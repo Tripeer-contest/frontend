@@ -37,7 +37,13 @@ const DndBanner = ({ idx }: Props) => {
           </div>
         )}
       </Droppable>
-      {blockYList[idx + 1] && <div className={styles.cover}></div>}
+      {blockYList[idx + 1] && (
+        <div className={styles.cover}>
+          <div className={styles.ball} />
+          <div className={styles.ball} />
+          <div className={styles.ball} />
+        </div>
+      )}
     </main>
   );
 };
