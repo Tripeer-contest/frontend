@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { isMobileCorrectly } from '../utils/checkMobile';
 import { getFCMToken, requestPermission } from '../utils/utilFcm';
-// import api from '../utils/api';
+import api from '../utils/api';
 import zustandStore from '../store/store';
 import { useShallow } from 'zustand/react/shallow';
 
@@ -15,8 +15,7 @@ export default function useFCM() {
       // granted : "허가", default : "아무 설정 하지 않음", denied : "거절"
       try {
         const token = await getFCMToken();
-        console.log(token);
-        // await api.post(`/noti?token=${token}`);
+        await api.post(`/noti?token=${token}`);
         setIsSuccess(true);
       } catch {
         setIsSuccess(false);
