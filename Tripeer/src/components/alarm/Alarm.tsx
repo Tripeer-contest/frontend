@@ -8,7 +8,7 @@ import {
 import useModal from '../../hooks/useModal';
 import back_icon from '../../assets/button/back.svg';
 import direct_icon from '../../assets/button/arrow.svg';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import useIntersectionScroll from '../../hooks/useIntersectionScroll';
 import MutationLoading from '../loading/MutationLoading';
 import Notify from '../../features/planDetail/components/notify/Notify';
@@ -49,8 +49,8 @@ export default function Alarm() {
         </header>
         <div className={styles.contentBox}>
           {data &&
-            data.pages.map((page) => (
-              <>
+            data.pages.map((page, idx) => (
+              <Fragment key={idx}>
                 {page.list.map((notify: any) => (
                   <div
                     key={notify.id}
@@ -119,10 +119,10 @@ export default function Alarm() {
                     )}
                   </div>
                 ))}
-              </>
+              </Fragment>
             ))}
-          {!data || !data.pages[0].list.length ? (
-            <div className={styles.empty}>알림이 텅 비었습니다.</div>
+          {data && data.pages[0].list.length === 0 ? (
+            <div className={styles.empty}>알림함이 비었습니다.</div>
           ) : undefined}
           {!isLoading &&
             hasNextPage &&

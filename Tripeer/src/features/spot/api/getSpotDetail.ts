@@ -47,3 +47,12 @@ export async function postReview(
     throw new Error(err?.response?.data?.message);
   }
 }
+export async function deleteReview(spotReviewId: number) {
+  try {
+    const res = await api.delete(`/place/review/${spotReviewId}`);
+
+    return res.data;
+  } catch {
+    throw new Error();
+  }
+}

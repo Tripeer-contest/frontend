@@ -22,13 +22,14 @@ const HomeCityBanner = () => {
           1000: { spaceBetween: 20 },
         }}
         grabCursor={true}
+        nested={true}
         className={styles.swiper}
       >
         {cityList.map((city, idx) => {
           return (
             <SwiperSlide
               key={`${city}-${idx}`}
-              className={styles.imgBox}
+              style={{ width: '120px' }}
               onClick={() => cityClickHandler(city.cityId)}
             >
               <img
