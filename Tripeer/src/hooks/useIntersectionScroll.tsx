@@ -14,7 +14,7 @@ export default function useIntersectionScroll(fetchToNext: () => void) {
               }
             });
           },
-          { threshold: 0.5 },
+          { threshold: 0.1 },
         );
       if (elem) {
         ioRef.current.observe(elem);

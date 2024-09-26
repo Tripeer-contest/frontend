@@ -3,13 +3,13 @@ import like from '../assets/like.png';
 import unLike from '../assets/unLike.png';
 import { getRateImg } from '../../../utils/rating.ts';
 import { PlaceType } from '../../../types/PlaceType.ts';
-import React from 'react';
+import { MouseEvent } from 'react';
 
 interface Props {
   place: PlaceType;
   clickHandler: () => void;
   likeClickHandler: (
-    e: React.MouseEvent<HTMLImageElement>,
+    e: MouseEvent<HTMLImageElement>,
     spotId: number,
     like: boolean,
   ) => void;
@@ -21,7 +21,12 @@ const PlaceBox = ({ place, clickHandler, likeClickHandler, rating }: Props) => {
   return (
     <div className={styles.container} onClick={clickHandler}>
       <div className={styles.imgBox}>
-        <img src={place.spotImg} alt={'placeImg'} className={styles.img} />
+        <img
+          src={place.spotImg}
+          alt={'placeImg'}
+          className={styles.img}
+          loading="lazy"
+        />
         <img
           src={place.wishlist ? like : unLike}
           alt={`${rating}`}
