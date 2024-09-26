@@ -1,11 +1,13 @@
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import styles from '../components/createReviewModal.module.css';
 import closeIcon from '../../../assets/button/cancel_whiteGray.svg';
 import UploadImage from '../../spot/components/UploadImage';
 import StarRating from '../../spot/components/StarRating';
-import { postReview } from '../../spot/api/getSpotDetail';
 import Notify from '../../planDetail/components/notify/Notify';
 import warningImg from '../../../assets/error/warn.svg';
+import { useDiaryReviewMutation } from '../hooks/useDiaryQuery';
+import useParamsId from '../../spot/hooks/useParamsId';
+import MutationLoading from '../../../components/loading/MutationLoading';
 
 export default function CreateReviewModal({
   isClick,
@@ -21,19 +23,35 @@ export default function CreateReviewModal({
   const [postImg, setPostImg] = useState<File[]>([]);
   const [previewImg, setPreviewImg] = useState<string[]>([]);
   const [rating, setRating] = useState(5);
-  const [isError, setIsError] = useState(false);
+  const id = useParamsId();
+  const { mutate, isPending, isError, isSuccess } = useDiaryReviewMutation(
+    '' + id,
+  );
   const timerRef = useRef<null | number>(null);
-  const errorRef = useRef<null | number>(null);
   const spotId = isClick;
 
-  function validateMessage() {
+  const validateMessage = () => {
     if (message.current.trim() === '') {
       setCheckEmpty(true);
       return false;
     }
 
     return true;
-  }
+  };
+
+  const handleSubmit = (spotId: number) => {
+    if (validateMessage()) {
+      mutate({
+        reviewReq: {
+          spotInfoId: '' + spotId,
+          message: message.current,
+          starPoint: '' + rating,
+        },
+        images: postImg,
+      });
+      // setIsCreateReview(false);
+    }
+  };
 
   useEffect(() => {
     if (isCheckEmpty) {
@@ -41,7 +59,6 @@ export default function CreateReviewModal({
         clearTimeout(timerRef.current);
         timerRef.current = null;
       }
-
       const id = window.setTimeout(() => {
         setCheckEmpty(false);
       }, 2000);
@@ -49,44 +66,11 @@ export default function CreateReviewModal({
     }
   }, [isCheckEmpty]);
 
-  useEffect(() => {
-    if (isError) {
-      if (errorRef.current) {
-        clearTimeout(errorRef.current);
-        errorRef.current = null;
-      }
-
-      const id = window.setTimeout(() => {
-        setIsError(false);
-      }, 2000);
-      errorRef.current = id;
-    }
-  }, [isError]);
-
   function handleMessage(e: ChangeEvent<HTMLTextAreaElement>) {
     message.current = e.currentTarget.value;
   }
 
-  const handleSubmit = useCallback(
-    async (spotId: number) => {
-      if (validateMessage()) {
-        try {
-          await postReview(
-            {
-              spotInfoId: spotId.toString(),
-              starPoint: rating.toString(),
-              message: message.current,
-            },
-            postImg,
-          );
-          setIsCreateReview(false);
-        } catch {
-          setIsError(true);
-        }
-      }
-    },
-    [rating, postImg, setIsCreateReview],
-  );
+  if (isSuccess) setIsCreateReview(false);
 
   return (
     <div className={styles.modalBack} onClick={() => setIsCreateReview(false)}>
@@ -153,9 +137,7 @@ export default function CreateReviewModal({
             </div>
           </div>
         </section>
-        <div>
-          <p>{checkSpotName}</p>
-        </div>
+        <div></div>
       </div>
       <Notify
         isActive={isCheckEmpty}
@@ -169,6 +151,7 @@ export default function CreateReviewModal({
         title={'경고'}
         img={warningImg}
       />
+      <MutationLoading isShow={isPending} />
     </div>
   );
 }

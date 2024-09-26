@@ -5,13 +5,21 @@ import { getRateImg } from '../../../utils/rating';
 import { useState } from 'react';
 import useDeleteReviewModal from '../hooks/useDeleteReviewModal';
 import CreateReviewModal from './CreateReviewModal';
+import { useDiaryReviewRemove } from '../hooks/useDiaryQuery';
+import useParamsId from '../../spot/hooks/useParamsId';
+import Notify from '../../planDetail/components/notify/Notify';
+import warningImg from '../../../assets/error/warn.svg';
 
 export default function DayListContent({ card }: { card: DayListCard }) {
-  const { delOpen, DeleteReviewModal } = useDeleteReviewModal();
+  const { open, DeleteReviewModal } = useDeleteReviewModal();
   const [isClick, setIsClick] = useState(0);
   const [checkSpotName, setCheckSpotName] = useState('');
   const [isCreateReview, setIsCreateReview] = useState(false);
-  console.log(card);
+  const id = useParamsId();
+  const { mutate, isError } = useDiaryReviewRemove('' + id);
+  const handleConfirm = () => {
+    mutate({ spotReviewId: isClick });
+  };
   return (
     <div className={styles.dayListContainer}>
       {card.planDetailList.map((item, idx: number) => {
@@ -61,8 +69,8 @@ export default function DayListContent({ card }: { card: DayListCard }) {
                     className={styles.deleteReviewBtn}
                     onClick={() => {
                       console.log(item.title);
-                      setIsClick(item.spotId);
-                      delOpen();
+                      setIsClick(item.spotReviewId);
+                      open();
                     }}
                   >
                     리뷰 삭제
@@ -87,7 +95,7 @@ export default function DayListContent({ card }: { card: DayListCard }) {
           </main>
         );
       })}
-      <DeleteReviewModal isClick={isClick} />
+      <DeleteReviewModal handleConfirm={handleConfirm} />
       {isCreateReview && (
         <CreateReviewModal
           isClick={isClick}
@@ -95,6 +103,12 @@ export default function DayListContent({ card }: { card: DayListCard }) {
           setIsCreateReview={setIsCreateReview}
         />
       )}
+      <Notify
+        isActive={isError}
+        message="네트워크 상태가 불안정하여 리뷰 삭제를 실패하였습니다."
+        title={'경고'}
+        img={warningImg}
+      />
     </div>
   );
 }

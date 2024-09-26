@@ -18,6 +18,7 @@ export interface DiaryTypes {
       spotId: number;
       starPointAvg: number;
       writeReview: boolean;
+      spotReviewId: number;
     }[];
   }[];
   cityIdTownIdList: {
@@ -59,5 +60,6 @@ export interface DayListCard {
     spotId: number;
     starPointAvg: number;
     writeReview: boolean;
+    spotReviewId: number;
   }[];
 }

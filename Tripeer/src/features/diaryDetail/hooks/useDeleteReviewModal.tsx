@@ -6,43 +6,40 @@ import closeIcon from '../../../assets/button/cancel_whiteGray.svg';
 export default function useDeleteReviewModal() {
   const { open, close, ModalLayout } = useModal();
 
-  const delOpen = useCallback(() => {
-    open();
-  }, [open]);
-
-  const delClose = useCallback(() => {
-    close();
-  }, [close]);
-
   const DeleteReviewModal = useCallback(
-    ({ isClick }: { isClick: number }) => {
+    ({ handleConfirm }: { handleConfirm: () => void }) => {
       return (
-        <ModalLayout className={styles.deleteModalBox} onClick={delClose}>
+        <ModalLayout className={styles.deleteModalBox} onClick={close}>
           <div className={styles.deleteModalTopBox}>
             <div className={styles.closeBoxs}></div>
             <div className={styles.deleteModalTitle}>
-              {isClick}
               해당 리뷰를 삭제하시겠습니까?
             </div>
             <img
               src={closeIcon}
               alt="close-icon"
               className={styles.closeBoxs}
-              onClick={delClose}
+              onClick={close}
             />
           </div>
           <div className={styles.btnBox}>
-            <div className={styles.cancelBtn} onClick={delClose}>
+            <div className={styles.cancelBtn} onClick={close}>
               취소
             </div>
-            <div className={styles.confirmBtn} onClick={delClose}>
+            <div
+              className={styles.confirmBtn}
+              onClick={() => {
+                handleConfirm();
+                close;
+              }}
+            >
               확인
             </div>
           </div>
         </ModalLayout>
       );
     },
-    [ModalLayout, delClose],
+    [ModalLayout, close],
   );
-  return { delOpen, delClose, DeleteReviewModal };
+  return { open, close, DeleteReviewModal };
 }
