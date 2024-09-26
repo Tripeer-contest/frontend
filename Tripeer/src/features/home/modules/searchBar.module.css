@@ -4,6 +4,7 @@
   background-color: white;
   display: flex;
   align-items: center;
+  z-index: 2;
 }
 
 .searchImg {
@@ -29,12 +30,7 @@ input::placeholder {
   font-weight: 300;
 }
 @media screen and (max-width: 600px) {
-  .cardBox {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e3e3e3;
-  }
   .gridBox {
-    margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 10px;
@@ -71,7 +67,7 @@ input::placeholder {
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 50px;
+    height: 70px;
     border-bottom: #e3e3e3 1px solid;
     color: #545454;
     font-size: 1.3rem;
@@ -145,7 +141,7 @@ input::placeholder {
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 50px;
+    height: 70px;
     border-bottom: #e3e3e3 1px solid;
     color: #545454;
     font-size: 1.3rem;
@@ -176,7 +172,6 @@ input::placeholder {
 }
 
 @media screen and (min-width: 1000px) {
-
   .cardBox {
     box-shadow: none;
   }
@@ -252,6 +247,7 @@ input::placeholder {
   top: 0;
   left: 0;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
   background-color: white;
   z-index: 2;
@@ -261,7 +257,7 @@ input::placeholder {
 }
 
 .modalHeader p {
-  font-size: 1rem;
+  font-size: 18px;
 }
 
 .modalSearchList {
@@ -281,10 +277,10 @@ input::placeholder {
 
 .backImg {
   position: absolute;
-  top: 7px;
-  left: 10px;
-  width: 30px;
-  height: 30px;
+  top: 50%;
+  height: 24px;
+  transform: translateY(-50%);
+  left: 20px;
   cursor: pointer;
 }
 .noneData {
@@ -292,7 +288,7 @@ input::placeholder {
   font-size: 1.1rem;
 }
 
-.section{
+.section {
   width: 1000px;
   height: 100%;
   display: grid;
@@ -303,6 +299,41 @@ input::placeholder {
   display: none;
 }
 
-.bottomBox{
+.bottomBox {
   height: 100px;
+}
+
+.ballBox {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 80px;
+  gap: 8px;
+}
+
+.ball {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #04acb5;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.ball:nth-child(2) {
+  animation-delay: -0.4s;
+}
+
+.ball:nth-child(3) {
+  animation-delay: -0.8s;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
