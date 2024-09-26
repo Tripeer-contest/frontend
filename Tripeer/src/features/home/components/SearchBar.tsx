@@ -36,54 +36,73 @@ const SearchBar = () => {
           />
           <p>여행지 검색</p>
         </div>
-        <div className={styles.modalContentBox}>
-          <div className={styles.modalSearchBar}>
-            <img
-              src={searchImg}
-              alt={'searchImg'}
-              className={styles.modalSearchImg}
-            />
-            <input
-              className={styles.modalSearchInput}
-              placeholder={'여행지를 검색해보세요'}
-              onChange={handleInputChange}
-              value={keyword}
-            />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+          }}
+        >
+          <div className={styles.modalContentBox}>
+            <div className={styles.modalSearchBar}>
+              <img
+                src={searchImg}
+                alt={'searchImg'}
+                className={styles.modalSearchImg}
+              />
+              <input
+                className={styles.modalSearchInput}
+                placeholder={'여행지를 검색해보세요'}
+                onChange={handleInputChange}
+                value={keyword}
+              />
+            </div>
           </div>
         </div>
-        <section className={styles.section}>
-          <div className={styles.modalSearchList}>
-            {!data || data?.pages?.[0]?.spotInfoDTOList.length === 0 ? (
-              <p className={styles.noneData}>검색 결과가 없습니다.</p>
-            ) : (
-              <>
-                <div className={styles.gridBox}>
-                  {!isLoading &&
-                    data &&
-                    data.pages.map((page) =>
-                      page.spotInfoDTOList.map((place: any) => (
-                        <div key={place.spotId} className={styles.cardBox}>
-                          <PlaceBox
-                            place={place}
-                            clickHandler={() => clickHandler(place.spotId)}
-                            likeClickHandler={likeClickHandler}
-                            rating={rating}
-                          />
-                        </div>
-                      )),
-                    )}
-                </div>
-                {!isLoading && hasNextPage && data?.pages.length && (
-                  <li className={styles.ballBox} ref={setRef}>
-                    <div className={styles.ball} />
-                    <div className={styles.ball} />
-                    <div className={styles.ball} />
-                  </li>
-                )}
-              </>
-            )}
-          </div>
-        </section>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            height: 'calc(100% - 150px)',
+            overflowY: 'scroll',
+            scrollbarWidth: 'none',
+          }}
+        >
+          <section className={styles.section}>
+            <div className={styles.modalSearchList}>
+              {!data || data?.pages?.[0]?.spotInfoDTOList.length === 0 ? (
+                <p className={styles.noneData}>검색 결과가 없습니다.</p>
+              ) : (
+                <>
+                  <div className={styles.gridBox}>
+                    {!isLoading &&
+                      data &&
+                      data.pages.map((page) =>
+                        page.spotInfoDTOList.map((place: any) => (
+                          <div key={place.spotId} className={styles.cardBox}>
+                            <PlaceBox
+                              place={place}
+                              clickHandler={() => clickHandler(place.spotId)}
+                              likeClickHandler={likeClickHandler}
+                              rating={rating}
+                            />
+                          </div>
+                        )),
+                      )}
+                  </div>
+                  {!isLoading && hasNextPage && data?.pages.length && (
+                    <li className={styles.ballBox} ref={setRef}>
+                      <div className={styles.ball} />
+                      <div className={styles.ball} />
+                      <div className={styles.ball} />
+                    </li>
+                  )}
+                </>
+              )}
+            </div>
+          </section>
+        </div>
       </ModalLayout>
     </>
   );
