@@ -29,11 +29,14 @@ input::placeholder {
   font-family: 'Pretendard';
   font-weight: 300;
 }
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 700px) {
   .gridBox {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
   }
 
   .inputBox {
@@ -96,13 +99,12 @@ input::placeholder {
     margin: 0 5px 0 15px;
   }
 }
-@media screen and (min-width: 600px) {
-  .cardBox {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
-    padding: 5px;
-  }
+@media screen and (min-width: 700px) {
   .gridBox {
-    margin-top: 35px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -172,14 +174,22 @@ input::placeholder {
 }
 
 @media screen and (min-width: 1000px) {
-  .cardBox {
-    box-shadow: none;
+  .container {
+    width: 100%;
+    margin-top: 70px;
+    display: grid;
+    justify-items: center;
   }
+
   .gridBox {
     margin-top: 35px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+  }
+
+  .cardBox {
+    box-shadow: none;
   }
 
   .inputBox {
@@ -255,9 +265,7 @@ input::placeholder {
   max-width: 100vw;
   background-color: white;
   z-index: 2;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  overflow: hidden;
 }
 
 .modalHeader p {
