@@ -47,7 +47,7 @@ export default function UploadImage({
           }}
         />
         <label htmlFor="imgUpload" className={styles.uploadBtn}>
-          이미지 추가
+          파일 추가
         </label>
         <div
           className={styles.deleteImgBtn}

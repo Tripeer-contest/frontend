@@ -5,12 +5,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
   }
   .starSection {
     display: grid;
     grid-template-columns: 80px auto;
     align-items: center;
-    margin-bottom: 5px;
   }
   .reviewSection {
     display: grid;
@@ -23,7 +23,6 @@
   .titleBox {
     display: grid;
     grid-template-columns: 80px auto;
-    margin-bottom: 5px;
   }
 
   .imgText {
