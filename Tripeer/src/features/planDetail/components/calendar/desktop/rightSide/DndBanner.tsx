@@ -9,6 +9,7 @@ import {
 import OpBtn from './OpBtn.tsx';
 import DndCard from './DndCard.tsx';
 import zustandStore from '../../../../../../store/store.tsx';
+import Nodata from '../leftSide/Nodata.tsx';
 
 interface Props {
   idx: number;
@@ -43,16 +44,20 @@ const DndBanner = ({ idx }: Props) => {
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              {totalYList[idx].map((item, itemIdx) => (
-                <React.Fragment key={item.spotInfoId}>
-                  <DndCard
-                    item={item}
-                    itemIdx={itemIdx}
-                    length={totalYList[idx].length}
-                    idx={idx}
-                  />
-                </React.Fragment>
-              ))}
+              {totalYList[idx].length !== 0 ? (
+                totalYList[idx].map((item, itemIdx) => (
+                  <React.Fragment key={item.spotInfoId}>
+                    <DndCard
+                      item={item}
+                      itemIdx={itemIdx}
+                      length={totalYList[idx].length}
+                      idx={idx}
+                    />
+                  </React.Fragment>
+                ))
+              ) : (
+                <Nodata />
+              )}
               {provided.placeholder}
             </div>
           )}

@@ -4,6 +4,7 @@ import React from 'react';
 import DndCard from '../desktop/rightSide/DndCard.tsx';
 import zustandStore from '../../../../../store/store.tsx';
 import { useShallow } from 'zustand/react/shallow';
+import Nodata from '../desktop/leftSide/Nodata.tsx';
 
 interface Props {
   idx: number;
@@ -15,7 +16,13 @@ const DndBanner = ({ idx }: Props) => {
   );
 
   return (
-    <main className={styles.container}>
+    <main
+      className={
+        totalYList[idx + 1].length !== 0
+          ? styles.container
+          : styles.noDataContainer
+      }
+    >
       <Droppable droppableId={`${idx + 1}`}>
         {(provided) => (
           <div
@@ -23,16 +30,20 @@ const DndBanner = ({ idx }: Props) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {totalYList[idx + 1].map((item, itemIdx) => (
-              <React.Fragment key={item.spotInfoId}>
-                <DndCard
-                  item={item}
-                  itemIdx={itemIdx}
-                  length={totalYList[idx + 1].length}
-                  idx={idx + 1}
-                />
-              </React.Fragment>
-            ))}
+            {totalYList[idx + 1].length !== 0 ? (
+              totalYList[idx + 1].map((item, itemIdx) => (
+                <React.Fragment key={item.spotInfoId}>
+                  <DndCard
+                    item={item}
+                    itemIdx={itemIdx}
+                    length={totalYList[idx + 1].length}
+                    idx={idx + 1}
+                  />
+                </React.Fragment>
+              ))
+            ) : (
+              <Nodata />
+            )}
             {provided.placeholder}
           </div>
         )}
