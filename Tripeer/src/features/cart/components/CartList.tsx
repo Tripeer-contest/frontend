@@ -43,7 +43,6 @@ export default function CartList({ items }: { items: wishItem[] }) {
                   }
                 />
               </div>
-              <div className={styles.line} />
             </Fragment>
           );
         })}
