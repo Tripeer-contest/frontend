@@ -1,6 +1,7 @@
 @media screen and (min-width: 600px) {
   .container {
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(3, 1fr);
     padding: 30px 10px;
     gap: 40px 20px;
