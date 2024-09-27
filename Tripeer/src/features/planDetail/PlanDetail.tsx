@@ -11,6 +11,7 @@ import PlanMap from './components/map/PlanMap';
 import PlanCalendar from './components/calendar/PlanCalendar';
 import useCalendarInfo from './components/calendar/hooks/useCalendarInfo.tsx';
 import useDesktopDnd from './components/calendar/hooks/useDesktopDnd.tsx';
+import MouseController from './components/common/MouseController.tsx';
 
 export default function PlanDetail() {
   const [init, page, roomInit] = zustandStore(
@@ -43,7 +44,9 @@ export default function PlanDetail() {
       {Access.isLoading || Online.isLoading || !isConnected ? (
         <CommonLoading />
       ) : (
-        <>{MAIN_PAGE}</>
+        <>
+          <MouseController page={page}>{MAIN_PAGE}</MouseController>
+        </>
       )}
     </>
   );
