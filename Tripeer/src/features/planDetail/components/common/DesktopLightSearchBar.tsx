@@ -2,11 +2,21 @@ import { InputHTMLAttributes, KeyboardEvent, useRef } from 'react';
 import styles from '../../assets/common/search.module.css';
 import searchBtnImg from '../../../../assets/button/light_search.svg';
 import zustandStore from '../../../../store/store';
+import { useShallow } from 'zustand/react/shallow';
 
-export default function LightSearchBar({
+export default function DesktopLightSearchBar({
+  setIsRecommendSelected,
   ...rest
-}: InputHTMLAttributes<HTMLInputElement>) {
-  const setKeyword = zustandStore((state) => state.room_setMapSearchKeyword);
+}: {
+  setIsRecommendSelected: (params: boolean) => void;
+} & InputHTMLAttributes<HTMLInputElement>) {
+  const [setKeyword, setSortType, sortType] = zustandStore(
+    useShallow((state) => [
+      state.room_setMapSearchKeyword,
+      state.room_setSortType,
+      state.room_sortType,
+    ]),
+  );
 
   const $input = useRef<HTMLInputElement | null>(null);
   const searchHandler = () => {
@@ -23,6 +33,12 @@ export default function LightSearchBar({
     }
   };
 
+  const clickHandler = () => {
+    if (sortType === '') {
+      setIsRecommendSelected(false);
+      setSortType('전체');
+    }
+  };
   return (
     <div className={styles.searchBox}>
       <input
@@ -31,6 +47,7 @@ export default function LightSearchBar({
         className={`${rest.className} ${styles.search}`}
         ref={$input}
         onKeyUp={keyDown}
+        onClick={clickHandler}
       />
       <img
         src={searchBtnImg}
