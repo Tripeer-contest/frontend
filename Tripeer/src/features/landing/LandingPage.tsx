@@ -7,6 +7,8 @@ import ThirdSlide from './components/ThirdSlide';
 import styles from './landing.module.css';
 import { ReactNode, useRef } from 'react';
 import LoginPage from '../auth/LoginPage.tsx';
+import RedirectPage from '../redirect/RedirectPage.tsx';
+import zustandStore from '../../store/store.tsx';
 
 export default function LandingPage(): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -14,6 +16,8 @@ export default function LandingPage(): JSX.Element {
   const scrollTop = () => {
     if (containerRef.current) containerRef.current.scrollTop = 0;
   };
+
+  const isLogin = zustandStore((state) => state.h_isLogin);
 
   const slides: ReactNode[] = [
     <LoginPage key={'login'} />,
@@ -27,11 +31,15 @@ export default function LandingPage(): JSX.Element {
 
   return (
     <div className={styles.outer} ref={containerRef}>
-      {slides.map((slide, index) => (
-        <div key={index} className={styles.landingSlide}>
-          {slide}
-        </div>
-      ))}
+      {!isLogin ? (
+        <RedirectPage />
+      ) : (
+        slides.map((slide, index) => (
+          <div key={index} className={styles.landingSlide}>
+            {slide}
+          </div>
+        ))
+      )}
     </div>
   );
 }

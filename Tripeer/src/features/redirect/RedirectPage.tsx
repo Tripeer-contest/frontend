@@ -2,19 +2,28 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo/logo_4.png';
 import styles from './redirectPage.module.css';
+import { getAuthorizationToken } from '../../utils/api.ts';
+import zustandStore from '../../store/store.tsx';
 
 export default function RedirectPage() {
   const navigate = useNavigate();
 
+  const setIsLogin = zustandStore((state) => state.h_setIsLogin);
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/home');
+      const isLogin = getAuthorizationToken();
+      if (isLogin !== undefined) {
+        navigate('/home');
+      } else {
+        setIsLogin(true);
+      }
     }, 1000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [navigate]);
+  }, [navigate, setIsLogin]);
 
   return (
     <div>

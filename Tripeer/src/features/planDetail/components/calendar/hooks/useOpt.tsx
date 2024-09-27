@@ -4,6 +4,7 @@ import zustandStore from '../../../../../store/store.tsx';
 import postOpt from '../../../api/postOpt.ts';
 import { useShallow } from 'zustand/react/shallow';
 import { useParams } from 'react-router-dom';
+import { rePost } from '../../../../../utils/api.ts';
 
 const useOpt = () => {
   const { open, close, PlanModal } = usePlanDetailModal();
@@ -11,8 +12,12 @@ const useOpt = () => {
   const [select, setSelect] = useState<string>('');
   const [text, setText] = useState<string>('확인');
   const [isLabel, setIsLabel] = useState<boolean>(false);
-  const [totalYList, doc] = zustandStore(
-    useShallow((state) => [state.room_totalYList, state.y_doc]),
+  const [totalYList, doc, timeYList] = zustandStore(
+    useShallow((state) => [
+      state.room_totalYList,
+      state.y_doc,
+      state.room_timeYList,
+    ]),
   );
 
   const params = useParams();
@@ -25,8 +30,9 @@ const useOpt = () => {
     totalYList[idx].length >= 2 ? open() : alert.open();
   };
 
-  const onSubmitHandler = (close: () => void, idx: number) => {
+  const onSubmitHandler = async (close: () => void, idx: number) => {
     if (select !== '') {
+      await rePost();
       close();
       setSelect('');
       setIsLabel(false);
@@ -42,6 +48,7 @@ const useOpt = () => {
       setText('이동 수단을 선택해주세요');
       setTimeout(() => setText('확인'), 1000);
     }
+    console.log(timeYList[1]);
   };
 
   const onModalHandler = (close: () => void) => {
