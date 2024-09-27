@@ -17,7 +17,7 @@ export default function LightSearchBar({
     }
   };
   const keyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && e.nativeEvent.isComposing === false) {
       e.preventDefault();
       searchHandler();
     }

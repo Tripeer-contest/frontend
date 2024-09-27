@@ -47,7 +47,7 @@ export default function CartBody() {
         autoHeight={true}
       >
         {Category.map((category) => (
-          <SwiperSlide key={category}>
+          <SwiperSlide key={category} style={{ width: '100vw' }}>
             <CartList items={wishItemList[category]} />
           </SwiperSlide>
         ))}
