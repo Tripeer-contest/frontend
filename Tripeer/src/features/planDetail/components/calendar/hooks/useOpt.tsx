@@ -11,6 +11,8 @@ const useOpt = () => {
   const alert = usePlanDetailModal();
   const [select, setSelect] = useState<string>('');
   const [text, setText] = useState<string>('확인');
+  const [isNotify, setIsNotify] = useState<boolean>(false);
+  const [isNotify_2, setIsNotify_2] = useState<boolean>(false);
   const [isLabel, setIsLabel] = useState<boolean>(false);
   const [totalYList, doc, timeYList] = zustandStore(
     useShallow((state) => [
@@ -27,7 +29,19 @@ const useOpt = () => {
   };
 
   const onClickHandler = (idx: number) => {
-    totalYList[idx].length >= 2 ? open() : alert.open();
+    const isOk = timeYList[idx].every((item) => {
+      return item.time[1].length < 8;
+    });
+
+    if (totalYList[idx].length < 2) {
+      setIsNotify_2(true);
+      setTimeout(() => setIsNotify_2(false), 2000);
+    } else if (!isOk) {
+      setIsNotify(true);
+      setTimeout(() => setIsNotify(false), 2000);
+    } else {
+      open();
+    }
   };
 
   const onSubmitHandler = async (close: () => void, idx: number) => {
@@ -73,6 +87,10 @@ const useOpt = () => {
     onCLickLabel,
     isLabel,
     alert,
+    isNotify,
+    setIsNotify,
+    open,
+    isNotify_2,
   };
 };
 
