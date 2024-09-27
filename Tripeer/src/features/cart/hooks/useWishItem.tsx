@@ -6,7 +6,7 @@ export default function useWishItem() {
   const { data } = useSuspenseQuery<wishListAPI>({
     queryFn: getWishItem,
     queryKey: ['wishList'],
-    staleTime: 1000 * 60 * 5,
+    staleTime: 0,
   });
   return data;
 }

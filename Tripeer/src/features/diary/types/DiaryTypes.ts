@@ -15,6 +15,10 @@ export interface DiaryTypes {
       day: number;
       step: number;
       cost: number;
+      spotId: number;
+      starPointAvg: number;
+      writeReview: boolean;
+      spotReviewId: number;
     }[];
   }[];
   cityIdTownIdList: {
@@ -53,5 +57,9 @@ export interface DayListCard {
     day: number;
     step: number;
     cost: number;
+    spotId: number;
+    starPointAvg: number;
+    writeReview: boolean;
+    spotReviewId: number;
   }[];
 }

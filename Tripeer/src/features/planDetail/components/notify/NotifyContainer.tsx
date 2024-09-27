@@ -1,6 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import styles from '../../assets/notify/container.module.css';
-import { createPortal } from 'react-dom';
 
 export default function NotifyContainer({
   isActive,
@@ -19,17 +18,15 @@ export default function NotifyContainer({
     }
     if (isActive) {
       setAnimation(styles.active);
-      const id = setTimeout(() => {
+      const id = window.setTimeout(() => {
         setAnimation('');
         if (timerId.current) clearTimeout(timerId.current);
       }, 3000);
-      // @ts-ignore
       timerId.current = id;
     }
   }, [isActive]);
 
-  return createPortal(
-    <aside className={`${styles.container} ${animation}`}>{children}</aside>,
-    document.getElementById('modal-root') as Element,
+  return (
+    <aside className={`${styles.container} ${animation}`}>{children}</aside>
   );
 }

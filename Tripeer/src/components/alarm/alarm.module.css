@@ -1,0 +1,252 @@
+.alarm {
+  height: 20px;
+}
+
+.box {
+  position: relative;
+}
+
+.red {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: red;
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+
+.modalContainer {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  max-height: calc(var(--vh, '1vh') * 100);
+  padding: 0;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  z-index: 1;
+}
+
+.modalContainer::backdrop {
+  z-index: 0;
+}
+
+.header {
+  width: 100vw;
+  height: 60px;
+  border-bottom: 1px solid #e3e3e3;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+
+.header > p {
+  font-size: 18px;
+}
+
+.header > img {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  height: 24px;
+  cursor: pointer;
+}
+
+.contentBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  height: calc(var(--vh, '1vh') * 100 - 60px);
+  overflow-y: scroll;
+  padding: 30px 20px;
+  gap: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  height: auto;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.cardHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.type {
+  font-size: 14px;
+  color: #6d6d6d;
+}
+
+.cardHeader > div {
+  width: 1px;
+  height: 10px;
+  background-color: #b1b1b1;
+}
+
+.title {
+  font-size: 16px;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.content {
+  font-size: 16px;
+  line-height: 130%;
+  color: #1a1a1a;
+}
+
+.date {
+  font-size: 12px;
+  color: #6d6d6d;
+}
+
+.direct {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 14px;
+  transition: 0.3s ease-in-out;
+}
+
+.btnBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cancelBtn {
+  width: 50%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+  color: #606060;
+  border-radius: 5px;
+}
+
+.deleteBtn {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+  color: #606060;
+  border-radius: 5px;
+}
+
+.confirmBtn {
+  width: 50%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #04acb5;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #858585;
+  font-size: 16px;
+}
+
+.ballBox {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 80px;
+  gap: 8px;
+}
+
+.ball {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #04acb5;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.ball:nth-child(2) {
+  animation-delay: -0.4s;
+}
+
+.ball:nth-child(3) {
+  animation-delay: -0.8s;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    background-color: #fff;
+    z-index: 2;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .contentBox {
+    scrollbar-width: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .contentBox::-webkit-scrollbar {
+    width: 5px;
+  }
+  .contentBox::-webkit-scrollbar-track {
+    background-color: #e3e3e3;
+  }
+  .contentBox::-webkit-scrollbar-thumb {
+    background-color: #04acb5;
+  }
+}

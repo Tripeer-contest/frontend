@@ -31,7 +31,7 @@ messaging.onBackgroundMessage((payload) => {
   const { content, title } = payload.data;
   const notificationOptions = {
     body: content, // 매세지 내용
-    icon: '/firebase-logo.png', // 로고 이미지 들어가는곳
+    icon: './favicon.ico', // 로고 이미지 들어가는곳
     data: payload.data,
   };
 

@@ -1,54 +1,48 @@
-import React from 'react';
+import { useState, ChangeEvent } from 'react';
 import styles from '../modules/searchBar.module.css';
 import searchImg from '../assets/search.png';
 import backImg from '../assets/back.png';
-import useSearchBanner from '../hooks/useSearchBanner.tsx';
-import useSearchBar from '../hooks/useSearchBar.tsx';
 import PlaceBox from './PlaceBox.tsx';
-import SkeletonPlaceBox from './SkeletonPlaceBox.tsx';
-import HomeLoading from './HomeLoading.tsx';
-import ToTop from './ToTop.tsx';
 import usePlaceBox from '../hooks/usePlaceBox.tsx';
+import useGetSearchData from '../hooks/useGetSearchData.tsx';
+import useIntersectionScroll from '../../../hooks/useIntersectionScroll.tsx';
+import useModal from '../../../hooks/useModal.tsx';
 
 const SearchBar = () => {
-  const { showModal, inputClickHandler, searchRef, backRef } =
-    useSearchBanner();
-  const {
-    keyword,
-    onChangeHandler,
-    data,
-    isLoading,
-    hasNextPage,
-    scrollHandler,
-    loadingRef,
-  } = useSearchBar();
+  const { ModalLayout, close, open } = useModal();
+  const [keyword, setKeyword] = useState('');
+  const { data, isLoading, hasNextPage, fetchNextPage } =
+    useGetSearchData(keyword);
+  const { setRef } = useIntersectionScroll(fetchNextPage);
   const { clickHandler, likeClickHandler, rating } = usePlaceBox();
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeHandler(event.target.value);
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setKeyword(event.target.value);
   };
 
   return (
-    <div
-      className={styles.inputBox}
-      onClick={inputClickHandler}
-      ref={searchRef}
-    >
-      <img src={searchImg} alt={'searchImg'} className={styles.searchImg} />
-      <div className={styles.input} onClick={inputClickHandler}>
-        여행지를 검색해보세요.
+    <>
+      <div className={styles.inputBox} onClick={open}>
+        <img src={searchImg} alt={'searchImg'} className={styles.searchImg} />
+        <div className={styles.input}>여행지를 검색해보세요.</div>
       </div>
-      {showModal && (
-        <div className={styles.modalContainer}>
-          <div className={styles.modalHeader}>
-            <img
-              src={backImg}
-              alt={'backBtnImage'}
-              className={styles.backImg}
-              ref={backRef}
-            />
-            <p>여행지 검색</p>
-          </div>
+      <ModalLayout className={styles.modalContainer}>
+        <div className={styles.modalHeader}>
+          <img
+            src={backImg}
+            alt={'backBtnImage'}
+            className={styles.backImg}
+            onClick={close}
+          />
+          <p>여행지 검색</p>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+          }}
+        >
           <div className={styles.modalContentBox}>
             <div className={styles.modalSearchBar}>
               <img
@@ -64,43 +58,53 @@ const SearchBar = () => {
               />
             </div>
           </div>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            height: 'calc(100% - 150px)',
+            overflowY: 'scroll',
+            scrollbarWidth: 'none',
+          }}
+        >
           <section className={styles.section}>
             <div className={styles.modalSearchList}>
-              {data?.pages?.[0]?.spotInfoDTOList.length === 0 ? (
+              {!data || data?.pages?.[0]?.spotInfoDTOList.length === 0 ? (
                 <p className={styles.noneData}>검색 결과가 없습니다.</p>
               ) : (
                 <>
                   <div className={styles.gridBox}>
-                    {!isLoading && data
-                      ? data.pages.map((page) =>
-                          page.spotInfoDTOList.map((place: any) => (
-                            <div key={place.spotId} className={styles.cardBox}>
-                              <PlaceBox
-                                place={place}
-                                clickHandler={() => clickHandler(place.spotId)}
-                                likeClickHandler={likeClickHandler}
-                                rating={rating}
-                              />
-                            </div>
-                          )),
-                        )
-                      : Array.from({ length: 15 }).map((_, idx) => (
-                          <SkeletonPlaceBox key={idx} />
-                        ))}
+                    {!isLoading &&
+                      data &&
+                      data.pages.map((page) =>
+                        page.spotInfoDTOList.map((place: any) => (
+                          <div key={place.spotId} className={styles.cardBox}>
+                            <PlaceBox
+                              place={place}
+                              clickHandler={() => clickHandler(place.spotId)}
+                              likeClickHandler={likeClickHandler}
+                              rating={rating}
+                            />
+                          </div>
+                        )),
+                      )}
                   </div>
-                  {!isLoading && hasNextPage ? (
-                    <HomeLoading ref={loadingRef} />
-                  ) : (
-                    <div className={styles.bottomBox} />
+                  {!isLoading && hasNextPage && data?.pages.length && (
+                    <li className={styles.ballBox} ref={setRef}>
+                      <div className={styles.ball} />
+                      <div className={styles.ball} />
+                      <div className={styles.ball} />
+                    </li>
                   )}
-                  <ToTop scrollHandler={scrollHandler} />
                 </>
               )}
             </div>
           </section>
         </div>
-      )}
-    </div>
+      </ModalLayout>
+    </>
   );
 };
 
