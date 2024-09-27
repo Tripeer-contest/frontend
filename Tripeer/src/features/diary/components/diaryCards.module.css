@@ -1,4 +1,4 @@
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 700px) {
   .cardsBox {
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@
   .cardTextBox {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     padding: 12px;
     width: calc(100% - 120px);
     height: 100%;
@@ -65,12 +65,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .bottomSubtitleBox {
+    font-size: 12px;
+  }
   .bottomSubtitle {
     font-size: 1em;
   }
   .bottomBox p {
     color: #999999;
-    font-size: 0.8em;
+    font-size: 12px;
   }
 
   .detailBtn {
@@ -82,8 +85,6 @@
     width: calc(100%);
     height: 30px;
     cursor: pointer;
-    bottom: 12px;
-    right: 12px;
   }
   .detailBtn:hover {
     transform: scale(0.98);
@@ -159,7 +160,7 @@
     margin: 20px 10px;
   }
 }
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 700px) {
   .cardsBox {
     display: grid;
     width: 100%;
@@ -172,7 +173,7 @@
   .diaryCard {
     position: relative;
     width: 100%;
-    height: 320px;
+    height: 350px;
     margin-top: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -250,7 +251,7 @@
   }
   .bottomBox p {
     color: #999999;
-    font-size: 0.8em;
+    font-size: 12px;
   }
   .detailBtn {
     display: flex;
@@ -258,7 +259,7 @@
     align-items: center;
     background-color: #04acb5;
     border-radius: 5px;
-    width: calc(100% - 100px);
+    width: 95%;
     height: 120px;
     margin-top: 10px;
     cursor: pointer;

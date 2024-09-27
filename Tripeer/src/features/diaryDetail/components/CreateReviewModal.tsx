@@ -49,7 +49,6 @@ export default function CreateReviewModal({
         },
         images: postImg,
       });
-      // setIsCreateReview(false);
     }
   };
 

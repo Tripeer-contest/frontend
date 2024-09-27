@@ -14,9 +14,10 @@
 .inputHeader label {
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 5px;
   padding: 3px 15px;
-  font-size: 0.9rem;
+  font-size: 12px;
   background: #04acb5;
   height: 35px;
   justify-content: center;
@@ -40,7 +41,7 @@
   justify-content: center;
   width: 100px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 12px;
 }
 .deleteImgBtn:hover {
   color: #e33030;
