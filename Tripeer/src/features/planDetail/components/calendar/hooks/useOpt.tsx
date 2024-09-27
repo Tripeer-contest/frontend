@@ -62,7 +62,6 @@ const useOpt = () => {
       setText('이동 수단을 선택해주세요');
       setTimeout(() => setText('확인'), 1000);
     }
-    console.log(timeYList[1]);
   };
 
   const onModalHandler = (close: () => void) => {
