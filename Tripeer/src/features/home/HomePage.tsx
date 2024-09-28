@@ -10,12 +10,20 @@ import useFCM from '../../hooks/useFCM.tsx';
 import useHomeRecommend from './hooks/useHomeRecommend.tsx';
 import SkeletonRecommendationBanner from './components/SkeletonRecommendationBanner.tsx';
 import { Fragment } from 'react/jsx-runtime';
+import { useState } from 'react';
+import Notify from '../planDetail/components/notify/Notify.tsx';
 
 export default function HomePage() {
-  useFCM();
+  const [isAlert, setIsAlert] = useState(false);
+  useFCM(setIsAlert);
   const { recommendData } = useHomeRecommend();
   return (
     <BoxLayout>
+      <Notify
+        isActive={isAlert}
+        title="으아악"
+        message="으앙마ㅓㅍ아ㅣㅁ;ㄴ어피ㅏ"
+      />
       <ContentLayout>
         <div className={styles.container}>
           <div className={styles.topSection}>
