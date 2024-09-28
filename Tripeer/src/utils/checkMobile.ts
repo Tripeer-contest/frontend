@@ -17,5 +17,9 @@ const isMobileCorrectly = () => {
   );
 };
 
+const mobileSizeCheck = () => {
+  return window.innerWidth < 1000 ? true : false;
+};
+
 export default isMobileDevice;
-export { isMobileCorrectly };
+export { isMobileCorrectly, mobileSizeCheck };
