@@ -12,12 +12,11 @@ export default function RedirectPage() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const isLogin = getAuthorizationToken();
-      if (isLogin !== undefined) {
+      const token = getAuthorizationToken();
+      if (token !== undefined) {
         navigate('/home');
-      } else {
-        setIsLogin(true);
-      }
+      } else navigate('/');
+      setIsLogin(true);
     }, 1000);
 
     return () => {

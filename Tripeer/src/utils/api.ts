@@ -11,6 +11,10 @@ export const getAuthorizationToken = () => {
   return cookie.get('Authorization');
 };
 
+export const getReAuthorizationToken = () => {
+  return cookie.get('AuthorizationRe');
+};
+
 export const rePost = async () => {
   return await axios.post('/api/user/reissue', {}, { withCredentials: true });
 };
