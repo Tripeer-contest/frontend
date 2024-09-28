@@ -10,17 +10,13 @@ import useFCM from '../../hooks/useFCM.tsx';
 import useHomeRecommend from './hooks/useHomeRecommend.tsx';
 import SkeletonRecommendationBanner from './components/SkeletonRecommendationBanner.tsx';
 import { Fragment } from 'react/jsx-runtime';
-import { useState } from 'react';
-import Notify from '../planDetail/components/notify/Notify.tsx';
 
 export default function HomePage() {
-  const [state, setState] = useState<any>(null);
-  useFCM(setState);
+  useFCM();
   const { recommendData } = useHomeRecommend();
   return (
     <BoxLayout>
       <ContentLayout>
-        <Notify isActive={state} title="토큰" message={state} />
         <div className={styles.container}>
           <div className={styles.topSection}>
             <h1 className={styles.logoText}>
