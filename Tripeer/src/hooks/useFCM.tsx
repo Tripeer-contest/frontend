@@ -6,7 +6,7 @@ import zustandStore from '../store/store';
 import { useShallow } from 'zustand/react/shallow';
 import { sendFlutterToSendToken } from '../utils/sendFlutter';
 
-export default function useFCM() {
+export default function useFCM(setIsError?: (param: boolean) => void) {
   const [isSuccess, setIsSuccess] = zustandStore(
     useShallow((state) => [state.FCM_isConnect, state.FCM_setIsConnect]),
   );
@@ -31,19 +31,19 @@ export default function useFCM() {
         await api.post(`/noti?token=${token}`);
         setIsSuccess(true);
       } catch {
-        setIsSuccess(false);
+        setIsError && setIsError(true);
       }
     } else {
-      setIsSuccess(false);
+      setIsError && setIsError(true);
     }
-  }, [setIsSuccess]);
+  }, [setIsSuccess, setIsError]);
 
   useEffect(() => {
     if (!isMobileCorrectly() && !isSuccess) {
       connectFCM();
     }
     if (isMobileCorrectly()) {
-      connectFlutterFcm;
+      connectFlutterFcm();
     }
   }, [connectFCM, isSuccess, connectFlutterFcm]);
 

@@ -12,10 +12,12 @@ import SkeletonRecommendationBanner from './components/SkeletonRecommendationBan
 import { Fragment } from 'react/jsx-runtime';
 import zustandStore from '../../store/store.tsx';
 import Notify from '../planDetail/components/notify/Notify.tsx';
+import { useState } from 'react';
 
 export default function HomePage() {
   const isSuccess = zustandStore((state) => state.FCM_isConnect);
-  useFCM();
+  const [isError, setIsError] = useState(false);
+  useFCM(setIsError);
   const { recommendData } = useHomeRecommend();
   return (
     <BoxLayout>
@@ -25,6 +27,7 @@ export default function HomePage() {
           title="토큰"
           message="post요청까지는 정상"
         />
+        <Notify isActive={isError} title="에러" message="미친 비동기 에러" />
         <div className={styles.container}>
           <div className={styles.topSection}>
             <h1 className={styles.logoText}>
