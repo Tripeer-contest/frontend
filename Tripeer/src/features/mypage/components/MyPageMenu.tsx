@@ -11,12 +11,13 @@ import { isMobileCorrectly } from '../../../utils/checkMobile';
 import MutationLoading from '../../../components/loading/MutationLoading';
 import Notify from '../../planDetail/components/notify/Notify';
 import warn_icon from '../../../assets/error/warn.svg';
+import { setFlutterToSendPermission } from '../../../utils/sendFlutter';
 
 export default function MyPageMenu() {
   const { data } = useMyInfoQuery();
   const [isLoading, setIsLoading] = useState(false);
   const [occuredError, setOccuredError] = useState(false);
-  const { connectFCM, isSuccess } = useFCM();
+  const { connectFCM, isSuccess, connectFlutterFcm } = useFCM();
   const { mutateAsync, isError } = useMessageMutate();
   const navigate = useNavigate();
   const { isClip, saveClipBoard } = useClipBoard('https://tripeer.co.kr');
@@ -61,18 +62,33 @@ export default function MyPageMenu() {
     if (data.allowNotifications && isSuccess) {
       await mutateAsync(false);
     } else {
-      const permission = await Notification.requestPermission();
-      if (permission !== 'granted') {
-        grantedHandler();
+      if (isMobileCorrectly()) {
+        const permission = await setFlutterToSendPermission();
+        if (!permission) {
+          grantedHandler();
+        } else {
+          try {
+            await connectFlutterFcm();
+            await mutateAsync(true);
+          } catch {
+            errorHandler();
+          }
+        }
       } else {
-        try {
-          await connectFCM();
-          await mutateAsync(true);
-        } catch {
-          errorHandler();
+        const permission = await Notification.requestPermission();
+        if (permission !== 'granted') {
+          grantedHandler();
+        } else {
+          try {
+            await connectFCM();
+            await mutateAsync(true);
+          } catch {
+            errorHandler();
+          }
         }
       }
     }
+
     setIsLoading(false);
   };
   return (
