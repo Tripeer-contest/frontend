@@ -43,6 +43,7 @@ api.interceptors.response.use(
         }
       } catch (reissueError) {
         console.log('Reissue Failed : ', reissueError);
+        cookie.remove('Authorization');
       }
     }
 
