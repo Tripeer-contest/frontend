@@ -4,6 +4,7 @@ import { getFCMToken, requestPermission } from '../utils/utilFcm';
 import api from '../utils/api';
 import zustandStore from '../store/store';
 import { useShallow } from 'zustand/react/shallow';
+import { sendFlutterToSendToken } from '../utils/sendFlutter';
 
 export default function useFCM() {
   const [isSuccess, setIsSuccess] = zustandStore(
@@ -26,6 +27,9 @@ export default function useFCM() {
   useEffect(() => {
     if (!isMobileCorrectly() && !isSuccess) {
       connectFCM();
+    }
+    if (isMobileCorrectly()) {
+      sendFlutterToSendToken();
     }
   }, [connectFCM, isSuccess]);
 
