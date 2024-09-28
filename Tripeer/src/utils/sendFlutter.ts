@@ -13,5 +13,7 @@ export function sendFlutterToSendToken() {
       message: 'sendToken',
       data: { token: 'test' },
     });
+  } else {
+    alert('없는데?');
   }
 }
