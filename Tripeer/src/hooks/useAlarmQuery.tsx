@@ -75,11 +75,13 @@ export function useAlarmQuery() {
 
 export function useInviteMutation() {
   const removeMutation = useRemoveAlarmMutation();
+  const queryClient = useQueryClient();
   const { mutate, isPending, isError, error } = useMutation({
     mutationFn: ({ planId }: { planId: number; alarmId: number }) =>
       confirmInvite(planId),
     onSuccess: (_, { alarmId }) => {
       removeMutation.mutate({ alarmId: alarmId });
+      queryClient.invalidateQueries({ queryKey: ['plan'] });
     },
   });
 

@@ -4,6 +4,9 @@ import { ChatInterface } from '../../../../types/PlanDetailTypes';
 import styles from '../../assets/chat/content.module.css';
 import cancelIcon from '../../../../assets/button/cancel_gray.svg';
 import { getChatDateString } from '../../../../utils/utilDate';
+import { useEffect, useRef, useState } from 'react';
+import Notify from '../notify/Notify';
+import tripeer_icon from '../../../../assets/tripeer_icon.webp';
 
 export default function OtherChat({
   chat,
@@ -12,7 +15,21 @@ export default function OtherChat({
   chat: ChatInterface;
   user: OnlineInfo;
 }) {
+  const [isDeclare, setIsDeclare] = useState(false);
+  const timerRef = useRef(0);
   const DesktopModal = useModal();
+  const declarationHandler = () => {
+    DesktopModal.close();
+    setIsDeclare(true);
+  };
+  useEffect(() => {
+    if (isDeclare) {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = window.setTimeout(() => {
+        setIsDeclare(false);
+      }, 2000);
+    }
+  }, [isDeclare]);
   return (
     <div className={styles.chatContainer}>
       <div className={styles.profileBox} onClick={DesktopModal.open}>
@@ -52,9 +69,17 @@ export default function OtherChat({
           />
           <p className={styles.modalNickname}>{user?.nickname}</p>
           <div className={styles.line} />
-          <button className={styles.alert}>신고하기</button>
+          <button className={styles.alert} onClick={declarationHandler}>
+            신고하기
+          </button>
         </div>
       </DesktopModal.ModalLayout>
+      <Notify
+        isActive={isDeclare}
+        message="신고가 완료되었습니다."
+        title="알림"
+        img={tripeer_icon}
+      />
     </div>
   );
 }
