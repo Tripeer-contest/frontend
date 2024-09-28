@@ -14,16 +14,30 @@ import { useState } from 'react';
 import Notify from '../planDetail/components/notify/Notify.tsx';
 
 export default function HomePage() {
-  const [isAlert, setIsAlert] = useState(false);
-  useFCM(setIsAlert);
+  const [isfirstAlert, setIsfirstAlert] = useState(false);
+  const [issecondAlert, setIssecondAlert] = useState(false);
+  const [isthirdAlert, setIsthirdAlert] = useState(false);
+
+  useFCM(setIsfirstAlert, setIssecondAlert, setIsthirdAlert);
   const { recommendData } = useHomeRecommend();
   return (
     <BoxLayout>
       <Notify
-        isActive={isAlert}
-        title="으아악"
+        isActive={isfirstAlert}
+        title="분기 1"
         message="으앙마ㅓㅍ아ㅣㅁ;ㄴ어피ㅏ"
       />
+      <Notify
+        isActive={issecondAlert}
+        title="분기 2"
+        message="으앙마ㅓㅍ아ㅣㅁ;ㄴ어피ㅏ"
+      />
+      <Notify
+        isActive={isthirdAlert}
+        title="분기 0"
+        message="으앙마ㅓㅍ아ㅣㅁ;ㄴ어피ㅏ"
+      />
+
       <ContentLayout>
         <div className={styles.container}>
           <div className={styles.topSection}>
