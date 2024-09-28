@@ -9,7 +9,7 @@ import {
   setFlutterToSendPermission,
 } from '../utils/sendFlutter';
 
-export default function useFCM(setIsError?: (param: boolean) => void) {
+export default function useFCM() {
   const [isSuccess, setIsSuccess] = zustandStore(
     useShallow((state) => [state.FCM_isConnect, state.FCM_setIsConnect]),
   );
@@ -35,12 +35,12 @@ export default function useFCM(setIsError?: (param: boolean) => void) {
         await api.post(`/noti?token=${token}`);
         setIsSuccess(true);
       } catch {
-        setIsError && setIsError(true);
+        setIsSuccess(false);
       }
     } else {
-      setIsError && setIsError(true);
+      setIsSuccess(false);
     }
-  }, [setIsSuccess, setIsError]);
+  }, [setIsSuccess]);
 
   useEffect(() => {
     if (!isMobileCorrectly() && !isSuccess) {
