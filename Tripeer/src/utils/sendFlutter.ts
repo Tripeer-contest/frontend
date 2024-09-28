@@ -18,3 +18,15 @@ export async function sendFlutterToSendToken() {
     return null;
   }
 }
+
+export async function setFlutterToSendPermission() {
+  if (window.flutter_inappwebview) {
+    const res = await window.flutter_inappwebview.callHandler(
+      'webToFlutterPermission',
+      { message: 'getPermission' },
+    );
+    return res;
+  } else {
+    return null;
+  }
+}

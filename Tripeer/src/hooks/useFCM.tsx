@@ -4,7 +4,10 @@ import { getFCMToken, requestPermission } from '../utils/utilFcm';
 import api from '../utils/api';
 import zustandStore from '../store/store';
 import { useShallow } from 'zustand/react/shallow';
-import { sendFlutterToSendToken } from '../utils/sendFlutter';
+import {
+  sendFlutterToSendToken,
+  setFlutterToSendPermission,
+} from '../utils/sendFlutter';
 
 export default function useFCM(setIsError?: (param: boolean) => void) {
   const [isSuccess, setIsSuccess] = zustandStore(
@@ -25,8 +28,9 @@ export default function useFCM(setIsError?: (param: boolean) => void) {
   }, [setIsSuccess]);
 
   const connectFlutterFcm = useCallback(async () => {
+    const permission = await setFlutterToSendPermission();
     const token = await sendFlutterToSendToken();
-    if (token) {
+    if (token && permission) {
       try {
         await api.post(`/noti?token=${token}`);
         setIsSuccess(true);
@@ -47,5 +51,5 @@ export default function useFCM(setIsError?: (param: boolean) => void) {
     }
   }, [connectFCM, isSuccess, connectFlutterFcm]);
 
-  return { isSuccess, connectFCM };
+  return { isSuccess, connectFCM, connectFlutterFcm };
 }
