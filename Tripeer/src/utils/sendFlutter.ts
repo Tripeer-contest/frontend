@@ -7,13 +7,13 @@ declare global {
   }
 }
 
-export function sendFlutterToSendToken() {
+export function sendFlutterToSendToken(setter?: (param: boolean) => void) {
   if (window.flutter_inappwebview) {
     window.flutter_inappwebview.callHandler('webToFlutterFCM', {
       message: 'sendToken',
       data: { token: 'test' },
     });
   } else {
-    alert('없는데?');
+    setter && setter(true);
   }
 }
