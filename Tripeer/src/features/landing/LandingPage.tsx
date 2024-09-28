@@ -5,14 +5,15 @@ import PhotoSlide from './components/PhotoSlide';
 import SecondSlide from './components/SecondSlide';
 import ThirdSlide from './components/ThirdSlide';
 import styles from './landing.module.css';
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import LoginPage from '../auth/LoginPage.tsx';
-import { getAuthorizationToken } from '../../utils/api.ts';
+import api, { getAuthorizationToken } from '../../utils/api.ts';
 import { useNavigate } from 'react-router-dom';
+import RedirectPage from '../redirect/RedirectPage.tsx';
 
 export default function LandingPage(): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null);
-
+  const [isAni, setIsAni] = useState(true);
   const scrollTop = () => {
     if (containerRef.current) containerRef.current.scrollTop = 0;
   };
@@ -28,19 +29,31 @@ export default function LandingPage(): JSX.Element {
   ];
 
   useEffect(() => {
-    const token = getAuthorizationToken();
-    if (token) {
-      navigate('/home');
-    }
+    const accessTest = async () => {
+      const token = getAuthorizationToken();
+      if (token) {
+        try {
+          await api.get('/user/myinfo');
+          navigate('/home');
+        } catch {
+          setIsAni(false);
+        }
+      } else setIsAni(false);
+    };
+    accessTest().then();
   }, [navigate]);
 
   return (
     <div className={styles.outer} ref={containerRef}>
-      {slides.map((slide, index) => (
-        <div key={index} className={styles.landingSlide}>
-          {slide}
-        </div>
-      ))}
+      {isAni ? (
+        <RedirectPage />
+      ) : (
+        slides.map((slide, index) => (
+          <div key={index} className={styles.landingSlide}>
+            {slide}
+          </div>
+        ))
+      )}
     </div>
   );
 }
