@@ -10,13 +10,21 @@ import useFCM from '../../hooks/useFCM.tsx';
 import useHomeRecommend from './hooks/useHomeRecommend.tsx';
 import SkeletonRecommendationBanner from './components/SkeletonRecommendationBanner.tsx';
 import { Fragment } from 'react/jsx-runtime';
+import zustandStore from '../../store/store.tsx';
+import Notify from '../planDetail/components/notify/Notify.tsx';
 
 export default function HomePage() {
+  const isSuccess = zustandStore((state) => state.FCM_isConnect);
   useFCM();
   const { recommendData } = useHomeRecommend();
   return (
     <BoxLayout>
       <ContentLayout>
+        <Notify
+          isActive={isSuccess}
+          title="토큰"
+          message="post요청까지는 정상"
+        />
         <div className={styles.container}>
           <div className={styles.topSection}>
             <h1 className={styles.logoText}>
