@@ -57,7 +57,6 @@ export default function MyPageMenu() {
   };
 
   const pushHandler = async () => {
-    if (isMobileCorrectly()) return;
     setIsLoading(true);
     if (data.allowNotifications && isSuccess) {
       await mutateAsync(false);
