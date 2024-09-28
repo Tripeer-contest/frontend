@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeInOut 1s ease-in-out infinite;
+    animation: fadeInOut 1s ease-in-out forwards;
 }
 
 .image{
@@ -13,10 +13,10 @@
 }
 
 @keyframes fadeInOut {
-    0%, 100%{
+    0%{
         opacity: 0;
     }
-    50%{
+    100%{
         opacity: 1;
     }
 }

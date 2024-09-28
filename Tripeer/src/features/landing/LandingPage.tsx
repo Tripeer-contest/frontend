@@ -5,10 +5,11 @@ import PhotoSlide from './components/PhotoSlide';
 import SecondSlide from './components/SecondSlide';
 import ThirdSlide from './components/ThirdSlide';
 import styles from './landing.module.css';
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import LoginPage from '../auth/LoginPage.tsx';
 import RedirectPage from '../redirect/RedirectPage.tsx';
-import zustandStore from '../../store/store.tsx';
+import { getAuthorizationToken } from '../../utils/api.ts';
+import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage(): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -16,9 +17,8 @@ export default function LandingPage(): JSX.Element {
   const scrollTop = () => {
     if (containerRef.current) containerRef.current.scrollTop = 0;
   };
-
-  const isLogin = zustandStore((state) => state.h_isLogin);
-
+  const [showAni, setShowAni] = useState(true);
+  const navigate = useNavigate();
   const slides: ReactNode[] = [
     <LoginPage key={'login'} />,
     <FirstSlide key="first" scrollTop={scrollTop} />,
@@ -29,9 +29,24 @@ export default function LandingPage(): JSX.Element {
     <LastSlide key="last" scrollTop={scrollTop} />,
   ];
 
+  useEffect(() => {
+    const token = getAuthorizationToken();
+    let timerId = 0;
+    if (token) {
+      timerId = window.setTimeout(() => {
+        navigate('/home');
+      }, 2000);
+    } else {
+      setShowAni(false);
+    }
+    return () => {
+      if (timerId) clearTimeout(timerId);
+    };
+  }, [navigate]);
+
   return (
     <div className={styles.outer} ref={containerRef}>
-      {!isLogin ? (
+      {showAni ? (
         <RedirectPage />
       ) : (
         slides.map((slide, index) => (
