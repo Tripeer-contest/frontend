@@ -10,6 +10,7 @@ import useDeletePlan from '../hooks/useDeletePlan';
 import { useEffect } from 'react';
 import MutationLoading from '../../../components/loading/MutationLoading';
 import { useNavigate } from 'react-router-dom';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function PlanCard({ data }: { data: PlanCardType }) {
   const navigate = useNavigate();
@@ -40,7 +41,12 @@ export default function PlanCard({ data }: { data: PlanCardType }) {
   return (
     <>
       <div className={styles.card} onClick={cardClickHandler}>
-        <img src={data.img} alt="location-img" className={styles.cardImg} />
+        <img
+          src={data.img}
+          alt="location-img"
+          className={styles.cardImg}
+          onError={handleErrorImg}
+        />
         <div className={styles.cardInfo}>
           <p className={styles.cardTitle}>{data.title}</p>
           <div className={styles.detailInfo}>

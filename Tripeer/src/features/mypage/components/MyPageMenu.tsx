@@ -12,6 +12,7 @@ import MutationLoading from '../../../components/loading/MutationLoading';
 import Notify from '../../planDetail/components/notify/Notify';
 import warn_icon from '../../../assets/error/warn.svg';
 import { setFlutterToSendPermission } from '../../../utils/sendFlutter';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function MyPageMenu() {
   const { data } = useMyInfoQuery();
@@ -98,6 +99,7 @@ export default function MyPageMenu() {
             src={data.profileImage}
             alt="profile-img"
             className={styles.profileImg}
+            onError={handleErrorImg}
           />
           <p className={styles.nickname}>{data.nickname}</p>
         </div>

@@ -7,6 +7,7 @@ import { Draggable } from '@hello-pangea/dnd';
 import { totalYListInfo } from '../../../../../../store/room/RoomSliceState.ts';
 import useDndCard from '../../hooks/useDndCard.tsx';
 import zustandStore from '../../../../../../store/store.tsx';
+import { handleErrorImg } from '../../../../../../data/defaultImg.ts';
 
 interface Props {
   item: totalYListInfo;
@@ -26,7 +27,12 @@ const DndCard = ({ item, idx }: Props) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <img src={item.img} alt={'left Dnd Image'} className={styles.image} />
+          <img
+            src={item.img}
+            alt={'left Dnd Image'}
+            className={styles.image}
+            onError={handleErrorImg}
+          />
           <aside className={styles.description}>
             <div className={styles.desBox}>
               <p className={styles.title}>{item.title}</p>

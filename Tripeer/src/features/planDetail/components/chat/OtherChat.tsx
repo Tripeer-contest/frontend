@@ -7,6 +7,7 @@ import { getChatDateString } from '../../../../utils/utilDate';
 import { useEffect, useRef, useState } from 'react';
 import Notify from '../notify/Notify';
 import tripeer_icon from '../../../../assets/tripeer_icon.webp';
+import { handleErrorImg } from '../../../../data/defaultImg';
 
 export default function OtherChat({
   chat,
@@ -37,6 +38,7 @@ export default function OtherChat({
           src={user?.profileImage}
           alt="profile-image"
           className={styles.profileImg}
+          onError={handleErrorImg}
         />
         <div className={user?.isOnline ? styles.online : styles.offline} />
       </div>
@@ -66,6 +68,7 @@ export default function OtherChat({
             src={user?.profileImage}
             alt="profile-image"
             className={styles.modalProfile}
+            onError={handleErrorImg}
           />
           <p className={styles.modalNickname}>{user?.nickname}</p>
           <div className={styles.line} />

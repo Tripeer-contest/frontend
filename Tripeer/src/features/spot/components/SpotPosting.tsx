@@ -6,6 +6,7 @@ import { cleanHTMLString, truncateText } from '../../../utils/utilString';
 import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 import { blogInfoInterface } from '../../../types/PlaceType';
 import { makeDateToString } from '../../../utils/utilDate';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function SpotPosting({ id }: { id: number }) {
   const { data } = useSpotDetailQuery<blogInfoInterface[]>(
@@ -28,7 +29,12 @@ export default function SpotPosting({ id }: { id: number }) {
               key={idx}
               onClick={() => window.open(blog.url)}
             >
-              <img src={blog.thumbnail} alt="blog-img" className={styles.img} />
+              <img
+                src={blog.thumbnail}
+                alt="blog-img"
+                className={styles.img}
+                onError={handleErrorImg}
+              />
               <div className={styles.contentInfo}>
                 <p className={styles.infoTitle}>
                   {cleanHTMLString(truncateText(blog.title, 10))}

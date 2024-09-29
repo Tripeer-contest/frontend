@@ -4,6 +4,7 @@ import unLike from '../assets/unLike.png';
 import { getRateImg } from '../../../utils/rating.ts';
 import { PlaceType } from '../../../types/PlaceType.ts';
 import React from 'react';
+import { handleErrorImg } from '../../../data/defaultImg.ts';
 
 interface Props {
   place: PlaceType;
@@ -26,7 +27,12 @@ const RecommendSpotBox = ({
   return (
     <div className={styles.container} onClick={clickHandler}>
       <div className={styles.imgBox}>
-        <img src={place.spotImg} alt={'placeImg'} className={styles.img} />
+        <img
+          src={place.spotImg}
+          alt={'placeImg'}
+          className={styles.img}
+          onError={handleErrorImg}
+        />
         <img
           src={place.wishlist ? like : unLike}
           alt={`${rating}`}

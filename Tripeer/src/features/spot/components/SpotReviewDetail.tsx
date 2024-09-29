@@ -8,6 +8,7 @@ import styles from '../assets/review.module.css';
 import { getRateImg } from '../../../utils/rating';
 import { ReviewInterface } from '../../../types/PlaceType';
 import { daysAgo } from '../../../utils/utilDate';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function SpotReviewDetail({
   review,
@@ -34,6 +35,7 @@ export default function SpotReviewDetail({
                 className={styles.userImg}
                 alt="user-image"
                 src={review.profileImage}
+                onError={handleErrorImg}
               />
               <div className={styles.userInfo}>
                 <p className={styles.userName}>{review.nickname}</p>
@@ -61,6 +63,7 @@ export default function SpotReviewDetail({
                         alt="리뷰 이미지"
                         className={styles.reviewImg}
                         onClick={() => imgClickHandler(data)}
+                        onError={handleErrorImg}
                       />
                     </SwiperSlide>
                   );
@@ -100,6 +103,7 @@ export default function SpotReviewDetail({
             alt="fullsize-img"
             style={{ width: '90%', height: 'auto', objectFit: 'contain' }}
             onClick={closeHandler}
+            onError={handleErrorImg}
           />
         </div>
       </ModalLayout>

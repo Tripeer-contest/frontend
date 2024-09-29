@@ -1,3 +1,4 @@
+import { handleErrorImg } from '../../../data/defaultImg';
 import styles from '../assets/UploadImage.module.css';
 
 export default function UploadImage({
@@ -65,6 +66,7 @@ export default function UploadImage({
             src={img}
             alt={`preview ${index}`}
             className={styles.preview}
+            onError={handleErrorImg}
           />
         ))}
       </div>

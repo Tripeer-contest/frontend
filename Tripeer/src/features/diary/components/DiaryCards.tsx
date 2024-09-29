@@ -8,6 +8,7 @@ import { useState } from 'react';
 import MutationLoading from '../../../components/loading/MutationLoading';
 import { useNavigate } from 'react-router-dom';
 import { makeDayToDotFullString } from '../../../utils/utilDate';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function DiaryCards({
   diaryListData,
@@ -38,7 +39,12 @@ export default function DiaryCards({
               alt="deleteBtn"
               onClick={() => openHandler(item.planId)}
             />
-            <img className={styles.cardImg} src={item.img} alt="diary-image" />
+            <img
+              className={styles.cardImg}
+              src={item.img}
+              alt="diary-image"
+              onError={handleErrorImg}
+            />
             <div className={styles.cardTextBox}>
               <div className={styles.topBox}>
                 <p className={styles.title}>{item.title}</p>
