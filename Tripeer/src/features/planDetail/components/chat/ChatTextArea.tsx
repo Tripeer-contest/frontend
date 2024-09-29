@@ -71,7 +71,9 @@ export default function ChatTextArea({
           placeholder="메세지를 작성해주세요."
           className={styles.input}
           maxLength={1000}
-          onKeyDown={handleEnter}
+          onKeyDown={(e) => {
+            !e.nativeEvent.isComposing && handleEnter(e);
+          }}
         />
         <button className={styles.sendBtn} onClick={handleSendMessage}>
           <img src={sendIcon} alt="send-icon" />
