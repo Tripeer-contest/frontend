@@ -4,6 +4,7 @@ import unLike from '../assets/unLike.png';
 import { getRateImg } from '../../../utils/rating.ts';
 import { PlaceType } from '../../../types/PlaceType.ts';
 import { MouseEvent } from 'react';
+import { handleErrorImg } from '../../../data/defaultImg.ts';
 
 interface Props {
   place: PlaceType;
@@ -26,6 +27,7 @@ const PlaceBox = ({ place, clickHandler, likeClickHandler, rating }: Props) => {
           alt={'placeImg'}
           className={styles.img}
           loading="lazy"
+          onError={handleErrorImg}
         />
         <img
           src={place.wishlist ? like : unLike}

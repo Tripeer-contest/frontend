@@ -1,4 +1,5 @@
 import { getCategoryStyle } from '../../../../../data/categoryStyle';
+import { handleErrorImg } from '../../../../../data/defaultImg';
 import { SpotYInterface } from '../../../../../store/room/RoomSliceState';
 import styles from '../../../assets/calendar/common/nav.module.css';
 
@@ -28,7 +29,12 @@ export default function NavigateCard({
           <span style={{ color: `${category.color}` }}>{item.contentType}</span>
         </div>
       </div>
-      <img src={item.img} alt="place-img" className={styles.placeImg} />
+      <img
+        src={item.img}
+        alt="place-img"
+        className={styles.placeImg}
+        onError={handleErrorImg}
+      />
     </div>
   );
 }

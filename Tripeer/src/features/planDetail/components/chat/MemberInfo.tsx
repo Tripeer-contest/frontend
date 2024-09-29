@@ -6,6 +6,7 @@ import addMemberIcon from '../../assets/icon/addMember.svg';
 import useModal from '../../../../hooks/useModal';
 import MemberInvite from './MemberInvite';
 import UserInfo from './UserInfo';
+import { handleErrorImg } from '../../../../data/defaultImg';
 
 export default function MemberInfo() {
   const userInfo = zustandStore((state) => state.room_userInfo);
@@ -24,7 +25,7 @@ export default function MemberInfo() {
         <header>
           <h3 className={styles.title}>멤버 목록</h3>
           <div className={styles.iconBox}>
-            <img src={memberIcon} alt="member-icon" />
+            <img src={memberIcon} alt="member-icon" onError={handleErrorImg} />
             <p>{`${userInfo.length}명`}</p>
           </div>
         </header>

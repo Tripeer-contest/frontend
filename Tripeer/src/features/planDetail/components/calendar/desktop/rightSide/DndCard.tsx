@@ -13,6 +13,7 @@ import zustandStore from '../../../../../../store/store.tsx';
 import { useShallow } from 'zustand/react/shallow';
 import React from 'react';
 import MutationLoading from '../../../../../../components/loading/MutationLoading.tsx';
+import { handleErrorImg } from '../../../../../../data/defaultImg.ts';
 
 interface Props {
   item: totalYListInfo;
@@ -100,6 +101,7 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
               src={item.img}
               alt={'left Dnd Image'}
               className={styles.image}
+              onError={handleErrorImg}
             />
             <aside className={styles.description}>
               <div className={styles.desBox}>

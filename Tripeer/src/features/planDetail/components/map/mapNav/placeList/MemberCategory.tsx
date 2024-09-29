@@ -1,3 +1,4 @@
+import { handleErrorImg } from '../../../../../../data/defaultImg';
 import { ORDER_COLOR } from '../../../../../../data/orderColor';
 import { OnlineInfo } from '../../../../../../store/room/RoomSliceState';
 import { ORDER_COLOR_TYPE } from '../../../../../../types/UserTypes';
@@ -35,6 +36,7 @@ export default function MemberCategory({
             key={mem.userId}
             style={borderStyle}
             onClick={() => clickHandler(mem.userId)}
+            onError={handleErrorImg}
           ></img>
         );
       })}

@@ -8,6 +8,7 @@ import useSpotDetailQuery from '../hooks/useSpotDetailQuery';
 import SpotHeart from './SpotHeart';
 import back_icon from '../../../assets/button/back_white.svg';
 import { useNavigate } from 'react-router-dom';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 type HeaderType = string[];
 
@@ -46,7 +47,12 @@ export default function SpotHeader({
         {data.map((img, idx) => {
           return (
             <SwiperSlide className={styles.container} key={idx}>
-              <img className={styles.img} src={img} alt="spot-img" />
+              <img
+                className={styles.img}
+                src={img}
+                alt="spot-img"
+                onError={handleErrorImg}
+              />
             </SwiperSlide>
           );
         })}

@@ -8,6 +8,7 @@ import Chip from '../desktop/leftSide/Chip.tsx';
 import Profile from '../desktop/leftSide/Profile.tsx';
 import zustandStore from '../../../../../store/store.tsx';
 import useCard from '../hooks/useCard.tsx';
+import { handleErrorImg } from '../../../../../data/defaultImg.ts';
 
 interface Props {
   item: totalYListInfo;
@@ -25,7 +26,12 @@ const Card = ({ item, idx }: Props) => {
       className={`${styles.container} ${!searchList.includes(item.spotInfoId) && styles.none}`}
       onClick={onClickHandler}
     >
-      <img src={item.img} alt={'left Dnd Image'} className={styles.image} />
+      <img
+        src={item.img}
+        alt={'left Dnd Image'}
+        className={styles.image}
+        onError={handleErrorImg}
+      />
       <aside className={styles.description}>
         <div className={styles.desBox}>
           <p className={styles.title}>{item.title}</p>
@@ -55,6 +61,7 @@ const Card = ({ item, idx }: Props) => {
               src={item.img}
               alt={'left Dnd Image'}
               className={styles.image}
+              onError={handleErrorImg}
             />
             <aside className={styles.description}>
               <div className={styles.desBox}>

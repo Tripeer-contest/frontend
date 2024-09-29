@@ -1,6 +1,7 @@
 import styles from '../../../../assets/calendar/Desktop/leftSide/searchBar.module.css';
 import searchImage from '../../../../../home/assets/search.png';
 import useSearch from '../../hooks/useSearch.tsx';
+import { handleErrorImg } from '../../../../../../data/defaultImg.ts';
 
 const SearchBar = () => {
   const { onChangeHandler } = useSearch();
@@ -11,6 +12,7 @@ const SearchBar = () => {
         src={searchImage}
         alt={'Search Image'}
         className={styles.searchImage}
+        onError={handleErrorImg}
       />
       <input
         className={styles.input}

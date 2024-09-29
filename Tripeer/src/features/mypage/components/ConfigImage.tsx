@@ -5,6 +5,7 @@ import styles from '../assets/config.module.css';
 import MutationLoading from '../../../components/loading/MutationLoading';
 import Notify from '../../planDetail/components/notify/Notify';
 import warn_icon from '../../../assets/error/warn.svg';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function ConfigImage() {
   const { data } = useMyInfoQuery();
@@ -25,6 +26,7 @@ export default function ConfigImage() {
             src={data.profileImage}
             alt="profile-img"
             className={styles.profileImg}
+            onError={handleErrorImg}
           />
           <input
             type="file"

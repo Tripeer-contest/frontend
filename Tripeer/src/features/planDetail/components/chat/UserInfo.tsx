@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import styles from '../../assets/chat/user.module.css';
 import { UserType } from '../../../../types/UserTypes';
+import { handleErrorImg } from '../../../../data/defaultImg';
 
 export default function UserInfo({
   user,
@@ -30,6 +31,7 @@ export default function UserInfo({
             src={user.profileImage}
             alt="profile-img"
             className={styles.profile}
+            onError={handleErrorImg}
           />
           {showOnline}
         </div>

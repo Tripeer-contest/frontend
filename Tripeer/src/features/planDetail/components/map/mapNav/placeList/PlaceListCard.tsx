@@ -7,6 +7,7 @@ import useIsSpotInSpotList from '../../../../hooks/useIsSpotInSpotList';
 import zustandStore from '../../../../../../store/store';
 import Notify from '../../../notify/Notify';
 import warn_icon from '../../../../../../assets/error/warn.svg';
+import { handleErrorImg } from '../../../../../../data/defaultImg';
 
 export default function PlaceListCard({
   spotInfo,
@@ -27,7 +28,12 @@ export default function PlaceListCard({
           })
         }
       >
-        <img className={styles.cardImg} src={spotInfo.img} alt="place-img" />
+        <img
+          className={styles.cardImg}
+          src={spotInfo.img}
+          alt="place-img"
+          onError={handleErrorImg}
+        />
         <section className={styles.cardSection}>
           <div className={styles.cardTopSection}>
             <div className={styles.spotTitle}>{spotInfo.title}</div>
@@ -63,6 +69,7 @@ export default function PlaceListCard({
               src={spotInfo.profileImage}
               className={styles.userImg}
               alt="user-img"
+              onError={handleErrorImg}
             />
           </div>
         </section>

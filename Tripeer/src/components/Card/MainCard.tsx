@@ -4,6 +4,7 @@ import fullHeart from '../../assets/button/full_heart.svg';
 import heart from '../../assets/button/heart.svg';
 import styles from './assets/maincard.module.css';
 import { wishItem } from '../../features/cart/types/wishListItem';
+import { handleErrorImg } from '../../data/defaultImg';
 
 export default function MainCard({
   itemInfo,
@@ -20,7 +21,12 @@ export default function MainCard({
   return (
     <div onClick={itemClickHandler} className={styles.container}>
       <div className={styles.imgBox}>
-        <img src={itemInfo.img} alt="item-img" className={styles.img} />
+        <img
+          src={itemInfo.img}
+          alt="item-img"
+          className={styles.img}
+          onError={handleErrorImg}
+        />
         <img
           src={heartSrc}
           alt="heart"

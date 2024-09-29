@@ -7,6 +7,7 @@ import errorIcon from '../../../../assets/error/warn.svg';
 import Notify from '../notify/Notify';
 import TripeerIcon from '../../../../assets/tripeer_icon.webp';
 import { useParams } from 'react-router-dom';
+import { handleErrorImg } from '../../../../data/defaultImg';
 
 export default function MemberSearchResult({
   isLoading,
@@ -55,6 +56,7 @@ export default function MemberSearchResult({
                           src={user.profileImage}
                           alt="profile-img"
                           className={styles.profile}
+                          onError={handleErrorImg}
                         />
                       </div>
                       <p>{user.nickname}</p>

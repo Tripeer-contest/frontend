@@ -5,6 +5,7 @@ import styles from './diarySummary.module.css';
 import mapIcon from '../assets/mapIcon.svg';
 import dateIcon from '../assets/dateIcon.svg';
 import userIcon from '../assets/userIcon.svg';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function DiarySummary() {
   const params = useParams();
@@ -12,7 +13,12 @@ export default function DiarySummary() {
   return (
     <main className={styles.mainBox}>
       <div className={styles.imgSection}>
-        <img src={data.img} className={styles.diaryImg} alt="diary-img" />
+        <img
+          src={data.img}
+          className={styles.diaryImg}
+          alt="diary-img"
+          onError={handleErrorImg}
+        />
       </div>
       <div className={styles.textSection}>
         <h1 className={styles.title}>{data.title}</h1>
@@ -55,6 +61,7 @@ export default function DiarySummary() {
                       className={styles.memberImg}
                       src={mem.profileImage}
                       alt="user-img"
+                      onError={handleErrorImg}
                     />
                     <p className={styles.memberNick}>{mem.nickname}</p>
                   </div>

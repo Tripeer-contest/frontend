@@ -6,6 +6,7 @@ import zustandStore from '../../../store/store';
 import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { RegionType } from '../../../types/ItemTypes';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function RegionCategory({
   category,
@@ -40,7 +41,12 @@ export default function RegionCategory({
           className={styles.slider}
           onClick={() => clickHandler(region.cityId)}
         >
-          <img src={region.img} alt={region.name} className={styles.slider} />
+          <img
+            src={region.img}
+            alt={region.name}
+            className={styles.slider}
+            onError={handleErrorImg}
+          />
           <div className={checkInActive(region.cityId)}></div>
         </SwiperSlide>
       ))}

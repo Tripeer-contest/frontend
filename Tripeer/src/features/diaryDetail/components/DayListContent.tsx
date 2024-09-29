@@ -9,6 +9,7 @@ import { useDiaryReviewRemove } from '../hooks/useDiaryQuery';
 import useParamsId from '../../spot/hooks/useParamsId';
 import Notify from '../../planDetail/components/notify/Notify';
 import warningImg from '../../../assets/error/warn.svg';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function DayListContent({ card }: { card: DayListCard }) {
   const { open, DeleteReviewModal } = useDeleteReviewModal();
@@ -90,7 +91,12 @@ export default function DayListContent({ card }: { card: DayListCard }) {
               </div>
             </div>
             <section className={styles.imgBox}>
-              <img src={item.image} className={styles.img} alt="spot-image" />
+              <img
+                src={item.image}
+                className={styles.img}
+                alt="spot-image"
+                onError={handleErrorImg}
+              />
             </section>
           </main>
         );

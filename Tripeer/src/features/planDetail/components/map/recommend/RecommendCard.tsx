@@ -9,6 +9,7 @@ import { useShallow } from 'zustand/react/shallow';
 import fullHeartIcon from '../../../../../assets/button/full_heart.svg';
 import useShowMarkerInBound from '../../../hooks/useShowMarkerInBound';
 import useIsSpotInSpotList from '../../../hooks/useIsSpotInSpotList';
+import { handleErrorImg } from '../../../../../data/defaultImg';
 
 export default function RecommendCard({ card }: { card: SpotInterface }) {
   const id = useParamsId();
@@ -44,7 +45,12 @@ export default function RecommendCard({ card }: { card: SpotInterface }) {
 
   return (
     <div className={styles.cardBox} onClick={clickEvent}>
-      <img src={cardInfo.img} alt="spot-img" className={styles.cardImg} />
+      <img
+        src={cardInfo.img}
+        alt="spot-img"
+        className={styles.cardImg}
+        onError={handleErrorImg}
+      />
       <p className={styles.placeName}>{cardInfo.title}</p>
       <div className={styles.addressBox}>
         <img src={mapIcon} className={styles.addressIcon} alt="map-icon" />

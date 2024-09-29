@@ -8,6 +8,7 @@ import { getCategoryStyle } from '../../../../../data/categoryStyle';
 import useShowMarkerInBound from '../../../hooks/useShowMarkerInBound';
 import useIsSpotInSpotList from '../../../hooks/useIsSpotInSpotList';
 import zustandStore from '../../../../../store/store';
+import { handleErrorImg } from '../../../../../data/defaultImg';
 
 export default function SearchSpotCard({
   spot,
@@ -31,7 +32,12 @@ export default function SearchSpotCard({
   useShowMarkerInBound(spot);
   return (
     <div className={styles.cardBox} onClick={clickEvent}>
-      <img src={spot.img} className={styles.cardImg} alt="spot-img" />
+      <img
+        src={spot.img}
+        className={styles.cardImg}
+        alt="spot-img"
+        onError={handleErrorImg}
+      />
       <div className={styles.cardContentBox}>
         <div className={styles.cardTopContent}>
           <p className={styles.spotTitle}>{truncateText(spot.title, 15)}</p>
