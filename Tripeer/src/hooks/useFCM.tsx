@@ -32,7 +32,7 @@ export default function useFCM() {
     const token = await sendFlutterToSendToken();
     if (token && permission) {
       try {
-        await api.post(`/noti?token=${token}`);
+        await api.post(`/noti?token=${token}&type=APP`);
         setIsSuccess(true);
       } catch {
         setIsSuccess(false);
