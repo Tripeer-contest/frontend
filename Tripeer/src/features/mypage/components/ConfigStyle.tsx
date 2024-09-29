@@ -5,6 +5,7 @@ import { ProfileFormType } from '../../../types/UserTypes';
 import useStyleValidate from '../hooks/useStyleValidate';
 import Notify from '../../planDetail/components/notify/Notify';
 import warn_icon from '../../../assets/error/warn.svg';
+import { handleErrorImg } from '../../../data/defaultImg';
 
 export default function ConfigStyle({
   setForm,
@@ -27,7 +28,11 @@ export default function ConfigStyle({
               onClick={() => clickHandler(category.title, idx)}
               className={getCategoryStyle(category.title)}
             >
-              <img src={category.img} alt="category-style" />
+              <img
+                src={category.img}
+                alt="category-style"
+                onError={handleErrorImg}
+              />
               <span>{category.title}</span>
             </div>
           ))}
