@@ -76,6 +76,7 @@ export default function BottomDragModal({ children }: { children: ReactNode }) {
         style={{
           height: `${height}px`,
           overflowY: 'scroll',
+          scrollbarWidth: 'none',
         }}
       >
         {children}
