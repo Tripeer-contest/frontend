@@ -1,12 +1,7 @@
 import styles from './errorPage.module.css';
 import errorPageImg from './assets/errorPageImg.svg';
-import { useNavigate } from 'react-router-dom';
 
 export default function ErrorContent() {
-  const navigate = useNavigate();
-  const goHome = () => {
-    navigate('/home');
-  };
   return (
     <main className={styles.container}>
       <div className={styles.contentBox}>
@@ -15,9 +10,7 @@ export default function ErrorContent() {
         <p>잠시 후 다시 시도해주세요,</p>
         <div
           className={styles.backBtn}
-          onClick={() => {
-            goHome();
-          }}
+          onClick={() => window.location.reload()}
         >
           돌아가기
         </div>
