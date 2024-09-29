@@ -7,11 +7,15 @@ const api = axios.create({
   timeout: 20000,
 });
 
-const getAuthorizationToken = () => {
+export const getAuthorizationToken = () => {
   return cookie.get('Authorization');
 };
 
-const rePost = async () => {
+export const getReAuthorizationToken = () => {
+  return cookie.get('AuthorizationRe');
+};
+
+export const rePost = async () => {
   return await axios.post('/api/user/reissue', {}, { withCredentials: true });
 };
 
@@ -39,7 +43,7 @@ api.interceptors.response.use(
         }
       } catch (reissueError) {
         console.log('Reissue Failed : ', reissueError);
-        window.location.href = '/';
+        cookie.remove('Authorization');
       }
     }
 

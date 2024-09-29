@@ -6,6 +6,8 @@ import mapIcon from '../assets/mapIcon.svg';
 import dateIcon from '../assets/dateIcon.svg';
 import userIcon from '../assets/userIcon.svg';
 import { handleErrorImg } from '../../../data/defaultImg';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 export default function DiarySummary() {
   const params = useParams();
@@ -53,21 +55,27 @@ export default function DiarySummary() {
           <img src={userIcon} className={styles.icon} alt="map-icon" />
           <div>
             <p className={styles.subTitle}>여행 인원</p>
-            <div className={styles.memberBox}>
+            <Swiper
+              className={styles.memberBox}
+              slidesPerView={'auto'}
+              spaceBetween={10}
+            >
               {data.member.map((mem: any, idx: number) => {
                 return (
-                  <div key={idx} className={styles.memberInfo}>
-                    <img
-                      className={styles.memberImg}
-                      src={mem.profileImage}
-                      alt="user-img"
-                      onError={handleErrorImg}
-                    />
-                    <p className={styles.memberNick}>{mem.nickname}</p>
-                  </div>
+                  <SwiperSlide key={idx} style={{ width: 'auto' }}>
+                    <div className={styles.memberInfo}>
+                      <img
+                        className={styles.memberImg}
+                        src={mem.profileImage}
+                        alt="user-img"
+                        onError={handleErrorImg}
+                      />
+                      <p className={styles.memberNick}>{mem.nickname}</p>
+                    </div>
+                  </SwiperSlide>
                 );
               })}
-            </div>
+            </Swiper>
           </div>
         </div>
       </div>

@@ -3,10 +3,15 @@ import { Droppable } from '@hello-pangea/dnd';
 import { useShallow } from 'zustand/react/shallow';
 import zustandStore from '../../../../../../store/store.tsx';
 import DndCard from './DndCard.tsx';
+import Nodata from './Nodata.tsx';
 
 const DndBanner = () => {
-  const [totalYList] = zustandStore(
-    useShallow((state) => [state.room_totalYList]),
+  const [totalYList, searchList] = zustandStore(
+    useShallow((state) => [state.room_totalYList, state.c_searchList]),
+  );
+
+  const displayArr = totalYList[0].filter((item) =>
+    searchList.includes(item.spotInfoId),
   );
 
   return (
@@ -17,9 +22,17 @@ const DndBanner = () => {
           ref={provided.innerRef}
           {...provided.droppableProps}
         >
-          {totalYList[0]?.map((item, idx) => (
-            <DndCard item={item} idx={idx} key={item.spotInfoId} />
-          ))}
+          {displayArr.length !== 0 ? (
+            totalYList[0].length !== 0 ? (
+              totalYList[0]?.map((item, idx) => (
+                <DndCard item={item} idx={idx} key={item.spotInfoId} />
+              ))
+            ) : (
+              <Nodata />
+            )
+          ) : (
+            <Nodata />
+          )}
           {provided.placeholder}
         </div>
       )}

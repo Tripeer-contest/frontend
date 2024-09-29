@@ -6,13 +6,18 @@ import zustandStore from '../../../../../store/store.tsx';
 import { useShallow } from 'zustand/react/shallow';
 import Card from './Card.tsx';
 import useModal from '../hooks/useModal.tsx';
+import Nodata from '../desktop/leftSide/Nodata.tsx';
 
 const PlaceList = () => {
-  const [totalYList] = zustandStore(
-    useShallow((state) => [state.room_totalYList]),
+  const [totalYList, searchList] = zustandStore(
+    useShallow((state) => [state.room_totalYList, state.c_searchList]),
   );
 
   const { backHandler } = useModal();
+
+  const displayArr = totalYList[0].filter((item) =>
+    searchList.includes(item.spotInfoId),
+  );
 
   return (
     <main className={styles.container}>
@@ -30,9 +35,17 @@ const PlaceList = () => {
         <SearchBar />
         <CategoryList />
         <div className={styles.cardBox}>
-          {totalYList[0]?.map((item, idx) => (
-            <Card item={item} idx={idx} key={item.spotInfoId} />
-          ))}
+          {displayArr.length !== 0 ? (
+            totalYList[0].length !== 0 ? (
+              totalYList[0]?.map((item, idx) => (
+                <Card item={item} idx={idx} key={item.spotInfoId} />
+              ))
+            ) : (
+              <Nodata />
+            )
+          ) : (
+            <Nodata />
+          )}
         </div>
       </section>
     </main>

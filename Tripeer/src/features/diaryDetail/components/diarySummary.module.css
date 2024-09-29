@@ -37,45 +37,26 @@
   margin-left: 10px;
   display: inline;
 }
-.memberBox {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+
 .memberInfo {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 10px;
   border: 1px solid #4fbdb7;
   border-radius: 50px;
-  padding: 3px;
-  width: 42px;
-  height: 42px;
-  overflow: hidden;
-  white-space: nowrap;
-  transition: width 0.3s ease;
-  margin-bottom: 5px;
+  padding: 4px;
+  height: 44px;
 }
 .memberImg {
-  height: 34px;
-  width: 34px;
+  height: 36px;
+  width: 36px;
   border-radius: 50px;
 }
 
 .memberNick {
-  font-size: 0.9rem;
-  opacity: 0;
-  margin-left: 5px;
-  transition: opacity 0.3s ease;
-}
-
-.memberInfo:hover {
-  width: 100px;
-}
-
-.memberInfo:hover .memberNick {
-  opacity: 1;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 @media screen and (max-width: 1000px) {

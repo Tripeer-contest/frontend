@@ -6,6 +6,8 @@ import transportImage from '../../../../assets/calendar/assets/transport.png';
 import checkImage from '../../../../assets/calendar/assets/check.png';
 import useOpt from '../../hooks/useOpt.tsx';
 import zustandStore from '../../../../../../store/store.tsx';
+import Notify from '../../../notify/Notify.tsx';
+import errImage from '../../../../../../assets/error/warn.svg';
 
 const OpBtn = ({ day, idx }: { day: string; idx: number }) => {
   const totalYList = zustandStore((state) => state.room_totalYList);
@@ -21,6 +23,8 @@ const OpBtn = ({ day, idx }: { day: string; idx: number }) => {
     onCLickLabel,
     isLabel,
     alert,
+    isNotify,
+    isNotify_2,
   } = useOpt();
 
   return (
@@ -102,6 +106,18 @@ const OpBtn = ({ day, idx }: { day: string; idx: number }) => {
           <div className={styles.alertSubmit}>확인</div>
         </div>
       </alert.PlanModal>
+      <Notify
+        isActive={isNotify}
+        title={'최단거리 계산 불가능'}
+        message={'이동 경로가 없는 장소가 포함되어있습니다'}
+        img={errImage}
+      />
+      <Notify
+        isActive={isNotify_2}
+        title={'최단거리 계산 불가능'}
+        message={'장소를 2개 이상 추가해주세요'}
+        img={errImage}
+      />
     </main>
   );
 };

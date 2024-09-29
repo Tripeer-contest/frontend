@@ -8,6 +8,7 @@ export interface HomeSlice {
   h_nowTownId: number;
   h_nowPlaceId: number;
   h_keyword: string;
+  h_isLogin: boolean;
 
   h_setRegion: (arr: number[]) => void;
   h_setCategory: (arr: number[]) => void;
@@ -16,4 +17,5 @@ export interface HomeSlice {
   h_setNowTownId: (id: number) => void;
   h_setNowPlaceId: (id: number) => void;
   h_setKeyword: (value: string) => void;
+  h_setIsLogin: (isLogin: boolean) => void;
 }

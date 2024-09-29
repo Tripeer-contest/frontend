@@ -32,8 +32,12 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
     deleteHandler,
     isLoading,
   } = useMCard(item, itemIdx);
-  const [totalYList, nowDay] = zustandStore(
-    useShallow((state) => [state.room_totalYList, state.c_nowDay]),
+  const [totalYList, nowDay, blockYList] = zustandStore(
+    useShallow((state) => [
+      state.room_totalYList,
+      state.c_nowDay,
+      state.room_blockYList,
+    ]),
   );
 
   return (
@@ -121,7 +125,7 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
 
           <section className={styles.selectBox}>
             {totalYList.map((_, index) => {
-              if (index > 0 && index !== nowDay + 1)
+              if (index > 0 && index !== nowDay + 1 && !blockYList[index])
                 return (
                   <React.Fragment key={index}>
                     <div className={styles.modalLine} />

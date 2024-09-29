@@ -4,15 +4,22 @@ import zustandStore from '../../../../../store/store.tsx';
 import postOpt from '../../../api/postOpt.ts';
 import { useShallow } from 'zustand/react/shallow';
 import { useParams } from 'react-router-dom';
+import { rePost } from '../../../../../utils/api.ts';
 
 const useOpt = () => {
   const { open, close, PlanModal } = usePlanDetailModal();
   const alert = usePlanDetailModal();
   const [select, setSelect] = useState<string>('');
   const [text, setText] = useState<string>('확인');
+  const [isNotify, setIsNotify] = useState<boolean>(false);
+  const [isNotify_2, setIsNotify_2] = useState<boolean>(false);
   const [isLabel, setIsLabel] = useState<boolean>(false);
-  const [totalYList, doc] = zustandStore(
-    useShallow((state) => [state.room_totalYList, state.y_doc]),
+  const [totalYList, doc, timeYList] = zustandStore(
+    useShallow((state) => [
+      state.room_totalYList,
+      state.y_doc,
+      state.room_timeYList,
+    ]),
   );
 
   const params = useParams();
@@ -22,11 +29,24 @@ const useOpt = () => {
   };
 
   const onClickHandler = (idx: number) => {
-    totalYList[idx].length >= 2 ? open() : alert.open();
+    const isOk = timeYList[idx].every((item) => {
+      return item.time[1].length < 8;
+    });
+
+    if (totalYList[idx].length < 2) {
+      setIsNotify_2(true);
+      setTimeout(() => setIsNotify_2(false), 2000);
+    } else if (!isOk) {
+      setIsNotify(true);
+      setTimeout(() => setIsNotify(false), 2000);
+    } else {
+      open();
+    }
   };
 
-  const onSubmitHandler = (close: () => void, idx: number) => {
+  const onSubmitHandler = async (close: () => void, idx: number) => {
     if (select !== '') {
+      await rePost();
       close();
       setSelect('');
       setIsLabel(false);
@@ -66,6 +86,10 @@ const useOpt = () => {
     onCLickLabel,
     isLabel,
     alert,
+    isNotify,
+    setIsNotify,
+    open,
+    isNotify_2,
   };
 };
 
