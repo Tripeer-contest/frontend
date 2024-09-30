@@ -139,7 +139,6 @@ export default function MyPageMenu() {
             clickHandler={() => navigate('/privacy')}
           />
           <MySubBtn name="로그아웃" clickHandler={logout} />
-          <MySubBtn name="서비스 탈퇴" clickHandler={logout} />
         </div>
       </main>
       <p className={showClipConfirm()}>클립보드에 복사가 완료되었습니다.</p>
