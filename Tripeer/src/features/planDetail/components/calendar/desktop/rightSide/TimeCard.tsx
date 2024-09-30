@@ -63,11 +63,14 @@ const TimeCard = ({ isDragging, idx, itemIdx }: Props) => {
           <p className={time?.length > 8 ? styles.error : styles.time}>
             {timeYList[idx][itemIdx] === undefined ? '계산중' : time}
           </p>
-          <img
-            src={refereshIcon}
-            alt="refresh-btn"
-            style={{ height: '16px' }}
-          />
+          {timeYList[idx][itemIdx] === undefined ||
+          time === '계산중' ? undefined : (
+            <img
+              src={refereshIcon}
+              alt="refresh-btn"
+              style={{ height: '16px' }}
+            />
+          )}
         </section>
         <div className={styles.line} />
         <PlanModal
