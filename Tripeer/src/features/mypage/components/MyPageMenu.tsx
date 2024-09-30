@@ -133,9 +133,12 @@ export default function MyPageMenu() {
           </div>
         </div>
         <div className={styles.part}>
-          <h3 className={styles.subTitle}>로그인 설정</h3>
+          <h3 className={styles.subTitle}>계정 설정</h3>
+          <MySubBtn
+            name="개인정보 처리 방침"
+            clickHandler={() => navigate('/privacy')}
+          />
           <MySubBtn name="로그아웃" clickHandler={logout} />
-          <MySubBtn name="서비스 탈퇴" clickHandler={logout} />
         </div>
       </main>
       <p className={showClipConfirm()}>클립보드에 복사가 완료되었습니다.</p>

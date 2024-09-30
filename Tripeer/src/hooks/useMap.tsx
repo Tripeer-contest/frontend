@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { KakaoMapOptions } from '../types/kakaoTypes';
 
 declare global {
   interface Window {
@@ -7,8 +6,8 @@ declare global {
   }
 }
 
-export default function useMap(mapOptions?: KakaoMapOptions) {
-  const [map, setMap] = useState<any>();
+export default function useMap(mapOptions?: any) {
+  const [map, setMap] = useState<naver.maps.Map>();
   const setMapRef = useCallback(
     (container: HTMLDivElement | null) => {
       if (container) {
@@ -18,12 +17,12 @@ export default function useMap(mapOptions?: KakaoMapOptions) {
         const options = {
           center:
             latitude && longitude
-              ? new window.kakao.maps.LatLng(latitude, longitude)
-              : new window.kakao.maps.LatLng(33.450701, 126.570667),
+              ? new naver.maps.LatLng(latitude, longitude)
+              : new naver.maps.LatLng(33.450701, 126.570667),
           level: level ? level : 3,
         };
-        const map = new window.kakao.maps.Map(container, options);
-        map.setMaxLevel(11);
+        const map = new naver.maps.Map(container, options);
+        map.setOptions('minZoom', level ? level : 11);
         setMap(map);
       }
     },
@@ -32,7 +31,7 @@ export default function useMap(mapOptions?: KakaoMapOptions) {
 
   useEffect(() => {
     if (map) {
-      map.relayout();
+      map.autoResize();
     }
   }, [map]);
 

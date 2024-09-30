@@ -99,7 +99,7 @@
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 5;
+    z-index: 100;
   }
   .createReviewContainer {
     display: flex;
@@ -153,7 +153,7 @@
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 5;
+    z-index: 100;
   }
   .createReviewContainer {
     outline: none;

@@ -1,6 +1,6 @@
-import { ORDER_COLOR_TYPE } from '../types/UserTypes';
-
-const ORDER_COLOR: ORDER_COLOR_TYPE = {
+const ORDER_COLOR: {
+  [param: number]: string;
+} = {
   1: '#A60000',
   2: '#D78E00',
   3: '#20178B',
