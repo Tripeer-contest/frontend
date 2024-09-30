@@ -1,6 +1,7 @@
 import styles from '../../../assets/map/header.module.css';
 import PlanHamburger from '../../common/PlanHamburger';
 import TownController from '../mapNav/TownController';
+import WeatherBox from './WeatherBox';
 
 export default function SearchHeader() {
   return (
@@ -11,6 +12,7 @@ export default function SearchHeader() {
             <PlanHamburger />
             <TownController />
           </div>
+          <WeatherBox />
         </div>
       </header>
     </>
