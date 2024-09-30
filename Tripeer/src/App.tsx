@@ -13,6 +13,7 @@ import ImgPage from './features/img/ImgPage';
 import useViewport from './hooks/useViewport.tsx';
 import ErrorPage from './components/error/ErrorPage.tsx';
 import ErrorBoundary from './components/error/ErrorBoundary.tsx';
+import AboutPage from './features/about/AboutPage.tsx';
 import PrivacyPage from './features/privacy/PrivacyPage.tsx';
 
 const PlanPage = lazy(() => import('./features/plan/PlanPage.tsx'));
@@ -232,6 +233,10 @@ const router = createBrowserRouter([
         </Suspense>
       </ErrorBoundary>
     ),
+  },
+  {
+    path: '/about',
+    element: <AboutPage />,
   },
   {
     path: '/privacy',
