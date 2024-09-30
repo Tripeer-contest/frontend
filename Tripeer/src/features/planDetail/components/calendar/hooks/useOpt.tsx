@@ -29,16 +29,9 @@ const useOpt = () => {
   };
 
   const onClickHandler = (idx: number) => {
-    const isOk = timeYList[idx].every((item) => {
-      return item.time[1].length < 8;
-    });
-
     if (totalYList[idx].length < 2) {
       setIsNotify_2(true);
       setTimeout(() => setIsNotify_2(false), 2000);
-    } else if (!isOk) {
-      setIsNotify(true);
-      setTimeout(() => setIsNotify(false), 2000);
     } else {
       open();
     }
@@ -46,17 +39,28 @@ const useOpt = () => {
 
   const onSubmitHandler = async (close: () => void, idx: number) => {
     if (select !== '') {
-      await rePost();
-      close();
-      setSelect('');
-      setIsLabel(false);
-      const option = isLabel ? '2' : select;
+      const isOk = timeYList[idx].every((item) => {
+        return item.time[parseInt(select)].length < 8;
+      });
 
-      if (doc) {
-        const yArr = doc.getArray('blockYList');
-        yArr.delete(idx, 1);
-        yArr.insert(idx, [true]);
-        params.id && postOpt(params.id, option, idx);
+      if (!isOk) {
+        setIsNotify(true);
+        setTimeout(() => setIsNotify(false), 2000);
+        close();
+        setSelect('');
+      } else {
+        await rePost();
+        close();
+        setSelect('');
+        setIsLabel(false);
+        const option = isLabel ? '2' : select;
+
+        if (doc) {
+          const yArr = doc.getArray('blockYList');
+          yArr.delete(idx, 1);
+          yArr.insert(idx, [true]);
+          params.id && postOpt(params.id, option, idx);
+        }
       }
     } else {
       setText('이동 수단을 선택해주세요');

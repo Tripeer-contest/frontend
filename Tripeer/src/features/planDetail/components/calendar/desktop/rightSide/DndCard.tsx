@@ -2,7 +2,7 @@ import { Draggable } from '@hello-pangea/dnd';
 import styles from '../../../../assets/calendar/Desktop/rightSide/dndCard.module.css';
 import dotImage from '../../../../assets/calendar/assets/dot.png';
 import { totalYListInfo } from '../../../../../../store/room/RoomSliceState.ts';
-import { userColors } from '../../../../../../data/userColors.ts';
+import { getCategoryStyle } from '../../../../../../data/categoryStyle.ts';
 import TimeCard from './TimeCard.tsx';
 import useMCard from '../../hooks/useMCard.tsx';
 import addrImage from '../../../../assets/calendar/assets/addr.png';
@@ -40,6 +40,8 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
     ]),
   );
 
+  const style = getCategoryStyle(item.contentType);
+
   return (
     <>
       <Draggable
@@ -58,7 +60,7 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
                 <div
                   className={styles.numberBox}
                   style={{
-                    backgroundColor: `${userColors[item.order]}`,
+                    backgroundColor: `${style.color}`,
                   }}
                 >
                   {itemIdx + 1}
@@ -68,7 +70,7 @@ const DndCard = ({ item, itemIdx, length, idx }: Props) => {
               <div className={styles.right}>
                 <p
                   className={styles.contentType}
-                  style={{ color: `${userColors[item.order]}` }}
+                  style={{ color: `${style.color}` }}
                 >
                   {item.contentType}
                 </p>
