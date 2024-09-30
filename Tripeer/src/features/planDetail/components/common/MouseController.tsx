@@ -15,6 +15,7 @@ import {
 import zustandStore from '../../../../store/store';
 import getTokenInfo from '../../../../utils/jwtDecode';
 import { useShallow } from 'zustand/react/shallow';
+import { ORDER_COLOR } from '../../../../data/orderColor';
 
 interface MouseInfo {
   id: number;
@@ -25,17 +26,6 @@ interface MouseInfo {
   isDesktop: boolean;
   nickname: string;
 }
-
-const COLOR = [
-  '#A60000',
-  '#DE5000',
-  '#D78E00',
-  '#48B416',
-  '#0065AE',
-  '#20178B',
-  '#65379F',
-  '#F96976',
-];
 
 export default function MouseController({
   page,
@@ -52,14 +42,17 @@ export default function MouseController({
   );
   const [showMouse, setShowMouse] = useState<MouseInfo[]>([]);
   const [myMouse, setMyMouse] = useState<number[]>([]);
+  const [myMouseColor, setMyMouseColor] = useState<number>(1);
   const [mode, setMode] = useState(false);
   const [showInfo, setShowInfo] = useState('');
   const timer = useRef<number>(0);
   const inputBox = useRef<null | HTMLTextAreaElement>(null);
+
   const updateMyMouse = useCallback(
     (x: number, y: number) => {
       const info = getTokenInfo();
       const myInfo = userInfo.find((user) => user.userId === info.userId);
+      myInfo && setMyMouseColor(myInfo.order);
       myInfo &&
         ws &&
         isDesktop &&
@@ -155,6 +148,10 @@ export default function MouseController({
     }
   }, [showInfo, updateMyMouse, myMouse]);
 
+  useEffect(() => {
+    console.log(userInfo);
+  }, [userInfo]);
+
   return (
     <div
       className={styles.container}
@@ -169,7 +166,7 @@ export default function MouseController({
             <textarea
               style={{
                 transform: `translate(${myMouse[0] + 10}px, ${myMouse[1] + 20}px)`,
-                backgroundColor: `${COLOR[0]}`,
+                backgroundColor: `${ORDER_COLOR[myMouseColor]}`,
               }}
               className={`${styles.userInfo} ${styles.userInput}`}
               placeholder="글을 입력하세요."
@@ -189,7 +186,7 @@ export default function MouseController({
             <span
               style={{
                 transform: `translate(${myMouse[0] + 10}px, ${myMouse[1] + 20}px)`,
-                backgroundColor: `${COLOR[0]}`,
+                backgroundColor: `${ORDER_COLOR[myMouseColor]}`,
               }}
               className={styles.userInfo}
             >
@@ -215,7 +212,7 @@ export default function MouseController({
                   className={styles.userInfo}
                   style={{
                     transform: `translate(${mouse.x + 25}px, ${mouse.y + 15}px)`,
-                    backgroundColor: `${COLOR[mouse.order]}`,
+                    backgroundColor: `${ORDER_COLOR[mouse.order]}`,
                   }}
                 >
                   {mouse.nickname}

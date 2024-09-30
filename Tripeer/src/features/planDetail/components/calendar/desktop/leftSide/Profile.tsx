@@ -1,6 +1,6 @@
 import styles from '../../../../assets/calendar/Desktop/leftSide/profile.module.css';
-import { userColors } from '../../../../../../data/userColors.ts';
 import { handleErrorImg } from '../../../../../../data/defaultImg.ts';
+import { ORDER_COLOR } from '../../../../../../data/orderColor.ts';
 
 interface Props {
   image: string;
@@ -13,7 +13,7 @@ const Profile = ({ image, order }: Props) => {
       src={image}
       alt={'Profile Image'}
       className={styles.container}
-      style={{ border: `3px solid ${userColors[order]}` }}
+      style={{ border: `3px solid ${ORDER_COLOR[order]}` }}
       onError={handleErrorImg}
     />
   );
