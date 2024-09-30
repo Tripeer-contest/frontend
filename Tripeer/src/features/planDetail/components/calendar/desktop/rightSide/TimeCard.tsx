@@ -13,6 +13,7 @@ import zustandStore from '../../../../../../store/store.tsx';
 import { useShallow } from 'zustand/react/shallow';
 import React from 'react';
 import useReAtoB from '../../hooks/useReAtoB.tsx';
+import refereshIcon from '../../../../../../assets/button/refresh_gray.svg';
 
 interface Props {
   isDragging: boolean;
@@ -62,6 +63,11 @@ const TimeCard = ({ isDragging, idx, itemIdx }: Props) => {
           <p className={time?.length > 8 ? styles.error : styles.time}>
             {timeYList[idx][itemIdx] === undefined ? '계산중' : time}
           </p>
+          <img
+            src={refereshIcon}
+            alt="refresh-btn"
+            style={{ height: '16px' }}
+          />
         </section>
         <div className={styles.line} />
         <PlanModal
