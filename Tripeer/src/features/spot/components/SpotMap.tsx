@@ -27,11 +27,10 @@ export default function SpotMap({ id }: { id: number }) {
 
   useEffect(() => {
     if (map && data) {
-      const position = new window.kakao.maps.LatLng(
-        data.latitude,
-        data.longitude,
-      );
-      const marker = new window.kakao.maps.Marker({ position });
+      const position = new naver.maps.LatLng(data.latitude, data.longitude);
+      const marker = new naver.maps.Marker({
+        position: position,
+      });
       map.setCenter(position);
       marker.setMap(map);
     }
