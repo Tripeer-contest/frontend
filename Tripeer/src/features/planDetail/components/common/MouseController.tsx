@@ -148,10 +148,6 @@ export default function MouseController({
     }
   }, [showInfo, updateMyMouse, myMouse]);
 
-  useEffect(() => {
-    console.log(userInfo);
-  }, [userInfo]);
-
   return (
     <div
       className={styles.container}
