@@ -21,7 +21,10 @@ export default function DesktopMapDetail() {
             outline: 'none',
             scrollbarWidth: 'none',
             border: 'none',
-            width: '800px',
+            maxWidth: '1000px',
+            maxHeight: "calc(var(--vh,'1vh')*100 - 100px)",
+            width: '100%',
+            height: '100%',
           }}
           onClick={(e) => {
             if (e.target === e.currentTarget) {

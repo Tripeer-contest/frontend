@@ -11,17 +11,23 @@ const HomeRecommendationBanner = ({ data }: Props) => {
   const { onClickHandler } = useReadMore(data.keyword);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.topSection}>
-        <p className={styles.title}>{data.comment}</p>
-        <section className={styles.readMoreSection}>
-          <div className={styles.readMore} onClick={onClickHandler}>
-            더보기
+    <>
+      {data.spotInfoDtos.length > 4 && (
+        <div className={styles.container}>
+          <div className={styles.topSection}>
+            <p className={styles.title}>{data.comment}</p>
+            <section className={styles.readMoreSection}>
+              {data.spotInfoDtos.length >= 10 && (
+                <div className={styles.readMore} onClick={onClickHandler}>
+                  더보기
+                </div>
+              )}
+            </section>
           </div>
-        </section>
-      </div>
-      <HomeSlide data={data} />
-    </div>
+          <HomeSlide data={data} />
+        </div>
+      )}
+    </>
   );
 };
 

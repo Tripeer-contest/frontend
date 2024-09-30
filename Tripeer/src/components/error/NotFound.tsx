@@ -19,7 +19,7 @@ export default function NotFound() {
         {/* <p className={styles.notfoundSubText}>
           주소가 변경 혹은 삭제되어 요청하신 페이지를 찾을 수 없습니다.
         </p> */}
-        <Link className={styles.homeBtn} to="/">
+        <Link className={styles.homeBtn} to="/home">
           GO HOME
         </Link>
       </article>
