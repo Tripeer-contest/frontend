@@ -5,13 +5,14 @@ export default function SocialButton({ social }: { social: string }) {
   const socialservice = SocialPlatform[social]
     ? SocialPlatform[social]
     : SocialPlatform['apple'];
+  const btnStyle =
+    social === 'apple'
+      ? { ...socialservice.style, ...{ gap: '2px' } }
+      : socialservice.style;
   return (
-    <a
-      href={socialservice.href}
-      style={socialservice.style}
-      className={styles.socialBtn}
-    >
+    <a href={socialservice.href} style={btnStyle} className={styles.socialBtn}>
       <img
+        style={social === 'apple' ? { height: '100%' } : undefined}
         src={socialservice.img}
         alt="social-service"
         className={styles.socialImg}
