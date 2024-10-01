@@ -128,6 +128,9 @@ export default function PrivacyPage() {
         <p>
           [책임자] 이름: 부수환 연락처:[010-5287-5716, rndjdieo119@naver.com]
         </p>
+        <p>
+          [등록자] 이름: 이해건 연락처:[010-4126-7485, lhgeer2617@gmail.com]
+        </p>
         <br />
         <p>
           트리피어는 법률이나 서비스의 변경사항을 반영하기 위한 목적 등으로
