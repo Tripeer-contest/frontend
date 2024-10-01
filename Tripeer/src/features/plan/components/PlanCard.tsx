@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import MutationLoading from '../../../components/loading/MutationLoading';
 import { useNavigate } from 'react-router-dom';
 import { handleErrorImg } from '../../../data/defaultImg';
+import { TownList } from '../../../data/TownList';
 
 export default function PlanCard({ data }: { data: PlanCardType }) {
   const navigate = useNavigate();
@@ -51,9 +52,14 @@ export default function PlanCard({ data }: { data: PlanCardType }) {
           <p className={styles.cardTitle}>{data.title}</p>
           <div className={styles.detailInfo}>
             <img src={navIcon} alt="nav-icon" className={styles.icon} />
-            {data.townList.map((town, idx) => (
-              <span key={idx}>{town}</span>
-            ))}
+            <p className={styles.cutString}>
+              {data.townList.map((town, idx) => (
+                <span key={idx}>
+                  {town}
+                  {idx === data.townList.length - 1 ? '' : ', '}
+                </span>
+              ))}
+            </p>
           </div>
           <div className={styles.layoutInfo}>
             <div className={styles.detailInfo}>

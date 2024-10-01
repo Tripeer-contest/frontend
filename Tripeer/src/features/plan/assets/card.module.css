@@ -100,3 +100,10 @@
   justify-content: center;
   color: #545454;
 }
+
+.cutString {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
