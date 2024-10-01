@@ -11,7 +11,6 @@ import { useEffect } from 'react';
 import MutationLoading from '../../../components/loading/MutationLoading';
 import { useNavigate } from 'react-router-dom';
 import { handleErrorImg } from '../../../data/defaultImg';
-import { TownList } from '../../../data/TownList';
 
 export default function PlanCard({ data }: { data: PlanCardType }) {
   const navigate = useNavigate();
