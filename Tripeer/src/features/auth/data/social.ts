@@ -12,7 +12,7 @@ const SocialPlatform: { [param: string]: any } = {
       border: '2px solid #EBEBEB',
       color: '#fff',
     },
-    href: '/api/oauth2/authorization/google',
+    href: '/api/oauth2/authorization/apple',
   },
   google: {
     img: google,
