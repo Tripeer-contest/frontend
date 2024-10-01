@@ -54,7 +54,7 @@
     align-items: center;
     border-radius: 5px;
     text-decoration: none;
-    gap: 10px;
+    gap: 8px;
     font-size: 0.8rem;
     color: inherit; /* 상속된 색상 사용 */
     background-color: inherit;
@@ -69,7 +69,6 @@
   }
 
   .socialImg {
-    width: 15px;
     height: 15px;
   }
 

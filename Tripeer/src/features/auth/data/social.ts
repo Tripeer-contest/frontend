@@ -1,15 +1,16 @@
 import google from '../../../assets/auth/google.svg';
 import naver from '../../../assets/auth/naver.svg';
 import kakao from '../../../assets/auth/kakao.svg';
+import apple from '../../../assets/auth/apple.svg';
 
 const SocialPlatform: { [param: string]: any } = {
   apple: {
-    img: google,
-    text: '애플 계정으로 시작하기',
+    img: apple,
+    text: 'Apple로 로그인',
     style: {
-      backgroundColor: '#fff',
+      backgroundColor: 'black',
       border: '2px solid #EBEBEB',
-      color: '#00000',
+      color: '#fff',
     },
     href: '/api/oauth2/authorization/google',
   },

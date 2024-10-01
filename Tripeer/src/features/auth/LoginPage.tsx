@@ -8,13 +8,11 @@ import { Fragment, useEffect, useState } from 'react';
 import getDeviceInfo from '../../utils/sendFlutter';
 
 export default function LoginPage() {
-  const [isLoading, setIsLoading] = useState(true);
   const [socialArr, setSocialArr] = useState<string[]>([]);
   useEffect(() => {
     const getSocial = async () => {
       const social = await getDeviceInfo();
       setSocialArr(social);
-      setIsLoading(false);
     };
     getSocial();
   }, []);
@@ -23,7 +21,7 @@ export default function LoginPage() {
       <Link to="/">
         <img src={Logo} alt="tripeer-logo" className={styles.Logo} />
       </Link>
-      {isLoading ? undefined : (
+      {socialArr.length === 0 ? undefined : (
         <>
           <div className={styles.borderBox}>
             <div className={styles.line} />
