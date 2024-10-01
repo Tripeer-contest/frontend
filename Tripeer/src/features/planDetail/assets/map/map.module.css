@@ -16,7 +16,7 @@
   }
   .mapNavBox {
     position: absolute;
-    z-index: 10;
+    z-index: 100;
     bottom: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
