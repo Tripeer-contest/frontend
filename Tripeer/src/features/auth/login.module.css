@@ -154,3 +154,8 @@
     height: 10px;
   }
 }
+
+.googleFont {
+  font-family: 'Roboto Medium';
+  font-size: 12px;
+}
