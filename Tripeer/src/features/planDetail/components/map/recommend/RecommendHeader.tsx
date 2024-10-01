@@ -1,6 +1,7 @@
 import styles from '../../../assets/map/mapNav/recommend.module.css';
 import PlanHamburger from '../../common/PlanHamburger';
 import TownController from '../mapNav/TownController';
+import WeatherBox from '../search/WeatherBox';
 
 export default function RecommendHeader() {
   return (
@@ -10,6 +11,7 @@ export default function RecommendHeader() {
           <PlanHamburger />
           <TownController />
         </div>
+        <WeatherBox />
       </header>
     </>
   );

@@ -5,6 +5,7 @@
   left: 0;
   height: calc(var(--vh, 1vh) * 100);
   background-color: #fff;
+  overflow-x: hidden;
 }
 
 .header {
