@@ -33,73 +33,74 @@ export default function RecommendCard({ card }: { card: SpotInterface }) {
   };
 
   const clickEvent = () => {
-    window.innerWidth > 1000 &&
-      setSpot({
-        spotInfoId: card.spotInfoId,
-        longitude: card.longitude,
-        latitude: card.latitude,
-      });
+    setSpot({
+      spotInfoId: card.spotInfoId,
+      longitude: card.longitude,
+      latitude: card.latitude,
+    });
   };
 
   const cardInfo = card;
 
   return (
-    <div className={styles.cardBox} onClick={clickEvent}>
-      <img
-        src={cardInfo.img}
-        alt="spot-img"
-        className={styles.cardImg}
-        onError={handleErrorImg}
-      />
-      <p className={styles.placeName}>{cardInfo.title}</p>
-      <div className={styles.addressBox}>
-        <img src={mapIcon} className={styles.addressIcon} alt="map-icon" />
-        <p className={styles.addressText}>{cardInfo.addr}</p>
-      </div>
-      <section className={styles.bottomSection}>
-        <div
-          className={styles.likeIconBox}
-          onClick={(e) => {
-            e.stopPropagation();
-            likeHandler();
-          }}
-        >
-          {cardInfo.wishlist ? (
-            <img
-              src={fullHeartIcon}
-              className={styles.likeIcon}
-              alt="like-icon"
-            />
-          ) : (
-            <img
-              src={heartIcon}
-              className={styles.likeIcon}
-              alt="unlike-icon"
-            />
-          )}
+    <>
+      <div className={styles.cardBox} onClick={clickEvent}>
+        <img
+          src={cardInfo.img}
+          alt="spot-img"
+          className={styles.cardImg}
+          onError={handleErrorImg}
+        />
+        <p className={styles.placeName}>{cardInfo.title}</p>
+        <div className={styles.addressBox}>
+          <img src={mapIcon} className={styles.addressIcon} alt="map-icon" />
+          <p className={styles.addressText}>{cardInfo.addr}</p>
         </div>
-        {!isExist ? (
+        <section className={styles.bottomSection}>
           <div
-            className={styles.addPlaceListBtn}
+            className={styles.likeIconBox}
             onClick={(e) => {
               e.stopPropagation();
-              addSpot();
+              likeHandler();
             }}
           >
-            여행지 추가
+            {cardInfo.wishlist ? (
+              <img
+                src={fullHeartIcon}
+                className={styles.likeIcon}
+                alt="like-icon"
+              />
+            ) : (
+              <img
+                src={heartIcon}
+                className={styles.likeIcon}
+                alt="unlike-icon"
+              />
+            )}
           </div>
-        ) : (
-          <div
-            className={styles.removePlaceListBtn}
-            onClick={(e) => {
-              e.stopPropagation();
-              removeSpot();
-            }}
-          >
-            선택 취소
-          </div>
-        )}
-      </section>
-    </div>
+          {!isExist ? (
+            <div
+              className={styles.addPlaceListBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                addSpot();
+              }}
+            >
+              여행지 추가
+            </div>
+          ) : (
+            <div
+              className={styles.removePlaceListBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                removeSpot();
+              }}
+            >
+              선택 취소
+            </div>
+          )}
+        </section>
+      </div>
+    </>
   );
 }

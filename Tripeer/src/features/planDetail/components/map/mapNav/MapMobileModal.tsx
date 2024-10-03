@@ -9,6 +9,7 @@ import { SpotReview } from '../../../../spot/components/SpotReview';
 import SpotMeta from '../../../../spot/components/SpotMeta';
 import SmallLoading from '../../../../../components/loading/SmallLoading';
 import { useShallow } from 'zustand/react/shallow';
+import ErrorPage from '../../../../../components/error/ErrorPage';
 
 export default function MapMobileModal() {
   const [spotInfo, moveMap, makeMarker, removeMarker] = zustandStore(
@@ -31,7 +32,7 @@ export default function MapMobileModal() {
   }, [spotInfo, moveMap, makeMarker, removeMarker]);
 
   return (
-    <ErrorBoundary fallback={<p>끄악</p>}>
+    <ErrorBoundary fallback={<ErrorPage />}>
       <Suspense
         fallback={
           <div
