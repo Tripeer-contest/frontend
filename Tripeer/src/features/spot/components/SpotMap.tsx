@@ -30,6 +30,10 @@ export default function SpotMap({ id }: { id: number }) {
       const position = new naver.maps.LatLng(data.latitude, data.longitude);
       const marker = new naver.maps.Marker({
         position: position,
+        icon: {
+          url: 'https://tripeer207.s3.ap-northeast-2.amazonaws.com/front/static/pin.png',
+          scaledSize: { width: 30, height: 40 },
+        },
       });
       map.setCenter(position);
       marker.setMap(map);
