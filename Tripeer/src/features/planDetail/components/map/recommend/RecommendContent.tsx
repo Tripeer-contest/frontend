@@ -13,6 +13,7 @@ import {
   SpotInterface,
 } from '../../../../../types/PlanDetailTypes';
 import { useEffect } from 'react';
+import RecommendMobileDetail from './RecommendMobileDetail';
 
 export default function RecommendContent() {
   const id = useParamsId();
@@ -68,6 +69,7 @@ export default function RecommendContent() {
         </div>
       )}
       {isError && <div className={styles.loadingBox}>에러발생</div>}
+      {window.innerWidth < 1000 && <RecommendMobileDetail />}
     </>
   );
 }
