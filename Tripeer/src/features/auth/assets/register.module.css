@@ -1,0 +1,171 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
+
+.header {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #262626;
+  width: 100vw;
+  height: 60px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.back {
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  position: absolute;
+  height: 26px;
+  cursor: pointer;
+}
+
+.title {
+  width: 300px;
+  color: #3d3c3c;
+  font-weight: bold;
+  font-size: 25px;
+  padding-left: 5px;
+}
+
+.inputEmailBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputBox {
+  width: 300px;
+  height: 40px;
+  border: 2px solid #87bfbc;
+  outline: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 13px;
+  color: #87bfbc;
+}
+
+.inputBox::placeholder {
+  color: #87bfbc;
+  font-size: 12px;
+}
+
+.inputBtn {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #04acb5;
+  border: 2px solid #ebebeb;
+  cursor: pointer;
+  color: #fff;
+}
+
+.warnText {
+  padding-left: 5px;
+  color: red;
+  font-size: 12px;
+}
+
+.infoText {
+  font-size: 12px;
+  color: #999999;
+}
+
+.btnBox {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+}
+
+.prevBtn {
+  width: 140px;
+  height: 40px;
+  background-color: #f7f7f7;
+  color: #606060;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.nextBtn {
+  width: 140px;
+  height: 40px;
+  background-color: #04acb5;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dateBox {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0px;
+}
+
+.bw {
+  color: #858687;
+}
+
+.input {
+  width: 60px;
+  font-size: 18px;
+  font-weight: normal;
+  color: #858687;
+  justify-items: left;
+  border: 0;
+  outline: none;
+}
+
+.itemBox {
+  display: flex;
+  width: 300px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.notSelectItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid #d9d9d9;
+  border-radius: 30px;
+  color: #606060;
+  font-size: 12px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.selectItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid #4fbdb7;
+  border-radius: 30px;
+  background-color: #4fbdb7;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.styleIcon {
+  height: 14px;
+}
