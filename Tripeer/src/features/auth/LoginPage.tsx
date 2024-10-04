@@ -1,44 +1,34 @@
 import LoginLayout from './layout/LoginLayout';
 import Logo from '../../assets/logo.webp';
 import styles from './login.module.css';
-import { Link } from 'react-router-dom';
-import SocialButton from './components/SocialButton';
 import src from './assets/bottom.svg';
-import { Fragment, useEffect, useState } from 'react';
-import getDeviceInfo from '../../utils/sendFlutter';
+import { useState } from 'react';
+import SocialForm from './components/SocialForm';
+import TripeerForm from './components/TripeerForm';
 
 export default function LoginPage() {
-  const [socialArr, setSocialArr] = useState<string[]>([]);
-  useEffect(() => {
-    const getSocial = async () => {
-      const social = await getDeviceInfo();
-      setSocialArr(social);
-    };
-    getSocial();
-  }, []);
+  const [mode, setMode] = useState(false);
+
+  const loginModeChange = () => {
+    setMode((prev) => !prev);
+  };
+
   return (
     <LoginLayout>
-      <Link to="/">
-        <img src={Logo} alt="tripeer-logo" className={styles.Logo} />
-      </Link>
-      {socialArr.length === 0 ? undefined : (
-        <>
-          <div className={styles.borderBox}>
-            <div className={styles.line} />
-            <p>로그인&회원가입</p>
-            <div className={styles.line} />
-          </div>
-          {socialArr.map((social, idx) => (
-            <Fragment key={idx}>
-              <SocialButton social={social} />
-            </Fragment>
-          ))}
-          <div className={styles.center}>
-            <img src={src} alt={'bottom'} />
-            <p>About Tripeer</p>
-          </div>
-        </>
-      )}
+      <div onClick={() => setMode(false)} style={{ cursor: 'pointer' }}>
+        <img src={Logo} alt="트리피어로고" className={styles.Logo} />
+      </div>
+      <>
+        {mode ? (
+          <TripeerForm />
+        ) : (
+          <SocialForm loginModeChange={loginModeChange} />
+        )}
+        <div className={styles.center}>
+          <img src={src} alt={'bottom'} />
+          <p>About Tripeer</p>
+        </div>
+      </>
     </LoginLayout>
   );
 }

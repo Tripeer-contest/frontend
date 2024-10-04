@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .socialBtn:hover {
@@ -38,7 +38,7 @@
     align-items: center;
     color: #87bfbc;
     gap: 10px;
-    margin: 50px 0 30px 0;
+    margin: 40px 0 20px 0;
   }
   .line {
     width: 100px;
@@ -58,6 +58,7 @@
     font-size: 0.8rem;
     color: inherit; /* 상속된 색상 사용 */
     background-color: inherit;
+    cursor: pointer;
   }
 
   .socialBtn:hover,
@@ -74,13 +75,11 @@
 
   .center {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 250px;
-    margin-bottom: 20px;
   }
 
   .center p {
@@ -157,4 +156,88 @@
 .googleFont {
   font-family: 'Roboto Medium';
   font-size: 12px;
+}
+
+@media screen and (max-width: 330px) {
+  .borderBox {
+    margin: 20px 0 10px 0;
+  }
+}
+
+.formBox {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputBox {
+  width: 300px;
+  height: 40px;
+  border: 2px solid #87bfbc;
+  outline: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 13px;
+  color: #87bfbc;
+}
+
+.inputBox::placeholder {
+  color: #87bfbc;
+  font-size: 12px;
+}
+
+.inputBtn {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #04acb5;
+  border: 2px solid #ebebeb;
+  cursor: pointer;
+  color: #fff;
+}
+
+.authAbout {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+.authAbout > div {
+  color: #87bfbc;
+}
+
+.authAbout > span {
+  font-size: 12px;
+  color: #545454;
+  cursor: pointer;
+}
+
+.socialFormBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.socialChange {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalLayout {
+  max-width: 100vw;
+  max-height: 100vh;
+  max-height: calc(var(--vh, '1vh') * 100);
+  width: 100vw;
+  height: 100vh;
+  height: calc(var(--vh, '1vh') * 100);
+  outline: none;
+  border: none;
+  padding: 0;
+  overflow: hidden;
 }
