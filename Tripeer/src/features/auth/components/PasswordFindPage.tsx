@@ -18,13 +18,14 @@ export default function PasswordFindPage({
   closeHandler: () => void;
 }) {
   const [passwordForm, setPasswordForm] = useState<PasswordForm>({});
-  const emailCustomHook = useFindPasswordEmail(setPasswordForm, closeHandler);
+  const close = () => {
+    setPasswordForm({});
+    closeHandler();
+  };
+  const emailCustomHook = useFindPasswordEmail(setPasswordForm, close);
   const passwordCustomHook = usePasswordUtil(
     passwordForm,
-    () => {
-      setPasswordForm({});
-      closeHandler();
-    },
+    close,
     'https://tripeer.co.kr/api/user/password',
     'patch',
   );
@@ -35,7 +36,7 @@ export default function PasswordFindPage({
           src={back_icon}
           alt="트리피어-back-icon"
           className={styles.back}
-          onClick={closeHandler}
+          onClick={close}
         />
         비밀번호 찾기
       </header>
