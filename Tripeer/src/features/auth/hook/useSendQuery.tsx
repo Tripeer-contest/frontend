@@ -6,19 +6,26 @@ import {
   tripeerLogin,
   tripeerSignUp,
 } from '../api/authApi';
-import { Register } from '../components/RegisterPage';
 
 export default function useSendEmailQuery() {
   const { data, isError, isPending, mutate } = useMutation({
-    mutationFn: (email: string) => sendEmailCode(email),
+    mutationFn: ({ url, email }: { url: string; email: string }) =>
+      sendEmailCode(url, email),
   });
   return { data, isError, isPending, mutate };
 }
 
 export function useMutateEmail() {
   const { mutateAsync, data, isSuccess, isError, isPending } = useMutation({
-    mutationFn: ({ email, code }: { email: string; code: string }) =>
-      postValideEmail(email, code),
+    mutationFn: ({
+      email,
+      code,
+      url,
+    }: {
+      email: string;
+      code: string;
+      url: string;
+    }) => postValideEmail(email, code, url),
   });
   return { mutateAsync, data, isSuccess, isError, isPending };
 }
@@ -32,7 +39,15 @@ export function useMutateNick() {
 
 export function useMutateSignUp() {
   const { mutateAsync, isError, isPending } = useMutation({
-    mutationFn: (register: Register) => tripeerSignUp(register),
+    mutationFn: ({
+      register,
+      url,
+      method,
+    }: {
+      register: { email?: string; password?: string; code?: string };
+      url: string;
+      method: string;
+    }) => tripeerSignUp(register, url, method),
   });
   return {
     mutateAsync,

@@ -1,20 +1,21 @@
 import axios from 'axios';
-import { Register } from '../components/RegisterPage';
 
-export async function sendEmailCode(email: string) {
+export async function sendEmailCode(url: string, email: string) {
   try {
-    const res = await axios.get(
-      `https://tripeer.co.kr/api/user/valid/email/${email}`,
-    );
+    const res = await axios.get(`${url}/${email}`);
     return res.data;
   } catch {
     throw new Error('에러발생');
   }
 }
 
-export async function postValideEmail(email: string, code: string) {
+export async function postValideEmail(
+  email: string,
+  code: string,
+  url: string,
+) {
   try {
-    const res = await axios.post(`https://tripeer.co.kr/api/user/valid/email`, {
+    const res = await axios.post(url, {
       email,
       code,
     });
@@ -35,12 +36,22 @@ export async function duplicateNick(nickname: string) {
   }
 }
 
-export async function tripeerSignUp(register: Register) {
+export async function tripeerSignUp(
+  register: {
+    email?: string;
+    password?: string;
+    code?: string;
+  },
+  url: string,
+  method: string,
+) {
   try {
-    const res = await axios.post(
-      `https://tripeer.co.kr/api/user/signup/custom`,
-      register,
-    );
+    let res = null;
+    if (method === 'patch') {
+      res = await axios.patch(url, register);
+    } else {
+      res = await axios.post(url, register);
+    }
     return res.data;
   } catch {
     throw new Error('에러발생');

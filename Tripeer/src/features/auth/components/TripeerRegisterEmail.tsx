@@ -1,54 +1,26 @@
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import styles from '../assets/register.module.css';
-import { Register } from './RegisterPage';
-import useSendEmailQuery, { useMutateEmail } from '../hook/useSendQuery';
 import MutationLoading from '../../../components/loading/MutationLoading';
+import TripeerEmailError from './TripeerEmailError';
+import { EmailHook } from '../types/authType';
 
 export default function TripeerRegisterEmail({
-  setEmail,
+  customHook,
 }: {
-  setEmail: Dispatch<SetStateAction<Register>>;
+  customHook: EmailHook;
 }) {
-  const [emailValideError, setEmailValideError] = useState(false);
-  const [codeError, setCodeError] = useState(false);
-  const [sendEmail, setSendEmail] = useState('');
-  const sendQuery = useSendEmailQuery();
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const codeRef = useRef<HTMLInputElement | null>(null);
-  const mutateQuery = useMutateEmail();
-  const emailCheck = () => {
-    const reg =
-      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-    const email = inputRef.current ? inputRef.current.value : '';
-    return reg.test(email) ? email : '';
-  };
-  const sendCode = () => {
-    const validEmail = emailCheck();
-    if (validEmail) {
-      setEmailValideError(false);
-      setSendEmail(validEmail);
-      sendQuery.mutate(validEmail);
-    } else {
-      setEmailValideError(true);
-    }
-  };
-  const confirm = async () => {
-    const code = codeRef.current ? codeRef.current.value : '';
-    const res = await mutateQuery.mutateAsync({ email: sendEmail, code: code });
-    if (res) {
-      res.data
-        ? setEmail((prev) => ({ ...prev, email: sendEmail, code: code }))
-        : setCodeError(true);
-    }
-  };
-  const prevHandler = () => {
-    setEmail((prev) => ({
-      nickname: prev.nickname,
-      year: prev.year,
-      month: prev.month,
-      day: prev.day,
-    }));
-  };
+  const {
+    codeError,
+    confirm,
+    emailValideError,
+    inputRef,
+    mutateQuery,
+    prevHandler,
+    sendCode,
+    sendEmail,
+    sendQuery,
+    setSendEmail,
+    codeRef,
+  } = customHook;
 
   return (
     <>
@@ -75,22 +47,13 @@ export default function TripeerRegisterEmail({
               ref={codeRef}
             />
           )}
-        {emailValideError && (
-          <p className={styles.warnText}>올바른 형식의 이메일이 아닙니다.</p>
-        )}
-        {sendQuery.data && !sendQuery.data.data && (
-          <p className={styles.warnText}>
-            중복된 이메일이거나 잘못된 이메일 양식입니다.
-          </p>
-        )}
-        {(sendQuery.isError || mutateQuery.isError) && (
-          <p className={styles.warnText}>
-            네트워크가 불안정합니다. 잠시 후 다시 시도해주세요.
-          </p>
-        )}
-        {codeError && (
-          <p className={styles.warnText}>잘못된 인증 코드입니다.</p>
-        )}
+        <TripeerEmailError
+          codeError={codeError}
+          emailValideError={emailValideError}
+          mutateError={mutateQuery.isError}
+          sendData={sendQuery.data}
+          sendError={sendQuery.isError}
+        />
       </div>
       <div className={styles.btnBox}>
         <button className={styles.prevBtn} onClick={prevHandler}>
