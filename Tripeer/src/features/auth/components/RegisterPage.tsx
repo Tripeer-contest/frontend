@@ -6,6 +6,9 @@ import TripeerRegisterPassword from './TripeerRegisterPassword';
 import TripeerRegisterNickname from './TripeerRegisterNickname';
 import TripeerRegisterBirth from './TripeerRegisterBirth';
 import TripeerRegisterStyle from './TripeerRegisterStyle';
+import useEmailUtil from '../hook/useEmailUtil';
+import usePasswordUtil from '../hook/usePasswordUtil';
+import { useNavigate } from 'react-router-dom';
 
 export interface Register {
   email?: string;
@@ -25,8 +28,17 @@ export default function RegisterPage({
 }: {
   closeHandler: () => void;
 }) {
+  const navigate = useNavigate();
   const [registerInfo, setRegisterInfo] = useState<Register>({});
-
+  const emailCustomHook = useEmailUtil(setRegisterInfo);
+  const passwordCustomHook = usePasswordUtil(
+    registerInfo,
+    () => {
+      navigate('/home');
+    },
+    'https://tripeer.co.kr/api/user/signup/custom',
+    'post',
+  );
   const closeAll = () => {
     setRegisterInfo({});
     closeHandler();
@@ -61,13 +73,13 @@ export default function RegisterPage({
         registerInfo.year &&
         registerInfo.style1 &&
         !registerInfo.email && (
-          <TripeerRegisterEmail setEmail={setRegisterInfo} />
+          <TripeerRegisterEmail customHook={emailCustomHook} />
         )}
       {registerInfo.nickname &&
         registerInfo.year &&
         registerInfo.style1 &&
         registerInfo.email && (
-          <TripeerRegisterPassword registerInfo={registerInfo} />
+          <TripeerRegisterPassword customHook={passwordCustomHook} />
         )}
     </section>
   );

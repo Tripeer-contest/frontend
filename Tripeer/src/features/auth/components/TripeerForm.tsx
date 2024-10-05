@@ -9,12 +9,14 @@ import { useNavigate } from 'react-router-dom';
 import MutationLoading from '../../../components/loading/MutationLoading';
 import Notify from '../../planDetail/components/notify/Notify';
 import warn_icon from '../../../assets/error/warn.svg';
+import PasswordFindPage from './PasswordFindPage';
 
 export default function TripeerForm() {
   const [socialArr, setSocialArr] = useState<string[]>([]);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const RegisterModal = useModal();
+  const PasswordModal = useModal();
   const { isError, isPending, mutateAsync, error } = useMutationLogin();
   const navigate = useNavigate();
   useEffect(() => {
@@ -51,7 +53,7 @@ export default function TripeerForm() {
           로그인
         </button>
         <aside className={styles.authAbout}>
-          <span>비밀번호 찾기</span>
+          <span onClick={PasswordModal.open}>비밀번호 찾기</span>
           <div>|</div>
           <span onClick={RegisterModal.open}>회원가입</span>
         </aside>
@@ -76,6 +78,9 @@ export default function TripeerForm() {
       <RegisterModal.ModalLayout className={styles.modalLayout}>
         <RegisterPage closeHandler={RegisterModal.close} />
       </RegisterModal.ModalLayout>
+      <PasswordModal.ModalLayout className={styles.modalLayout}>
+        <PasswordFindPage closeHandler={PasswordModal.close} />
+      </PasswordModal.ModalLayout>
       <MutationLoading isShow={isPending} />
       <Notify
         isActive={isError}
