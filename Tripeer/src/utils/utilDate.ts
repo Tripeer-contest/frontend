@@ -113,17 +113,26 @@ export const makeDayToFullString = (day: string) => {
 
 export const makeDayToFullYearString = (day: string) => {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
-  // 입력 문자열에서 날짜 정보를 분리
-  const dayInfo = day.split('-');
+  const dateParts = day.split(' ')[0].split('-'); // YYYY-MM-DD 부분
+  const timeParts = day.split(' ')[1]
+    ? day.split(' ')[1].split(':')
+    : ['00', '00', '00']; // HH:mm:ss 부분, 없으면 기본값으로 00:00:00
+
+  // new Date를 사용하여 날짜 객체 생성
+  const year = parseInt(dateParts[0], 10);
+  const month = parseInt(dateParts[1], 10) - 1; // 월은 0부터 시작하므로 1을 빼야 함
+  const dayOfMonth = parseInt(dateParts[2], 10);
+  const hours = parseInt(timeParts[0], 10);
+  const minutes = parseInt(timeParts[1], 10);
+  const seconds = parseInt(timeParts[2], 10);
+
+  const date = new Date(year, month, dayOfMonth, hours, minutes, seconds);
+
   let result = '';
-
-  // 연도, 월, 일 정보를 가져와서 결과 문자열 생성
-  result += dayInfo[0].replace(/^0+/, '').substring(2) + '년 '; // 연도에서 0 제거 후 두 자리로 변환
-  result += dayInfo[1].replace(/^0+/, '') + '월 '; // 월에서 0 제거
-  result += dayInfo[2].replace(/^0+/, '') + '일'; // 일에서 0 제거
-
-  // 요일 추가
-  result += `(${week[new Date(day).getDay()]})`;
+  result += date.getFullYear().toString().substring(2) + '년 '; // 연도에서 0 제거 후 두 자리로 변환
+  result += date.getMonth() + 1 + '월 '; // 월
+  result += date.getDate() + '일 '; // 일
+  result += `(${week[date.getDay()]})`; // 요일
 
   return result;
 };
