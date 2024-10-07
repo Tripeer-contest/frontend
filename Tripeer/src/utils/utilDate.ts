@@ -112,6 +112,16 @@ export const makeDayToFullString = (day: string) => {
 };
 
 export const makeDayToFullYearString = (day: string) => {
+  const dayInfo = day.split('-');
+  let result = '';
+  result += dayInfo[0].replace(/^0+/, '').substring(2) + '년 ';
+  result += dayInfo[1].replace(/^0+/, '') + '월 ';
+  result += dayInfo[2].replace(/^0+/, '') + '일';
+  result += `(${week[new Date(day).getDay()]})`;
+  return result;
+};
+
+export const makeDayToDotFullString = (day: string) => {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
   const dateParts = day.split(' ')[0].split('-'); // YYYY-MM-DD 부분
   const timeParts = day.split(' ')[1]
@@ -133,23 +143,6 @@ export const makeDayToFullYearString = (day: string) => {
   result += date.getMonth() + 1 + '월 '; // 월
   result += date.getDate() + '일 '; // 일
   result += `(${week[date.getDay()]})`; // 요일
-
-  return result;
-};
-
-export const makeDayToDotFullString = (day: string) => {
-  const dayInfo = day.split('-');
-  let result = '';
-
-  // 일자가 한 자리수일 경우 0을 붙여줍니다.
-  const year = dayInfo[0].slice(2); // 연도
-  const month = dayInfo[1].padStart(2, '0'); // 월을 2자리로
-  const date = dayInfo[2].padStart(2, '0'); // 일을 2자리로
-
-  result += year + '.';
-  result += month + '.';
-  result += date;
-  result += `(${week[new Date(day).getDay()]})`;
 
   return result;
 };
