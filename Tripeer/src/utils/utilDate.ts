@@ -124,10 +124,17 @@ export const makeDayToFullYearString = (day: string) => {
 export const makeDayToDotFullString = (day: string) => {
   const dayInfo = day.split('-');
   let result = '';
-  result += dayInfo[0].slice(2) + '.';
-  result += dayInfo[1] + '.';
-  result += dayInfo[2];
+
+  // 일자가 한 자리수일 경우 0을 붙여줍니다.
+  const year = dayInfo[0].slice(2); // 연도
+  const month = dayInfo[1].padStart(2, '0'); // 월을 2자리로
+  const date = dayInfo[2].padStart(2, '0'); // 일을 2자리로
+
+  result += year + '.';
+  result += month + '.';
+  result += date;
   result += `(${week[new Date(day).getDay()]})`;
+
   return result;
 };
 
