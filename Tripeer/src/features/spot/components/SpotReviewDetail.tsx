@@ -9,6 +9,7 @@ import { getRateImg } from '../../../utils/rating';
 import { ReviewInterface } from '../../../types/PlaceType';
 import { daysAgo } from '../../../utils/utilDate';
 import { handleErrorImg } from '../../../data/defaultImg';
+import UserReport from '../../planDetail/components/chat/UserReport';
 
 export default function SpotReviewDetail({
   review,
@@ -17,6 +18,7 @@ export default function SpotReviewDetail({
 }) {
   const [img, setImg] = useState('');
   const { ModalLayout, close, open } = useModal();
+  const ReportModal = useModal();
   const imgClickHandler = (img: string) => {
     setImg(img);
     open();
@@ -30,7 +32,7 @@ export default function SpotReviewDetail({
       <div className={styles.jump}>
         <section className={styles.container}>
           <div className={styles.reviewBox}>
-            <div className={styles.userBox}>
+            <div className={styles.userBox} onClick={ReportModal.open}>
               <img
                 className={styles.userImg}
                 alt="user-image"
@@ -49,6 +51,18 @@ export default function SpotReviewDetail({
                 </div>
               </div>
             </div>
+            <ReportModal.ModalLayout
+              className={styles.reportBox}
+              onClick={(e) => {
+                e.currentTarget === e.target && ReportModal.close();
+              }}
+            >
+              <UserReport
+                close={ReportModal.close}
+                nickname={review.nickname}
+                userImg={review.profileImage}
+              />
+            </ReportModal.ModalLayout>
             <div className={styles.reviewDetail}>
               <Swiper
                 spaceBetween={20}

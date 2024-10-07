@@ -1,6 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
 import { inviteUser } from '../api/postUsers';
-import { useEffect } from 'react';
 
 interface InviteParameter {
   userId: number;
@@ -17,8 +16,5 @@ export default function useInviteQuery() {
       inviteUser(userId, planId),
   });
 
-  useEffect(() => {
-    if (error) console.log(error.message);
-  }, [error]);
   return { error, isError, isPending, isSuccess, mutate };
 }

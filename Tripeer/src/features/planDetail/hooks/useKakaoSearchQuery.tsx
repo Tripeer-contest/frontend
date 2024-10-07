@@ -7,7 +7,6 @@ export default function useKakaoSearchQuery(keyword: string) {
       queryKey: ['plan', 'detail', 'kakao', keyword],
       queryFn: ({ pageParam = 1 }) => getKakaoSearch(keyword, pageParam),
       getNextPageParam: (last, page) => {
-        console.log(last.meta);
         return !last.meta.is_end ? page.length + 1 : undefined;
       },
       initialPageParam: 1,

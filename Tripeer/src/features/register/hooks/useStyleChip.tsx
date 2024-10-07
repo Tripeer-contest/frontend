@@ -13,8 +13,6 @@ const useStyleChip = () => {
     } else {
       if (r_style.length < 3) {
         r_setStyle([...r_style, idx + 1]);
-      } else {
-        console.log(r_style);
       }
     }
   };

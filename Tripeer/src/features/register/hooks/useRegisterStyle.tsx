@@ -39,8 +39,7 @@ const useRegisterStyle = () => {
     onSuccess: () => {
       navigate('/redirect');
     },
-    onError: (error) => {
-      console.log('Register Login Failed : ', error);
+    onError: () => {
       setErrMsg('다시 시도해주세요');
     },
   });
