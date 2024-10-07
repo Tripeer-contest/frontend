@@ -18,7 +18,7 @@ const isMobileCorrectly = () => {
 };
 
 const mobileSizeCheck = () => {
-  return window.innerWidth < 1000 ? true : false;
+  return window.innerWidth < 1200 ? true : false;
 };
 
 export default isMobileDevice;
