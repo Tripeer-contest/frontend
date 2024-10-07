@@ -29,9 +29,3 @@
     display: inline;
     white-space: nowrap;
 }
-
-.body:hover {
-    background-color: #4FBDB7;
-    border-color: #4FBDB7;
-    color: white;
-}
