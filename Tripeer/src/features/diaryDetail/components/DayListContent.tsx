@@ -69,7 +69,6 @@ export default function DayListContent({ card }: { card: DayListCard }) {
                   <p
                     className={styles.deleteReviewBtn}
                     onClick={() => {
-                      console.log(item.title);
                       setIsClick(item.spotReviewId);
                       open();
                     }}
