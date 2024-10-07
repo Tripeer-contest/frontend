@@ -25,7 +25,6 @@ export default function NavigateBar({ timeObject }: { timeObject: any }) {
   const getKmOrM = (number: number) => {
     return number > 1000 ? `${(number / 1000).toFixed(1)}km` : `${number}m`;
   };
-  console.log(rootInfo);
   return (
     <div className={styles.naviContainer}>
       <div className={styles.vehicleInfo}>

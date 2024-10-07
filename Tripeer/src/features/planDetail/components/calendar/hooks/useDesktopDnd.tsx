@@ -72,8 +72,7 @@ const useDesktopDnd = (isConnected: boolean) => {
   const getAtoB = async (start: totalYListInfo, end: totalYListInfo) => {
     try {
       return await postAtoB(start, end);
-    } catch (error) {
-      console.error('A to B Error : ', error);
+    } catch {
       return null;
     }
   };
