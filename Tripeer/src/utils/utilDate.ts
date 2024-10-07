@@ -112,12 +112,19 @@ export const makeDayToFullString = (day: string) => {
 };
 
 export const makeDayToFullYearString = (day: string) => {
+  const week = ['일', '월', '화', '수', '목', '금', '토'];
+  // 입력 문자열에서 날짜 정보를 분리
   const dayInfo = day.split('-');
   let result = '';
-  result += dayInfo[0].replace(/^0+/, '').substring(2) + '년 ';
-  result += dayInfo[1].replace(/^0+/, '') + '월 ';
-  result += dayInfo[2].replace(/^0+/, '') + '일';
+
+  // 연도, 월, 일 정보를 가져와서 결과 문자열 생성
+  result += dayInfo[0].replace(/^0+/, '').substring(2) + '년 '; // 연도에서 0 제거 후 두 자리로 변환
+  result += dayInfo[1].replace(/^0+/, '') + '월 '; // 월에서 0 제거
+  result += dayInfo[2].replace(/^0+/, '') + '일'; // 일에서 0 제거
+
+  // 요일 추가
   result += `(${week[new Date(day).getDay()]})`;
+
   return result;
 };
 
