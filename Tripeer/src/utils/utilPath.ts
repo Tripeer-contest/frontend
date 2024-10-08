@@ -21,4 +21,13 @@ const checkIsNav = (param: UrlStringType) => {
   return true;
 };
 
-export { trimUrlNumber, checkIsNav };
+const checkIsAlarm = (param: UrlStringType) => {
+  const NOT_SHOW_NAV_URL: UrlStringType[] = ['/contact'];
+  const trimNumberUrl = trimUrlNumber(param);
+  for (const URL of NOT_SHOW_NAV_URL) {
+    if (URL.endsWith(trimNumberUrl)) return false;
+  }
+  return true;
+};
+
+export { trimUrlNumber, checkIsNav, checkIsAlarm };

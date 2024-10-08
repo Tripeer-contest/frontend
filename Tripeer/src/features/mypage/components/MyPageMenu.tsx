@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/menu.module.css';
-import useMyInfoQuery, { useMessageMutate } from '../hooks/useMyInfoQuery';
+import useMyInfoQuery, {
+  useDeleteAccountMutate,
+  useMessageMutate,
+} from '../hooks/useMyInfoQuery';
 import MyMainBtn from './button/MyMainBtn';
 import MySubBtn from './button/MySubBtn';
 import useClipBoard from '../../../hooks/useClipBoard';
@@ -13,6 +16,7 @@ import Notify from '../../planDetail/components/notify/Notify';
 import warn_icon from '../../../assets/error/warn.svg';
 import { setFlutterToSendPermission } from '../../../utils/sendFlutter';
 import { handleErrorImg } from '../../../data/defaultImg';
+import useModal from '../../../hooks/useModal';
 
 export default function MyPageMenu() {
   const { data } = useMyInfoQuery();
@@ -28,6 +32,9 @@ export default function MyPageMenu() {
   const [notGranted, setNotGranted] = useState(false);
   const grantRef = useRef<number | null>(null);
   const timerRef = useRef<number | null>(null);
+  const { ModalLayout, close, open } = useModal();
+  const deleteMutate = useDeleteAccountMutate();
+
   const logout = () => {
     cookie.remove('Authorization');
     navigate('/');
@@ -91,6 +98,7 @@ export default function MyPageMenu() {
 
     setIsLoading(false);
   };
+  if (deleteMutate.isSuccess) logout();
   return (
     <>
       <main className={styles.container}>
@@ -134,11 +142,13 @@ export default function MyPageMenu() {
         </div>
         <div className={styles.part}>
           <h3 className={styles.subTitle}>계정 설정</h3>
+          <MySubBtn name="문의하기" clickHandler={() => navigate('/contact')} />
           <MySubBtn
             name="개인정보 처리 방침"
             clickHandler={() => navigate('/privacy')}
           />
           <MySubBtn name="로그아웃" clickHandler={logout} />
+          <MySubBtn name="서비스 탈퇴" clickHandler={open} />
         </div>
       </main>
       <p className={showClipConfirm()}>클립보드에 복사가 완료되었습니다.</p>
@@ -147,7 +157,7 @@ export default function MyPageMenu() {
         img={warn_icon}
         title="에러"
         message="네트워크 요청이 불안정합니다."
-        isActive={isError || occuredError}
+        isActive={isError || occuredError || deleteMutate.isError}
       />
       <Notify
         img={warn_icon}
@@ -155,6 +165,30 @@ export default function MyPageMenu() {
         message="기기 알림 권한을 수락해주세요.."
         isActive={notGranted}
       />
+      <ModalLayout
+        className={styles.modal}
+        onClick={(e) => {
+          e.currentTarget === e.target && close();
+        }}
+      >
+        <div className={styles.modalBox}>
+          <h3 className={styles.modalHeader}>계정을 삭제하시겠습니까?</h3>
+          <div className={styles.btnBox}>
+            <div
+              className={styles.yesBtn}
+              onClick={() => deleteMutate.mutate()}
+            >
+              예
+            </div>
+            <div className={styles.noBtn} onClick={close}>
+              아니요
+            </div>
+          </div>
+          <p className={styles.modalDescription}>
+            *계정 삭제시 해당 계정으로 다시 접근할 수 없습니다.
+          </p>
+        </div>
+      </ModalLayout>
     </>
   );
 }
