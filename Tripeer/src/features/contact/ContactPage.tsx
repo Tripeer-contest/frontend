@@ -6,6 +6,7 @@ import { useRef, useState } from 'react';
 import Notify from '../planDetail/components/notify/Notify';
 import warningImg from '../../assets/error/warn.svg';
 import { postContact } from './api/postContact';
+import Cookies from 'js-cookie';
 
 export default function ContactPage() {
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ export default function ContactPage() {
   const titleRef = useRef<null | HTMLInputElement>(null);
   const contentRef = useRef<null | HTMLTextAreaElement>(null);
   const [isError, setIsError] = useState(false);
-
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -54,10 +54,18 @@ export default function ContactPage() {
     if (isValid) {
       try {
         await postContact(email, title, content);
-        console.log('Form submitted:', { email, title, content });
-        navigate(-1);
+        const token = Cookies.get('Authorization');
+        if (token) {
+          navigate(-1);
+        } else {
+          navigate(`/`);
+        }
+        navigate(`/`);
       } catch {
         setIsError(true);
+        setTimeout(() => {
+          setIsError(false);
+        }, 3000);
       }
     }
   };
@@ -137,7 +145,7 @@ export default function ContactPage() {
         />
         <Notify
           isActive={isError}
-          message="네트워크 상태가 불안정하여 리뷰 작성을 실패하였습니다."
+          message="네트워크 상태가 불안정하여 문의 작성을 실패하였습니다."
           title={'경고'}
           img={warningImg}
         />

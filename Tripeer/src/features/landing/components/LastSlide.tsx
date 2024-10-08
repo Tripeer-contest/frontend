@@ -1,6 +1,8 @@
 import useAnimation from '../hook/useAnimation';
 import { useRef } from 'react';
 import styles from './lastSlide.module.css';
+import contactImg from '../../../assets/button/contact.svg';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   scrollTop: () => void;
@@ -9,7 +11,7 @@ interface Props {
 export default function LastSlide({ scrollTop }: Props): JSX.Element {
   const titleRef = useRef<null | HTMLHeadingElement>(null);
   const linkRef = useRef<null | HTMLDivElement>(null);
-
+  const navigate = useNavigate();
   useAnimation([titleRef, linkRef]);
 
   return (
@@ -24,6 +26,16 @@ export default function LastSlide({ scrollTop }: Props): JSX.Element {
       </section>
       <div className={styles.startBtn} ref={linkRef} onClick={scrollTop}>
         시작하기
+      </div>
+      <div className={styles.contactBox}>
+        <img
+          className={styles.contactImg}
+          src={contactImg}
+          alt="contact-tripeer"
+        />
+        <p className={styles.contactText} onClick={() => navigate(`/contact`)}>
+          트리피어 문의하기
+        </p>
       </div>
     </main>
   );

@@ -6,9 +6,11 @@ export async function postContact(
   content: string,
 ) {
   try {
-    const res = await api.post(
-      `/email/helpdesk?sender=${sender}&subject=${subject}&content=${content}`,
-    );
+    const res = await api.post(`/email/helpdesk?sender`, {
+      sender,
+      subject,
+      content,
+    });
     return res.data;
   } catch {
     throw new Error('에러발생');
