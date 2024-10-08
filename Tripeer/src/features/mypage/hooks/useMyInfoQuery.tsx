@@ -10,6 +10,7 @@ import { ProfileType } from '../../../types/UserTypes';
 import { useEffect } from 'react';
 import { patchImage, patchMyInfo } from '../api/patchMyInfo';
 import postMessage from '../api/postMessage';
+import deleteAccount from '../api/deleteMyInfo';
 
 export default function useMyInfoQuery() {
   const { data } = useSuspenseQuery<ProfileType>({
@@ -97,4 +98,11 @@ export function useMessageMutate() {
   });
 
   return { mutateAsync, isError };
+}
+
+export function useDeleteAccountMutate() {
+  const { mutate, isError, isSuccess } = useMutation({
+    mutationFn: () => deleteAccount(),
+  });
+  return { mutate, isError, isSuccess };
 }

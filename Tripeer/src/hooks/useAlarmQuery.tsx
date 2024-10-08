@@ -67,7 +67,7 @@ export function useAlarmQuery() {
           ? last.list[last.list.length - 1].id
           : undefined;
       },
-      refetchInterval: 1000 * 30,
+      refetchInterval: 1000 * 10,
       initialPageParam: -1,
     });
   return { data, fetchNextPage, isLoading, isError, hasNextPage };
