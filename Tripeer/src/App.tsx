@@ -15,6 +15,7 @@ import ErrorPage from './components/error/ErrorPage.tsx';
 import ErrorBoundary from './components/error/ErrorBoundary.tsx';
 import AboutPage from './features/about/AboutPage.tsx';
 import PrivacyPage from './features/privacy/PrivacyPage.tsx';
+import ContactPage from './features/contact/ContactPage.tsx';
 
 const PlanPage = lazy(() => import('./features/plan/PlanPage.tsx'));
 const PlanDetail = lazy(() => import('./features/planDetail/PlanDetail.tsx'));
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { index: true, element: <LandingPage /> },
+      {
+        path: '/contact',
+        element: <ContactPage />,
+      },
       {
         path: '/plan',
         element: (
