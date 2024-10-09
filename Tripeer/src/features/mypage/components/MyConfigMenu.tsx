@@ -1,6 +1,5 @@
 import styles from '../assets/config.module.css';
 import ConfigNickname from './ConfigNickname';
-import ConfigBirth from './ConfigBirth';
 import ConfigStyle from './ConfigStyle';
 import ConfigImage from './ConfigImage';
 import { useNavigate } from 'react-router-dom';
@@ -40,7 +39,6 @@ export default function MyConfigMenu() {
           <ConfigImage />
           <div className={styles.contentBox}>
             <ConfigNickname setForm={setForm} />
-            <ConfigBirth />
             <ConfigStyle setForm={setForm} />
           </div>
         </div>

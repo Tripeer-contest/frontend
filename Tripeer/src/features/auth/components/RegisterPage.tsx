@@ -4,7 +4,6 @@ import { useState } from 'react';
 import TripeerRegisterEmail from './TripeerRegisterEmail';
 import TripeerRegisterPassword from './TripeerRegisterPassword';
 import TripeerRegisterNickname from './TripeerRegisterNickname';
-import TripeerRegisterBirth from './TripeerRegisterBirth';
 import TripeerRegisterStyle from './TripeerRegisterStyle';
 import useEmailUtil from '../hook/useEmailUtil';
 import usePasswordUtil from '../hook/usePasswordUtil';
@@ -15,9 +14,6 @@ export interface Register {
   password?: string;
   code?: string;
   nickname?: string;
-  year?: string;
-  month?: string;
-  day?: string;
   style1?: string;
   style2?: string | null;
   style3?: string | null;
@@ -57,30 +53,19 @@ export default function RegisterPage({
       {!registerInfo.nickname && (
         <TripeerRegisterNickname setNickname={setRegisterInfo} />
       )}
-      {registerInfo.nickname && !registerInfo.year && (
-        <TripeerRegisterBirth
-          nickname={registerInfo.nickname}
-          setBirth={setRegisterInfo}
-        />
-      )}
-      {registerInfo.nickname && registerInfo.year && !registerInfo.style1 && (
+
+      {registerInfo.nickname && !registerInfo.style1 && (
         <TripeerRegisterStyle
           nickname={registerInfo.nickname}
           setStyle={setRegisterInfo}
         />
       )}
-      {registerInfo.nickname &&
-        registerInfo.year &&
-        registerInfo.style1 &&
-        !registerInfo.email && (
-          <TripeerRegisterEmail customHook={emailCustomHook} />
-        )}
-      {registerInfo.nickname &&
-        registerInfo.year &&
-        registerInfo.style1 &&
-        registerInfo.email && (
-          <TripeerRegisterPassword customHook={passwordCustomHook} />
-        )}
+      {registerInfo.nickname && registerInfo.style1 && !registerInfo.email && (
+        <TripeerRegisterEmail customHook={emailCustomHook} />
+      )}
+      {registerInfo.nickname && registerInfo.style1 && registerInfo.email && (
+        <TripeerRegisterPassword customHook={passwordCustomHook} />
+      )}
     </section>
   );
 }
