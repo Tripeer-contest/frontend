@@ -6,17 +6,9 @@ import { postRegister } from '../api/postRegister.ts';
 import { useShallow } from 'zustand/react/shallow';
 
 const useRegisterStyle = () => {
-  const [r_backPage, r_nickname, r_year, r_month, r_day, r_style] =
-    zustandStore(
-      useShallow((state) => [
-        state.r_backPage,
-        state.r_nickname,
-        state.r_year,
-        state.r_month,
-        state.r_day,
-        state.r_style,
-      ]),
-    );
+  const [r_backPage, r_nickname, r_style] = zustandStore(
+    useShallow((state) => [state.r_backPage, state.r_nickname, state.r_style]),
+  );
 
   const [errMsg, setErrMsg] = useState<string>('');
   const navigate = useNavigate();
@@ -34,8 +26,7 @@ const useRegisterStyle = () => {
   };
 
   const mutation = useMutation({
-    mutationFn: () =>
-      postRegister({ r_nickname, r_year, r_month, r_day, r_style }),
+    mutationFn: () => postRegister({ r_nickname, r_style }),
     onSuccess: () => {
       navigate('/redirect');
     },

@@ -2,7 +2,6 @@ import styles from './registerPage.module.css';
 import { useEffect, useState } from 'react';
 import RegisterLoading from './components/RegisterLoading.tsx';
 import RegisterNickname from './components/RegisterNickname.tsx';
-import RegisterBirthday from './components/RegisterBirthday.tsx';
 import RegisterStyle from './components/RegisterStyle.tsx';
 import zustandStore from '../../store/store.tsx';
 
@@ -22,7 +21,6 @@ export default function RegisterPage() {
 
   const pageList = [
     <RegisterNickname key={'nickname'} />,
-    <RegisterBirthday key={'birthday'} />,
     <RegisterStyle key={'style'} />,
   ];
 
