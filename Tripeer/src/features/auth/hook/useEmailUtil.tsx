@@ -24,9 +24,6 @@ export default function useEmailUtil(
   const prevHandler = () => {
     setter((prev) => ({
       nickname: prev.nickname,
-      year: prev.year,
-      month: prev.month,
-      day: prev.day,
     }));
   };
 
