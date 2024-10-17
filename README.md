@@ -186,7 +186,7 @@
     <tr>
         <td>역할
         <td colspan="1"> 이름
-        <td colspan="2"> 역할
+        <td > 역할
 
   </tr><tr>
     <td rowspan="3"> FrontEnd </td>
