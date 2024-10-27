@@ -163,8 +163,63 @@
 
 ## 프로젝트 구조
 
-- 주요 폴더와 파일에 대한 설명 (특히, 컴포넌트 구조, 라우팅 등)
-- 디렉토리별 역할과 파일 설명
+```
+ 📦src
+ ┣ 📂assets
+ ┃ ┣ 📂airplane
+ ┃ ┣ 📂auth
+ ┃ ┣ 📂banner
+ ┃ ┣ 📂button
+ ┃ ┣ 📂category
+ ┃ ┣ 📂error
+ ┃ ┣ 📂logo
+ ┃ ┣ 📂nav
+ ┃ ┣ 📂rating
+ ┃ ┣ 📂region
+ ┃ ┣ 📂styleChip
+ ┃ ┣ 📂toggle
+ ┃ ┣ 📂trip
+ ┃ ┗ 📂weather
+ ┣ 📂components
+ ┃ ┣ 📂admin
+ ┃ ┣ 📂alarm
+ ┃ ┣ 📂Card
+ ┃ ┣ 📂controller
+ ┃ ┣ 📂empty
+ ┃ ┣ 📂error
+ ┃ ┣ 📂loading
+ ┃ ┣ 📂nav
+ ┃ ┣ 📂search
+ ┃ ┗ 📂slider
+ ┣ 📂data
+ ┣ 📂features
+ ┃ ┣ 📂about
+ ┃ ┣ 📂admin
+ ┃ ┣ 📂auth
+ ┃ ┣ 📂cart
+ ┃ ┣ 📂contact
+ ┃ ┣ 📂diary
+ ┃ ┣ 📂diaryDetail
+ ┃ ┣ 📂img
+ ┃ ┣ 📂landing
+ ┃ ┣ 📂mypage
+ ┃ ┣ 📂plan
+ ┃ ┣ 📂planDetail
+ ┃ ┣ 📂privacy
+ ┃ ┣ 📂redirect
+ ┃ ┣ 📂register
+ ┃ ┗ 📂spot
+ ┣ 📂fonts
+ ┣ 📂hooks
+ ┣ 📂layout
+ ┣ 📂store
+ ┣ 📂types
+ ┣ 📂utils
+ ┣ 📜App.tsx
+ ┣ 📜index.css
+ ┣ 📜main.tsx
+ ┗ 📜vite-env.d.ts
+```
 
 ## 기술 스택
 
