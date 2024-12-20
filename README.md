@@ -299,7 +299,12 @@
   </tr><tr>
       <td rowspan="3">BackEnd</td>
       <td> 양건우 </td>
-    <td> 컨텐츠 내용9-1 </td>
+    <td>       
+      - 서비스 전체 인프라 관리 <br>
+      - 파이썬 라이브러리를 활용한 추천로직 구현  <br>
+      - ydoc관리를 위한 express서버 구현 <br>
+      - 지난 여행 관련 api 구현 <br> 
+    </td>
   </tr><tr>
       <td> 손동천</td>
     <td> 
