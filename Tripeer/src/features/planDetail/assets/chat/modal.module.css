@@ -1,0 +1,28 @@
+.information {
+  display: none;
+}
+
+.closeBox {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.closeIcon {
+  cursor: pointer;
+}
+
+.container {
+  width: 100vw;
+  height: 300px;
+  overflow-y: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .information {
+    display: block;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,49 @@
+.inputBox {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  min-height: 50px;
+  background-color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.input {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #f3f6f6;
+  border-radius: 5px;
+  display: flex;
+  padding: 6px 35px 6px 20px;
+  height: 30px;
+  resize: none;
+  overflow: hidden;
+  font-size: 14px;
+  color: #000e08;
+  font-family: 'Pretendard';
+  max-height: 100px;
+}
+.input::placeholder {
+  margin-left: 10px;
+  color: #797c7b;
+}
+
+.layout {
+  position: relative;
+}
+
+.sendBtn {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  transform: translateY(-20%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}

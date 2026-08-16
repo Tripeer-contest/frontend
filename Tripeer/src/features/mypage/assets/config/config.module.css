@@ -1,0 +1,47 @@
+.gridBox {
+  width: 100%;
+  display: grid;
+  padding-left: 80px;
+  grid-template-columns: 80px auto;
+  align-items: center;
+  max-width: 500px;
+}
+
+@media screen and (max-width: 1000px) {
+  .gridBox {
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 60px auto;
+    padding-left: 0px;
+  }
+}
+
+.subTitle {
+  color: #606060;
+  font-size: 14px;
+}
+
+.flexBox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.date {
+  display: grid;
+  grid-template-columns: auto 10px;
+  gap: 12px;
+  align-items: center;
+}
+
+.date > input {
+  outline: none;
+  width: 100%;
+  border: 1px solid #d9d9d9;
+  font-size: 14px;
+  height: 24px;
+  border-radius: 5px;
+  color: #606060;
+  padding-left: 10px;
+}

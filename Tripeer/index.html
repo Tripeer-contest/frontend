@@ -1,14 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image" href="/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
     <link rel="stylesheet" href="./src/fonts/pretandard/pretendard.css" />
-    <title>Vite + React + TS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>TRIPEER | 여행협업플랫폼 🏖️ | 트리피어</title>
+    <meta
+      name="description"
+      content="TRIPEER, 트리피어 여행 협업 플랫폼 및 여행 일지 공유"
+    />
+    <meta property="og:title" content="여행의 시작 - 트리피어" />
+    <meta property="og:url" content="https://tripeer.co.kr" />
+    <meta property="og:description" content="동료와 함께하는 여행 플랫폼." />
+    <meta property="og:image" content="https://tripeer.co.kr/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta
+      name="google-site-verification"
+      content="oaPukMFTKxWs-E4kznsUXZ_hrnJVqy_3TiD1EMLp17Q"
+    />
   </head>
   <body>
     <div id="root"></div>
+    <div id="modal-root"></div>
+    <script
+      type="text/javascript"
+      src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=%VITE_NAVER_ID%"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%VITE_KAKAO_KEY%"
+    ></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,0 +1,149 @@
+.container {
+  overflow-y: scroll;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.h2 {
+  color: #4fbdb7;
+}
+
+.h1 {
+  color: #262626;
+  font-weight: bold;
+}
+
+.h3 {
+  color: #979797;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+.formSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.formText {
+  font-weight: bold;
+}
+.formBox {
+  border-radius: 5px;
+  border: 1px solid #8bb9c0;
+  outline: none;
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration-thickness: 0;
+}
+
+.formContentBox {
+  font-family: 'Pretendard';
+  border-radius: 5px;
+  border: 1px solid #8bb9c0;
+  outline: none;
+  padding: 5px;
+  resize: none;
+  overflow: hidden;
+  text-decoration-thickness: 0;
+}
+.btnBox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cancelBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+  color: #606060;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirmBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #04acb5;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    padding: 20px 10px;
+  }
+  .h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  .h3 {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  .formSection {
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .formBox {
+    margin-top: 10px;
+  }
+  .formContentBox {
+    margin-top: 10px;
+    height: 150px;
+  }
+  .btnBox {
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  .h1 {
+    font-size: 55px;
+    margin-bottom: 10px;
+  }
+
+  .h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .formSection {
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .formBox {
+    margin-top: 10px;
+  }
+  .formContentBox {
+    margin-top: 10px;
+    height: 150px;
+  }
+  .btnBox {
+    height: 40px;
+  }
+}

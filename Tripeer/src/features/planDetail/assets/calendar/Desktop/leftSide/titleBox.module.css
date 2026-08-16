@@ -1,0 +1,19 @@
+.container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: end;
+}
+
+.flagImage{
+    width: 20px;
+    height: auto;
+    margin: 0 0 2px 0;
+}
+
+.title{
+    font-weight: bold;
+    color: #3d3c3c;
+    font-size: 1.3rem;
+    margin: 0 0 0 10px;
+}

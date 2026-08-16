@@ -1,0 +1,65 @@
+@media screen and (max-width: 1000px) {
+  .container {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .title {
+    color: #858585;
+    font-size: 0.7rem;
+    width: 250px;
+  }
+
+  .line {
+    border: #ccc 0.5px solid;
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  .chipBox {
+    width: fit-content;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  .swiper {
+    width: 1000px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    display: flex;
+    height: 40px;
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .title {
+    color: #858585;
+    font-size: 0.8rem;
+    width: 125px;
+  }
+
+  .line {
+    border: #ccc 0.5px solid;
+    height: 30px;
+    margin-right: 20px;
+  }
+
+  .chipBox {
+    width: fit-content;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  .swiper {
+    width: 1000px;
+  }
+}

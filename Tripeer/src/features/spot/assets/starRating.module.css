@@ -1,0 +1,38 @@
+.starContainer {
+  display: flex;
+  align-items: center;
+}
+
+.starWrapper {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.halfStar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.leftHalf {
+  left: 0;
+  transform: scaleX(1);
+}
+
+.rightHalf {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.ratingText {
+  margin-left: 10px;
+  font-size: 0.9rem;
+  color: #262626;
+}

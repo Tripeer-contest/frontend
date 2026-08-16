@@ -1,0 +1,31 @@
+.remoteContainer {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 2;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.cartRemote {
+  position: relative;
+  display: grid;
+  align-items: center;
+  height: 57px;
+}
+
+.category {
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pointLine {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0px;
+  background-color: #4fbdb7;
+  height: 2px;
+  transition: 0.5s ease;
+}

@@ -1,0 +1,84 @@
+.container {
+  width: 250px;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #d9d9d9;
+  animation: startPage 0.3s ease forwards;
+  background-color: #fff;
+}
+
+@keyframes startPage {
+  0% {
+    width: 72px;
+  }
+  100% {
+    width: 250px;
+  }
+}
+.bannerBox {
+  display: flex;
+  background-color: #fafafa;
+  padding: 10px 0px 10px 20px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.banner {
+  height: 29px;
+  object-fit: cover;
+  padding: 0;
+  margin: 0;
+}
+
+.controller {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  gap: 12px;
+  height: 100%;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+
+.pageInfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 30px;
+}
+
+.pageInfo > button {
+  border: none;
+  background-color: #fff;
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+.pageInfo > button > img {
+  width: 20px;
+}
+
+.controller > button {
+  border: none;
+  background-color: #fff;
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+  color: #979797;
+}
+
+.controller > button > img {
+  width: 20px;
+}
+
+.unread {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  background-color: #b23845;
+  border-radius: 50%;
+}

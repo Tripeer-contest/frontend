@@ -1,0 +1,337 @@
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 100vw;
+    padding: 10px 20px 0px 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .line {
+    border-bottom: 0.5px #c4c4c4 solid;
+    margin-bottom: 20px;
+  }
+  .diaryMainBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .dayListContainer {
+    width: 100%;
+  }
+  .dayListBox {
+    display: grid;
+    grid-template-columns: 20px auto 70px;
+  }
+  .orderBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20px;
+  }
+  .imgBox {
+    height: 70px;
+    width: 70px;
+  }
+  .leftSection {
+    width: 100%;
+  }
+  .dateBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .orderCircle {
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+    font-size: 0.9rem;
+  }
+  .title {
+    color: #262626;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  .textContent {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 0.9rem;
+  }
+  .unUseMapText {
+    color: #c4c4c4;
+    margin: 30px 30px 50px 30px;
+  }
+  .unUseMapImgBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .unUseMapImg {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .deleteModalBox {
+    margin-bottom: 0px;
+    outline: none;
+    border: none;
+    border-radius: 15px 15px 0 0;
+    height: 200px;
+    width: 100%;
+    max-width: 100vw;
+    animation: slideUp 0.3s ease-in-out;
+    overflow: hidden;
+    padding: 15px;
+  }
+  .btnBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .container {
+    padding: 30px;
+    margin: 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
+  }
+  .diaryMainBox {
+    display: grid;
+    grid-template-columns: 450px auto;
+  }
+  .dayListBox {
+    display: grid;
+    grid-template-columns: 50px auto 100px;
+    flex-direction: row;
+  }
+  .orderBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30px;
+    margin-left: 20px;
+  }
+  .imgBox {
+    height: 100px;
+    width: 100px;
+  }
+
+  .dateBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 0.5px #c4c4c4 solid;
+  }
+
+  .orderCircle {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+  }
+  .title {
+    color: #262626;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .textContent {
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 300px;
+  }
+  .unUseMapText {
+    color: #c4c4c4;
+    margin: 30px;
+  }
+  .unUseMapImgBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 400px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .unUseMapImg {
+    width: 450px;
+    height: 100%;
+  }
+
+  .deleteModalBox {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 150px;
+    width: 400px;
+    overflow: hidden;
+  }
+  .btnBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 120px;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .createReviewBtn {
+    font-size: 0.9rem;
+  }
+  .deleteReviewBtn {
+    font-size: 0.9rem;
+  }
+}
+
+.dateBox p {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #262626;
+}
+
+.orderLine {
+  background-color: #d9d9d9;
+  width: 4px;
+  height: 100%;
+}
+.closeCircle {
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  width: 8px;
+  height: 8px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 25%);
+}
+
+.address {
+  color: #858585;
+  margin-bottom: 10px;
+  line-height: 160%;
+}
+.contentTypeBox {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  border-radius: 30px;
+  padding: 5px 10px;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
+}
+.contentIcon {
+  height: 18px;
+  width: 18px;
+}
+.content {
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+.unUseMapTextBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.bottomSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.createReviewBtn {
+  color: #4fbdb7;
+  border-bottom: 1px solid #4fbdb7;
+  line-height: 150%;
+}
+.createReviewBtn:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.deleteReviewBtn {
+  color: #cd5d47;
+  border-bottom: 1px solid #cd5d47;
+  line-height: 150%;
+}
+.deleteReviewBtn:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+.deleteModalTopBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.deleteModalTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.closeBoxs {
+  height: 15px;
+  width: 15px;
+}
+
+.cancelBtn {
+  background-color: #f7f7f7;
+  color: #3d3c3c;
+  width: calc(100% / 2);
+  border-radius: 5px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.confirmBtn {
+  background-color: #04acb5;
+  color: white;
+  width: calc(100% / 2);
+  border-radius: 5px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

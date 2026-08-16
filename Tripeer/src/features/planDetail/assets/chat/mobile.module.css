@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  margin-top: 20px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #262626;
+}
+.iconBox {
+  align-items: flex-end;
+  display: flex;
+  color: #c4c4c4;
+  font-size: 14px;
+  gap: 8px;
+}
+.iconBox > img {
+  height: 14px;
+}
+
+.memberBox {
+  height: 270px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.addBox {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: #b1b1b1;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.addBox > img {
+  height: 14px;
+}
+
+.searchBox {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.searchBox > img {
+  cursor: pointer;
+}

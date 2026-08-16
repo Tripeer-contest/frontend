@@ -1,0 +1,375 @@
+@media screen and (max-width: 700px) {
+  .cardsBox {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: relative;
+  }
+
+  .diaryCard {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 130px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
+    margin-bottom: 10px;
+  }
+  .topDeleteBtn {
+    display: none;
+  }
+  .cardImg {
+    width: 120px;
+    height: 120px;
+    border-radius: 5px 0 0 5px;
+  }
+
+  .cardTextBox {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 10px;
+    width: calc(100% - 120px);
+    height: 100%;
+  }
+  .topBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 17px;
+    color: #545454;
+  }
+  .deleteBtn {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .bottomBox {
+    width: calc(100% - 35px);
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .bottomSubtitleBox {
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 35px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .bottomSubtitleBox {
+    font-size: 12px;
+    padding-bottom: 2px;
+  }
+  .bottomSubtitle {
+    font-size: 1em;
+  }
+  .bottomBox p {
+    color: #999999;
+    font-size: 12px;
+    padding-bottom: 2px;
+  }
+
+  .detailBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #04acb5;
+    border-radius: 5px;
+    width: calc(100%);
+    height: 30px;
+    cursor: pointer;
+  }
+  .detailBtn:hover {
+    transform: scale(0.98);
+  }
+  .detailText {
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    font-size: 0.9rem;
+  }
+  .modalContainer {
+    margin-bottom: 0px;
+    outline: none;
+    border: none;
+    border-radius: 15px 15px 0 0;
+    height: 150px;
+    width: 100%;
+    max-width: 100vw;
+    animation: slideUp 0.3s ease-in-out;
+  }
+
+  @keyframes slideUp {
+    0% {
+      margin-bottom: -150px;
+    }
+    100% {
+      margin-bottom: 0px;
+    }
+  }
+
+  .modalBox {
+    outline: none;
+    border: none;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+  .modalContent {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .btnBox {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .btnBox > button {
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  .titleBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .recommendBox {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    margin: 20px 10px;
+  }
+}
+@media screen and (min-width: 700px) {
+  .cardsBox {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .diaryCard {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 15%);
+  }
+  .topDeleteBtn {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    height: 20px;
+    width: 20px;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .cardImg {
+    width: 100%;
+    height: 60%;
+    border-radius: 5px 5px 0 0;
+  }
+  .cardTextBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 40%;
+    padding: 10px;
+  }
+  .topBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #545454;
+  }
+  .deleteBtn {
+    display: none;
+  }
+  .topSubtitleBox {
+    display: none;
+  }
+  .centerBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .bottomSubtitleBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 10px);
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .bottomSubtitle {
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+  .bottomBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .bottomBox p {
+    color: #999999;
+    font-size: 12px;
+  }
+  .detailBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #04acb5;
+    border-radius: 5px;
+    width: 95%;
+    height: 120px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .detailBtn:hover {
+    transform: scale(0.98);
+  }
+  .detailText {
+    color: white;
+    font-size: 0.8em;
+  }
+  .modalContainer {
+    outline: none;
+    border: none;
+    width: 300px;
+    height: 150px;
+    border-radius: 5px;
+    border: 0px;
+  }
+  .modalContent {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .modalBox {
+    outline: none;
+    border: none;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  .btnBox {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .btnBox > button {
+    outline: none;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .titleBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+  .recommendBox {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    margin: 30px 20px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .cardsBox {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #545454;
+  }
+  .titleBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+  .recommendBox {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    margin: 30px 0px;
+  }
+}
+
+.modalCancelBtn {
+  color: #606060;
+  background-color: #f7f7f7;
+}
+.modalConfirmBtn {
+  background-color: #04acb5;
+  color: #fff;
+}
+
+.titleText {
+  font-size: 1.2rem;
+}
+.titleIcon {
+  height: 20px;
+  width: 20px;
+}

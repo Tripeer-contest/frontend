@@ -1,0 +1,180 @@
+.container {
+  padding: 20px 20px 20px 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  gap: 25px;
+}
+
+.imgBox {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profileImg {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+}
+
+.nickname {
+  font-size: 20px;
+  font-weight: bold;
+  color: #262626;
+}
+
+.mainBtn {
+  flex: none;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #d9d9d9;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.mainBtn > img {
+  height: 14px;
+}
+
+.part {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.subTitle {
+  flex: none;
+  font-size: 18px;
+}
+
+.subBtn {
+  flex: none;
+  display: flex;
+  height: 45px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid #d9d9d9;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-left: 20px;
+}
+
+.subBtn > img {
+  height: 14px;
+}
+
+.pushBtn {
+  position: relative;
+  width: 70px;
+  height: 35px;
+  border-radius: 50px 50px 50px 50px;
+  cursor: pointer;
+}
+
+.push {
+  position: absolute;
+  top: 50%;
+  transition: 0.5s ease-in-out;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.clipConfirm {
+  display: flex;
+  z-index: 2;
+  justify-content: center;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100px;
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  animation: fade 2.5s ease-in-out forwards;
+}
+
+.disappear {
+  display: none;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.modal {
+  width: 300px;
+  height: 180px;
+  outline: none;
+  border: none;
+  max-width: 300px;
+  max-height: 250px;
+  padding: 0;
+}
+
+.modalBox {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.modalHeader {
+  font-size: 20px;
+}
+
+.btnBox {
+  display: flex;
+  gap: 20px;
+}
+
+.modalDescription {
+  font-size: 12px;
+}
+
+.yesBtn {
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #04acb5;
+  color: #fff;
+  cursor: pointer;
+}
+
+.noBtn {
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9d9d9;
+  cursor: pointer;
+}

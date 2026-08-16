@@ -1,0 +1,30 @@
+@media screen and (max-width: 700px) {
+  .container {
+    width: 100%;
+  }
+  .cardBox {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (min-width: 700px) {
+  .container {
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 30px 10px;
+    gap: 20px 20px;
+  }
+  .cardBox {
+    width: 300px;
+    height: 300px;
+  }
+}

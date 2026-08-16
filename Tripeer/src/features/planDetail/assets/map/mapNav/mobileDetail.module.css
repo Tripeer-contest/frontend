@@ -1,0 +1,58 @@
+.dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 100vh;
+  height: calc(var(--vh, '1vh') * 100);
+  z-index: 11;
+}
+
+.spotBox {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 70px;
+  padding: 0px 20px;
+  justify-content: flex-end;
+  align-items: center;
+  animation: showup 0.5s ease-in-out;
+}
+.spotIconBox {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 1px 2px 0px rgba(31, 41, 55, 0.08);
+}
+
+.cancelIcon {
+  height: 40px;
+}
+
+@keyframes showup {
+  0% {
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.suspenseBox {
+  display: flex;
+  height: '100%';
+  align-content: 'center';
+  justify-content: center;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: 100%;
+}

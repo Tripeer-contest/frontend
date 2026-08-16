@@ -7,13 +7,31 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "serve -s dist"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^16.6.0",
+    "@tanstack/react-query": "^5.51.23",
+    "@tanstack/react-query-devtools": "^5.51.23",
+    "@types/uuid": "^10.0.0",
+    "axios": "^1.7.4",
+    "browser-image-compression": "^2.0.2",
+    "dialog-polyfill": "^0.5.6",
+    "firebase": "^10.13.2",
+    "js-cookie": "^3.0.5",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "swiper": "^11.1.9",
+    "uuid": "^10.0.0",
+    "y-websocket": "^2.0.4",
+    "yjs": "^13.6.18",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "@types/navermaps": "^3.7.8",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",

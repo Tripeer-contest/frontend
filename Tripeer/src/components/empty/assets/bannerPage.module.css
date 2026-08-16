@@ -1,0 +1,72 @@
+.titleBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    width: 100%;
+    padding: 10px;
+    height: auto;
+  }
+
+  .gridBox {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .title {
+    font-size: 1.1rem;
+    color: #262626;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+}
+@media screen and (min-width: 700px) {
+  .container {
+    width: 100%;
+    padding: 10px;
+    height: 500px;
+    margin-top: 80px;
+  }
+
+  .gridBox {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    color: #262626;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    width: 100%;
+    margin-top: 70px;
+    display: grid;
+    justify-items: center;
+  }
+
+  .gridBox {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    color: #262626;
+    font-weight: 600;
+  }
+}

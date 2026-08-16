@@ -40,6 +40,7 @@ module.exports = {
     'no-unused-vars': 'off',
     // TypeScript 사용되지 않는 변수를 경고로 표시
     '@typescript-eslint/no-unused-vars': ['warn'],
+    '@typescript-eslint/no-explicit-any': 'off',
     // 콘솔 사용을 비활성화
     'no-console': 'off',
     // 기본 내보내기를 선호하는 규칙을 비활성화

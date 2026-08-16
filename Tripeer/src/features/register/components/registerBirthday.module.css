@@ -1,0 +1,157 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    animation: fadein 1s ease-in forwards;
+    opacity: 0;
+}
+
+.err {
+    color: red;
+    margin-top: 10px;
+}
+
+.imgBox {
+    width: 49vw;
+    height: 100vh;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.body_p {
+    font-weight: bold;
+    color: #212529;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputBox, .btnBox {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    width: 80px;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #858687;
+    justify-items: left;
+    border: 0;
+    outline: none;
+}
+
+.errBox {
+    height: 50px;
+}
+
+.example {
+    margin-left: 5px;
+    font-weight: normal;
+    color: #858687;
+}
+
+.bw {
+    color: #858687;
+}
+
+@media screen and (min-width: 860px) {
+    .body {
+        width: 51vw;
+        height: 100vh;
+    }
+
+    .body_p {
+        font-size: 1.9rem;
+        margin-bottom: 20px;
+    }
+
+    .box {
+        width: 290px;
+        height: 280px;
+    }
+
+    .btnBox {
+        width: 100%;
+    }
+
+    .example {
+        margin-top: 10px;
+        font-size: 0.9rem;
+    }
+
+    .bw {
+        font-size: 1.3rem;
+        margin-right: 17px;
+    }
+
+    .inputBox{
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .imgBox, .img {
+        display: none;
+    }
+
+    .body {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .body_p {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .box {
+        width: 300px;
+        height: 260px;
+    }
+
+    .inputBox {
+        margin-top: 10px;
+    }
+
+    .btnBox {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .errBox {
+        font-size: 0.8rem;
+    }
+
+    .example {
+        margin-top: 20px;
+        font-size: 0.8rem;
+    }
+
+    .bw {
+        font-size: 1rem;
+        margin-right: 30px;
+    }
+
+    .inputBox{
+        margin-top: 15px;
+    }
+}
+
+@keyframes fadein {
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,14 @@
+@media screen and (min-width: 1000px) {
+  .ContentLayout {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto 1000px auto;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .ContentLayout {
+    width: 100vw;
+  }
+}

@@ -1,0 +1,193 @@
+@media screen and (min-width: 1300px) {
+  .container {
+    width: 100vw;
+    height: 84.8px;
+    display: flex;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 1px solid #e3e3e3;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logoImg {
+    width: 130px;
+    height: 45px;
+  }
+
+  .linkBox {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .activeBtn {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px;
+    color: #04acb5;
+  }
+
+  .unactiveBtn {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px;
+  }
+
+  .navIcon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    padding: 15px;
+    padding-left: 30px;
+    border-bottom: 1px solid #e3e3e3;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logoImg {
+    width: 100px;
+    height: 35px;
+  }
+
+  .linkBox {
+    position: fixed;
+    background-color: #fff;
+    z-index: 2;
+    width: 100vw;
+    height: 65px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0px -2px 10px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .bottomNavIcon {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .navIcon {
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .activeBtn {
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin: 6px;
+    color: #04acb5;
+  }
+
+  .unactiveBtn {
+    text-decoration: none;
+    font-size: 0.7rem;
+    color: #c4c4c4;
+    font-weight: 600;
+    margin: 6px;
+  }
+  .activehome {
+    background-image: url(../../assets/nav/activeBtn/home.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .unactivehome {
+    background-image: url(../../assets/nav/home.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .activeplan {
+    background-image: url(../../assets/nav/activeBtn/plan.svg);
+  }
+
+  .unactiveplan {
+    background-image: url(../../assets/nav/plan.svg);
+  }
+
+  .activediary {
+    background-image: url(../../assets//nav/activeBtn/diary.svg);
+  }
+
+  .unactivediary {
+    background-image: url(../../assets/nav/diary.svg);
+  }
+
+  .activecart {
+    background-image: url(../../assets/nav/activeBtn/cart.svg);
+  }
+
+  .unactivecart {
+    background-image: url(../../assets/nav/cart.svg);
+  }
+
+  .activemypage {
+    background-image: url(../../assets/nav/activeBtn/mypage.svg);
+  }
+
+  .unactivemypage {
+    background-image: url(../../assets/nav/mypage.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .planOrder {
+    order: 1;
+  }
+  .diaryOrder {
+    order: 2;
+  }
+  .homeOrder {
+    order: 3;
+  }
+  .cartOrder {
+    order: 4;
+  }
+  .mypageOrder {
+    order: 5;
+  }
+}
+
+@media screen and (max-width: 355px) {
+  .linkBox {
+    height: 60px;
+    padding-bottom: 0px;
+  }
+
+  .activeBtn {
+    text-decoration: none;
+    font-size: 0.6rem;
+    font-weight: 600;
+    margin: 5px;
+    color: #04acb5;
+  }
+
+  .unactiveBtn {
+    text-decoration: none;
+    font-size: 0.6rem;
+    color: #c4c4c4;
+    font-weight: 600;
+    margin: 5px;
+  }
+}

@@ -1,0 +1,29 @@
+@media screen and (min-width: 860px) {
+    .cancel {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .cancel {
+        font-size: 0.9rem;
+    }
+}
+
+.cancel {
+    width: 130px;
+    height: 40px;
+    font-size: 0.9rem;
+    color: #606060;
+    background-color: #F7F7F7;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancel:hover {
+    transform: scale(1.02);
+}

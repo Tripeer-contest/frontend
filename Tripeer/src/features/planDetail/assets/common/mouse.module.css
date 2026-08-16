@@ -1,0 +1,29 @@
+.mousePointer {
+  position: fixed;
+  width: 20px;
+  z-index: 999;
+}
+
+.userInfo {
+  position: fixed;
+  z-index: 999;
+  color: white;
+  font-weight: 500;
+  border-radius: 50px;
+  max-width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 10px;
+  pointer-events: none;
+  scrollbar-width: none;
+}
+
+.userInput {
+  outline: none;
+  border: none;
+  max-height: 500px;
+  resize: none;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

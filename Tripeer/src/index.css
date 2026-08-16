@@ -101,6 +101,7 @@ section {
 }
 body {
   line-height: 1;
+  overflow-x: hidden;
 }
 ol,
 ul {
@@ -114,10 +115,32 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+html,
+body {
+  overflow-y: hidden;
+  height: 100%;
+}
+.monomaniac-one-regular {
+  font-family: 'Monomaniac One', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
